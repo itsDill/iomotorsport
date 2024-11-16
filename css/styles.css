@@ -1,117 +1,348 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #111; /* Dark background color for the body */
-    color: #fff; /* White text color */
+    font-family: 'Arial', sans-serif;
+    background-color: #111; /* Consistent dark background */
+    color: #f0f0f0; /* Light text color for readability */
     margin: 0;
     padding: 0;
+    line-height: 1.6; /* Improve text readability */
 }
 
 /* Header Styles */
 header {
-    background-color: #333; /* Dark header background */
+    background-color: #222; /* Dark header background */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #444; /* Subtle border for separation */
+}
+
+header nav a {
+    color: #ffd700; /* Luxurious gold text for links */
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #fff; /* Highlight effect on hover */
+}
+
+/* Hero Section */
+h1 {
+    font-size: 2.8em;
+    text-align: center;
+    margin: 20px 0;
+    color: #ffd700; /* Luxurious gold for main headings */
+    text-transform: uppercase; /* Elegant text styling */
+    letter-spacing: 2px;
+}
+
+/* General Content Styling */
+.content p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Luxury Destinations Grid */
+.luxury-destinations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: #222; /* Dark section background */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add depth */
+}
+
+.destination {
+    background: #333; /* Dark box background */
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination:hover {
+    transform: scale(1.05); /* Highlight effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.destination img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 2px solid #444; /* Neat separation between image and text */
+}
+
+.destination h2 {
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    background: #ffd700; /* Luxurious gold background for headings */
+    color: #111; /* Dark text for contrast */
+    font-size: 1.4em;
+    text-transform: uppercase; /* Classy look */
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+    background-color: #222; /* Dark footer background */
+    color: #ccc; /* Subtle light text */
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #444; /* Clean separation */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .luxury-destinations {
+        grid-template-columns: 1fr 1fr; /* Adjust to 2 columns on smaller screens */
+    }
+
+    .destination {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .luxury-destinations {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+}
+/* Luxury Destinations Grid */
+.luxury-destinations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensure 3 columns */
+    gap: 20px; /* Add spacing between boxes */
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Center and limit the content width */
+}
+
+.destination {
+    background: #333; /* Dark background for boxes */
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center text inside the box */
+}
+
+.destination:hover {
+    transform: scale(1.05); /* Subtle zoom effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.destination img {
+    width: 100%; /* Ensure the image fills the box horizontally */
+    height: 200px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Crop the image to fit neatly */
+    border-bottom: 2px solid #444; /* Clean separation between image and text */
+}
+
+.destination h2 {
+    margin: 0;
+    padding: 15px;
+    background: #ffd700; /* Luxurious gold background for headings */
+    color: #111; /* Dark text for contrast */
+    font-size: 1.2em;
+    text-transform: uppercase; /* Consistent heading styling */
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .luxury-destinations {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .luxury-destinations {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .destination img {
+        height: 150px; /* Adjust image height for small screens */
+    }
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #111; /* Dark, classy background */
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
     padding: 1em;
     text-align: center;
 }
 
-nav a {
-    color: #fff; /* White links in the navigation */
-    margin: 0 1em;
-    text-decoration: none;
+header h1 {
+    font-size: 2em;
+    color: #ffd700; /* Gold for a luxury feel */
+    margin-bottom: 0.5em;
 }
 
-/* Hero Section Styles */
+header nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ffd700; /* Highlight on hover */
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
-    padding: 3em 1em;
-    background-color: #222; /* Dark background color for the hero section */
+    padding: 2em 1em;
 }
 
 .hero-image {
-    max-width: 80%; /* The image will be resized to fit within its container */
-    height: auto; /* Maintain the aspect ratio */
-    opacity: 0.8; /* Slight transparency for the hero image */
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Classy shadow */
 }
 
-/* Service Boxes Section Styles */
+.hero h2 {
+    margin-top: 1em;
+    font-size: 1.8em;
+    color: #ffd700;
+}
+
+/* Service Boxes */
 .service-boxes {
-    text-align: center; /* Center the text */
-    margin: 40px 0; /* Add vertical spacing between sections */
-}
-
-.service-boxes h2 {
-    font-size: 2em; /* Make the heading larger */
-    margin-bottom: 20px; /* Add space between the heading and boxes */
-}
-
-.service-box {
-    display: inline-block; /* Make the boxes align horizontally */
-    width: 30%; /* Each box will take up 30% of the container width */
-    margin: 1em 0; /* Add vertical spacing between boxes */
-}
-
-.service-box img {
-    width: 100%; /* Make the image fill the box */
-    height: auto; /* Maintain the aspect ratio of the image */
-    border-radius: 10px; /* Rounded corners for the images */
-}
-
-/* Experience Boxes Section Styles */
-.experience-boxes {
-    text-align: center; /* Center the text */
-    margin: 40px 0; /* Add vertical spacing between sections */
-}
-
-.experience-boxes h2 {
-    font-size: 2em; /* Make the heading larger */
-    margin-bottom: 20px; /* Add space between the heading and boxes */
-}
-
-.experience-box {
-    display: inline-block; /* Make the boxes align horizontally */
-    width: 30%; /* Each box will take up 30% of the container width */
-    margin: 1em 0; /* Add vertical spacing between boxes */
-}
-
-.experience-box img {
-    width: 100%; /* Make the image fill the box */
-    height: auto; /* Maintain the aspect ratio of the image */
-    border-radius: 10px; /* Rounded corners for the images */
-}
-
-/* Medium Image Section Styles */
-.medium-image {
-    text-align: center;
-    margin: 40px 0; /* Add vertical spacing around the image */
-}
-
-.medium-image img {
-    width: 80%; /* Resize the medium image to 80% of its container width */
-    max-width: 1000px; /* Set a maximum width for the image */
-    height: auto; /* Maintain the aspect ratio */
-}
-
-/* Affiliate Section Styles */
-.affiliate {
-    text-align: center;
-    margin: 40px 0; /* Add vertical spacing around the affiliate section */
-    background-color: #e3e3e3; /* Light background for the affiliate section */
-    padding: 20px; /* Add padding inside the section */
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 1em;
-    background-color: #333; /* Dark background color for footer */
-}
-
-/* Featured Services Section Styles */
-.featured-services {
     padding: 2em 1em;
     text-align: center;
 }
 
-.service {
-    margin: 1em 0;
+.service-boxes h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #ffd700;
+}
+
+.service-boxes .service-box {
+    display: inline-block;
+    width: 30%; /* Adjust box width */
+    margin: 1em;
+    background: #222; /* Dark background for boxes */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-boxes .service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.service-box img {
+    width: 100%; /* Image fits the box */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Prevent distortion */
+}
+
+.service-box h3 {
+    margin: 0;
+    padding: 1em;
+    font-size: 1.2em;
+    color: #fff;
+    background: #444; /* Header background */
+    text-transform: uppercase;
+}
+
+/* Medium Image Section */
+.medium-image {
+    text-align: center;
+    padding: 2em 0;
+}
+
+.medium-image img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Experiences Section */
+.experience-boxes {
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.experience-boxes h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #ffd700;
+}
+
+.experience-boxes .service-box {
+    display: inline-block;
+    width: 30%;
+    margin: 1em;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.experience-boxes .service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.experience-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-box h3 {
+    margin: 0;
+    padding: 1em;
+    font-size: 1.2em;
+    color: #fff;
+    background: #444;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
 }
