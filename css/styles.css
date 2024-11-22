@@ -203,7 +203,7 @@ footer p {
 .destination img {
     width: 100%; /* Ensures image fills the box */
     height: 200px; /* Fixed height for consistent layout */
-    object-fit: cover; /* Ensures image fits nicely */
+    object-fit: contain; /* Ensures image fits nicely */
     border-bottom: 2px solid #444; /* Divider line under image */
 }
 
