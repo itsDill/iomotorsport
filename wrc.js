@@ -3,18 +3,19 @@ async function loadData(type) {
   contentDiv.innerHTML = "Loading...";
   let url;
 
+  // Replace these with the correct paths to your JSON files
   switch (type) {
     case 'results':
-      url = 'https://api-motorsport.p.rapidapi.com/races?series=wrc&season=2024'; // Replace with WRC-specific endpoint
+      url = 'wrc/wrcresults.json;' // Path to the local results JSON
       break;
     case 'drivers':
-      url = 'https://api-motorsport.p.rapidapi.com/standings?series=wrc&type=drivers&season=2024'; // Driver standings
+      url = 'path/to/drivers.json'; // Path to the local drivers JSON
       break;
     case 'teams':
-      url = 'https://api-motorsport.p.rapidapi.com/standings?series=wrc&type=teams&season=2024'; // Constructor standings
+      url = 'path/to/teams.json'; // Path to the local teams JSON
       break;
     case 'calendar':
-      url = 'https://api-motorsport.p.rapidapi.com/calendar?series=wrc&season=2024'; // Fixtures
+      url = 'path/to/calendar.json'; // Path to the local calendar JSON
       break;
     default:
       contentDiv.innerHTML = "Invalid selection.";
@@ -22,12 +23,7 @@ async function loadData(type) {
   }
 
   try {
-    const response = await fetch(url, {
-      headers: {
-        "X-RapidAPI-Key": "YOUR_API_KEY", // Replace with your API key
-        "X-RapidAPI-Host": "api-motorsport.p.rapidapi.com"
-      }
-    });
+    const response = await fetch(url);
     const data = await response.json();
     renderData(type, data, contentDiv);
   } catch (error) {
@@ -40,7 +36,7 @@ function renderData(type, data, container) {
   container.innerHTML = ''; // Clear content
   switch (type) {
     case 'results':
-      const rally = data.response[0]; // Adjust based on the API response
+      const rally = data.response[0]; // Adjust based on the JSON structure
       container.innerHTML = `
         <h2>${rally.name} - ${rally.date}</h2>
         <table>
@@ -55,7 +51,7 @@ function renderData(type, data, container) {
       break;
 
     case 'drivers':
-      const drivers = data.response; // Adjust based on the API response
+      const drivers = data.response; // Adjust based on the JSON structure
       container.innerHTML = `
         <h2>Driver Standings</h2>
         <table>
@@ -70,7 +66,7 @@ function renderData(type, data, container) {
       break;
 
     case 'teams':
-      const teams = data.response; // Adjust based on the API response
+      const teams = data.response; // Adjust based on the JSON structure
       container.innerHTML = `
         <h2>Team Standings</h2>
         <table>
@@ -85,7 +81,7 @@ function renderData(type, data, container) {
       break;
 
     case 'calendar':
-      const rallies = data.response; // Adjust based on the API response
+      const rallies = data.response; // Adjust based on the JSON structure
       container.innerHTML = `
         <h2>Fixtures</h2>
         <table>

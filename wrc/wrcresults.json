@@ -1,0 +1,17 @@
+{
+  "results": [
+    { "position": 1, "rider": "Francesco Bagnaia", "team": "Ducati", "time": "42:28.095" },
+    { "position": 2, "rider": "Fabio Quartararo", "team": "Yamaha", "time": "+1.387" },
+    { "position": 3, "rider": "Enea Bastianini", "team": "Ducati", "time": "+2.451" }
+  ],
+  "drivers": [
+    { "position": 1, "car": "Toyota GR010", "team": "Toyota Gazoo Racing", "laps": 384 },
+    { "position": 2, "car": "Porsche 963", "team": "Porsche Penske Motorsport", "laps": 383 },
+    { "position": 3, "car": "Ferrari 499P", "team": "Ferrari AF Corse", "laps": 382 }
+  ],
+  "teams": [
+    { "position": 1, "driver": "Kalle Rovanperä", "co_driver": "Jonne Halttunen", "car": "Toyota GR Yaris" },
+    { "position": 2, "driver": "Ott Tänak", "co_driver": "Martin Järveoja", "car": "Ford Puma Rally1" },
+    { "position": 3, "driver": "Thierry Neuville", "co_driver": "Martijn Wydaeghe", "car": "Hyundai i20 N Rally1" }
+  ]
+}
