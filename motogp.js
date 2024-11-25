@@ -4,9 +4,10 @@ async function loadData(type, isLocal = false) {
   let url;
 
   if (isLocal) {
-    url = 'motogp.json'; // Path to your local JSON file
+    // Use local JSON file for testing
+    url = 'motogp.json';
   } else {
-    // API handling (if you decide to use an API in the future)
+    // Define the API endpoints based on the type of data requested
     switch (type) {
       case 'results':
         url = 'https://api-motorsport.p.rapidapi.com/races?series=motogp&season=2024';
@@ -27,39 +28,29 @@ async function loadData(type, isLocal = false) {
   }
 
   try {
-    // If reading local JSON
-    if (isLocal) {
-      const response = await fetch(url);
-      const data = await response.json();
+    // Fetch the data from the API or local file
+    const response = await fetch(url, {
+      headers: isLocal
+        ? {}
+        : {
+            "X-RapidAPI-Key": "03664d8b42msh77373c6a1450ca0p1e857ejsn71a29df15875", // Replace with your RapidAPI Key
+            "X-RapidAPI-Host": "motorsportapi.p.rapidapi.com"
+          }
+    });
 
-      // Handle local data differently
-      let results;
-      switch (type) {
-        case 'results':
-          results = data.results;
-          break;
-        case 'drivers':
-          results = data.drivers;
-          break;
-        case 'constructors':
-          results = data.constructers;
-          break;
-        default:
-          results = [];
-      }
-      renderResults(type, results, contentDiv);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    if (isLocal) {
+      renderResults(type, data, contentDiv);
     } else {
-      const response = await fetch(url, {
-        headers: {
-          "X-RapidAPI-Key": "YOUR_API_KEY", // Replace with your API key
-          "X-RapidAPI-Host": "api-motorsport.p.rapidapi.com"
-        }
-      });
-      const data = await response.json();
       renderData(type, data, contentDiv);
     }
   } catch (error) {
-    contentDiv.innerHTML = "Error loading data.";
+    contentDiv.innerHTML = "Error loading data. Check the console for details.";
     console.error(error);
   }
 }
