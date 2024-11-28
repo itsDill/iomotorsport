@@ -32,79 +32,103 @@
             contentDiv.innerHTML = "";
 
             if (tab === "results") {
-                const table = document.createElement("table");
-                table.innerHTML = `
-                    <thead>
-                        <tr>
-                            <th>Position</th>
-                            <th>Driver</th>
-                            <th>Team</th>
-                            <th>Car</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${data.results.map(result => `
-                            <tr>
-                                <td>${result.position}</td>
-                                <td>${result.driver}</td>
-                                <td>${result.team}</td>
-                                <td><img src="${result.carImage}" alt="${result.team}" class="car-img"></td>
-                            </tr>
-                        `).join("")}
-                    </tbody>
-                `;
-                contentDiv.appendChild(table);
-            } else if (tab === "drivers") {
-                const table = document.createElement("table");
-                table.innerHTML = `
-                    <thead>
-                        <tr>
-                            <th>Position</th>
-                            <th>Name</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${data.drivers.map(driver => `
-                            <tr>
-                                <td>${driver.position}</td>
-                                <td>${driver.name}</td>
-                                <td>${driver.points}</td>
-                            </tr>
-                        `).join("")}
-                    </tbody>
-                `;
-                contentDiv.appendChild(table);
-            } else if (tab === "constructors") {
-                const table = document.createElement("table");
-                table.innerHTML = `
-                    <thead>
-                        <tr>
-                            <th>Position</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${data.constructors.map(constructor => `
-                            <tr>
-                                <td>${constructor.position}</td>
-                                <td>${constructor.team}</td>
-                                <td>${constructor.points}</td>
-                            </tr>
-                        `).join("")}
-                    </tbody>
-                `;
-                contentDiv.appendChild(table);
-            } else if (tab === "fixtures") {
-                const list = document.createElement("ul");
-                data.fixtures.forEach(fixture => {
-                    const item = document.createElement("li");
-                    item.textContent = `${fixture.race} - ${fixture.date}`;
-                    list.appendChild(item);
-                });
-                contentDiv.appendChild(list);
-            }
+    const table = document.createElement("table");
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Car</th>
+                <th>Race Time</th>
+                <th>Fastest Lap</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${data.results.map(result => `
+                <tr>
+                    <td>${result.position}</td>
+                    <td>${result.driver}</td>
+                    <td>${result.team}</td>
+                    <td><img src="${result.carImage}" alt="${result.team}" class="car-img"></td>
+                    <td>${result.raceTime}</td>
+                    <td>${result.fastestLap}</td>
+                </tr>
+            `).join("")}
+        </tbody>
+    `;
+    contentDiv.appendChild(table);
+} else if (tab === "drivers") {
+    const table = document.createElement("table");
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Points</th>
+                <th>Wins</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${data.drivers.map(driver => `
+                <tr>
+                    <td>${driver.position}</td>
+                    <td>${driver.name}</td>
+                    <td>${driver.team}</td>
+                    <td>${driver.points}</td>
+                    <td>${driver.wins}</td>
+                    <td><img src="${driver.driverImage}" alt="${driver.name}" class="driver-img"></td>
+                </tr>
+            `).join("")}
+        </tbody>
+    `;
+    contentDiv.appendChild(table);
+} else if (tab === "constructors") {
+    const table = document.createElement("table");
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Team</th>
+                <th>Points</th>
+                <th>Wins</th>
+                <th>Podiums</th>
+                <th>Logo</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${data.constructors.map(constructor => `
+                <tr>
+                    <td>${constructor.position}</td>
+                    <td>${constructor.name}</td>
+                    <td>${constructor.points}</td>
+                    <td>${constructor.wins}</td>
+                    <td>${constructor.podiums}</td>
+                    <td><img src="${constructor.teamLogo}" alt="${constructor.name}" class="team-logo"></td>
+                </tr>
+            `).join("")}
+        </tbody>
+    `;
+    contentDiv.appendChild(table);
+} else if (tab === "fixtures") {
+    const list = document.createElement("div");
+    list.className = "fixtures-list";
+    data.fixtures.forEach(fixture => {
+        const item = document.createElement("div");
+        item.className = "fixture";
+        item.innerHTML = `
+            <img src="${fixture.circuitImage}" alt="${fixture.race}" class="circuit-img">
+            <p>${fixture.race} - ${fixture.date} - ${fixture.time}</p>
+            <p>Location: ${fixture.location}</p>
+        `;
+        list.appendChild(item);
+    });
+    contentDiv.appendChild(list);
+}
+
+
         }
     </script>
 </body>

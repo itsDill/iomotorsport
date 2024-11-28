@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <p>Select a category to view posts:</p>
+        <nav class="filter-nav">
+            <button onclick="filterBlogs('all')">All</button>
+            <button onclick="filterBlogs('f1')">Formula 1</button>
+            <button onclick="filterBlogs('motogp')">MotoGP</button>
+            <button onclick="filterBlogs('wec')">WEC</button>
+            <button onclick="filterBlogs('wrc')">WRC</button>
+        </nav>
+    </header>
+    <main>
+        <div id="blog-container" class="blog-container">
+            <!-- Blog posts dynamically added here -->
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 My Blog. All rights reserved.</p>
+    </footer>
+    <script>
+        // Sample blog data
+        const blogs = [
+            { id: 1, category: "f1", title: "The Rise of Max Verstappen", summary: "A look into the dominance of Max Verstappen in Formula 1.", date: "2024-11-20" },
+            { id: 2, category: "motogp", title: "MotoGP's Most Thrilling Season Yet", summary: "2024 has been a rollercoaster ride for MotoGP fans.", date: "2024-11-18" },
+            { id: 3, category: "wec", title: "Hypercars in WEC: The Future is Now", summary: "Exploring the impact of hypercars on endurance racing.", date: "2024-11-15" },
+            { id: 4, category: "wrc", title: "WRC's Challenging New Era", summary: "How hybrid technology is reshaping rally racing.", date: "2024-11-10" },
+            { id: 5, category: "f1", title: "F1 2024: A Season to Remember", summary: "A recap of the most unforgettable moments from this year’s F1 season.", date: "2024-11-05" }
+        ];
+
+        // Function to display blogs
+        function displayBlogs(filteredBlogs) {
+            const blogContainer = document.getElementById("blog-container");
+            blogContainer.innerHTML = "";
+
+            filteredBlogs.forEach(blog => {
+                const blogBox = document.createElement("div");
+                blogBox.className = "blog-box";
+                blogBox.innerHTML = `
+                    <h2>${blog.title}</h2>
+                    <p><small>${blog.date}</small></p>
+                    <p>${blog.summary}</p>
+                `;
+                blogContainer.appendChild(blogBox);
+            });
+        }
+
+        // Function to filter blogs
+        function filterBlogs(category) {
+            const filteredBlogs = category === "all" ? blogs : blogs.filter(blog => blog.category === category);
+            displayBlogs(filteredBlogs);
+        }
+
+        // Initial load
+        filterBlogs('all');
+    </script>
+</body>
+</html>
