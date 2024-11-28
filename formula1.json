@@ -1,0 +1,39 @@
+{
+    "results": [
+        {
+            "position": 1,
+            "driver": "Max Verstappen",
+            "team": "Red Bull Racing",
+            "time": "1:32:15.123",
+            "carImage": "images/f1/Pasted Graphic 14.png"
+        },
+        {
+            "position": 2,
+            "driver": "Lewis Hamilton",
+            "team": "Mercedes",
+            "time": "+3.456s",
+            "carImage": "images/f1/Pasted Graphic 15.png"
+        },
+        {
+            "position": 3,
+            "driver": "Charles Leclerc",
+            "team": "Ferrari",
+            "time": "+7.891s",
+            "carImage": "images/ferrari.png"
+        }
+    ],
+    "drivers": [
+        { "position": 1, "name": "Max Verstappen", "team": "Red Bull Racing" },
+        { "position": 2, "name": "Lewis Hamilton", "team": "Mercedes" },
+        { "position": 3, "name": "Charles Leclerc", "team": "Ferrari" }
+    ],
+    "constructors": [
+        { "position": 1, "name": "Red Bull Racing", "points": 300 },
+        { "position": 2, "name": "Mercedes", "points": 270 },
+        { "position": 3, "name": "Ferrari", "points": 250 }
+    ],
+    "fixtures": [
+        { "date": "2024-12-01", "race": "Abu Dhabi Grand Prix", "location": "Yas Marina Circuit" },
+        { "date": "2024-12-08", "race": "Bahrain Grand Prix", "location": "Bahrain International Circuit" }
+    ]
+}

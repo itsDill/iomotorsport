@@ -3,23 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Formula 1 Dashboard</title>
+    <link rel="stylesheet" href="formula1.css">
 </head>
 <body>
-    <div class="container">
-    <h1>Formula 1 Dashboard</h1>
-    <div class="tabs">
-      <button onclick="loadData('results')">Race Results</button>
-      <button onclick="loadData('drivers')">Driver Standings</button>
-      <button onclick="loadData('constructors')">Constructors Standings</button>
-      <button onclick="loadData('fixtures')">Fixtures</button>
-    </div>
-    <div id="content">
-      <!-- Dynamic content will be loaded here -->
-    </div>
-  </div>
+    <header>
+        <h1>Formula 1 Dashboard</h1>
+    </header>
+    <nav class="tabs">
+        <button onclick="loadData('results')">Race Results</button>
+        <button onclick="loadData('drivers')">Driver Standings</button>
+        <button onclick="loadData('constructors')">Constructors Standings</button>
+        <button onclick="loadData('fixtures')">Fixtures</button>
+    </nav>
+    <main>
+        <div id="content">
+            <!-- Content dynamically loads here -->
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Formula 1 Dashboard. All rights reserved.</p>
+    </footer>
+    <script>
+        async function loadData(tab) {
+            const response = await fetch("formula1.json");
+            const data = await response.json();
+            const contentDiv = document.getElementById("content");
+            contentDiv.innerHTML = "";
 
-  <script src="f1.js"></script>
+            if (tab === "results") {
+                const table = document.createElement("table");
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Car</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.results.map(result => `
+                            <tr>
+                                <td>${result.position}</td>
+                                <td>${result.driver}</td>
+                                <td>${result.team}</td>
+                                <td><img src="${result.carImage}" alt="${result.team}" class="car-img"></td>
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                `;
+                contentDiv.appendChild(table);
+            } else if (tab === "drivers") {
+                const table = document.createElement("table");
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Name</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.drivers.map(driver => `
+                            <tr>
+                                <td>${driver.position}</td>
+                                <td>${driver.name}</td>
+                                <td>${driver.points}</td>
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                `;
+                contentDiv.appendChild(table);
+            } else if (tab === "constructors") {
+                const table = document.createElement("table");
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.constructors.map(constructor => `
+                            <tr>
+                                <td>${constructor.position}</td>
+                                <td>${constructor.team}</td>
+                                <td>${constructor.points}</td>
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                `;
+                contentDiv.appendChild(table);
+            } else if (tab === "fixtures") {
+                const list = document.createElement("ul");
+                data.fixtures.forEach(fixture => {
+                    const item = document.createElement("li");
+                    item.textContent = `${fixture.race} - ${fixture.date}`;
+                    list.appendChild(item);
+                });
+                contentDiv.appendChild(list);
+            }
+        }
+    </script>
 </body>
 </html>

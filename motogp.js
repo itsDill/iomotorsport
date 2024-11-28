@@ -9,17 +9,21 @@ async function loadData(type, isLocal = false) {
   } else {
     // Define the API endpoints based on the type of data requested
     switch (type) {
-      case 'results':
-        url = 'https://api-motorsport.p.rapidapi.com/races?series=motogp&season=2024';
-        break;
-      case 'drivers':
-        url = 'https://api-motorsport.p.rapidapi.com/standings?series=motogp&type=riders&season=2024';
-        break;
-      case 'constructors':
-        url = 'https://api-motorsport.p.rapidapi.com/standings?series=motogp&type=teams&season=2024';
+      case 'leagues':
+        // Get MotoGP league details
+        url = 'https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?s=MotoGP';
         break;
       case 'fixtures':
-        url = 'https://api-motorsport.p.rapidapi.com/calendar?series=motogp&season=2024';
+        // Replace {league_id} with actual ID obtained from leagues API
+        url = 'https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id={league_id}';
+        break;
+      case 'results':
+        // Replace {league_id} with actual ID obtained from leagues API
+        url = 'https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id={league_id}';
+        break;
+      case 'drivers':
+        // Use team/player lookup if needed (not directly supported for MotoGP standings)
+        url = 'https://www.thesportsdb.com/api/v1/json/1/lookup_all_players.php?id={team_id}';
         break;
       default:
         contentDiv.innerHTML = "Invalid selection.";
@@ -28,29 +32,57 @@ async function loadData(type, isLocal = false) {
   }
 
   try {
-    // Fetch the data from the API or local file
-    const response = await fetch(url, {
-      headers: isLocal
-        ? {}
-        : {
-            "X-RapidAPI-Key": "03664d8b42msh77373c6a1450ca0p1e857ejsn71a29df15875", // Replace with your RapidAPI Key
-            "X-RapidAPI-Host": "motorsportapi.p.rapidapi.com"
-          }
-    });
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
-
-    if (isLocal) {
-      renderResults(type, data, contentDiv);
-    } else {
-      renderData(type, data, contentDiv);
-    }
+    renderData(type, data, contentDiv);
   } catch (error) {
     contentDiv.innerHTML = "Error loading data. Check the console for details.";
     console.error(error);
+  }
+}
+
+function renderData(type, data, contentDiv) {
+  contentDiv.innerHTML = ""; // Clear previous content
+
+  switch (type) {
+    case 'leagues':
+      contentDiv.innerHTML = "<h2>Available MotoGP Leagues</h2>";
+      data.leagues.forEach((league) => {
+        const leagueInfo = document.createElement('p');
+        leagueInfo.textContent = `${league.strLeague} (${league.strCountry})`;
+        contentDiv.appendChild(leagueInfo);
+      });
+      break;
+    case 'fixtures':
+      contentDiv.innerHTML = "<h2>Upcoming Fixtures</h2>";
+      data.events.forEach((event) => {
+        const eventInfo = document.createElement('p');
+        eventInfo.textContent = `${event.strEvent} on ${event.dateEvent}`;
+        contentDiv.appendChild(eventInfo);
+      });
+      break;
+    case 'results':
+      contentDiv.innerHTML = "<h2>Past Results</h2>";
+      data.events.forEach((event) => {
+        const resultInfo = document.createElement('p');
+        resultInfo.textContent = `${event.strEvent}: ${event.intHomeScore || 'N/A'} - ${event.intAwayScore || 'N/A'}`;
+        contentDiv.appendChild(resultInfo);
+      });
+      break;
+    case 'drivers':
+      contentDiv.innerHTML = "<h2>Drivers</h2>";
+      data.player.forEach((driver) => {
+        const driverInfo = document.createElement('p');
+        driverInfo.textContent = `${driver.strPlayer} - ${driver.strPosition || 'Position N/A'}`;
+        contentDiv.appendChild(driverInfo);
+      });
+      break;
+    default:
+      contentDiv.innerHTML = "Invalid data type.";
   }
 }
