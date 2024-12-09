@@ -1,7 +1,7 @@
 {
     "2024": [
         {
-            "track": "Grand Prix",
+            "track": "Qatar",
             "position": 1,
             "driver": "L. Norris",
             "team": "McLaren",
@@ -10,7 +10,7 @@
             "fastestLap": "212.246"
         },
         {
-            "track": "Grand Prix",
+            "track": "Qatar",
             "position": 2,
             "driver": "C. Sainz",
             "team": "Ferrari",
@@ -19,7 +19,7 @@
             "fastestLap": "212.008"
         },
         {
-            "track": "Grand Prix",
+            "track": "Qatar",
             "position": 3,
             "driver": "C. Leclerc",
             "team": "Ferrari",
@@ -28,7 +28,7 @@
             "fastestLap": "210.949"
         },
         {
-            "track": "Grand Prix",
+            "track": "Qatar",
             "position": 4,
             "driver": "L. Hamilton",
             "team": "Mercedes",
