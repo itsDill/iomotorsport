@@ -3,185 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formula 1 Dashboard</title>
-    <link rel="stylesheet" href="formula1.css">
+    <title>Formula 1 Schedule</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Formula 1 Dashboard</h1>
-    </header>
-    <nav class="tabs">
-        <select id="yearSelector" onchange="reloadCurrentTab()">
-            <option value="2024" selected>2024</option>
-            <option value="2023">2023</option>
+        <h1>Formula 1 Schedule</h1>
+        <select id="yearSelector" onchange="loadSchedule()">
+            <option value="2024">2024</option>
+            <option value="2025" selected>2025</option>
         </select>
-        <button onclick="loadData('results', 'f1results.json')">Race Results</button>
-        <button onclick="loadData('drivers', 'drivers.json')">Driver Standings</button>
-        <button onclick="loadData('constructors', 'constructors.json')">Constructors Standings</button>
-        <button onclick="loadData('fixtures', 'fixtures.json')">Fixtures</button>
-    </nav>
+    </header>
     <main>
-        <div id="content">
-            <!-- Content dynamically loads here -->
+        <div id="schedule">
+            <!-- Schedule items will be dynamically loaded here -->
         </div>
     </main>
     <footer>
         <p>© 2024 Formula 1 Dashboard. All rights reserved.</p>
     </footer>
-    <script>
-        let currentTab = "";
-let currentFile = "";
-let trackSelector;
-
-async function loadData(tab, file) {
-    currentTab = tab;
-    currentFile = file;
-    const year = document.getElementById("yearSelector").value;
-    const response = await fetch(file);
-    const data = await response.json();
-    const contentDiv = document.getElementById("content");
-    contentDiv.innerHTML = "";
-
-    if (!data[year]) {
-        contentDiv.innerHTML = "<p>No data available for the selected year.</p>";
-        return;
-    }
-
-    const yearData = data[year];
-    if (tab === "results") {
-        // Create a track selector
-        const trackNames = [...new Set(yearData.map(result => result.track))];
-        trackSelector = document.createElement("select");
-        trackSelector.id = "trackSelector";
-        trackSelector.onchange = () => filterResults(yearData);
-        trackSelector.innerHTML = `
-            <option value="all">All Tracks</option>
-            ${trackNames.map(track => `<option value="${track}">${track}</option>`).join("")}
-        `;
-        contentDiv.appendChild(trackSelector);
-
-        // Display results table
-        displayResults(yearData);
-    } else if (tab === "drivers") {
-        const table = document.createElement("table");
-        table.innerHTML = `
-            <thead>
-                <tr>
-                    <th>Position</th>
-                    <th>Name</th>
-                    <th>Team</th>
-                    <th>Points</th>
-                    <th>Wins</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${yearData.map(driver =>
-                    `<tr>
-                        <td>${driver.position}</td>
-                        <td>${driver.name}</td>
-                        <td>${driver.team}</td>
-                        <td>${driver.points}</td>
-                        <td>${driver.wins}</td>
-                        <td><img src="${driver.driverImage}" alt="${driver.name}" class="driver-img"></td>
-                    </tr>`
-                ).join("")}
-            </tbody>
-        `;
-        contentDiv.appendChild(table);
-    } else if (tab === "constructors") {
-        const table = document.createElement("table");
-        table.innerHTML = `
-            <thead>
-                <tr>
-                    <th>Position</th>
-                    <th>Team</th>
-                    <th>Points</th>
-                    <th>Wins</th>
-                    <th>Podiums</th>
-                    <th>Logo</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${yearData.map(constructor =>
-                    `<tr>
-                        <td>${constructor.position}</td>
-                        <td>${constructor.name}</td>
-                        <td>${constructor.points}</td>
-                        <td>${constructor.wins}</td>
-                        <td>${constructor.podiums}</td>
-                        <td><img src="${constructor.teamLogo}" alt="${constructor.name}" class="team-logo"></td>
-                    </tr>`
-                ).join("")}
-            </tbody>
-        `;
-        contentDiv.appendChild(table);
-    } else if (tab === "fixtures") {
-        const list = document.createElement("div");
-        list.className = "fixtures-list";
-        yearData.forEach(fixture => {
-            const item = document.createElement("div");
-            item.className = "fixture";
-            item.innerHTML = `
-                <img src="${fixture.circuitImage}" alt="${fixture.race}" class="circuit-img">
-                <p>${fixture.race} - ${fixture.date} - ${fixture.time}</p>
-                <p>Location: ${fixture.location}</p>
-            `;
-            list.appendChild(item);
-        });
-        contentDiv.appendChild(list);
-    }
-}
-
-function displayResults(data) {
-    const contentDiv = document.getElementById("content");
-    const existingTable = document.querySelector("#content table");
-    if (existingTable) existingTable.remove();
-
-    const table = document.createElement("table");
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>Position</th>
-                <th>Driver</th>
-                <th>Team</th>
-                <th>Car</th>
-                <th>Race Time</th>
-                <th>Fastest Lap</th>
-                <th>Track</th>
-            </tr>
-        </thead>
-        <tbody>
-            ${data.map(result =>
-                `<tr>
-                    <td>${result.position}</td>
-                    <td>${result.driver}</td>
-                    <td>${result.team}</td>
-                    <td><img src="${result.carImage}" alt="${result.team}" class="car-img"></td>
-                    <td>${result.raceTime}</td>
-                    <td>${result.fastestLap}</td>
-                    <td>${result.track}</td>
-                </tr>`
-            ).join("")}
-        </tbody>
-    `;
-    contentDiv.appendChild(table);
-}
-
-function filterResults(yearData) {
-    const selectedTrack = trackSelector.value;
-    const filteredData = selectedTrack === "all"
-        ? yearData
-        : yearData.filter(result => result.track === selectedTrack);
-    displayResults(filteredData);
-}
-
-function reloadCurrentTab() {
-    if (currentTab && currentFile) {
-        loadData(currentTab, currentFile);
-    }
-}
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
