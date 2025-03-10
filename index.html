@@ -3,99 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IO Sports Data</title>
+    <meta name="description" content="iO Motorsport - Your ultimate destination for F1, MotoGP, WEC, NASCAR and motorsport news, predictions, fantasy leagues and historical archives.">
+    <title>iO Motorsport | Premium Motorsport Coverage & Analysis</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Welcome to iO Motorsport</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="formula1.html">F1</a>
-            <a href="fantasyf1.html">Fantasy F1</a>
-            <a href="f1ai.html">F1 AI</a>
-            <a href="history.html">History</a>
+        <div class="header-top">
+            <div class="logo">
+                <img src="images/logo.png" alt="iO Motorsport Logo">
+            </div>
+            <div class="search-container">
+                <form action="/search" method="get">
+                    <input type="text" placeholder="Search motorsport news, drivers, teams..." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="active">Home</a>
+            <div class="dropdown">
+                <a href="formula1.html">Formula 1 <i class="fa fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="f1news.html">News</a>
+                    <a href="f1drivers.html">Drivers</a>
+                    <a href="f1teams.html">Teams</a>
+                    <a href="f1calendar.html">Calendar</a>
+                    <a href="f1standings.html">Standings</a>
+                </div>
+            </div>
+
+            </div>
+            <a href="f1ai.html">F1 Predictions</a>
+            <a href="fantasyf1.html">Fantasy Leagues</a>
+
+            </div>
             <a href="blog.html">Blog</a>
+            <a href="history.html">History</a>
         </nav>
     </header>
 
-    <!-- Luxury Destinations Section -->
-    <section class="luxury-destinations">
-        <div class="destination">
-            <a href="formula1.html">
-                <img src="images/sports/motorsport/motorsport5.jpg" alt="formula1">
-                <h2>Formula1</h2>
-            </a>
+    <!-- Hero Section with Latest News -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide current">
+                <img src="images/f1/hero-latest-race.jpg" alt="Latest F1 Race">
+                <div class="hero-content">
+                    <span class="tag">Breaking News</span>
+                    <h1>Verstappen Clinches Dramatic Victory in Rainy Monaco GP</h1>
+                    <p>An intense battle with Leclerc in challenging conditions sees Red Bull extend their lead.</p>
+                    <a href="monaco-gp-review.html" class="btn-primary">Read Full Coverage</a>
+                </div>
+            </div>
+            <!-- Additional slides would be controlled by JavaScript -->
         </div>
-        <div class="destination">
-            <a href="fantasyf1.html">
-                <img src="images/DALL·E 2025-02-23 21.37.22 - A Formula 1 poster featuring a sleek, plain black F1 car parked on a garage floor, illuminated by dramatic overhead lights. The car has no stickers or.webp" alt="motogp">
-                <h2>Fantasy F1</h2>
-            </a>
-        </div>
-        <div class="destination">
-            <a href="f1ai.html">
-                <img src="images/f1/street-3184900_1280.jpg" alt="ai predictions for f1">
-                <h2>F1 AI</h2>
-            </a>
-        </div>
-        <div class="destination">
-            <a href="">
-                <img src="https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_control_720x90.png" alt="Chiang Mai">
-                <h2>AD</h2>
-            </a>
-        </div>
-        <div class="destination">
-            <a href="history.html">
-                <img src="images/f1/ferrari-956569_1280.jpg" alt="wrc">
-                <h2>F1 History</h2>
-            </a>
-        </div>
-        <div class="destination">
-            <a href="">
-                <img src="https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_control_720x90.png" alt="Hua Hin">
-                <h2>AD</h2>
-            </a>
+        <div class="slider-controls">
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
-    <section class="medium-image">
-        <img src="images/sports/motorsport/motorsport9.jpg" alt="Medium Image">
-    </section>
-
-    <!-- Luxury Destinations Section -->
-    <section class="luxury-destinations">
-        <div class="destination">
-            <a href="formula1.html">
-                <img src="images/sports/motorsport/motorsport5.jpg" alt="formula1">
-                <h2>Formula1</h2>
-            </a>
+    <!-- Live Updates Section -->
+    <section class="live-updates">
+        <div class="section-header">
+            <h2><i class="fas fa-circle pulse"></i> LIVE Updates</h2>
+            <a href="live.html" class="view-all">View All</a>
         </div>
-        <div class="destination">
-            <a href="motogp.html">
-                <img src="images/sports/motorsport/motorsport6.jpg" alt="motogp">
-                <h2>MotoGP</h2>
-            </a>
-        </div>
-        <div class="destination">
-            <a href="wec.html">
-                <img src="images/sports/motorsport/motorsport8.jpg" alt="wec">
-                <h2>WEC</h2>
-            </a>
+        <div class="updates-ticker">
+            <div class="ticker-item">
+                <span class="time">12:45</span>
+                <span class="update">Hamilton tops FP3 at Silverstone with record lap time</span>
+            </div>
+            <div class="ticker-item">
+                <span class="time">11:30</span>
+                <span class="update">Ducati announces new technical partnership for 2025 season</span>
+            </div>
+            <div class="ticker-item">
+                <span class="time">10:15</span>
+                <span class="update">Ferrari confirms upgrades package for upcoming Spanish GP</span>
+            </div>
         </div>
     </section>
 
+    <!-- Featured Content Grid -->
+    <section class="featured-content">
+        <div class="content-grid">
+            <div class="grid-item main">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/f1/feature-prediction.jpg" alt="F1 AI Predictions">
+                        <span class="tag">Exclusive</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Our AI Predicts the Championship Battle: Who Will Come Out on Top?</h3>
+                        <p>Our proprietary algorithm has crunched the numbers on all remaining races. The results may surprise you...</p>
+                        <a href="f1ai-championship-prediction.html" class="read-more">Read Analysis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/f1/ferrari-956569_1280.jpg" alt="Classic Ferrari">
+                    </div>
+                    <div class="card-content">
+                        <h3>The Golden Era: Revisiting Ferrari's Dominance 2000-2004</h3>
+                        <a href="ferrari-golden-era.html" class="read-more">Explore History <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/sports/motorsport/motorsport6.jpg" alt="MotoGP Action">
+                    </div>
 
-    <section class="affiliate">
-        <h2>Exclusive Offers</h2>
-        <p>Check out our exclusive deals and affiliate links:</p>
-        <a href="https://one.exnesstrack.org/intl/en/a/irp0u0488v">
-          <img src="https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_control_720x90.png" width="720" height="90" alt="" />
-        </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Next Race Countdown -->
+    <section class="next-race">
+        <div class="race-info">
+            <div class="race-details">
+                <h2>Next Race: Spanish Grand Prix</h2>
+                <p><i class="fas fa-map-marker-alt"></i> Circuit de Barcelona-Catalunya</p>
+                <p><i class="fas fa-calendar-alt"></i> June 2, 2025</p>
+            </div>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="count" id="days">05</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count" id="hours">18</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count" id="minutes">45</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count" id="seconds">30</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+            <a href="spanish-gp.html" class="btn-primary">Race Hub</a>
+        </div>
+        <div class="track-map">
+            <img src="images/tracks/barcelona.svg" alt="Circuit de Barcelona-Catalunya Track Map">
+        </div>
+    </section>
+
+
+
+
+    <!-- Championship Standings -->
+    <section class="standings-preview">
+        <div class="section-header">
+            <h2>Current Standings</h2>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="f1-drivers">F1 Drivers</button>
+                <button class="tab-button" data-tab="f1-constructors">F1 Constructors</button>
+                <button class="tab-button" data-tab="motogp-riders">MotoGP Riders</button>
+            </div>
+        </div>
+
+        <div class="tab-content active" id="f1-drivers">
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Driver</th>
+                        <th>Team</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><img src="images/flags/nl.svg" alt="NL" class="flag"> M. Verstappen</td>
+                        <td>Red Bull Racing</td>
+                        <td>186</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><img src="images/flags/mc.svg" alt="MC" class="flag"> C. Leclerc</td>
+                        <td>Ferrari</td>
+                        <td>162</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><img src="images/flags/gb.svg" alt="GB" class="flag"> L. Norris</td>
+                        <td>McLaren</td>
+                        <td>148</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><img src="images/flags/gb.svg" alt="GB" class="flag"> G. Russell</td>
+                        <td>Mercedes</td>
+                        <td>135</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><img src="images/flags/es.svg" alt="ES" class="flag"> C. Sainz</td>
+                        <td>Ferrari</td>
+                        <td>129</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="f1standings.html" class="view-all">View Full Standings</a>
+        </div>
+
+        <!-- Other standings tables would be here but hidden initially -->
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="latest-articles">
+        <div class="section-header">
+            <h2>Latest Articles & Analysis</h2>
+            <a href="articles.html" class="view-all">View All</a>
+        </div>
+        <div class="articles-grid">
+            <div class="article-card">
+                <div class="article-image">
+                    <img src="images/articles/tech-analysis.jpg" alt="Technical Analysis">
+                    <span class="category">Technical</span>
+                </div>
+                <div class="article-content">
+                    <h3>How McLaren's Floor Redesign Has Changed Their Season</h3>
+                    <p class="meta"><span class="author">By Mark Thompson</span> • <span class="date">March 8, 2025</span></p>
+                    <p class="excerpt">An in-depth look at the aerodynamic changes that have propelled McLaren up the grid...</p>
+                    <a href="mclaren-floor-redesign.html" class="read-more">Continue Reading</a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">
+                    <img src="images/articles/interview.jpg" alt="Driver Interview">
+                    <span class="category">Interview</span>
+                </div>
+                <div class="article-content">
+                    <h3>Exclusive: Hamilton Speaks About His Future Beyond 2025</h3>
+                    <p class="meta"><span class="author">By Sarah Johnson</span> • <span class="date">March 7, 2025</span></p>
+                    <p class="excerpt">We sat down with the seven-time world champion to discuss his plans and legacy...</p>
+                    <a href="hamilton-interview.html" class="read-more">Continue Reading</a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">
+                    <img src="images/articles/history.jpg" alt="Historical Feature">
+                    <span class="category">History</span>
+                </div>
+                <div class="article-content">
+                    <h3>25 Years Later: Remembering Häkkinen's Dramatic First Championship</h3>
+                    <p class="meta"><span class="author">By James Allen</span> • <span class="date">March 5, 2025</span></p>
+                    <p class="excerpt">A look back at the incredible 2000 season and the Finnish driver's battle with Schumacher...</p>
+                    <a href="hakkinen-anniversary.html" class="read-more">Continue Reading</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Content Section -->
+    <section class="video-content">
+        <div class="section-header">
+            <h2>Featured Videos</h2>
+            <a href="videos.html" class="view-all">View All Videos</a>
+        </div>
+        <div class="videos-grid">
+            <div class="video-card main">
+                <div class="video-thumbnail">
+                    <img src="images/videos/analysis-thumbnail.jpg" alt="Race Analysis">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="duration">15:32</span>
+                </div>
+                <div class="video-info">
+                    <h3>Monaco GP: Full Race Analysis & Key Moments</h3>
+                    <p>Our expert team breaks down the critical strategy decisions and overtakes that defined the race.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="images/videos/tech-thumbnail.jpg" alt="Tech Talk">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="duration">8:45</span>
+                </div>
+                <div class="video-info">
+                    <h3>Tech Talk: Understanding DRS and Overtaking Zones</h3>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="images/videos/interview-thumbnail.jpg" alt="Driver Interview">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="duration">12:18</span>
+                </div>
+                <div class="video-info">
+                    <h3>Exclusive: Pit Lane Walkthrough with Carlos Sainz</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Affiliate Section (with better styling and positioning) -->
+    <section class="affiliate-partners">
+        <h2>Our Partners</h2>
+        <div class="partners-container">
+            <div class="partner-item">
+                <a href="https://one.exnesstrack.org/intl/en/a/irp0u0488v" target="_blank">
+                    <img src="https://d3dpet1g0ty5ed.cloudfront.net/EN_Take_control_720x90.png" alt="Exness - Trading Partner">
+                </a>
+            </div>
+            <div class="partner-item">
+                <a href="https://bookmaker-affiliate.html" target="_blank">
+                    <img src="images/partners/betting-partner.jpg" alt="Official Betting Partner">
+                </a>
+            </div>
+        </div>
+        <p class="disclaimer">Gambling involves risk. Please gamble responsibly. 18+</p>
     </section>
 
     <footer>
-        <p>&copy; 2024 IO Sports Data - All Rights Reserved</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo-white.png" alt="iO Motorsport Logo">
+                <p>Your ultimate destination for motorsport news, analysis, and predictions.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-column">
+                    <h3>Racing Series</h3>
+                    <a href="formula1.html">Formula 1</a>
+                    <a href="motogp.html">MotoGP</a>
+                    <a href="wec.html">WEC</a>
+                    <a href="nascar.html">NASCAR</a>
+                    <a href="indycar.html">IndyCar</a>
+                </div>
+                <div class="link-column">
+                    <h3>Features</h3>
+                    <a href="f1ai.html">F1 AI Predictions</a>
+                    <a href="fantasyf1.html">Fantasy Leagues</a>
+                    <a href="technical.html">Technical Analysis</a>
+                    <a href="history.html">History</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="link-column">
+                    <h3>About Us</h3>
+                    <a href="about.html">Our Team</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="advertise.html">Advertise</a>
+                    <a href="press.html">Press</a>
+                </div>
+                <div class="link-column">
+                    <h3>Legal</h3>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 iO Motorsport - All Rights Reserved</p>
+            <p>Developed with <i class="fas fa-heart"></i> by iO Sports Data</p>
+        </div>
     </footer>
+
+    <!-- JavaScript for interactive elements -->
+    <script src="main.js"></script>
+    <script src="js/countdown.js"></script>
 </body>
 </html>
