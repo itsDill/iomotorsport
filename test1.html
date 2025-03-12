@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IO Motorsport - Experience Thailand's Racing Culture</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff6b35;
+            --secondary: #004e89;
+            --accent: #2ec4b6;
+            --light: #f8f8f8;
+            --dark: #1a1a1a;
+            --gradient: linear-gradient(135deg, var(--primary), #ff9e64);
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            box-shadow: 0 4px 15px rgba(0, 78, 137, 0.4);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 20px rgba(0, 78, 137, 0.4);
+        }
+
+        /* Header */
+        header {
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            padding: 15px 0;
+        }
+
+        header.scrolled .logo {
+            color: var(--dark);
+        }
+
+        header.scrolled .nav-links a {
+            color: var(--dark);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:before {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        header.scrolled .mobile-menu {
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            color: white;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            margin-left: 10%;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Explore Section */
+        .explore {
+            padding: 100px 0 80px;
+            position: relative;
+        }
+
+        .explore-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .explore-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .explore-header p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .experience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .experience-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .experience-card:hover:before {
+            opacity: 0.05;
+        }
+
+        .experience-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -35px auto 20px;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .experience-icon img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .experience-content {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+
+        .experience-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .experience-content p {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        /* Featured Events */
+        .featured-events {
+            padding: 80px 0;
+            background-color: #f0f8ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-events:before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.1;
+        }
+
+        .featured-events:after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .events-slider {
+            position: relative;
+            margin: 0 -15px;
+            padding: 20px 0;
+        }
+
+        .event-slide {
+            padding: 15px;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            position: relative;
+        }
+
+        .event-img {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-img img {
+            transform: scale(1.1);
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        .event-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .event-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .event-info i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .event-description {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Interactive Map */
+        .interactive-map {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .map-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .map-visual {
+            flex: 1;
+            min-width: 300px;
+            height: 500px;
+            background-color: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .thailand-map {
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/600/500') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 0 5px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .map-point:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 8px rgba(255, 107, 53, 0.3);
+        }
+
+        .map-point.active {
+            background-color: var(--secondary);
+            box-shadow: 0 0 0 8px rgba(0, 78, 137, 0.3);
+        }
+
+        /* Map point positions */
+        .point-bangkok {
+            top: 55%;
+            left: 52%;
+        }
+
+        .point-buriram {
+            top: 65%;
+            left: 70%;
+        }
+
+        .point-pattaya {
+            top: 60%;
+            left: 58%;
+        }
+
+        .point-chiang-mai {
+            top: 25%;
+            left: 45%;
+        }
+
+        .point-phuket {
+            top: 85%;
+            left: 30%;
+        }
+
+        .map-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .map-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .map-info p {
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .venue-info {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .venue-info.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .venue-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .venue-info-list {
+            margin-bottom: 20px;
+        }
+
+        .venue-info-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .venue-info-item i {
+            color: var(--primary);
+            margin-right: 10px;
+            min-width: 20px;
+        }
+
+        /* Destination Guides */
+        .destination-guides {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .experience-item {
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item:first-child {
+            grid-column: span 2;
+        }
+
+        .experience-item:nth-child(4) {
+            grid-column: span 2;
+        }
+
+        .experience-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .experience-item:hover .experience-bg {
+            transform: scale(1.1);
+        }
+
+        .experience-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: white;
+        }
+
+        .experience-overlay h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .experience-overlay p {
+            opacity: 0.9;
+            margin-bottom: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin-bottom 0.5s ease;
+        }
+
+        .experience-item:hover .experience-overlay p {
+            max-height: 100px;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .testimonial-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonial-content p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-content p:before,
+        .testimonial-content p:after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+
+        .testimonial-location {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter:before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter:after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 0 30px;
+            font-weight: bold;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #003a66;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #152836;
+            color: white;
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-links a:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-links a:hover:before {
+            transform: translateX(5px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .footer-contact-item i {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            min-width: 20px;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-item:first-child,
+            .experience-item:nth-child(4) {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 80px 0 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 98;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                color: var(--dark);
+                display: block;
+                padding: 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 99;
+            }
+
+            .mobile-menu.active {
+                color: var(--dark);
+            }
+
+            .hero-content {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .section-header h2,
+            .explore-header h2 {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                margin-bottom: 15px;
+                border-radius: 30px;
+            }
+
+            .newsletter-btn {
+                position: static;
+                width: 100%;
+                padding: 15px;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Current event indicator */
+        .current-event {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #10b981;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px 0;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+            transform: rotate(5deg);
+            box-shadow: 0 5px 10px rgba(16, 185, 129, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">IO<span>Motorsport</span></div>
+                <ul class="nav-links">
+                    <li><a href="#explore">Experiences</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#map">Venues</a></li>
+                    <li><a href="#guides">Tourist Guides</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="<!-- Hero Section (continued) -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="/api/placeholder/1920/1080" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Experience Thailand's Racing Culture</h1>
+            <p>Discover the thrill of motorsport in Thailand with exclusive track days, racing events, and immersive cultural experiences across the country's premier venues.</p>
+            <div class="hero-buttons">
+                <a href="#explore" class="btn">Explore Experiences</a>
+                <a href="#events" class="btn btn-secondary">Upcoming Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="explore">
+        <div class="container">
+            <div class="explore-header fade-in">
+                <h2>Unforgettable Racing Experiences</h2>
+                <p>Immerse yourself in Thailand's vibrant motorsport scene with our carefully curated experiences designed for enthusiasts of all levels.</p>
+            </div>
+            <div class="experience-cards">
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="/api/placeholder/70/70" alt="Track Icon">
+                    </div>
+                    <div class="experience-content">
+                        <h3>Track Day Experiences</h3>
+                        <p>Feel the adrenaline rush as you drive on Thailand's world-class circuits. Our track days offer professional instruction, high-performance vehicles, and a safe environment for drivers of all skill levels.</p>
+                        <a href="#" class="btn">Book a Track Day</a>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="/api/placeholder/70/70" alt="Event Icon">
+                    </div>
+                    <div class="experience-content">
+                        <h3>Race Event Packages</h3>
+                        <p>Experience the excitement of Thailand's premier racing events with VIP access, pit lane tours, and exclusive meet and greets with top drivers. Perfect for motorsport enthusiasts and photography lovers.</p>
+                        <a href="#" class="btn">Explore Packages</a>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="/api/placeholder/70/70" alt="Car Icon">
+                    </div>
+                    <div class="experience-content">
+                        <h3>Racing Academies</h3>
+                        <p>Learn from Thailand's top racing professionals with our comprehensive academy programs. From basics to advanced racing techniques, our courses are tailored to help you improve your skills on the track.</p>
+                        <a href="#" class="btn">Join an Academy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section id="events" class="featured-events">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Upcoming Racing Events</h2>
+                <p>Stay up to date with Thailand's most exciting motorsport events and plan your next racing adventure.</p>
+            </div>
+            <div class="events-slider">
+                <div class="event-slide fade-in">
+                    <div class="event-card">
+                        <div class="current-event">Happening Now!</div>
+                        <div class="event-img">
+                            <img src="/api/placeholder/400/220" alt="Thailand Super Series">
+                            <div class="event-date">Mar 15-17, 2025</div>
+                            <div class="event-category">Super Series</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Thailand Super Series Round 1</h3>
+                            <div class="event-info">
+                                <i>📍</i>
+                                <span>Chang International Circuit, Buriram</span>
+                            </div>
+                            <div class="event-info">
+                                <i>🏁</i>
+                                <span>GT3, GTM, TA2 Thailand</span>
+                            </div>
+                            <p class="event-description">Experience Thailand's premier racing championship with GT3, GTM, and TA2 categories competing at the world-class Chang International Circuit.</p>
+                            <a href="#" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-slide fade-in">
+                    <div class="event-card">
+                        <div class="event-img">
+                            <img src="/api/placeholder/400/220" alt="Bangkok Night Race">
+                            <div class="event-date">Apr 5-7, 2025</div>
+                            <div class="event-category">Street Circuit</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Bangkok Night Street Race</h3>
+                            <div class="event-info">
+                                <i>📍</i>
+                                <span>Ratchadamnoen Avenue, Bangkok</span>
+                            </div>
+                            <div class="event-info">
+                                <i>🏁</i>
+                                <span>Touring Car, Formula 4</span>
+                            </div>
+                            <p class="event-description">Witness the spectacular night race through Bangkok's historic streets, featuring touring cars and rising Formula 4 stars.</p>
+                            <a href="#" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-slide fade-in">
+                    <div class="event-card">
+                        <div class="event-img">
+                            <img src="/api/placeholder/400/220" alt="Drift Competition">
+                            <div class="event-date">May 12-13, 2025</div>
+                            <div class="event-category">Drift</div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Thailand Drift Series</h3>
+                            <div class="event-info">
+                                <i>📍</i>
+                                <span>Bira International Circuit, Pattaya</span>
+                            </div>
+                            <div class="event-info">
+                                <i>🏁</i>
+                                <span>Pro and Amateur Drift</span>
+                            </div>
+                            <p class="event-description">Watch Thailand's top drift drivers showcase their skills in this high-octane competition featuring both professional and amateur categories.</p>
+                            <a href="#" class="btn">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn">←</button>
+                <button class="slider-btn next-btn">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section id="map" class="interactive-map">
+        <div class="container">
+            <div class="map-container">
+                <div class="map-visual fade-in">
+                    <div class="thailand-map">
+                        <div class="map-point point-bangkok" data-venue="bangkok"></div>
+                        <div class="map-point point-buriram" data-venue="buriram"></div>
+                        <div class="map-point point-pattaya" data-venue="pattaya"></div>
+                        <div class="map-point point-chiang-mai" data-venue="chiang-mai"></div>
+                        <div class="map-point point-phuket" data-venue="phuket"></div>
+                    </div>
+                </div>
+                <div class="map-info fade-in">
+                    <h2>Racing Venues Across Thailand</h2>
+                    <p>From world-class international circuits to exciting street courses, Thailand offers diverse racing venues for motorsport enthusiasts. Click on the map points to learn more about each location.</p>
+
+                    <div class="venue-info active" id="venue-bangkok">
+                        <h3>Bangkok Racing Venues</h3>
+                        <div class="venue-info-list">
+                            <div class="venue-info-item">
+                                <i>🏁</i>
+                                <span>Ratchadamnoen Avenue Street Circuit - Historic street course in the heart of Bangkok</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🏎️</i>
+                                <span>Bangkok RX Kart - Professional karting facility with rental services</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🔧</i>
+                                <span>Bangkok Speed Park - Drag racing and motorsport events</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">Explore Bangkok Venues</a>
+                    </div>
+
+                    <div class="venue-info" id="venue-buriram">
+                        <h3>Chang International Circuit, Buriram</h3>
+                        <div class="venue-info-list">
+                            <div class="venue-info-item">
+                                <i>🏁</i>
+                                <span>FIA Grade 1 international circuit designed by Hermann Tilke</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🏎️</i>
+                                <span>Home to MotoGP, Thailand Super Series, and international events</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🔧</i>
+                                <span>4.554 km track with 12 turns and modern facilities</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">Explore Buriram Circuit</a>
+                    </div>
+
+                    <div class="venue-info" id="venue-pattaya">
+                        <h3>Bira International Circuit, Pattaya</h3>
+                        <div class="venue-info-list">
+                            <div class="venue-info-item">
+                                <i>🏁</i>
+                                <span>Thailand's oldest race circuit established in 1985</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🏎️</i>
+                                <span>Hosts national championships and drift competitions</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🔧</i>
+                                <span>2.4 km technical track with challenging corners</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">Explore Bira Circuit</a>
+                    </div>
+
+                    <div class="venue-info" id="venue-chiang-mai">
+                        <h3>Chiang Mai Circuit</h3>
+                        <div class="venue-info-list">
+                            <div class="venue-info-item">
+                                <i>🏁</i>
+                                <span>Northern Thailand's premier motorsport venue</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🏎️</i>
+                                <span>Hosts regional races and track day experiences</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🔧</i>
+                                <span>Scenic mountain backdrop with challenging elevation changes</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">Explore Chiang Mai Circuit</a>
+                    </div>
+
+                    <div class="venue-info" id="venue-phuket">
+                        <h3>Phuket Racing Park</h3>
+                        <div class="venue-info-list">
+                            <div class="venue-info-item">
+                                <i>🏁</i>
+                                <span>Southern Thailand's racing destination</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🏎️</i>
+                                <span>Karting, superbike, and amateur racing events</span>
+                            </div>
+                            <div class="venue-info-item">
+                                <i>🔧</i>
+                                <span>Tropical setting with modern facilities</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn">Explore Phuket Racing Park</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destination Guides -->
+    <section id="guides" class="destination-guides">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Racing Destination Guides</h2>
+                <p>Make the most of your motorsport trip with our comprehensive guides to Thailand's racing destinations.</p>
+            </div>
+            <div class="experience-grid fade-in">
+                <div class="experience-item">
+                    <img src="/api/placeholder/600/350" alt="Buriram Guide" class="experience-bg">
+                    <div class="experience-overlay">
+                        <h3>Buriram: Racing & Culture</h3>
+                        <p>Discover the perfect blend of world-class motorsport at Chang Circuit and ancient Khmer temples in Thailand's emerging sports hub.</p>
+                        <a href="#" class="btn">Read Guide</a>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <img src="/api/placeholder/300/350" alt="Bangkok Guide" class="experience-bg">
+                    <div class="experience-overlay">
+                        <h3>Bangkok: Urban Racing</h3>
+                        <p>Experience street racing in the heart of Thailand's vibrant capital with our insider tips.</p>
+                        <a href="#" class="btn">Read Guide</a>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <img src="/api/placeholder/300/350" alt="Pattaya Guide" class="experience-bg">
+                    <div class="experience-overlay">
+                        <h3>Pattaya: Beach & Speed</h3>
+                        <p>Combine racing action at Bira Circuit with Pattaya's famous beach lifestyle.</p>
+                        <a href="#" class="btn">Read Guide</a>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <img src="/api/placeholder/600/350" alt="Chiang Mai Guide" class="experience-bg">
+                    <div class="experience-overlay">
+                        <h3>Chiang Mai: Mountains & Motorsport</h3>
+                        <p>Explore Northern Thailand's cultural treasures and thrilling racing opportunities in the mountainous Chiang Mai region.</p>
+                        <a href="#" class="btn">Read Guide</a>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <img src="/api/placeholder/300/350" alt="Phuket Guide" class="experience-bg">
+                    <div class="experience-overlay">
+                        <h3>Phuket: Island Racing</h3>
+                        <p>Combine tropical paradise with racing excitement in Thailand's premier island destination.</p>
+                        <a href="#" class="btn">Read Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What Our Customers Say</h2>
+                <p>Hear from racing enthusiasts who have experienced Thailand's motorsport culture with IO Motorsport.</p>
+            </div>
+            <div class="testimonial-slider fade-in">
+                <div class="testimonial-slide">
+                    <div class="testimonial-image">
+                        <img src="/api/placeholder/100/100" alt="John Smith">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>The track day experience at Chang International Circuit was absolutely incredible. The instructors were professional, the cars were well-maintained, and the entire day was perfectly organized. I improved my driving skills significantly!</p>
+                        <div class="testimonial-author">John Smith</div>
+                        <div class="testimonial-location">United Kingdom</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn">←</button>
+                <button class="slider-btn next-btn">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="fade-in">Stay Updated on Racing Events</h2>
+            <p class="fade-in">Subscribe to our newsletter for the latest motorsport news, event schedules, and exclusive offers.</p>
+            <form class="newsletter-form fade-in">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-about">
+                    <h3>About IO Motorsport</h3>
+                    <p>IO Motorsport is Thailand's premier motorsport experience provider, connecting racing enthusiasts with the best tracks, events, and automotive culture across the Kingdom.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">F</a>
+                        <a href="#" class="social-link">I</a>
+                        <a href="#" class="social-link">T</a>
+                        <a href="#" class="social-link">Y</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#explore">Racing Experiences</a></li>
+                        <li><a href="#events">Upcoming Events</a></li>
+                        <li><a href="#map">Venues</a></li>
+                        <li><a href="#guides">Destination Guides</a></li>
+                        <li><a href="#">Gift Vouchers</a></li>
+                        <li><a href="#">Corporate Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Racing Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Track Days</a></li>
+                        <li><a href="#">Racing Academies</a></li>
+                        <li><a href="#">Event Packages</a></li>
+                        <li><a href="#">Custom Experiences</a></li>
+                        <li><a href="#">Group Bookings</a></li>
+                        <li><a href="#">International Tours</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <i>📍</i>
+                        <div>123 Motorsport Avenue, Pathumwan, Bangkok 10330, Thailand</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i>📱</i>
+                        <div>+66 2 123 4567</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i>✉️</i>
+                        <div>info@iomotorsport.th</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i>🕒</i>
+                        <div>Monday-Friday: 9:00-18:00<br>Saturday: 10:00-16:00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 IO Motorsport. All rights reserved. | Designed with ❤️ in Thailand</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript could be added here -->
+    <script>
+        // Menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeIn = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', fadeIn);
+        window.addEventListener('load', fadeIn);
+
+        // Map interactions
+        const mapPoints = document.querySelectorAll('.map-point');
+        const venueInfos = document.querySelectorAll('.venue-info');
+
+        mapPoints.forEach(point => {
+            point.addEventListener('click', () => {
+                const venue = point.getAttribute('data-venue');
+
+                mapPoints.forEach(p => p.classList.remove('active'));
+                point.classList.add('active');
+
+                venueInfos.forEach(info => info.classList.remove('active'));
+                document.getElementById(`venue-${venue}`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
