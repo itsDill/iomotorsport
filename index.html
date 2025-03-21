@@ -1,108 +1,660 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IO Motorsport - Experience Thailand's Racing Culture</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoMotorsport | Home of Automotive Heritage</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #e63946;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e63946;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/2.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #e63946;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      margin: 0 10px;
+    }
+
+    .btn:hover {
+      background-color: #c1121f;
+      transform: translateY(-3px);
+    }
+
+    .btn.secondary {
+      background-color: transparent;
+      border: 2px solid #fff;
+    }
+
+    .btn.secondary:hover {
+      background-color: #fff;
+      color: #333;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background-color: #e63946;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .brands-container, .featured-cars, .racing-legends {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .brand-card, .car-card, .racing-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .brand-card:hover, .car-card:hover, .racing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .brand-card:hover .card-img img, .car-card:hover .card-img img, .racing-card:hover .card-img img {
+      transform: scale(1.1);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .card-content p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: #e63946;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .read-more:hover {
+      color: #c1121f;
+    }
+
+    .blog-section {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    .blog-section .section-title h2 {
+      color: #fff;
+    }
+
+    .blog-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .blog-post {
+      background: #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .blog-content {
+      padding: 20px;
+    }
+
+    .blog-content h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .blog-content .date {
+      color: #e63946;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .newsletter {
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter h2 {
+      margin-bottom: 20px;
+    }
+
+    .newsletter p {
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+    }
+
+    .newsletter-form input {
+      padding: 15px;
+      width: 70%;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      padding: 15px 30px;
+      background-color: #e63946;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background-color: #e63946;
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-column ul li a:hover {
+      color: #e63946;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid #444;
+      color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .navbar {
+        flex-direction: column;
+      }
+
+      nav ul {
+        margin-top: 20px;
+      }
+
+      nav ul li {
+        margin-left: 15px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form input {
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .newsletter-form button {
+        width: 100%;
+        border-radius: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">IO<span>Motorsport</span></div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="explore.html">Experiences</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="map.html">Venues</a></li>
-                    <li><a href="guides.html">Tourist Guides</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">☰</div>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <a href="#" class="logo">Classic<span>Drive</span></a>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Brands</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Racing</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <video class="hero-video" autoplay muted loop>
-            <source src="/api/placeholder/1920/1080" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Experience Thailand's Racing Culture</h1>
-            <p>Discover the thrill of motorsport in Thailand with exclusive track days, racing events, and immersive cultural experiences across the country's premier venues.</p>
-            <div class="hero-buttons">
-                <a href="explore.html" class="btn">Explore Experiences</a>
-                <a href="events.html" class="btn btn-secondary">Upcoming Events</a>
-            </div>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Vintage Car Classics</h1>
+        <p>Explore the heritage, craftsmanship, and stories behind the world's most iconic classic cars</p>
+        <div>
+          <a href="#" class="btn">Explore Collection</a>
+          <a href="#" class="btn secondary">Latest Features</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column footer-about">
-                    <h3>About IO Motorsport</h3>
-                    <p>IO Motorsport is Thailand's premier motorsport experience provider, connecting racing enthusiasts with the best tracks, events, and automotive culture across the Kingdom.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">F</a>
-                        <a href="#" class="social-link">I</a>
-                        <a href="#" class="social-link">T</a>
-                        <a href="#" class="social-link">Y</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="explore.html">Racing Experiences</a></li>
-                        <li><a href="events.html">Upcoming Events</a></li>
-                        <li><a href="map.html">Venues</a></li>
-                        <li><a href="guides.html">Destination Guides</a></li>
-                        <li><a href="#">Gift Vouchers</a></li>
-                        <li><a href="#">Corporate Events</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Racing Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Track Days</a></li>
-                        <li><a href="#">Racing Academies</a></li>
-                        <li><a href="#">Event Packages</a></li>
-                        <li><a href="#">Custom Experiences</a></li>
-                        <li><a href="#">Group Bookings</a></li>
-                        <li><a href="#">International Tours</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <div class="footer-contact-item">
-                        <i>📍</i>
-                        <div>123 Motorsport Avenue, Pathumwan, Bangkok 10330, Thailand</div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i>📱</i>
-                        <div>+66 2 123 4567</div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i>✉️</i>
-                        <div>info@iomotorsport.th</div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i>🕒</i>
-                        <div>Monday-Friday: 9:00-18:00<br>Saturday: 10:00-16:00</div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 IO Motorsport. All rights reserved. | Designed with ❤️ in Thailand</p>
-            </div>
+  <section id="brands">
+    <div class="container">
+      <div class="section-title">
+        <h2>Legendary Brands</h2>
+        <p>Discover the rich history and heritage of automotive icons</p>
+      </div>
+      <div class="brands-container">
+        <div class="brand-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Mercedes-Benz">
+          </div>
+          <div class="card-content">
+            <h3>Mercedes-Benz</h3>
+            <p>From the invention of the automobile to the luxury vehicles of today, explore the pioneering legacy of Mercedes-Benz.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
         </div>
-    </footer>
 
-    <script src="scripts.js"></script>
+        <div class="brand-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Ford">
+          </div>
+          <div class="card-content">
+            <h3>Ford</h3>
+            <p>From the revolutionary Model T to iconic muscle cars, discover how Ford democratized the automobile.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+
+        <div class="brand-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Toyota">
+          </div>
+          <div class="card-content">
+            <h3>Toyota</h3>
+            <p>Explore how Toyota grew from a loom company to one of the world's most respected automotive manufacturers.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured-cars">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Classics</h2>
+        <p>Explore the timeless design and engineering of iconic automobiles</p>
+      </div>
+      <div class="featured-cars">
+        <div class="car-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Mercedes C107">
+          </div>
+          <div class="card-content">
+            <h3>Mercedes C107 SLC</h3>
+            <p>Discover the elegant luxury coupé that combined sports car performance with grand touring comfort.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Ford Cortina">
+          </div>
+          <div class="card-content">
+            <h3>Ford Cortina</h3>
+            <p>Explore the family saloon that became one of Britain's best-selling cars of the 1960s and 1970s.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+
+        <div class="car-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Toyota Land Cruiser J40">
+          </div>
+          <div class="card-content">
+            <h3>Toyota Land Cruiser J40</h3>
+            <p>The rugged off-roader that earned its reputation through reliability and capability in the harshest conditions.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="racing-legends">
+    <div class="container">
+      <div class="section-title">
+        <h2>Racing Icons</h2>
+        <p>Celebrating the machines that defined motorsport history</p>
+      </div>
+      <div class="racing-legends">
+        <div class="racing-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="F1 Car">
+          </div>
+          <div class="card-content">
+            <h3>McLaren MP4/4</h3>
+            <p>The most dominant Formula 1 car in history, winning 15 out of 16 races in the 1988 season with Ayrton Senna and Alain Prost.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+
+        <div class="racing-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Rally Car">
+          </div>
+          <div class="card-content">
+            <h3>Lancia Delta Integrale</h3>
+            <p>The rally legend that dominated the World Rally Championship with six consecutive manufacturers' titles from 1987 to 1992.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+
+        <div class="racing-card">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Touring Car">
+          </div>
+          <div class="card-content">
+            <h3>BMW E30 M3</h3>
+            <p>The most successful touring car of all time, with victories in championships across Europe and setting the standard for racing saloons.</p>
+            <a href="#" class="read-more">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Latest from the Blog</h2>
+        <p>Insights, stories, and updates from the world of classic automobiles</p>
+      </div>
+      <div class="blog-posts">
+        <div class="blog-post">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Blog Post 1">
+          </div>
+          <div class="blog-content">
+            <span class="date">March 15, 2025</span>
+            <h3>The Golden Age of Automotive Design</h3>
+            <p>Exploring the creativity and innovation that defined the most beautiful era of car design.</p>
+            <a href="#" class="read-more">Continue reading</a>
+          </div>
+        </div>
+
+        <div class="blog-post">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Blog Post 2">
+          </div>
+          <div class="blog-content">
+            <span class="date">March 10, 2025</span>
+            <h3>Restoring a Classic: A Beginner's Guide</h3>
+            <p>Essential tips and advice for those embarking on their first classic car restoration project.</p>
+            <a href="#" class="read-more">Continue reading</a>
+          </div>
+        </div>
+
+        <div class="blog-post">
+          <div class="card-img">
+            <img src="/api/placeholder/400/300" alt="Blog Post 3">
+          </div>
+          <div class="blog-content">
+            <span class="date">March 5, 2025</span>
+            <h3>Forgotten Gems: Underappreciated Classics</h3>
+            <p>Shining a spotlight on overlooked classic cars that deserve more recognition among enthusiasts.</p>
+            <a href="#" class="read-more">Continue reading</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest features, events, and classic car insights</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>ClassicDrive</h3>
+          <p>Celebrating automotive heritage and the timeless appeal of classic cars from around the world.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Brands</a></li>
+            <li><a href="#">Cars</a></li>
+            <li><a href="#">Racing</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Marketplace</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ClassicDrive. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
