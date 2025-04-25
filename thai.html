@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Language Learning - My Study Portal</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4d9de0;
+            --background-color: #f5f7fa;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --text-light: #777777;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --thai-color: #ed1c24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            color: white;
+            min-height: calc(100vh - 73px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 73px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar li:hover, .sidebar li.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar li i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .course-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .course-flag {
+            font-size: 2.5rem;
+        }
+
+        .course-details h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-details p {
+            color: var(--text-light);
+        }
+
+        .overall-progress {
+            background-color: var(--card-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-stat {
+            flex: 1;
+        }
+
+        .progress-stat h3 {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-stat .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .progress-bar-container {
+            margin-top: 1rem;
+        }
+
+        .progress-bar-container p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .modules-container {
+            margin-bottom: 2rem;
+        }
+
+        .module {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .module-header {
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .module-title .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .module-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .module-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .module.active .module-content {
+            padding: 1.5rem;
+            max-height: 5000px;
+        }
+
+        .lessons-list {
+            list-style: none;
+        }
+
+        .lesson {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lesson:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lesson-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+
+        .lesson-details h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-details p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .lesson-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lesson-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+        }
+
+        .status-in-progress {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning-color);
+        }
+
+        .status-not-started {
+            background-color: rgba(108, 117, 125, 0.1);
+            color: var(--text-light);
+        }
+
+        .lesson-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .thai-pronunciation {
+            font-style: italic;
+            color: var(--thai-color);
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .vocab-table th {
+            background-color: var(--background-color);
+            text-align: left;
+        }
+
+        .vocab-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .thai-word {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .exercise {
+            background-color: rgba(77, 157, 224, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .note {
+            background-color: rgba(255, 193, 7, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .note-title {
+            font-weight: bold;
+            color: var(--warning-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cultural-note {
+            background-color: rgba(28, 135, 178, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .cultural-note h4 {
+            color: var(--info-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-content {
+            margin-top: 1.5rem;
+        }
+
+        .lesson-section {
+            margin-bottom: 2rem;
+        }
+
+        .lesson-section h3 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .conversation {
+            background-color: rgba(0, 0, 0, 0.02);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .conversation-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .image-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .lesson-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .quiz-container {
+            background-color: rgba(77, 157, 224, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .quiz-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            list-style: none;
+        }
+
+        .quiz-option {
+            padding: 0.75rem;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .quiz-option:hover {
+            background-color: rgba(77, 157, 224, 0.05);
+        }
+
+        .grammar-box {
+            background-color: rgba(22, 96, 136, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .grammar-rule {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .audio-player {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .audio-player button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .audio-player button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .audio-player .audio-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: white;
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .mark-complete-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .mark-complete-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+            }
+
+            .progress-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">My Study Portal</div>
+            <div class="user-profile">
+                <div class="user-avatar">U</div>
+                <span class="username">Username</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><i>📊</i> Dashboard</li>
+                <li class="active"><i>🇹🇭</i> Thai</li>
+                <li><i>🇨🇳</i> Chinese</li>
+                <li><i>💰</i> Finance</li>
+                <li><i>💻</i> Web Dev</li>
+                <li><i>🔐</i> Web Sec</li>
+                <li><i>🔍</i> Web Seo</li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <main>
+                <div class="course-header">
+                    <div class="course-title">
+                        <div class="course-flag">🇹🇭</div>
+                        <div class="course-details">
+                            <h1>Thai Language</h1>
+                            <p>Elementary Level</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overall-progress">
+                    <div class="progress-stats">
+                        <div class="progress-stat">
+                            <h3>Completed Lessons</h3>
+                            <div class="value">18/40</div>
+                        </div>
+                        <div class="progress-stat">
+                            <h3>Total Study Time</h3>
+                            <div class="value">14.5 hrs</div>
+                        </div>
+                        <div class="progress-stat">
+                            <h3>Current Streak</h3>
+                            <div class="value">8 days</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <p>
+                            <span>Overall Progress</span>
+                            <span>45%</span>
+                        </p>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modules-container">
+                    <!-- Module 1: Absolute Beginner -->
+                    <div class="module active">
+                        <div class="module-header" onclick="toggleModule(this)">
+                            <div class="module-title">
+                                <span class="number">1</span>
+                                <h2>Absolute Beginner</h2>
+                            </div>
+                            <div class="module-progress">
+                                <span>100% completed</span>
+                            </div>
+                        </div>
+                        <div class="module-content">
+                            <ul class="lessons-list">
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🔤</div>
+                                        <div class="lesson-details">
+                                            <h3>Thai Alphabet and Pronunciation</h3>
+                                            <p>Learn the basics of Thai script and sounds</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">👋</div>
+                                        <div class="lesson-details">
+                                            <h3>Basic Greetings</h3>
+                                            <p>Learn how to say hello and introduce yourself</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🔢</div>
+                                        <div class="lesson-details">
+                                            <h3>Numbers 1-20</h3>
+                                            <p>Learn to count in Thai</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🙏</div>
+                                        <div class="lesson-details">
+                                            <h3>Thai Culture: The Wai</h3>
+                                            <p>Learn about Thai greeting gestures and etiquette</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">❓</div>
+                                        <div class="lesson-details">
+                                            <h3>Basic Question Words</h3>
+                                            <p>Learn to ask simple questions in Thai</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 2: Beginner 1 -->
+                    <div class="module active">
+                        <div class="module-header" onclick="toggleModule(this)">
+                            <div class="module-title">
+                                <span class="number">2</span>
+                                <h2>Beginner 1</h2>
+                            </div>
+                            <div class="module-progress">
+                                <span>95% completed</span>
+                            </div>
+                        </div>
+                        <div class="module-content">
+                            <ul class="lessons-list">
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🗣️</div>
+                                        <div class="lesson-details">
+                                            <h3>Thai Tones</h3>
+                                            <p>Master the five Thai tones</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🧑‍🤝‍🧑</div>
+                                        <div class="lesson-details">
+                                            <h3>Family Members</h3>
+                                            <p>Learn vocabulary for family relationships</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🏠</div>
+                                        <div class="lesson-details">
+                                            <h3>Around the House</h3>
+                                            <p>Vocabulary for household items and rooms</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🍽️</div>
+                                        <div class="lesson-details">
+                                            <h3>Food and Ordering</h3>
+                                            <p>Learn to order food in Thai</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🛒</div>
+                                        <div class="lesson-details">
+                                            <h3>Shopping and Numbers 20-100</h3>
+                                            <p>Learn to shop and count higher numbers</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">✅</div>
+                                        <div class="lesson-details">
+                                            <h3>Beginner 1 Assessment</h3>
+                                            <p>Test your knowledge of the basics</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-in-progress">In Progress</span>
+                                        <button class="lesson-btn">Continue</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 3: Beginner 2 -->
+                    <div class="module">
+                        <div class="module-header" onclick="toggleModule(this)">
+                            <div class="module-title">
+                                <span class="number">3</span>
+                                <h2>Beginner 2</h2>
+                            </div>
+                            <div class="module-progress">
+                                <span>65% completed</span>
+                            </div>
+                        </div>
+                        <div class="module-content">
+                            <ul class="lessons-list">
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">⏰</div>
+                                        <div class="lesson-details">
+                                            <h3>Telling Time</h3>
+                                            <p>Learn to express time in Thai</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">📅</div>
+                                        <div class="lesson-details">
+                                            <h3>Days and Dates</h3>
+                                            <p>Learn days of week and calendar expressions</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🚕</div>
+                                        <div class="lesson-details">
+                                            <h3>Transportation</h3>
+                                            <p>Vocabulary for getting around</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🏙️</div>
+                                        <div class="lesson-details">
+                                            <h3>Giving Directions</h3>
+                                            <p>Learn to navigate and give directions</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-in-progress">In Progress</span>
+                                        <button class="lesson-btn">Continue</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">👕</div>
+                                        <div class="lesson-details">
+                                            <h3>Clothing and Colors</h3>
+                                            <p>Learn clothing items and color vocabulary</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">✅</div>
+                                        <div class="lesson-details">
+                                            <h3>Beginner 2 Assessment</h3>
+                                            <p>Test your progress</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: Elementary 1 -->
+                    <div class="module">
+                        <div class="module-header" onclick="toggleModule(this)">
+                            <div class="module-title">
+                                <span class="number">4</span>
+                                <h2>Elementary 1</h2>
+                            </div>
+                            <div class="module-progress">
+                                <span>20% completed</span>
+                            </div>
+                        </div>
+                        <div class="module-content">
+                            <ul class="lessons-list">
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🧍</div><div class="lesson-details">
+                                            <h3>Body Parts and Health</h3>
+                                            <p>Learn vocabulary for the human body and health</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🏥</div>
+                                        <div class="lesson-details">
+                                            <h3>At the Doctor</h3>
+                                            <p>Learn to describe symptoms and medical terms</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-completed">Completed</span>
+                                        <button class="lesson-btn">Review</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🧠</div>
+                                        <div class="lesson-details">
+                                            <h3>Describing Feelings and Emotions</h3>
+                                            <p>Express how you feel in Thai</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-in-progress">In Progress</span>
+                                        <button class="lesson-btn">Continue</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🏨</div>
+                                        <div class="lesson-details">
+                                            <h3>Accommodation and Travel</h3>
+                                            <p>Learn to book and describe lodging</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">💬</div>
+                                        <div class="lesson-details">
+                                            <h3>Past Tense and Experiences</h3>
+                                            <p>Talk about what you did in the past</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">✅</div>
+                                        <div class="lesson-details">
+                                            <h3>Elementary 1 Assessment</h3>
+                                            <p>Test your knowledge</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Module 5: Elementary 2 -->
+                    <div class="module">
+                        <div class="module-header" onclick="toggleModule(this)">
+                            <div class="module-title">
+                                <span class="number">5</span>
+                                <h2>Elementary 2</h2>
+                            </div>
+                            <div class="module-progress">
+                                <span>0% completed</span>
+                            </div>
+                        </div>
+                        <div class="module-content">
+                            <ul class="lessons-list">
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🌦️</div>
+                                        <div class="lesson-details">
+                                            <h3>Weather and Seasons</h3>
+                                            <p>Learn to discuss weather and climate</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🏖️</div>
+                                        <div class="lesson-details">
+                                            <h3>Vacation and Travel Plans</h3>
+                                            <p>Discuss future plans and travel</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🏢</div>
+                                        <div class="lesson-details">
+                                            <h3>Jobs and Workplace</h3>
+                                            <p>Vocabulary for professions and work</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🎬</div>
+                                        <div class="lesson-details">
+                                            <h3>Hobbies and Free Time</h3>
+                                            <p>Discuss leisure activities and interests</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">🎊</div>
+                                        <div class="lesson-details">
+                                            <h3>Thai Festivals and Traditions</h3>
+                                            <p>Learn about important Thai celebrations</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                                <li class="lesson">
+                                    <div class="lesson-left">
+                                        <div class="lesson-icon">✅</div>
+                                        <div class="lesson-details">
+                                            <h3>Elementary 2 Assessment</h3>
+                                            <p>Final module assessment</p>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-right">
+                                        <span class="lesson-status status-not-started">Not Started</span>
+                                        <button class="lesson-btn">Start</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <p>© 2025 My Study Portal - Your Personal Learning Journey</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function toggleModule(element) {
+            const moduleEl = element.parentElement;
+            moduleEl.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

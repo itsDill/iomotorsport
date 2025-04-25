@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4d9de0;
+            --background-color: #f5f7fa;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --text-light: #777777;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .greeting {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .date {
+            color: var(--text-light);
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .summary-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .summary-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .summary-card .change {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .positive {
+            color: var(--success-color);
+        }
+
+        .negative {
+            color: #dc3545;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .course-category {
+            margin-bottom: 2rem;
+        }
+
+        .course-card {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .course-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .lang-icon {
+            background-color: var(--accent-color);
+        }
+
+        .code-icon {
+            background-color: var(--secondary-color);
+        }
+
+        .course-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .course-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .course-progress {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .streak-info {
+            display: flex;
+            align-items: center;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .streak-icon {
+            color: var(--warning-color);
+            margin-right: 0.25rem;
+        }
+
+        footer {
+            background-color: white;
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .greeting {
+                font-size: 1.5rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar navigation */
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-color);
+            color: white;
+            min-height: calc(100vh - 73px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 73px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar li:hover, .sidebar li.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar li i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        /* Modal for progress updating */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">My Study Portal</div>
+            <div class="user-profile">
+                <div class="user-avatar">U</div>
+                <span class="username">Username</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li class="active"><i>📊</i> Dashboard</li>
+                <li><i>💻</i> Thai</li>
+                <li><i>📝</i> Chinese</li>
+                <li><i>💻</i> Finance</li>
+                <li><i>⚙️</i> Web Dev</li>
+                <li><i>🚪</i> Web Sec</li>
+                <li><i>🚪</i> Web Seo</li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <main>
+                <div class="dashboard-header">
+                    <div>
+                        <h1 class="greeting">Welcome back, <span id="user-name">Username</span>!</h1>
+                        <p class="date" id="current-date">Monday, April 21, 2025</p>
+                    </div>
+                </div>
+
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <h3>Total Study Time</h3>
+                        <div class="value">56 hrs</div>
+                        <span class="change positive">+3.5 hrs this week</span>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Current Streak</h3>
+                        <div class="value">12 days</div>
+                        <span class="change positive">Keep it up!</span>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Completed Lessons</h3>
+                        <div class="value">48</div>
+                        <span class="change positive">+5 this week</span>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Overall Progress</h3>
+                        <div class="value">35%</div>
+                        <span class="change positive">+2% this week</span>
+                    </div>
+                </div>
+
+                <div class="course-category">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="courses-grid">
+                        <div class="course-card" onclick="openProgressModal('Thai')">
+                            <div class="course-header">
+                                <div class="course-icon lang-icon">🇹🇭</div>
+                                <div class="course-info">
+                                    <h3>Thai</h3>
+                                    <p>Elementary</p>
+                                </div>
+                            </div>
+                            <div class="course-progress">
+                                <div class="progress-header">
+                                    <span>Progress</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 45%; background-color: #4d9de0;"></div>
+                                </div>
+                                <div class="streak-info">
+                                    <span class="streak-icon">🔥</span>
+                                    <span>8-day streak</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="course-card" onclick="openProgressModal('Chinese')">
+                            <div class="course-header">
+                                <div class="course-icon lang-icon">🇨🇳</div>
+                                <div class="course-info">
+                                    <h3>Chinese</h3>
+                                    <p>Beginner</p>
+                                </div>
+                            </div>
+                            <div class="course-progress">
+                                <div class="progress-header">
+                                    <span>Progress</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 25%; background-color: #4d9de0;"></div>
+                                </div>
+                                <div class="streak-info">
+                                    <span class="streak-icon">🔥</span>
+                                    <span>5-day streak</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="course-card" onclick="openProgressModal('English')">
+                            <div class="course-header">
+                                <div class="course-icon lang-icon">🇺🇸</div>
+                                <div class="course-info">
+                                    <h3>Finance</h3>
+                                    <p>Advanced</p>
+                                </div>
+                            </div>
+                            <div class="course-progress">
+                                <div class="progress-header">
+                                    <span>Progress</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 85%; background-color: #4d9de0;"></div>
+                                </div>
+                                <div class="streak-info">
+                                    <span class="streak-icon">🔥</span>
+                                    <span>12-day streak</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-category">
+                    <h2 class="section-title">Coding</h2>
+                    <div class="courses-grid">
+                        <div class="course-card" onclick="openProgressModal('HTML')">
+                            <div class="course-header">
+                                <div class="course-icon code-icon">H</div>
+                                <div class="course-info">
+                                    <h3>Wev Dev</h3>
+                                    <p>Intermediate</p>
+                                </div>
+                            </div>
+                            <div class="course-progress">
+                                <div class="progress-header">
+                                    <span>Progress</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 65%; background-color: #166088;"></div>
+                                </div>
+                                <div class="streak-info">
+                                    <span class="streak-icon">🔥</span>
+                                    <span>7-day streak</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="course-card" onclick="openProgressModal('CSS')">
+                            <div class="course-header">
+                                <div class="course-icon code-icon">C</div>
+                                <div class="course-info">
+                                    <h3>Web Sec</h3>
+                                    <p>Intermediate</p>
+                                </div>
+                            </div>
+                            <div class="course-progress">
+                                <div class="progress-header">
+                                    <span>Progress</span>
+                                    <span>58%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 58%; background-color: #166088;"></div>
+                                </div>
+                                <div class="streak-info">
+                                    <span class="streak-icon">🔥</span>
+                                    <span>7-day streak</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="course-card" onclick="openProgressModal('JavaScript')">
+                            <div class="course-header">
+                                <div class="course-icon code-icon">JS</div>
+                                <div class="course-info">
+                                    <h3>Web Seo</h3>
+                                    <p>Beginner</p>
+                                </div>
+                            </div>
+                            <div class="course-progress">
+                                <div class="progress-header">
+                                    <span>Progress</span>
+                                    <span>40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 40%; background-color: #166088;"></div>
+                                </div>
+                                <div class="streak-info">
+                                    <span class="streak-icon">🔥</span>
+                                    <span>5-day streak</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                © 2025 My Study Portal | Personal Study Tracker
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal for updating progress -->
+    <div class="modal" id="progress-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Update Progress</h2>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="completed-percent">Progress Percentage</label>
+                    <input type="number" id="completed-percent" min="0" max="100" placeholder="Enter percentage (0-100)">
+                </div>
+                <div class="form-group">
+                    <label for="study-time">Study Time (minutes)</label>
+                    <input type="number" id="study-time" min="0" placeholder="Minutes spent studying">
+                </div>
+                <div class="form-group">
+                    <label for="progress-notes">Notes (optional)</label>
+                    <textarea id="progress-notes" rows="3" placeholder="What did you learn today?"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="updateProgress()">Save Progress</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize local storage if it doesn't exist
+        if (!localStorage.getItem('studyProgress')) {
+            const initialProgress = {
+                "Thai": { percent: 45, streak: 8, lastStudied: new Date().toISOString() },
+                "Chinese": { percent: 25, streak: 5, lastStudied: new Date().toISOString() },
+                "Japanese": { percent: 30, streak: 3, lastStudied: new Date().toISOString() },
+                "Korean": { percent: 15, streak: 2, lastStudied: new Date().toISOString() },
+                "English": { percent: 85, streak: 12, lastStudied: new Date().toISOString() },
+                "HTML": { percent: 65, streak: 7, lastStudied: new Date().toISOString() },
+                "CSS": { percent: 58, streak: 7, lastStudied: new Date().toISOString() },
+                "JavaScript": { percent: 40, streak: 5, lastStudied: new Date().toISOString() },
+                "Web Security": { percent: 20, streak: 2, lastStudied: new Date().toISOString() },
+                "SEO": { percent: 15, streak: 1, lastStudied: new Date().toISOString() }
+            };
+            localStorage.setItem('studyProgress', JSON.stringify(initialProgress));
+
+            // Initialize user data
+            const userData = {
+                name: "Username",
+                totalTime: 3360, // in minutes (56 hours)
+                completedLessons: 48
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        // Set current date
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+
+            // Load user data
+            const userData = JSON.parse(localStorage.getItem('userData')) || { name: "Username" };
+            document.getElementById('user-name').textContent = userData.name;
+
+            // Load progress data
+            loadProgressData();
+        });
+
+        // Current course being updated
+        let currentCourse = '';
+
+        // Open the progress modal
+        function openProgressModal(course) {
+            currentCourse = course;
+            document.getElementById('modal-title').textContent = `Update ${course} Progress`;
+
+            // Get current progress
+            const progressData = JSON.parse(localStorage.getItem('studyProgress'));
+            if (progressData && progressData[course]) {
+                document.getElementById('completed-percent').value = progressData[course].percent;
+            } else {
+                document.getElementById('completed-percent').value = '';
+            }
+
+            document.getElementById('study-time').value = '';
+            document.getElementById('progress-notes').value = '';
+
+            document.getElementById('progress-modal').style.display = 'flex';
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('progress-modal').style.display = 'none';
+        }
+
+        // Update progress
+        function updateProgress() {
+            const percentComplete = parseInt(document.getElementById('completed-percent').value) || 0;
+            const studyTime = parseInt(document.getElementById('study-time').value) || 0;
+            const notes = document.getElementById('progress-notes').value;
+
+            if (percentComplete < 0 || percentComplete > 100) {
+                alert('Please enter a percentage between 0 and 100.');
+                return;
+            }
+
+            // Update progress data
+            const progressData = JSON.parse(localStorage.getItem('studyProgress')) || {};
+            const userData = JSON.parse(localStorage.getItem('userData')) || {
+                name: "Username",
+                totalTime: 0,
+                completedLessons: 0
+            };
+
+            // Calculate streak
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let streak = progressData[currentCourse]?.streak || 0;
+            const lastStudied = progressData[currentCourse]?.lastStudied ?
+                new Date(progressData[currentCourse].lastStudied) : null;
+
+            if (lastStudied) {
+                lastStudied.setHours(0, 0, 0, 0);
+                const diffDays = Math.floor((today - lastStudied) / (1000 * 60 * 60 * 24));
+
+                if (diffDays === 0) {
+                    // Already studied today, keep streak
+                } else if (diffDays === 1) {
+                    // Consecutive day, increase streak
+                    streak++;
+                } else {
+                    // Streak broken
+                    streak = 1;
+                }
+            } else {
+                streak = 1;
+            }
+
+            // Update progress for this course
+            progressData[currentCourse] = {
+                percent: percentComplete,
+                streak: streak,
+                lastStudied: today.toISOString(),
+                notes: notes ? [...(progressData[currentCourse]?.notes || []), {
+                    date: today.toISOString(),
+                    content: notes
+                }] : (progressData[currentCourse]?.notes || [])
+            };
+
+            // Update user data
+            userData.totalTime += studyTime;
+            userData.completedLessons += studyTime >= 15 ? 1 : 0; // Count as a lesson if studied at least 15 mins
+
+            // Save to localStorage
+            localStorage.setItem('studyProgress', JSON.stringify(progressData));
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            // Update UI
+            loadProgressData();
+
+            // Close modal
+            closeModal();
+
+            // Show confirmation
+            alert(`Progress updated for ${currentCourse}!`);
+        }
+
+        // Load progress data
+        function loadProgressData() {
+            const progressData = JSON.parse(localStorage.getItem('studyProgress')) || {};
+
+            // Update each course card
+            Object.keys(progressData).forEach(course => {
+                const courseData = progressData[course];
+                const courseCards = document.querySelectorAll('.course-card');
+
+                courseCards.forEach(card => {
+                    const titleElement = card.querySelector('h3');
+                    if (titleElement && titleElement.textContent === course) {
+                        const progressBar = card.querySelector('.progress-value');
+                        const progressText = card.querySelector('.progress-header span:last-child');
+                        const streakText = card.querySelector('.streak-info span:last-child');
+
+                        progressBar.style.width = `${courseData.percent}%`;
+                        progressText.textContent = `${courseData.percent}%`;
+                        streakText.textContent = `${courseData.streak}-day streak`;
+                    }
+                });
+            });
+
+            // Update summary cards
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+
+            // Calculate overall progress
+            const totalCourses = Object.keys(progressData).length;
+            let totalProgress = 0;
+
+            if (totalCourses > 0) {
+                Object.values(progressData).forEach(course => {
+                    totalProgress += course.percent;
+                });
+
+                const overallProgress = Math.round(totalProgress / totalCourses);
+                document.querySelector('.summary-cards .summary-card:nth-child(4) .value').textContent = `${overallProgress}%`;
+            }
+
+            // Update total study time
+            const totalHours = Math.floor(userData.totalTime / 60);
+            document.querySelector('.summary-cards .summary-card:nth-child(1) .value').textContent = `${totalHours} hrs`;
+
+            // Update completed lessons
+            document.querySelector('.summary-cards .summary-card:nth-child(3) .value').textContent = userData.completedLessons;
+
+            // Calculate longest streak
+            let longestStreak = 0;
+            Object.values(progressData).forEach(course => {
+                if (course.streak > longestStreak) {
+                    longestStreak = course.streak;
+                }
+            });
+
+            document.querySelector('.summary-cards .summary-card:nth-child(2) .value').textContent = `${longestStreak} days`;
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('progress-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
