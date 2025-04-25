@@ -5,8 +5,8 @@ const urlsToCache = [
     '/style.css',
     '/script.js',
     '/manifest.json',
-    '/icons/icon-192x192.png',
-    '/icons/icon-512x512.png'
+    'images/Wedding Logo V1.0.png',
+    'images/Wedding Logo V1.0.png'
 ];
 
 // Install service worker and cache the static assets
