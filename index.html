@@ -3,252 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal Login</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            overflow: hidden;
-            width: 360px;
-            max-width: 100%;
-            min-height: 480px;
-            position: relative;
-            padding: 2rem;
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .form-header h1 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-header p {
-            color: #777;
-            font-size: 0.9rem;
-        }
-
-        .form-control {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-control input {
-            background-color: #f7f7f7;
-            border: none;
-            border-bottom: 2px solid #ddd;
-            padding: 15px;
-            font-size: 1rem;
-            width: 100%;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control input:focus {
-            outline: 0;
-            border-bottom-color: #764ba2;
-        }
-
-        .form-control label {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            pointer-events: none;
-            color: #777;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-control input:focus + label,
-        .form-control input:valid + label {
-            top: -10px;
-            left: 5px;
-            font-size: 0.75rem;
-            color: #764ba2;
-        }
-
-        .btn {
-            background-color: #764ba2;
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1rem;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #667eea;
-        }
-
-        .signup-link {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: #777;
-        }
-
-        .signup-link a {
-            color: #764ba2;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-
-        .error {
-            color: #ff3860;
-            font-size: 0.8rem;
-            height: 1.25rem;
-            margin-top: 0.25rem;
-            display: block;
-        }
-
-        .form-control.success input {
-            border-bottom-color: #09c372;
-        }
-
-        .form-control.error input {
-            border-bottom-color: #ff3860;
-        }
-    </style>
+    <title>My First PWA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 </head>
 <body>
     <div class="container">
-        <div class="form-header">
-            <h1>Welcome Back</h1>
-            <p>Enter your credentials to access your studies</p>
+        <h1>My First PWA</h1>
+        <p>Welcome to my first Progressive Web App!</p>
+        <button id="colorButton">Change Color</button>
+        <p id="status">Online Status: <span id="onlineStatus">Checking...</span></p>
+        <div id="installBanner" class="hidden">
+            <p>Install this app on your device!</p>
+            <button id="installButton">Install App</button>
         </div>
-
-        <form id="login-form">
-            <div class="form-control">
-                <input type="text" id="username" required>
-                <label for="username">Username</label>
-                <small class="error"></small>
-            </div>
-
-            <div class="form-control">
-                <input type="password" id="password" required>
-                <label for="password">Password</label>
-                <small class="error"></small>
-            </div>
-
-            <button type="submit" class="btn">Login</button>
-
-            <div class="signup-link">
-                Don't have an account? <a href="#">Sign Up</a>
-            </div>
-        </form>
     </div>
 
+    <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('login-form');
-            const username = document.getElementById('username');
-            const password = document.getElementById('password');
-
-            // Show floating labels properly when autofill happens
-            setTimeout(() => {
-                if (username.value !== '') {
-                    username.classList.add('filled');
-                    username.nextElementSibling.classList.add('filled');
-                }
-                if (password.value !== '') {
-                    password.classList.add('filled');
-                    password.nextElementSibling.classList.add('filled');
-                }
-            }, 100);
-
-            // Handle form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // Validate inputs
-                let isValid = true;
-
-                if (username.value.trim() === '') {
-                    setErrorFor(username, 'Username cannot be blank');
-                    isValid = false;
-                } else if (username.value.length < 4) {
-                    setErrorFor(username, 'Username must be at least 4 characters');
-                    isValid = false;
-                } else {
-                    setSuccessFor(username);
-                }
-
-                if (password.value.trim() === '') {
-                    setErrorFor(password, 'Password cannot be blank');
-                    isValid = false;
-                } else if (password.value.length < 6) {
-                    setErrorFor(password, 'Password must be at least 6 characters');
-                    isValid = false;
-                } else {
-                    setSuccessFor(password);
-                }
-
-                if (isValid) {
-                    // Here you would normally send the form data to your server
-                    // For this example, we'll just show an alert
-                    alert(`Login successful!\nUsername: ${username.value}\nPassword: ${password.value}\n\n(In a real application, you would never display the password like this)`);
-
-                    // You can redirect to another page after successful login
-                    // window.location.href = 'dashboard.html';
-                }
+        // Register the service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
             });
-
-            function setErrorFor(input, message) {
-                const formControl = input.parentElement;
-                const small = formControl.querySelector('small');
-
-                small.innerText = message;
-                formControl.className = 'form-control error';
-            }
-
-            function setSuccessFor(input) {
-                const formControl = input.parentElement;
-                formControl.className = 'form-control success';
-                const small = formControl.querySelector('small');
-                small.innerText = '';
-            }
-
-            // Add animations when typing
-            const inputs = document.querySelectorAll('.form-control input');
-
-            inputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    if (input.value !== '') {
-                        input.classList.add('filled');
-                    } else {
-                        input.classList.remove('filled');
-                    }
-                });
-            });
-        });
+        }
     </script>
 </body>
 </html>
