@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-SLERGKLNWP');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore upcoming motorsport events in Thailand. Find Thailand Super Series races, track days, and special motorsport events.">
+    <meta name="keywords" content="Thailand motorsport events, Thailand Super Series events, TSS calendar, motorsport calendar Thailand, racing events Thailand">
+    <title>Events - IOMotoSport | Motorsport Tourism in Thailand</title>
+    <!-- iOS Home Screen App Icon -->
+    <link rel="apple-touch-icon" href="images/Wedding Logo V1.0.png">
+    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
+    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
+    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
+
+    <!-- iOS App Settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="iO Innovation">
+
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" href="images/Wedding Logo V1.0.png">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light-bg: #f8f9fa;
+            --light-text: #212529;
+            --dark-bg: #121212;
+            --dark-text: #f1faee;
+            --accent: #457b9d;
+            --header-light: #1d3557;
+            --header-dark: #0d1b2a;
+        }
+
+        /* Initial theme setup */
+        body {
+            --bg-color: var(--light-bg);
+            --text-color: var(--light-text);
+            --header-bg: var(--header-light);
+        }
+
+        body.dark-mode {
+            --bg-color: var(--dark-bg);
+            --text-color: var(--dark-text);
+            --header-bg: var(--header-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Language and Theme Toggle */
+        .utility-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector {
+            margin-right: 1rem;
+            position: relative;
+        }
+
+        .language-selector select {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .language-selector select option {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 20px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .toggle-circle {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        body.dark-mode .toggle-circle {
+            transform: translateX(20px);
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Events Page Specific Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 1rem 4rem;
+            margin-top: 0;
+        }
+
+        .page-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Event Filters */
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .event-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .event-filters {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            background-color: white;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode .filter-group select,
+        .dark-mode .filter-group input {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--dark-text);
+        }
+
+        .filter-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            align-self: flex-end;
+        }
+
+        .filter-button:hover {
+            background-color: #c1121f;
+        }
+
+        /* Event Layout */
+        .event-list-section {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Event Cards */
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .event-card {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .dark-mode .event-card {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card-date {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .event-card-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .event-icon {
+            margin-right: 0.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .event-card-description {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .event-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .event-tag {
+            background-color: rgba(69, 123, 157, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .dark-mode .event-tag {
+            background-color: rgba(69, 123, 157, 0.2);
+        }
+
+        .event-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .event-button:hover {
+            background-color: var(--primary);
+        }
+
+        /* Ad Sidebar */
+        .ad-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ad-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .dark-mode .ad-card {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .ad-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+
+        .ad-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .ad-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .ad-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .ad-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .ad-button:hover {
+            background-color: #c1121f;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 0.8rem;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .dark-mode .newsletter-form input {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--dark-text);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode .page-link {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--dark-text);
+        }
+
+        .page-link:hover,
+        .page-link.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            margin-right: 1rem;
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .event-list-section {
+                grid-template-columns: 1fr;
+            }
+
+            .ad-sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--secondary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .mobile-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .mobile-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .event-card {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card-image {
+                height: 200px;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .events-container {
+                padding: 2rem 1rem;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">IO<span>MotoSport</span></a>
+            <div class="utility-controls">
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="en">EN</option>
+                        <option value="th">TH</option>
+                    </select>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <div class="toggle-circle"></div>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active" data-en="Home" data-th="หน้าแรก">Home</a></li>
+                <li><a href="tss.html" data-en="Thailand Super Series" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์">Thailand Super Series</a></li>
+                <li><a href="events.html" data-en="Events" data-th="กิจกรรม">Events</a></li>
+                <li><a href="tracks.html" data-en="Tracks" data-th="สนามแข่ง">Tracks</a></li>
+                <li><a href="blog.html" data-en="Blog" data-th="บล็อก">Blog</a></li>
+                <li><a href="store.html" data-en="Store" data-th="ร้านค้า">Store</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="page-header-container">
+                <h1 data-en="Motorsport Events in Thailand" data-th="กิจกรรมมอเตอร์สปอร์ตในประเทศไทย">Motorsport Events in Thailand</h1>
+                <p class="page-description" data-en="Discover upcoming racing events, track days, and special motorsport gatherings across Thailand's premier circuits." data-th="ค้นพบการแข่งขันรถยนต์ที่กำลังจะมาถึง วันแข่งรถ และการรวมตัวของมอเตอร์สปอร์ตพิเศษในสนามแข่งชั้นนำของประเทศไทย">Discover upcoming racing events, track days, and special motorsport gatherings across Thailand's premier circuits.</p>
+            </div>
+        </section>
+
+        <div class="events-container">
+            <div class="event-filters">
+                <div class="filter-group">
+                    <label for="event-type" data-en="Event Type" data-th="ประเภทกิจกรรม">Event Type</label>
+                    <select id="event-type">
+                        <option value="all">All Events</option>
+                        <option value="race">Race Weekends</option>
+                        <option value="trackday">Track Days</option>
+                        <option value="exhibition">Exhibitions</option>
+                        <option value="championship">Championship Events</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="location" data-en="Location" data-th="สถานที่">Location</label>
+                    <select id="location">
+                        <option value="all">All Locations</option>
+                        <option value="buriram">Chang International Circuit</option>
+                        <option value="pattaya">Bira Circuit</option>
+                        <option value="bangkok">Bangkok Street Circuit</option>
+                        <option value="kaeng-krachan">Kaeng Krachan Circuit</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="date" data-en="Date From" data-th="วันที่เริ่มต้น">Date From</label>
+                    <input type="date" id="date" value="2025-05-12">
+                </div>
+                <button class="filter-button" data-en="Filter Events" data-th="กรองกิจกรรม">Filter Events</button>
+            </div>
+
+            <div class="event-list-section">
+                <div class="event-list">
+                    <!-- Event 1 -->
+                    <div class="event-card">
+                        <img src="/api/placeholder/400/300" alt="Thailand Super Series Round 3" class="event-card-image">
+                        <div class="event-card-content">
+                            <div class="event-card-date" data-en="May 15-17, 2025" data-th="15-17 พฤษภาคม 2568">May 15-17, 2025</div>
+                            <h3 class="event-card-title" data-en="Thailand Super Series Round 3" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์ สนามที่ 3">Thailand Super Series Round 3</h3>
+                            <div class="event-card-details">
+                                <div class="event-detail">
+                                    <span class="event-icon">📍</span>
+                                    <span data-en="Chang International Circuit, Buriram" data-th="สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต, บุรีรัมย์">Chang International Circuit, Buriram</span>
+                                </div>
+                                <div class="event-detail">
+                                    <span class="event-icon">🏁</span>
+                                    <span data-en="Championship Race" data-th="การแข่งขันชิงแชมป์">Championship Race</span>
+                                </div>
+                            </div>
+                            <p class="event-card-description" data-en="Experience the high-octane action of Thailand Super Series Round 3, featuring GT3, GTM, and touring car classes battling for championship points at Thailand's premier FIA Grade 1 circuit." data-th="สัมผัสการแข่งขันที่เร่งเครื่องของไทยแลนด์ซุปเปอร์ซีรีส์ สนามที่ 3 ที่มีรถในรุ่น GT3, GTM และทัวริ่งคาร์แข่งขันเพื่อชิงคะแนนแชมเปี้ยนชิพที่สนามแข่งระดับ FIA Grade 1 ชั้นนำของประเทศไทย">Experience the high-octane action of Thailand Super Series Round 3, featuring GT3, GTM, and touring car classes battling for championship points at Thailand's premier FIA Grade 1 circuit.</p>
+                            <div class="event-actions">
+                                <div class="event-tag" data-en="Championship" data-th="การแข่งขันชิงแชมป์">Championship</div>
+                                <a href="#" class="event-button" data-en="Event Details" data-th="รายละเอียดกิจกรรม">Event Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="event-card">
+                        <img src="/api/placeholder/400/300" alt="Bangkok Midnight Grand Prix" class="event-card-image">
+                        <div class="event-card-content">
+                            <div class="event-card-date" data-en="June 5-6, 2025" data-th="5-6 มิถุนายน 2568">June 5-6, 2025</div>
+                            <h3 class="event-card-title" data-en="Bangkok Midnight Grand Prix" data-th="แบงค็อก มิดไนท์ กรังด์ปรีซ์">Bangkok Midnight Grand Prix</h3>
+                            <div class="event-card-details">
+                                <div class="event-detail">
+                                    <span class="event-icon">📍</span>
+                                    <span data-en="Ratchapruek Street Circuit, Bangkok" data-th="สนามแข่งราชพฤกษ์, กรุงเทพฯ">Ratchapruek Street Circuit, Bangkok</span>
+                                </div>
+                                <div class="event-detail">
+                                    <span class="event-icon">🏁</span>
+                                    <span data-en="Exhibition Race" data-th="การแข่งขันแสดง">Exhibition Race</span>
+                                </div>
+                            </div>
+                            <p class="event-card-description" data-en="Thailand's first night street race through the heart of Bangkok. Experience the thrill of motorsport under the city lights with international drivers and local champions competing on a challenging temporary circuit." data-th="การแข่งรถกลางคืนบนถนนครั้งแรกของประเทศไทยใจกลางกรุงเทพฯ สัมผัสความตื่นเต้นของมอเตอร์สปอร์ตใต้แสงไฟเมืองกับนักแข่งนานาชาติและแชมป์ท้องถิ่นที่แข่งขันในสนามชั่วคราวที่ท้าทาย">Thailand's first night street race through the heart of Bangkok. Experience the thrill of motorsport under the city lights with international drivers and local champions competing on a challenging temporary circuit.</p>
+                            <div class="event-actions">
+                                <div class="event-tag" data-en="Exhibition" data-th="งานแสดง">Exhibition</div>
+                                <a href="#" class="event-button" data-en="Event Details" data-th="รายละเอียดกิจกรรม">Event Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="event-card">
+                        <img src="/api/placeholder/400/300" alt="Pattaya Drift Masters" class="event-card-image">
+                        <div class="event-card-content">
+                            <div class="event-card-date" data-en="June 19-20, 2025" data-th="19-20 มิถุนายน 2568">June 19-20, 2025</div>
+                            <h3 class="event-card-title" data-en="Pattaya Drift Masters" data-th="แพทยา ดริฟท์ มาสเตอร์ส">Pattaya Drift Masters</h3>
+                            <div class="event-card-details">
+                                <div class="event-detail">
+                                    <span class="event-icon">📍</span>
+                                    <span data-en="Bira International Circuit, Pattaya" data-th="สนามบิระ อินเตอร์เนชั่นแนล เซอร์กิต, พัทยา">Bira International Circuit, Pattaya</span>
+                                </div>
+                                <div class="event-detail">
+                                    <span class="event-icon">🏁</span>
+                                    <span data-en="Drift Competition" data-th="การแข่งขันดริฟท์">Drift Competition</span>
+                                </div>
+                            </div>
+                            <p class="event-card-description" data-en="Watch Asia's best drift drivers showcase their skills in this two-day competition. Featuring professional teams from Japan, Malaysia, Thailand and more competing for the prestigious Drift Masters trophy." data-th="ชมนักดริฟท์ที่ดีที่สุดในเอเชียแสดงทักษะของพวกเขาในการแข่งขันสองวันนี้ มีทีมมืออาชีพจากญี่ปุ่น มาเลเซีย ไทย และอื่นๆ แข่งขันเพื่อชิงถ้วยรางวัล Drift Masters อันทรงเกียรติ">Watch Asia's best drift drivers showcase their skills in this two-day competition. Featuring professional teams from Japan, Malaysia, Thailand and more competing for the prestigious Drift Masters trophy.</p>
+                            <div class="event-actions">
+                                <div class="event-tag" data-en="Drifting" data-th="ดริฟท์">Drifting</div>
+                                <a href="#" class="event-button" data-en="Event Details" data-th="รายละเอียดกิจกรรม">Event Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 4 -->
+                    <div class="event-card">
+                        <img src="/api/placeholder/400/300" alt="Open Track Day - Kaeng Krachan" class="event-card-image">
+                        <div class="event-card-content">
+                            <div class="event-card-date" data-en="July 3, 2025" data-th="3 กรกฎาคม 2568">July 3, 2025</div>
+                            <h3 class="event-card-title" data-en="Open Track Day - Kaeng Krachan" data-th="โอเพ่นแทร็คเดย์ - แก่งกระจาน">Open Track Day - Kaeng Krachan</h3>
+                            <div class="event-card-details">
+                                <div class="event-detail">
+                                    <span class="event-icon">📍</span>
+                                    <span data-en="Kaeng Krachan Circuit, Phetchaburi" data-th="สนามแก่งกระจาน, เพชรบุรี">Kaeng Krachan Circuit, Phetchaburi</span>
+                                </div>
+                                <div class="event-detail">
+                                    <span class="event-icon">🏁</span>
+                                    <span data-en="Track Day" data-th="แทร็คเดย์">Track Day</span>
+                                </div>
+                            </div>
+                            <p class="event-card-description" data-en="Bring your own car or motorcycle and experience the technical Kaeng Krachan Circuit. Professional instructors available for novice drivers. Different sessions for various skill levels throughout the day." data-th="นำรถยนต์หรือรถจักรยานยนต์ของคุณมาและสัมผัสประสบการณ์สนามแก่งกระจานเชิงเทคนิค มีผู้สอนมืออาชีพสำหรับนักขับมือใหม่ มีเซสชั่นต่างๆ สำหรับระดับทักษะต่างๆ ตลอดทั้งวัน">Bring your own car or motorcycle and experience the technical Kaeng Krachan Circuit. Professional instructors available for novice drivers. Different sessions for various skill levels throughout the day.</p>
+                            <div class="event-actions">
+                                <div class="event-tag" data-en="Track Day" data-th="แทร็คเดย์">Track Day</div>
+                                <a href="#" class="event-button" data-en="Book Now" data-th="จองตอนนี้">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ad-sidebar">
+                    <!-- Ad Card 1 -->
+                    <div class="ad-card">
+                        <div class="ad-label" data-en="Special Offer" data-th="ข้อเสนอพิเศษ">Special Offer</div>
+                        <img src="/api/placeholder/300/200" alt="Racing School Promotion" class="ad-image">
+                        <h4 class="ad-title" data-en="Racing School Experience" data-th="ประสบการณ์โรงเรียนแข่งรถ">Racing School Experience</h4>
+                        <p class="ad-description" data-en="Learn from professional race drivers with our intensive 2-day racing school program at Chang International Circuit." data-th="เรียนรู้จากนักแข่งรถมืออาชีพด้วยโปรแกรมโรงเรียนแข่งรถเข้มข้น 2 วันของเราที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต">Learn from professional race drivers with our intensive 2-day racing school program at Chang International Circuit.</p>
+                        <a href="#" class="ad-button" data-en="Learn More" data-th="เรียนรู้เพิ่มเติม">Learn More</a>
+                    </div>
+
+                    <!-- Ad Card 2 -->
+                    <div class="ad-card">
+                        <div class="ad-label" data-en="Merchandise" data-th="สินค้า">Merchandise</div>
+                        <img src="/api/placeholder/300/200" alt="TSS Official Merchandise" class="ad-image">
+                        <h4 class="ad-title" data-en="TSS Official Merchandise" data-th="สินค้าทางการ TSS">TSS Official Merchandise</h4>
+                        <p class="ad-description" data-en="Get the latest Thailand Super Series official merchandise. T-shirts, caps, model cars and more!" data-th="รับสินค้าอย่างเป็นทางการล่าสุดของไทยแลนด์ซุปเปอร์ซีรีส์ เสื้อยืด หมวก รถโมเดล และอื่น ๆ อีกมากมาย!">Get the latest Thailand Super Series official merchandise. T-shirts, caps, model cars and more!</p>
+                        <a href="#" class="ad-button" data-en="Shop Now" data-th="ซื้อเลย">Shop Now</a>
+                    </div>
+
+                    <!-- Newsletter Subscription -->
+                    <div class="ad-card">
+                        <div class="ad-label" data-en="Newsletter" data-th="จดหมายข่าว">Newsletter</div>
+                        <h4 class="ad-title" data-en="Stay Updated" data-th="อัพเดทข่าวสาร">Stay Updated</h4>
+                        <p class="ad-description" data-en="Subscribe to our newsletter for the latest motorsport events, promotions and news in Thailand." data-th="สมัครรับจดหมายข่าวของเราเพื่อรับข่าวสารกิจกรรมมอเตอร์สปอร์ต โปรโมชั่น และข่าวสารล่าสุดในประเทศไทย">Subscribe to our newsletter for the latest motorsport events, promotions and news in Thailand.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit" class="ad-button" data-en="Subscribe" data-th="สมัครรับข้อมูล">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">→</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 data-en="About Us" data-th="เกี่ยวกับเรา">About Us</h3>
+                <p data-en="IOMotoSport is dedicated to promoting motorsport tourism in Thailand, connecting racing enthusiasts with the best events, circuits, and experiences." data-th="IOMotoSport มุ่งมั่นที่จะส่งเสริมการท่องเที่ยวมอเตอร์สปอร์ตในประเทศไทย เชื่อมโยงผู้ที่ชื่นชอบการแข่งรถกับกิจกรรม สนามแข่ง และประสบการณ์ที่ดีที่สุด">IOMotoSport is dedicated to promoting motorsport tourism in Thailand, connecting racing enthusiasts with the best events, circuits, and experiences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 data-en="Quick Links" data-th="ลิงก์ด่วน">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-en="Home" data-th="หน้าแรก">Home</a></li>
+                    <li><a href="#" data-en="Thailand Super Series" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์">Thailand Super Series</a></li>
+                    <li><a href="#" data-en="Events Calendar" data-th="ปฏิทินกิจกรรม">Events Calendar</a></li>
+                    <li><a href="#" data-en="Racing Circuits" data-th="สนามแข่งรถ">Racing Circuits</a></li>
+                    <li><a href="#" data-en="Motorsport News" data-th="ข่าวมอเตอร์สปอร์ต">Motorsport News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-en="Support" data-th="การสนับสนุน">Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-en="Contact Us" data-th="ติดต่อเรา">Contact Us</a></li>
+                    <li><a href="#" data-en="FAQ" data-th="คำถามที่พบบ่อย">FAQ</a></li>
+                    <li><a href="#" data-en="Partner With Us" data-th="ร่วมงานกับเรา">Partner With Us</a></li>
+                    <li><a href="#" data-en="Media Enquiries" data-th="สอบถามข้อมูลสื่อ">Media Enquiries</a></li>
+                    <li><a href="#" data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 data-en="Contact" data-th="ติดต่อ">Contact</h3>
+                <ul class="footer-links">
+                    <li data-en="Email: info@iomotosport.com" data-th="อีเมล: info@iomotosport.com">Email: info@iomotosport.com</li>
+                    <li data-en="Phone: +66 2 123 4567" data-th="โทรศัพท์: +66 2 123 4567">Phone: +66 2 123 4567</li>
+                    <li data-en="Address: 123 Racing Avenue, Bangkok, Thailand" data-th="ที่อยู่: 123 ถนนเรซซิ่ง กรุงเทพฯ ประเทศไทย">Address: 123 Racing Avenue, Bangkok, Thailand</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p data-en="© 2025 IOMotoSport. All rights reserved." data-th="© 2025 IOMotoSport สงวนลิขสิทธิ์ทั้งหมด">© 2025 IOMotoSport. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Save theme preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Language Switcher
+        const languageSelect = document.getElementById('language-select');
+
+        languageSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+
+            // Get all elements with data attributes
+            const elements = document.querySelectorAll('[data-en], [data-th]');
+
+            elements.forEach(el => {
+                if (lang === 'en' && el.dataset.en) {
+                    el.textContent = el.dataset.en;
+                } else if (lang === 'th' && el.dataset.th) {
+                    el.textContent = el.dataset.th;
+                }
+            });
+
+            // Save language preference
+            localStorage.setItem('language', lang);
+        });
+
+        // Check for saved language preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language');
+            if (savedLang) {
+                languageSelect.value = savedLang;
+
+                // Trigger change event to update text
+                const event = new Event('change');
+                languageSelect.dispatchEvent(event);
+            }
+        });
+    </script>
+</body>
+</html>

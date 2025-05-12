@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-SLERGKLNWP');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official merchandise store for motorsport enthusiasts in Thailand. Shop for Thailand Super Series merchandise, racing apparel, collectibles, and more.">
+    <meta name="keywords" content="Thailand motorsport merchandise, TSS merchandise, motorsport apparel, racing collectibles, motorsport souvenirs, Thailand Super Series shop">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://iomotosport.com/store">
+    <meta property="og:title" content="IOMotoSport Store - Official Motorsport Merchandise">
+    <meta property="og:description" content="Shop for exclusive Thailand Super Series merchandise, racing apparel, collectibles, and motorsport souvenirs at the IOMotoSport official store.">
+    <meta property="og:image" content="images/og-image-store.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://iomotosport.com/store">
+    <meta property="twitter:title" content="IOMotoSport Store - Official Motorsport Merchandise">
+    <meta property="twitter:description" content="Shop for exclusive Thailand Super Series merchandise, racing apparel, collectibles, and motorsport souvenirs at the IOMotoSport official store.">
+    <meta property="twitter:image" content="images/og-image-store.jpg">
+
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://iomotosport.com/store">
+
+    <title>IOMotoSport Store - Official Motorsport Merchandise</title>
+    <!-- iOS Home Screen App Icon -->
+    <link rel="apple-touch-icon" href="images/Wedding Logo V1.0.png">
+    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
+    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
+    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
+
+    <!-- iOS App Settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="iO Innovation">
+
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" href="images/Wedding Logo V1.0.png">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --light-bg: #f8f9fa;
+            --light-text: #212529;
+            --dark-bg: #121212;
+            --dark-text: #f1faee;
+            --accent: #457b9d;
+            --header-light: #1d3557;
+            --header-dark: #0d1b2a;
+        }
+
+        /* Initial theme setup */
+        body {
+            --bg-color: var(--light-bg);
+            --text-color: var(--light-text);
+            --header-bg: var(--header-light);
+        }
+
+        body.dark-mode {
+            --bg-color: var(--dark-bg);
+            --text-color: var(--dark-text);
+            --header-bg: var(--header-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* Language and Theme Toggle */
+        .utility-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector {
+            margin-right: 1rem;
+            position: relative;
+        }
+
+        .language-selector select {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .language-selector select option {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 20px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .toggle-circle {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+
+        body.dark-mode .toggle-circle {
+            transform: translateX(20px);
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Store Hero Section */
+        .store-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 1rem 6rem;
+            margin-top: 0;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .store-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .store-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Store Categories */
+        .section {
+            padding: 5rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: var(--text-color);
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .dark-mode .category-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--dark-text);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode .product-card {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.5rem 0 1rem;
+        }
+
+        .product-options {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sale-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-weight: 600;
+        }
+
+        .add-to-cart {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--accent);
+        }
+
+        .add-to-cart i {
+            margin-right: 0.5rem;
+        }
+
+        .wishlist-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .wishlist-btn:hover {
+            color: var(--primary);
+        }
+
+        .product-ratings {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-right: 0.5rem;
+        }
+
+        .ratings-count {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Featured Products Section */
+        .featured-section {
+            background-color: rgba(69, 123, 157, 0.1);
+            padding: 5rem 1rem;
+        }
+
+        .dark-mode .featured-section {
+            background-color: rgba(69, 123, 157, 0.05);
+        }
+
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cart Floating Button */
+        .cart-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+            z-index: 100;
+        }
+
+        .cart-float:hover {
+            transform: scale(1.1);
+            background-color: #c1121f;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--secondary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .cart-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: var(--secondary);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .newsletter-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-button:hover {
+            background-color: #c1121f;
+        }
+
+        /* Sale Badge */
+        .product-wrapper {
+            position: relative;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-label {
+            margin-right: 0.5rem;
+            font-weight: 600;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .dark-mode .filter-select {
+            background-color: var(--dark-bg);
+            color: white;
+            border-color: #444;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            min-width: 200px;
+        }
+
+        .dark-mode .search-input {
+            background-color: var(--dark-bg);
+            color: white;
+            border-color: #444;
+        }
+
+        .search-button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            margin-right: 1rem;
+            color: white;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--secondary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .mobile-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .mobile-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .store-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-box {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .search-input {
+                flex-grow: 1;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: 4px;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-button {
+                border-radius: 4px;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">IO<span>MotoSport</span></a>
+            <div class="utility-controls">
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="en">EN</option>
+                        <option value="th">TH</option>
+                    </select>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <div class="toggle-circle"></div>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" data-en="Home" data-th="หน้าแรก">Home</a></li>
+                <li><a href="tss.html" data-en="Thailand Super Series" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์">Thailand Super Series</a></li>
+                <li><a href="events.html" data-en="Events" data-th="กิจกรรม">Events</a></li>
+                <li><a href="tracks.html" data-en="Tracks" data-th="สนามแข่ง">Tracks</a></li>
+                <li><a href="blog.html" data-en="Blog" data-th="บล็อก">Blog</a></li>
+                <li><a href="store.html" class="active" data-en="Store" data-th="ร้านค้า">Store</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="store-hero">
+            <div class="hero-container">
+                <h1 data-en="Official Motorsport Merchandise" data-th="สินค้าทางการมอเตอร์สปอร์ต">Official Motorsport Merchandise</h1>
+                <p data-en="Shop exclusive Thailand Super Series merchandise, racing team apparel, and authentic motorsport collectibles" data-th="ช้อปสินค้าพิเศษจากไทยแลนด์ซุปเปอร์ซีรีส์ เสื้อผ้าทีมแข่ง และของสะสมมอเตอร์สปอร์ตแท้">Shop exclusive Thailand Super Series merchandise, racing team apparel, and authentic motorsport collectibles</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title" data-en="Product <span>Categories</span>" data-th="หมวดหมู่ <span>สินค้า</span>">Product <span>Categories</span></h2>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="category-title" data-en="Apparel" data-th="เสื้อผ้า">Apparel</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="category-title" data-en="Collectibles" data-th="ของสะสม">Collectibles</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="category-title" data-en="Team Merchandise" data-th="สินค้าประจำทีม">Team Merchandise</div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="category-title" data-en="Accessories" data-th="อุปกรณ์เสริม">Accessories</div>
+                </a>
+            </div>
+
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <span class="filter-label">Sort By:</span>
+                    <select class="filter-select">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search products...">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <h3 class="section-title" data-en="Featured <span>Products</span>" data-th="สินค้า <span>แนะนำ</span>">Featured <span>Products</span></h3>
+            <div class="products-grid">
+                <div class="product-wrapper">
+                    <div class="product-card">
+                        <img src="/api/placeholder/400/300" alt="TSS Official Cap" class="product-image">
+                        <div class="product-content">
+                            <div class="product-category">Apparel</div>
+                            <h3 class="product-title">Thailand Super Series Official Cap 2025</h3>
+                            <div class="product-ratings">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="ratings-count">(24)</span>
+                            </div>
+                            <div class="product-price">฿950</div>
+                            <div class="product-options">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-card">
+                        <img src="/api/placeholder/400/300" alt="Racing Team Polo" class="product-image">
+                        <div class="product-content">
+                            <div class="product-category">Team Merchandise</div>
+                            <h3 class="product-title">B-Quik Racing Team Polo Shirt</h3>
+                            <div class="product-ratings">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="ratings-count">(42)</span>
+                            </div>
+                            <div class="product-price">฿1,450</div>
+                            <div class="product-options">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-card">
+                        <span class="sale-badge">Sale</span>
+                        <img src="/api/placeholder/400/300" alt="TSS Model Car" class="product-image">
+                        <div class="product-content">
+                            <div class="product-category">Collectibles</div>
+                            <h3 class="product-title">1:18 Scale Toyota GR Supra TSS 2024</h3>
+                            <div class="product-ratings">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="ratings-count">(18)</span>
+                            </div>
+                            <div class="product-price"><del>฿2,200</del> ฿1,980</div>
+                            <div class="product-options">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-card">
+                        <img src="/api/placeholder/400/300" alt="Motorsport Keychain" class="product-image">
+                        <div class="product-content">
+                            <div class="product-category">Accessories</div>
+                            <h3 class="product-title">Thailand Super Series Lanyard Keychain</h3>
+                            <div class="product-ratings">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="ratings-count">(31)</span>
+                            </div>
+                            <div class="product-price">฿350</div>
+                            <div class="product-options">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-card">
+                        <img src="/api/placeholder/400/300" alt="Racing Gloves" class="product-image">
+                        <div class="product-content">
+                            <div class="product-category">Apparel</div>
+                            <h3 class="product-title">Sparco Racing Gloves - Limited Edition</h3>
+                            <div class="product-ratings">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="ratings-count">(55)</span>
+                            </div>
+                            <div class="product-price">฿3,200</div>
+                            <div class="product-options">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-card">
+                        <span class="sale-badge">Sale</span>
+                        <img src="/api/placeholder/400/300" alt="Team Jacket" class="product-image">
+                        <div class="product-content">
+                            <div class="product-category">Team Merchandise</div>
+                            <h3 class="product-title">Vattana Motorsport Team Softshell Jacket</h3>
+                            <div class="product-ratings">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="ratings-count">(29)</span>
+                            </div>
+                            <div class="product-price"><del>฿2,800</del> ฿2,520</div>
+                            <div class="product-options">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="/cart" class="cart-float">
+        <i class="fas fa-shopping-cart cart-icon"></i>
+        <span class="cart-count">3</span>
+    </a>
+
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 data-en="Subscribe to Our Newsletter" data-th="สมัครรับจดหมายข่าวของเรา">Subscribe to Our Newsletter</h2>
+            <p data-en="Stay updated with the latest motorsport news, exclusive offers, and new product arrivals." data-th="รับข่าวสารล่าสุด ข้อเสนอพิเศษ และสินค้าใหม่ๆ ในวงการมอเตอร์สปอร์ต">Stay updated with the latest motorsport news, exclusive offers, and new product arrivals.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address">
+                <button type="submit" class="newsletter-button" data-en="Subscribe" data-th="สมัคร">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>IO MotoSport</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html" data-en="About Us" data-th="เกี่ยวกับเรา">About Us</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-th="ติดต่อเรา">Contact Us</a></li>
+                    <li><a href="privacy-policy.html" data-en="Privacy Policy" data-th="นโยบายความเป็นส่วนตัว">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html" data-en="Terms of Service" data-th="ข้อกำหนดในการบริการ">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-en="Apparel" data-th="เสื้อผ้า">Apparel</a></li>
+                    <li><a href="#" data-en="Collectibles" data-th="ของสะสม">Collectibles</a></li>
+                    <li><a href="#" data-en="Team Merchandise" data-th="สินค้าประจำทีม">Team Merchandise</a></li>
+                    <li><a href="#" data-en="Accessories" data-th="อุปกรณ์เสริม">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-en="Order Tracking" data-th="ติดตามคำสั่งซื้อ">Order Tracking</a></li>
+                    <li><a href="#" data-en="Returns & Exchanges" data-th="การคืนและเปลี่ยนสินค้า">Returns & Exchanges</a></li>
+                    <li><a href="#" data-en="FAQ" data-th="คำถามที่พบบ่อย">FAQ</a></li>
+                    <li><a href="#" data-en="Shipping Information" data-th="ข้อมูลการจัดส่ง">Shipping Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <p data-en="Connect with us on social media" data-th="ติดตามเราบนโซเชียลมีเดีย">Connect with us on social media</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 IO MotoSport. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'dark') {
+                body.classList.add('dark-mode');
+            }
+
+            themeToggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
+            });
+
+            const languageSelect = document.getElementById('language-select');
+            const allTranslatableElements = document.querySelectorAll('[data-en], [data-th]');
+            const currentLanguage = localStorage.getItem('language') || 'en';
+
+            languageSelect.value = currentLanguage;
+            translatePage(currentLanguage);
+
+            languageSelect.addEventListener('change', function() {
+                const selectedLanguage = this.value;
+                localStorage.setItem('language', selectedLanguage);
+                translatePage(selectedLanguage);
+            });
+
+            function translatePage(lang) {
+                allTranslatableElements.forEach(element => {
+                    const translation = element.getAttribute(`data-${lang}`);
+                    if (translation) {
+                        element.textContent = translation;
+                    }
+                });
+            }
+
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
