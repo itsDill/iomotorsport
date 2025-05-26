@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - ioMotorsport</title>
+    <meta name="description" content="Advanced motorsports statistics and analytics for Formula 1, WRC, and IndyCar. Interactive charts, comparisons, and detailed performance metrics.">
+    <style>
+        /* Global Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        /* Statistics Page Specific Styles */
+        .stats-hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .stats-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        .control-group select, .control-group input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.2);
+        }
+
+        .stat-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-container h3 {
+            color: #4ecdc4;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-placeholder {
+            height: 400px;
+            background: linear-gradient(45deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
+            border: 2px dashed rgba(78, 205, 196, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ecdc4;
+            font-size: 1.2rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-section h2 {
+            color: #4ecdc4;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .driver-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .driver-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .driver-card h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .driver-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .driver-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .driver-stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .driver-stat-label {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Data Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: rgba(78, 205, 196, 0.1);
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Position Indicators */
+        .position {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .position.p1 { background: #ffd700; color: #000; }
+        .position.p2 { background: #c0c0c0; color: #000; }
+        .position.p3 { background: #cd7f32; color: #000; }
+        .position.points { background: #4ecdc4; color: #000; }
+        .position.other { background: rgba(255, 255, 255, 0.2); }
+
+        /* Tab System */
+        .stats-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .stats-tab-btn {
+            background: transparent;
+            border: none;
+            color: #999;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .stats-tab-btn.active, .stats-tab-btn:hover {
+            color: #4ecdc4;
+            border-bottom-color: #4ecdc4;
+        }
+
+        .stats-tab-content {
+            display: none;
+        }
+
+        .stats-tab-content.active {
+            display: block;
+        }
+
+        /* Ad Banner */
+        .ad-banner {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: #999;
+        }
+
+        /* Progress Bars */
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .stats-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ioMotorsport</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stats.html" class="active">Statistics</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="stats-hero">
+            <h1>Advanced Statistics</h1>
+            <p>Deep dive into motorsports data with interactive charts, detailed analytics, and comprehensive performance metrics across Formula 1, WRC, and IndyCar.</p>
+        </section>
+
+        <div class="stats-controls">
+            <div class="control-group">
+                <label for="series-select">Series</label>
+                <select id="series-select">
+                    <option value="f1">Formula 1</option>
+                    <option value="wrc">World Rally Championship</option>
+                    <option value="indycar">IndyCar Series</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="season-select">Season</label>
+                <select id="season-select">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="stat-type">Statistic Type</label>
+                <select id="stat-type">
+                    <option value="overview">Overview</option>
+                    <option value="performance">Performance</option>
+                    <option value="comparison">Driver Comparison</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="stats-tabs">
+            <button class="stats-tab-btn active" data-tab="overview">Overview</button>
+            <button class="stats-tab-btn" data-tab="charts">Charts & Trends</button>
+            <button class="stats-tab-btn" data-tab="comparison">Driver Comparison</button>
+            <button class="stats-tab-btn" data-tab="records">Records & Milestones</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="stats-tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Championship Leader</h3>
+                    <div class="stat-value">Max Verstappen</div>
+                    <div class="stat-label">575 Points • 19 Wins</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Closest Title Fight</h3>
+                    <div class="stat-value">201</div>
+                    <div class="stat-label">Points Gap • Verstappen leads Norris</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Most Wins</h3>
+                    <div class="stat-value">19</div>
+                    <div class="stat-label">Max Verstappen • 79% win rate</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 79%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Constructor Champion</h3>
+                    <div class="stat-value">McLaren</div>
+                    <div class="stat-label">666 Points • 20-point lead</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Total Races</h3>
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Season Completed • 100%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Different Winners</h3>
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Drivers with victories this season</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Championship Points Progression</h3>
+                <div class="chart-placeholder">
+                    Interactive Chart: Points progression throughout the season<br>
+                    (Chart.js visualization would be implemented here)
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Tab -->
+        <div id="charts" class="stats-tab-content">
+            <div class="chart-container">
+                <h3>Wins Distribution by Team</h3>
+                <div class="chart-placeholder">
+                    Pie Chart: Team victory distribution<br>
+                    Red Bull: 19 wins, McLaren: 5 wins, Ferrari: 5 wins
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Podium Finishes Comparison</h3>
+                <div class="chart-placeholder">
+                    Bar Chart: Podium finishes by driver<br>
+                    Verstappen: 21, Leclerc: 11, Norris: 8, etc.
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Qualifying vs Race Performance</h3>
+                <div class="chart-placeholder">
+                    Scatter Plot: Average qualifying position vs average race finish<br>
+                    Performance correlation analysis
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Tab -->
+        <div id="comparison" class="stats-tab-content">
+            <div class="comparison-section">
+                <h2>Top 3 Drivers Head-to-Head</h2>
+                <div class="driver-comparison">
+                    <div class="driver-card">
+                        <h4>Max Verstappen</h4>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">575</div>
+                                <div class="driver-stat-label">Points</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">19</div>
+                                <div class="driver-stat-label">Wins</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">21</div>
+                                <div class="driver-stat-label">Podiums</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">7</div>
+                                <div class="driver-stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="driver-card">
+                        <h4>Lando Norris</h4>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">374</div>
+                                <div class="driver-stat-label">Points</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">3</div>
+                                <div class="driver-stat-label">Wins</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">8</div>
+                                <div class="driver-stat-label">Podiums</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">8</div>
+                                <div class="driver-stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="driver-card">
+                        <h4>Charles Leclerc</h4>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">356</div>
+                                <div class="driver-stat-label">Points</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">3</div>
+                                <div class="driver-stat-label">Wins</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">11</div>
+                                <div class="driver-stat-label">Podiums</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">5</div>
+                                <div class="driver-stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Head-to-Head Performance Comparison</h3>
+                <div class="chart-placeholder">
+                    Radar Chart: Multi-dimensional performance comparison<br>
+                    Metrics: Speed, Consistency, Qualifying, Race Craft, Overtaking
+                </div>
+            </div>
+        </div>
+
+        <!-- Records Tab -->
+        <div id="records" class="stats-tab-content">
+            <div class="chart-container">
+                <h3>2024 Season Records & Milestones</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Record</th>
+                            <th>Driver/Team</th>
+                            <th>Value</th>
+                            <th>Previous Record</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Most consecutive wins</td>
+                            <td>Max Verstappen</td>
+                            <td>7 races</td>
+                            <td>6 races (2023)</td>
+                        </tr>
+                        <tr>
+                            <td>Youngest pole sitter</td>
+                            <td>Oscar Piastri</td>
+                            <td>23y 144d</td>
+                            <td>Previous: 23y 151d</td>
+                        </tr>
+                        <tr>
+                            <td>Most points in a season</td>
+                            <td>Max Verstappen</td>
+                            <td>575 points</td>
+                            <td>549 points (2023)</td>
+                        </tr>
+                        <tr>
+                            <td>Constructor championship margin</td>
+                            <td>McLaren</td>
+                            <td>20 points</td>
+                            <td>Closest since 2021</td>
+                        </tr>
+                        <tr>
+                            <td>Fastest lap bonus points</td>
+                            <td>Lando Norris</td>
+                            <td>5 fastest laps</td>
+                            <td>Most by non-champion</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Lap Record Holder</h3>
+                    <div class="stat-value">1:18.525</div>
+                    <div class="stat-label">Lewis Hamilton • Silverstone 2024</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Most Overtakes</h3>
+                    <div class="stat-value">47</div>
+                    <div class="stat-label">Fernando Alonso • Season Total</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Best Comeback</h3>
+                    <div class="stat-value">P20 → P3</div>
+                    <div class="stat-label">Lewis Hamilton • Brazil GP</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Consistency King</h3>
+                    <div class="stat-value">95.8%</div>
+                    <div class="stat-label">Max Verstappen • Finish Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-banner">
+            <p>Advertisement Space - Premium Statistics Analytics Tools</p>
+        </div>
+    </main>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.stats-tab-btn');
+            const tabContents = document.querySelectorAll('.stats-tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Series selection functionality
+            const seriesSelect = document.getElementById('series-select');
+            const seasonSelect = document.getElementById('season-select');
+            const statTypeSelect = document.getElementById('stat-type');
+
+            function updateStats() {
+                const series = seriesSelect.value;
+                const season = seasonSelect.value;
+                const statType = statTypeSelect.value;
+                
+                // In a real implementation, this would fetch new data based on selections
+                console.log(`Loading ${statType} stats for ${series} ${season}`);
+                
+                // Simulate data loading with visual feedback
+                const statCards = document.querySelectorAll('.stat-card');
+                statCards.forEach(card => {
+                    card.style.opacity = '0.6';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 500);
+                });
+            }
+
+            seriesSelect.addEventListener('change', updateStats);
+            seasonSelect.addEventListener('change', updateStats);
+            statTypeSelect.addEventListener('change', updateStats);
+
+            // Animate progress bars on load
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 300);
+
+            // Add hover effects to stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Simulated real-time data updates
+        function simulateDataUpdate() {
+            const statValues = document.querySelectorAll('.stat-value');
+            statValues.forEach(value => {
+                if (!isNaN(parseInt(value.textContent))) {
+                    value.style.color = '#4ecdc4';
+                    setTimeout(() => {
+                        value.style.color = '#fff';
+                    }, 1000);
+                }
+            });
+        }
+
+        // Update data every 30 seconds (in a real app, this would fetch from API)
+        setInterval(simulateDataUpdate, 30000);
+    </script>
+</body>
+</html>

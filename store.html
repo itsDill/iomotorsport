@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - ioMotorsport</title>
+    <meta name="description" content="Shop premium motorsport merchandise, collectibles, and racing gear. From F1 memorabilia to professional racing equipment - everything for motorsport enthusiasts.">
+    <style>
+        /* Global Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .cart-icon {
+            position: relative;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            color: #4ecdc4;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: #4ecdc4;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Store Hero */
+        .store-hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 12px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M0,500 Q250,300 500,500 T1000,500 V0 H0 Z" fill="rgba(78,205,196,0.1)"/></svg>');
+            pointer-events: none;
+        }
+
+        .store-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .store-hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            color: #4ecdc4;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #4ecdc4;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .search-sort {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: #999;
+        }
+
+        .search-box:focus {
+            border-color: #4ecdc4;
+            box-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+        }
+
+        .sort-select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sort-select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+            border-color: rgba(78, 205, 196, 0.3);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(0, 0, 0, 0.3);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .product-badge.new {
+            background: #4ecdc4;
+            color: #000;
+        }
+
+        .product-badge.sale {
+            background: #ff6b6b;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1rem;
+        }
+
+        .rating-count {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            border: none;
+            color: #000;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .add-to-cart:active {
+            transform: translateY(0);
+        }
+
+        /* Featured Section */
+        .featured-section {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .featured-title {
+            font-size: 2.5rem;
+            color: #4ecdc4;
+            margin-bottom: 2rem;
+        }
+
+        .featured-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            color: #4ecdc4;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .qty-btn {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            color: #4ecdc4;
+            width: 25px;
+            height: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .cart-total {
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            color: #000;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(78, 205, 196, 0.3);
+            border-top: 3px solid #4ecdc4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .store-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .category-filters {
+                justify-content: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4ecdc4;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 2000;
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ioMotorsport</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stats.html">Statistics</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="store.html" class="active">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="store-hero">
+            <h1>Motorsport Store</h1>
+            <p>Premium racing merchandise, collectibles, and professional equipment. Everything for the passionate motorsport enthusiast.</p>
+        </section>
+
+        <div class="filter-bar">
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="apparel">Apparel</button>
+                <button class="filter-btn" data-category="collectibles">Collectibles</button>
+                <button class="filter-btn" data-category="equipment">Equipment</button>
+                <button class="filter-btn" data-category="accessories">Accessories</button>
+                <button class="filter-btn" data-category="memorabilia">Memorabilia</button>
+            </div>
+            <div class="search-sort">
+                <input type="text" class="search-box" placeholder="Search products..." id="searchBox">
+                <select class="sort-select" id="sortSelect">
+                    <option value="name">Sort by Name</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        </div>
+
+        <section class="featured-section">
+            <h2 class="featured-title">Featured Products</h2>
+            <div class="featured-products">
+                <div class="product-card" data-category="memorabilia">
+                    <div class="product-image">🏆</div>
+                    <div class="product-badge new">Limited Edition</div>
+                    <div class="product-info">
+                        <div class="product-category">Memorabilia</div>
+                        <h3 class="product-title">Ayrton Senna Replica Helmet</h3>
+                        <p class="product-description">Official replica of Senna's iconic 1991 McLaren helmet. Museum quality with certificate of authenticity.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(127 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">$899.99</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('senna-helmet', 'Ayrton Senna Replica Helmet', 899.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="apparel">
+                    <div class="product-image">👕</div>
+                    <div class="product-badge sale">30% Off</div>
+                    <div class="product-info">
+                        <div class="product-category">Apparel</div>
+                        <h3 class="product-title">McLaren Team Polo Shirt</h3>
+                        <p class="product-description">Official McLaren Racing team polo shirt. Premium cotton blend with embroidered team logos.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(89 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">$69.99</span>
+                            <span class="original-price">$99.99</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('mclaren-polo', 'McLaren Team Polo Shirt', 69.99)">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="equipment">
+                    <div class="product-image">🏁</div>
+                    <div class="product-info">
+                        <div class="product-category">Equipment</div>
+                        <h3 class="product-title">Professional Racing Gloves</h3>
+                        <p class="product-description">FIA approved racing gloves with flame-resistant Nomex construction and superior grip technology.</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(203 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">$249.99</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('racing-gloves', 'Professional Racing Gloves', 249.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be populated here -->
+        </div>
+        <div class="cart-total">
+            <div class="total-price" id="totalPrice">Total: $0.00</div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 'f1-cap',
+                category: 'apparel',
+                title: 'Formula 1 Racing Cap',
+                description: 'Official F1 cap with adjustable strap and embroidered logos.',
+                price: 34.99,
+                rating: 4,
+                reviews: 156,
+                image: '🧢',
+                badge: null
+            },
+            {
+                id: 'ferrari-model',
+                category: 'collectibles',
+                title: 'Ferrari F2004 Die-Cast Model',
+                description: '1:18 scale precision die-cast model of Schumacher\'s championship winning car.',
+                price: 189.99,
+                rating: 5,
+                reviews: 78,
+                image: '🏎️',
+                badge: 'limited'
+            },
+            {
+                id: 'racing-suit',
+                category: 'equipment',
+                title: 'FIA Approved Racing Suit',
+                description: 'Professional grade racing suit with multiple layers of fire protection.',
+                price: 1299.99,
+                rating: 5,
+                reviews: 45,
+                image: '🏁',
+                badge: 'professional'
+            },
+            {
+                id: 'leather-jacket',
+                category: 'apparel',
+                title: 'Vintage Racing Leather Jacket',
+                description: 'Premium leather jacket inspired by classic motorsport style.',
+                price: 299.99,
+                originalPrice: 399.99,
+                rating: 4,
+                reviews: 92,
+                image: '🧥',
+                badge: 'sale'
+            },
+            {
+                id: 'steering-wheel',
+                category: 'collectibles',
+                title: 'F1 Steering Wheel Replica',
+                description: 'Detailed replica of modern F1 steering wheel with working buttons.',
+                price: 449.99,
+                rating: 5,
+                reviews: 34,
+                image: '⚙️',
+                badge: 'new'
+            },
+            {
+                id: 'racing-shoes',
+                category: 'equipment',
+                title: 'Professional Racing Shoes',
+                description: 'Lightweight racing shoes with fire-resistant materials and optimal pedal feel.',
+                price: 199.99,
+                rating: 4,
+                reviews: 167,
+                image: '👞',
+                badge: null
+            },
+            {
+                id: 'team-hoodie',
+                category: 'apparel',
+                title: 'Red Bull Racing Hoodie',
+                description: 'Official team hoodie with premium fleece lining and team graphics.',
+                price: 89.99,
+                rating: 4,
+                reviews: 234,
+                image: '👘',
+                badge: null
+            },
+            {
+                id: 'vintage-poster',
+                category: 'memorabilia',
+                title: 'Monaco GP 1984 Vintage Poster',
+                description: 'Original race poster from the legendary 1984 Monaco Grand Prix.',
+                price: 149.99,
+                rating: 5,
+                reviews: 67,
+                image: '🖼️',
+                badge: 'vintage'
+            },
+            {
+                id: 'helmet-bag',
+                category: 'accessories',
+                title: 'Professional Helmet Bag',
+                description: 'Padded helmet bag with ventilation system and carrying strap.',
+                price: 49.99,
+                rating: 4,
+                reviews: 123,
+                image: '🎒',
+                badge: null
+            },
+            {
+                id: 'race-watch',
+                category: 'accessories',
+                title: 'TAG Heuer Formula 1 Watch',
+                description: 'Professional chronograph watch with racing-inspired design.',
+                price: 1199.99,
+                rating: 5,
+                reviews: 89,
+                image: '⌚',
+                badge: 'luxury'
+            },
+            {
+                id: 'signed-photo',
+                category: 'memorabilia',
+                title: 'Lewis Hamilton Signed Photo',
+                description: 'Authenticated signed photograph from the 2021 championship season.',
+                price: 299.99,
+                rating: 5,
+                reviews: 56,
+                image: '📸',
+                badge: 'authenticated'
+            },
+            {
+                id: 'racing-seat',
+                category: 'equipment',
+                title: 'Recaro Racing Seat',
+                description: 'Professional racing seat with FIA approval and custom mounting hardware.',
+                price: 899.99,
+                rating: 5,
+                reviews: 34,
+                image: '💺',
+                badge: 'professional'
+            }
+        ];
+
+        // Cart functionality
+        let cart = [];
+        let currentFilter = 'all';
+        let currentSort = 'name';
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            
+            let filteredProducts = products.filter(product => {
+                const matchesCategory = currentFilter === 'all' || product.category === currentFilter;
+                const matchesSearch = product.title.toLowerCase().includes(searchTerm) || 
+                                    product.description.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            // Sort products
+            filteredProducts.sort((a, b) => {
+                switch(currentSort) {
+                    case 'price-low':
+                        return a.price - b.price;
+                    case 'price-high':
+                        return b.price - a.price;
+                    case 'rating':
+                        return b.rating - a.rating;
+                    case 'name':
+                    default:
+                        return a.title.localeCompare(b.title);
+                }
+            });
+
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-image">${product.image}</div>
+                    ${product.badge ? `<div class="product-badge ${product.badge === 'sale' ? 'sale' : 'new'}">${getBadgeText(product.badge)}</div>` : ''}
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-rating">
+                            <span class="stars">${'★'.repeat(product.rating)}${'☆'.repeat(5-product.rating)}</span>
+                            <span class="rating-count">(${product.reviews} reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">$${product.price.toFixed(2)}</span>
+                            ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('${product.id}', '${product.title}', ${product.price})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getBadgeText(badge) {
+            const badges = {
+                'sale': '30% Off',
+                'new': 'New',
+                'limited': 'Limited Edition',
+                'professional': 'Professional',
+                'vintage': 'Vintage',
+                'luxury': 'Luxury',
+                'authenticated': 'Authenticated'
+            };
+            return badges[badge] || 'Special';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            
+            // Category filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.category;
+                    renderProducts();
+                });
+            });
+
+            // Search functionality
+            document.getElementById('searchBox').addEventListener('input', renderProducts);
+
+            // Sort functionality
+            document.getElementById('sortSelect').addEventListener('change', function() {
+                currentSort = this.value;
+                renderProducts();
+            });
+        });
+
+        function addToCart(id, title, price) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    title: title,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCartUI();
+            showNotification(`${title} added to cart!`);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            totalPrice.textContent = `Total: $${total.toFixed(2)}`;
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image"></div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+                            <button class="qty-btn" onclick="removeFromCart('${item.id}')" style="margin-left: 10px; background: #ff6b6b; border-color: #ff6b6b;">×</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+            
+            showNotification('Redirecting to checkout...');
+            // Here you would typically redirect to a checkout page
+            setTimeout(() => {
+                cart = [];
+                updateCartUI();
+                toggleCart();
+                showNotification('Thank you for your purchase!');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
