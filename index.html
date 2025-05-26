@@ -1,942 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-SLERGKLNWP');
-        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your ultimate guide to motorsport tourism in Thailand. Discover Thailand Super Series events, race tracks, experiences, and more.">
-    <meta name="keywords" content="Thailand motorsport, Thailand Super Series, TSS, motorsport tourism, Thailand race tracks, Thailand racing events, Thai drift events, Buriram racing">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://iomotosport.com/">
-    <meta property="og:title" content="IOMotoSport - Your Guide to Motorsport Tourism in Thailand">
-    <meta property="og:description" content="Discover the thrilling world of Thai motorsports, upcoming races, championship events, and the best ways to experience speed and adrenaline in the Land of Smiles.">
-    <meta property="og:image" content="images/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://iomotosport.com/">
-    <meta property="twitter:title" content="IOMotoSport - Your Guide to Motorsport Tourism in Thailand">
-    <meta property="twitter:description" content="Discover the thrilling world of Thai motorsports, upcoming races, championship events, and the best ways to experience speed and adrenaline in the Land of Smiles.">
-    <meta property="twitter:image" content="images/og-image.jpg">
-
-    <!-- Canonical URL -->
-    <meta rel="canonical" href="https://iomotosport.com/">
-
-    <title>IOMotoSport - Your Guide to Motorsport Tourism in Thailand</title>
-    <!-- iOS Home Screen App Icon -->
-    <link rel="apple-touch-icon" href="images/Wedding Logo V1.0.png">
-    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
-    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
-    <link rel="apple-touch-icon" sizes="images/Wedding Logo V1.0.png">
-
-    <!-- iOS App Settings -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="iO Innovation">
-
-    <!-- Standard Favicon -->
-    <link rel="icon" type="image/png" href="images/Wedding Logo V1.0.png">
-
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>ioMotorsport - Your Ultimate Motorsports Data Hub</title>
+    <meta name="description" content="Complete motorsports data for Formula 1, WRC, and IndyCar. Live standings, race results, schedules, and comprehensive statistics.">
     <style>
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --light-bg: #f8f9fa;
-            --light-text: #212529;
-            --dark-bg: #121212;
-            --dark-text: #f1faee;
-            --accent: #457b9d;
-            --header-light: #1d3557;
-            --header-dark: #0d1b2a;
-        }
-
-        /* Initial theme setup */
-        body {
-            --bg-color: var(--light-bg);
-            --text-color: var(--light-text);
-            --header-bg: var(--header-light);
-        }
-
-        body.dark-mode {
-            --bg-color: var(--dark-bg);
-            --text-color: var(--dark-text);
-            --header-bg: var(--header-dark);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
         }
 
-        /* Header and Navigation */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
         header {
-            background-color: var(--header-bg);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: background-color 0.3s;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--primary);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            align-items: center;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2rem;
         }
 
         .nav-links a {
+            color: #fff;
             text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Language and Theme Toggle */
-        .utility-controls {
-            display: flex;
-            align-items: center;
-        }
-
-        .language-selector {
-            margin-right: 1rem;
-            position: relative;
-        }
-
-        .language-selector select {
-            background-color: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.3rem 0.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .language-selector select option {
-            background-color: var(--secondary);
-            color: white;
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 40px;
-            height: 20px;
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-
-        .toggle-circle {
-            width: 16px;
-            height: 16px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            transition: transform 0.3s;
-        }
-
-        body.dark-mode .toggle-circle {
-            transform: translateX(20px);
-        }
-
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-        }
-
-        .bar {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 5px 0;
-            transition: 0.4s;
+        .nav-links a:hover, .nav-links a.active {
+            color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Hole 1 80 yards.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
             text-align: center;
-            padding: 8rem 1rem 6rem;
-            margin-top: 0;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 4rem 0;
+            background: radial-gradient(circle at center, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
+            color: #ccc;
+            max-width: 600px;
             margin: 0 auto 2rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: #c1121f;
-        }
-
-        /* Featured Content */
-        .section {
-            padding: 5rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
-            color: var(--text-color);
-        }
-
-        .section-title span {
-            color: var(--primary);
-        }
-
-        /* Features Grid */
-        .features-grid {
+        /* Series Cards */
+        .series-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin: 3rem 0;
         }
 
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .dark-mode .feature-card {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .feature-content {
-            padding: 1.5rem;
-        }
-
-        .feature-content h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-        }
-
-        .feature-content p {
-            margin-bottom: 1.2rem;
-            color: var(--text-color);
-            opacity: 0.9;
-        }
-
-        .read-more {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .read-more::after {
-            content: "→";
-            margin-left: 0.3rem;
-            transition: transform 0.3s;
-        }
-
-        .read-more:hover::after {
-            transform: translateX(3px);
-        }
-
-        /* Events Section */
-        .events-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .event-card {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            transition: transform 0.3s;
-        }
-
-        .dark-mode .event-card {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-icon {
-            height: 180px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 5rem;
-            background-color: var(--secondary);
-            color: white;
-            opacity: 0.9;
-        }
-
-        .event-content {
-            padding: 1.2rem;
-        }
-
-        .event-date {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-content h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .event-location {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-
-        .event-location i {
-            margin-right: 5px;
-        }
-
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            transition: transform 0.3s;
-        }
-
-        .dark-mode .blog-card {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-image {
-            height: 180px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 1.2rem;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--primary);
-            font-size: 0.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .blog-content h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .blog-excerpt {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-
-        /* Ad Section */
-        .ad-section {
-            background-color: rgba(69, 123, 157, 0.1);
-            padding: 3rem 1rem;
-            text-align: center;
-        }
-
-        .dark-mode .ad-section {
-            background-color: rgba(69, 123, 157, 0.05);
-        }
-
-        .ad-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .ad-slot {
-            background-color: white;
-            border-radius: 8px;
+        .series-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
             padding: 2rem;
-            height: 250px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .series-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(78, 205, 196, 0.5);
+        }
+
+        .series-card.active {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .series-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
-        .dark-mode .ad-slot {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .ad-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .series-card h3 {
             margin-bottom: 0.5rem;
-            color: var(--text-color);
-            opacity: 0.6;
+            color: #4ecdc4;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 3rem 1rem;
+        /* Data Sections */
+        .data-section {
+            margin: 3rem 0;
+            display: none;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+        .data-section.active {
+            display: block;
         }
 
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .social-links {
+        .data-tabs {
             display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: #4ecdc4;
+            border-color: #4ecdc4;
+            color: #000;
+        }
+
+        .data-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 1rem;
         }
 
-        .social-link {
-            margin-right: 1rem;
-            color: white;
-            text-decoration: none;
-            width: 40px;
-            height: 40px;
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: rgba(78, 205, 196, 0.1);
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Position indicators */
+        .position {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .position.p1 { background: #ffd700; color: #000; }
+        .position.p2 { background: #c0c0c0; color: #000; }
+        .position.p3 { background: #cd7f32; color: #000; }
+        .position.points { background: #4ecdc4; color: #000; }
+        .position.other { background: rgba(255, 255, 255, 0.2); }
+
+        /* Ad Placeholders */
+        .ad-banner {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: #999;
+        }
+
+        .ad-sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s;
-        }
-
-        .social-link:hover {
-            background-color: var(--primary);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .ad-container {
-                grid-template-columns: 1fr;
-            }
-
-            .advertise-stats {
-                gap: 1.5rem;
-            }
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(78, 205, 196, 0.3);
+            border-radius: 50%;
+            border-top-color: #4ecdc4;
+            animation: spin 1s ease-in-out infinite;
         }
 
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: var(--secondary);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 2rem 0;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                margin: 1.5rem 0;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .mobile-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-menu.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .mobile-menu.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .stat-item {
-                flex-basis: 40%;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .advertise-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .ad-sidebar { display: none; }
+            .series-grid { grid-template-columns: 1fr; }
+            .data-tabs { justify-content: center; }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html" class="logo">IO<span>MotoSport</span></a>
-            <div class="utility-controls">
-                <div class="language-selector">
-                    <select id="language-select">
-                        <option value="en">EN</option>
-                        <option value="th">TH</option>
-                    </select>
-                </div>
-                <button class="theme-toggle" id="theme-toggle">
-                    <div class="toggle-circle"></div>
-                </button>
-            </div>
+        <nav class="container">
+            <div class="logo">ioMotorsport</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active" data-en="Home" data-th="หน้าแรก">Home</a></li>
-                <li><a href="tss.html" data-en="Thailand Super Series" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์">Thailand Super Series</a></li>
-                <li><a href="events.html" data-en="Events" data-th="กิจกรรม">Events</a></li>
-                <li><a href="tracks.html" data-en="Tracks" data-th="สนามแข่ง">Tracks</a></li>
-                <li><a href="blog.html" data-en="Blog" data-th="บล็อก">Blog</a></li>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="F1">F1</a></li>
+                <li><a href="WRC">WRC</a></li>
+                <li><a href="Indycar">Indycar</a></li>
+                <li><a href="Stats">Statistics</a></li>
+                <li><a href="Tools">Tools</a></li>
+                <li><a href="History">History</a></li>
+                <li><a href="Store">Store</a></li>
+                <li><a href="Contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
         </nav>
     </header>
 
-    <main>
+    <main class="container">
         <section class="hero">
-            <div class="hero-container">
-                <h1 data-en="Your Ultimate Guide to Motorsport Tourism in Thailand" data-th="คู่มือท่องเที่ยวมอเตอร์สปอร์ตในประเทศไทย">Your Ultimate Guide to Motorsport Tourism in Thailand</h1>
-                <p data-en="Discover the thrilling world of Thai motorsports, upcoming races, championship events, and the best ways to experience speed and adrenaline in the Land of Smiles." data-th="ค้นพบโลกแห่งความตื่นเต้นของมอเตอร์สปอร์ตไทย การแข่งขันที่กำลังจะมาถึง รายการแข่งขันชิงแชมป์ และวิธีที่ดีที่สุดในการสัมผัสความเร็วและอะดรีนาลีนในดินแดนแห่งรอยยิ้ม">Discover the thrilling world of Thai motorsports, upcoming races, championship events, and the best ways to experience speed and adrenaline in the Land of Smiles.</p>
-                <a href="#" class="cta-button" data-en="Explore Events" data-th="สำรวจกิจกรรม">Explore Events</a>
+            <h1>Welcome to ioMotorsport</h1>
+            <p>Your ultimate destination for comprehensive motorsports data. Track Formula 1, WRC, and IndyCar with real-time standings, race results, and detailed statistics.</p>
+        </section>
+
+        <div class="ad-banner">
+            <p>Advertisement Space - 728x90</p>
+        </div>
+
+        <section class="series-grid">
+            <div class="series-card active" data-series="f1">
+                <div class="series-icon">F1</div>
+                <h3>Formula 1</h3>
+                <p>The pinnacle of motorsport with cutting-edge technology and the world's best drivers.</p>
+            </div>
+            
+            <div class="series-card" data-series="wrc">
+                <div class="series-icon">WRC</div>
+                <h3>World Rally Championship</h3>
+                <p>High-speed action across diverse terrains and challenging conditions worldwide.</p>
+            </div>
+            
+            <div class="series-card" data-series="indycar">
+                <div class="series-icon">IC</div>
+                <h3>IndyCar</h3>
+                <p>America's premier open-wheel racing series featuring the iconic Indianapolis 500.</p>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title" data-en="Featured Experiences" data-th="ประสบการณ์ แนะนำ">Featured <span>Experiences</span></h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="images/2.png" alt="Thailand Super Series" class="feature-image">
-                    <div class="feature-content">
-                        <h3 data-en="Thailand Super Series" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์">Thailand Super Series</h3>
-                        <p data-en="Experience Thailand's premier motorsport championship featuring GT3, GTM, and touring cars competing across the country's best circuits." data-th="สัมผัสการแข่งขันมอเตอร์สปอร์ตชั้นนำของประเทศไทยที่มีรถ GT3, GTM และรถทัวริ่งแข่งขันในสนามแข่งที่ดีที่สุดของประเทศ">Experience Thailand's premier motorsport championship featuring GT3, GTM, and touring cars competing across the country's best circuits.</p>
-                        <a href="#" class="read-more" data-en="Learn More" data-th="เรียนรู้เพิ่มเติม">Learn More</a>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <img src="images/1.png" alt="VIP Race Packages" class="feature-image">
-                    <div class="feature-content">
-                        <h3 data-en="Motogp" data-th="แพ็คเกจ VIP">VIP Race Packages</h3>
-                        <p data-en="Get exclusive access to paddocks, team garages, and premium viewing areas with our tailored motorsport experiences." data-th="รับสิทธิ์พิเศษในการเข้าถึงพื้นที่แพดด็อก โรงรถทีม และพื้นที่ชมวิวพรีเมียมด้วยประสบการณ์มอเตอร์สปอร์ต VIP ที่ปรับแต่งของเรา">Get exclusive access to paddocks, team garages, and premium viewing areas with our tailored VIP motorsport experiences.</p>
-                        <a href="#" class="read-more" data-en="View Packages" data-th="ดูแพ็คเกจ">View Packages</a>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <img src="images/3.png" alt="Track Day Experiences" class="feature-image">
-                    <div class="feature-content">
-                        <h3 data-en="Track Day Experiences" data-th="ประสบการณ์แทร็กเดย์">Track Day Experiences</h3>
-                        <p data-en="Feel the adrenaline rush behind the wheel at Thailand's world-class circuits with our beginner-friendly track day experiences." data-th="สัมผัสความตื่นเต้นเร้าใจหลังพวงมาลัยที่สนามแข่งระดับโลกของประเทศไทยด้วยประสบการณ์แทร็กเดย์ที่เป็นมิตรกับผู้เริ่มต้น">Feel the adrenaline rush behind the wheel at Thailand's world-class circuits with our beginner-friendly track day experiences.</p>
-                        <a href="#" class="read-more" data-en="Book a Track Day" data-th="จองแทร็กเดย์">Book a Track Day</a>
-                    </div>
-                </div>
+        <!-- F1 Data Section -->
+        <section id="f1-data" class="data-section active">
+            <h2>Formula 1 - 2024 Season</h2>
+            
+            <div class="data-tabs">
+                <button class="tab-btn active" data-tab="f1-standings">Driver Standings</button>
+                <button class="tab-btn" data-tab="f1-constructors">Constructor Standings</button>
+                <button class="tab-btn" data-tab="f1-calendar">Race Calendar</button>
+                <button class="tab-btn" data-tab="f1-results">Latest Results</button>
+            </div>
+
+            <div id="f1-standings" class="data-content">
+                <h3>2024 Driver Championship Standings</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Wins</th>
+                            <th>Podiums</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>Max Verstappen</td>
+                            <td>Red Bull Racing</td>
+                            <td>575</td>
+                            <td>19</td>
+                            <td>21</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>Lando Norris</td>
+                            <td>McLaren</td>
+                            <td>374</td>
+                            <td>3</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>Charles Leclerc</td>
+                            <td>Ferrari</td>
+                            <td>356</td>
+                            <td>3</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position points">4</span></td>
+                            <td>Oscar Piastri</td>
+                            <td>McLaren</td>
+                            <td>292</td>
+                            <td>2</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position points">5</span></td>
+                            <td>Carlos Sainz</td>
+                            <td>Ferrari</td>
+                            <td>290</td>
+                            <td>2</td>
+                            <td>6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="f1-constructors" class="data-content" style="display: none;">
+                <h3>2024 Constructor Championship Standings</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Wins</th>
+                            <th>Podiums</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>McLaren</td>
+                            <td>666</td>
+                            <td>5</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>Ferrari</td>
+                            <td>646</td>
+                            <td>5</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>Red Bull Racing</td>
+                            <td>589</td>
+                            <td>19</td>
+                            <td>22</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="f1-calendar" class="data-content" style="display: none;">
+                <h3>2024 Race Calendar</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Round</th>
+                            <th>Grand Prix</th>
+                            <th>Circuit</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22</td>
+                            <td>Las Vegas GP</td>
+                            <td>Las Vegas Street Circuit</td>
+                            <td>Nov 23, 2024</td>
+                            <td>✅ Completed</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Qatar GP</td>
+                            <td>Lusail International Circuit</td>
+                            <td>Dec 1, 2024</td>
+                            <td>✅ Completed</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>Abu Dhabi GP</td>
+                            <td>Yas Marina Circuit</td>
+                            <td>Dec 8, 2024</td>
+                            <td>✅ Season Finale</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="f1-results" class="data-content" style="display: none;">
+                <h3>Abu Dhabi GP - Race Results</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Time</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>Lando Norris</td>
+                            <td>McLaren</td>
+                            <td>1:26:33.291</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>Carlos Sainz</td>
+                            <td>Ferrari</td>
+                            <td>+5.832s</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>Charles Leclerc</td>
+                            <td>Ferrari</td>
+                            <td>+31.928s</td>
+                            <td>15</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title" data-en="Upcoming <span>Events</span>" data-th="กิจกรรม <span>ที่กำลังจะมาถึง</span>">Upcoming <span>Events</span></h2>
-            <div class="events-list">
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-car-side"></i>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date" data-en="May 15-17, 2025" data-th="15-17 พฤษภาคม 2568">May 15-17, 2025</div>
-                        <h3 data-en="Thailand Super Series Round 3" data-th="ไทยแลนด์ซุปเปอร์ซีรีส์ สนามที่ 3">Thailand Super Series Round 3</h3>
-                        <div class="event-location" data-en="Chang International Circuit, Buriram" data-th="สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต, บุรีรัมย์"><i class="fas fa-map-marker-alt"></i> Chang International Circuit, Buriram</div>
-                        <a href="#" class="read-more" data-en="Event Details" data-th="รายละเอียดกิจกรรม">Event Details</a>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-flag-checkered"></i>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date" data-en="June 5-6, 2025" data-th="5-6 มิถุนายน 2568">June 5-6, 2025</div>
-                        <h3 data-en="Bangkok Midnight Grand Prix" data-th="แบงค็อก มิดไนท์ กรังด์ปรีซ์">Bangkok Midnight Grand Prix</h3>
-                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> Ratchadamnoen Circuit, Bangkok</div>
-                        <a href="#" class="read-more">Event Details</a>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-motorcycle"></i>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date">July 21-22, 2025</div>
-                        <h3>Bangsaen Street Circuit Festival</h3>
-                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> Bangsaen Street Circuit, Chonburi</div>
-                        <a href="#" class="read-more">Event Details</a>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date">August 10, 2025</div>
-                        <h3>Drift Masters Thailand</h3>
-                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> Impact Speed Park, Bangkok</div>
-                        <a href="#" class="read-more">Event Details</a>
-                    </div>
-                </div>
+        <!-- WRC Data Section -->
+        <section id="wrc-data" class="data-section">
+            <h2>World Rally Championship - 2024 Season</h2>
+            
+            <div class="data-tabs">
+                <button class="tab-btn active" data-tab="wrc-standings">Driver Standings</button>
+                <button class="tab-btn" data-tab="wrc-calendar">Rally Calendar</button>
+                <button class="tab-btn" data-tab="wrc-results">Latest Results</button>
+            </div>
+
+            <div id="wrc-standings" class="data-content">
+                <h3>2024 WRC Driver Championship</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Co-driver</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>Thierry Neuville</td>
+                            <td>Martijn Wydaeghe</td>
+                            <td>Hyundai i20 N Rally1</td>
+                            <td>242</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>Ott Tänak</td>
+                            <td>Martin Järveoja</td>
+                            <td>Hyundai i20 N Rally1</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>Elfyn Evans</td>
+                            <td>Scott Martin</td>
+                            <td>Toyota GR Yaris Rally1</td>
+                            <td>192</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="wrc-calendar" class="data-content" style="display: none;">
+                <h3>2024 WRC Calendar</h3>
+                <p>13-round WRC championship featuring diverse terrains from snow to gravel to tarmac.</p>
+            </div>
+
+            <div id="wrc-results" class="data-content" style="display: none;">
+                <h3>Rally Japan - Final Results</h3>
+                <p>Latest rally results and stage times will be displayed here.</p>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title">Latest <span>Motorsport News</span></h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <img src="/api/placeholder/400/250" alt="TSS Champions" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>April 28, 2025</span>
-                            <span>TSS News</span>
-                        </div>
-                        <h3>2025 Thailand Super Series Championship Contenders Revealed</h3>
-                        <p class="blog-excerpt">With the 2025 season underway, early favorites emerge in Thailand's premier motorsport championship.</p>
-                        <a href="#" class="read-more">Read Article</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <img src="/api/placeholder/400/250" alt="Formula 4 Thailand" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>April 20, 2025</span>
-                            <span>F4 Thailand</span>
-                        </div>
-                        <h3>Young Thai Racer Makes History in Formula 4 Thailand</h3>
-                        <p class="blog-excerpt">15-year-old prodigy becomes youngest-ever race winner in Formula 4 Thailand's history.</p>
-                        <a href="#" class="read-more">Read Article</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <img src="/api/placeholder/400/250" alt="Bangsaen Street Circuit" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>April 15, 2025</span>
-                            <span>Circuit News</span>
-                        </div>
-                        <h3>Bangsaen Street Circuit Upgrades Announced for 2025 Festival</h3>
-                        <p class="blog-excerpt">Thailand's most famous street circuit undergoes significant safety and infrastructure improvements.</p>
-                        <a href="#" class="read-more">Read Article</a>
-                    </div>
-                </div>
+        <!-- IndyCar Data Section -->
+        <section id="indycar-data" class="data-section">
+            <h2>IndyCar Series - 2024 Season</h2>
+            
+            <div class="data-tabs">
+                <button class="tab-btn active" data-tab="indycar-standings">Driver Standings</button>
+                <button class="tab-btn" data-tab="indycar-calendar">Race Calendar</button>
+                <button class="tab-btn" data-tab="indycar-results">Latest Results</button>
+            </div>
+
+            <div id="indycar-standings" class="data-content">
+                <h3>2024 IndyCar Series Championship</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Wins</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>Alex Palou</td>
+                            <td>Chip Ganassi Racing</td>
+                            <td>544</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>Will Power</td>
+                            <td>Team Penske</td>
+                            <td>495</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>Colton Herta</td>
+                            <td>Andretti Global</td>
+                            <td>449</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="indycar-calendar" class="data-content" style="display: none;">
+                <h3>2024 IndyCar Calendar</h3>
+                <p>17-race IndyCar Series schedule including the Indianapolis 500.</p>
+            </div>
+
+            <div id="indycar-results" class="data-content" style="display: none;">
+                <h3>Latest IndyCar Results</h3>
+                <p>Most recent race results and championship implications.</p>
             </div>
         </section>
 
-        <section class="ad-section">
-            <div class="ad-container">
-                <div class="ad-slot">
-                    <div class="ad-label">Sponsored Content</div>
-                    <!-- Ad content would go here -->
-                    <h3>Your Ad Could Be Here</h3>
-                    <p>Reach motorsport enthusiasts across Thailand</p>
-                </div>
-                <div class="ad-slot">
-                    <div class="ad-label">Sponsored Content</div>
-                    <!-- Ad content would go here -->
-                    <h3>Premium Advertising Space</h3>
-                    <p>Target passionate racing fans and tourists</p>
-                </div>
-            </div>
-        </section>
-
+        <div class="ad-banner">
+            <p>Advertisement Space - 728x90</p>
+        </div>
     </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>IOMotoSport</h3>
-                <p>Your ultimate guide to motorsport tourism in Thailand. Experience the thrill of Thai racing culture with our comprehensive resources.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Thailand Super Series</a></li>
-                    <li><a href="#">Race Calendar</a></li>
-                    <li><a href="#">Track Days</a></li>
-                    <li><a href="#">Motorsport Tourism</a></li>
-                    <li><a href="#">Store</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Tracks & Venues</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Chang International Circuit</a></li>
-                    <li><a href="#">Bangsaen Street Circuit</a></li>
-                    <li><a href="#">Thailand Circuit</a></li>
-                    <li><a href="#">Kaeng Krachan Circuit</a></li>
-                    <li><a href="#">Bira International Circuit</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <ul class="footer-links">
-                    <li><i class="fas fa-envelope"></i> info@iomotosport.com</li>
-                    <li><i class="fas fa-phone"></i> +66 (0) 2 123 4567</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Bangkok, Thailand</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 IOMotoSport. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div class="ad-sidebar">
+        <p>Sidebar Ad<br>160x600</p>
+    </div>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+        // Series switching
+        const seriesCards = document.querySelectorAll('.series-card');
+        const dataSections = document.querySelectorAll('.data-section');
 
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-
-        // Check for stored theme preference or use system preference
-        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme === 'dark' || (!storedTheme && prefersDarkMode)) {
-            document.body.classList.add('dark-mode');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-        });
-
-        // Language Switcher
-        const languageSelect = document.getElementById('language-select');
-
-        // Check for stored language preference
-        const storedLanguage = localStorage.getItem('language') || 'en';
-        languageSelect.value = storedLanguage;
-
-        // Apply stored language on page load
-        if (storedLanguage === 'th') {
-            applyLanguage('th');
-        }
-
-        languageSelect.addEventListener('change', (e) => {
-            const lang = e.target.value;
-            localStorage.setItem('language', lang);
-            applyLanguage(lang);
-        });
-
-        function applyLanguage(lang) {
-            const elements = document.querySelectorAll('[data-' + lang + ']');
-
-            elements.forEach(element => {
-                const translation = element.getAttribute('data-' + lang);
-                if (translation) {
-                    // For inputs, set value instead of innerText
-                    if (element.tagName === 'INPUT') {
-                        element.value = translation;
-                    } else {
-                        element.innerText = translation;
+        seriesCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const series = card.dataset.series;
+                
+                // Update active series card
+                seriesCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                
+                // Show corresponding data section
+                dataSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === `${series}-data`) {
+                        section.classList.add('active');
                     }
-                }
+                });
+            });
+        });
+
+        // Tab switching within each series
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-btn')) {
+                const tabId = e.target.dataset.tab;
+                const parentSection = e.target.closest('.data-section');
+                
+                // Update active tab button
+                parentSection.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                
+                // Show corresponding content
+                parentSection.querySelectorAll('.data-content').forEach(content => {
+                    content.style.display = 'none';
+                    if (content.id === tabId) {
+                        content.style.display = 'block';
+                    }
+                });
+            }
+        });
+
+        // Simulate data loading
+        function simulateDataLoading() {
+            const tables = document.querySelectorAll('.data-table tbody');
+            tables.forEach(tbody => {
+                // Add subtle loading animation
+                tbody.style.opacity = '0.7';
+                setTimeout(() => {
+                    tbody.style.opacity = '1';
+                }, 300);
             });
         }
+
+        // Initialize with data loading simulation
+        simulateDataLoading();
+
+        // Navigation highlighting
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
