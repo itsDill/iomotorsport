@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initTabSwitching(document);
     simulateDataLoading();
+    initMobileMenu();
 });
 
 // Export functions for use in other scripts
@@ -90,3 +91,20 @@ window.ioMotorsport = {
     formatTimeDifference,
     addLoadingState
 };
+
+function initMobileMenu() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (!navToggle || !navLinks) return;
+
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // Optional: close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+}
