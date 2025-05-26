@@ -131,16 +131,6 @@ nav {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive Global Styles */
-@media (max-width: 768px) {
-    .nav-links { 
-        display: none; 
-    }
-    .ad-sidebar { 
-        display: none; 
-    }
-}
-
 /* Hamburger styles */
 .nav-toggle {
     display: none;
@@ -184,4 +174,8 @@ nav {
     .nav-links.open {
         display: flex;
     }
+}
+
+nav.container {
+    position: relative;
 }
