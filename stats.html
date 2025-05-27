@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics - ioMotorsport</title>
-    <meta name="description" content="Advanced motorsports statistics and analytics for Formula 1, WRC, and IndyCar. Interactive charts, comparisons, and detailed performance metrics.">
+    <meta name="description" content="Advanced motorsports statistics and analytics for Formula 1 and Formula E. Interactive charts, comparisons, and detailed performance metrics.">
     <style>
         /* Global Reset and Base Styles */
         * {
@@ -183,6 +183,9 @@
             justify-content: center;
             color: #4ecdc4;
             font-size: 1.2rem;
+            text-align: center;
+            flex-direction: column;
+            gap: 10px;
         }
 
         /* Comparison Section */
@@ -344,6 +347,26 @@
             transition: width 0.3s ease;
         }
 
+        /* Series Badge */
+        .series-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .series-badge.f1 {
+            background: linear-gradient(45deg, #dc143c, #ff6b6b);
+            color: white;
+        }
+
+        .series-badge.fe {
+            background: linear-gradient(45deg, #00d4ff, #4ecdc4);
+            color: #000;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -388,7 +411,7 @@
     <main class="container">
         <section class="stats-hero">
             <h1>Advanced Statistics</h1>
-            <p>Deep dive into motorsports data with interactive charts, detailed analytics, and comprehensive performance metrics across Formula 1, WRC, and IndyCar.</p>
+            <p>Deep dive into motorsports data with interactive charts, detailed analytics, and comprehensive performance metrics across Formula 1 and Formula E championships.</p>
         </section>
 
         <div class="stats-controls">
@@ -396,8 +419,7 @@
                 <label for="series-select">Series</label>
                 <select id="series-select">
                     <option value="f1">Formula 1</option>
-                    <option value="wrc">World Rally Championship</option>
-                    <option value="indycar">IndyCar Series</option>
+                    <option value="fe">Formula E</option>
                 </select>
             </div>
             <div class="control-group">
@@ -427,18 +449,18 @@
 
         <!-- Overview Tab -->
         <div id="overview" class="stats-tab-content active">
-            <div class="stats-grid">
+            <div class="stats-grid" id="f1-overview">
                 <div class="stat-card">
-                    <h3>Championship Leader</h3>
+                    <h3>Championship Leader <span class="series-badge f1">F1</span></h3>
                     <div class="stat-value">Max Verstappen</div>
-                    <div class="stat-label">575 Points • 19 Wins</div>
+                    <div class="stat-label">575 Points • 19 Wins • Red Bull Racing</div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 85%"></div>
                     </div>
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Closest Title Fight</h3>
+                    <h3>Championship Gap <span class="series-badge f1">F1</span></h3>
                     <div class="stat-value">201</div>
                     <div class="stat-label">Points Gap • Verstappen leads Norris</div>
                     <div class="progress-bar">
@@ -447,7 +469,7 @@
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Most Wins</h3>
+                    <h3>Most Wins <span class="series-badge f1">F1</span></h3>
                     <div class="stat-value">19</div>
                     <div class="stat-label">Max Verstappen • 79% win rate</div>
                     <div class="progress-bar">
@@ -456,29 +478,29 @@
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Constructor Champion</h3>
+                    <h3>Constructor Champion <span class="series-badge f1">F1</span></h3>
                     <div class="stat-value">McLaren</div>
-                    <div class="stat-label">666 Points • 20-point lead</div>
+                    <div class="stat-label">666 Points • 20-point lead over Red Bull</div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 90%"></div>
                     </div>
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Total Races</h3>
-                    <div class="stat-value">24</div>
-                    <div class="stat-label">Season Completed • 100%</div>
+                    <h3>Formula E Champion <span class="series-badge fe">FE</span></h3>
+                    <div class="stat-value">Pascal Wehrlein</div>
+                    <div class="stat-label">198 Points • TAG Heuer Porsche</div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 100%"></div>
+                        <div class="progress-fill" style="width: 92%"></div>
                     </div>
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Different Winners</h3>
-                    <div class="stat-value">7</div>
-                    <div class="stat-label">Drivers with victories this season</div>
+                    <h3>FE Team Champion <span class="series-badge fe">FE</span></h3>
+                    <div class="stat-value">Jaguar TCS</div>
+                    <div class="stat-label">349 Points • Season 10 Champions</div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 35%"></div>
+                        <div class="progress-fill" style="width: 88%"></div>
                     </div>
                 </div>
             </div>
@@ -486,8 +508,10 @@
             <div class="chart-container">
                 <h3>Championship Points Progression</h3>
                 <div class="chart-placeholder">
-                    Interactive Chart: Points progression throughout the season<br>
-                    (Chart.js visualization would be implemented here)
+                    <div>Interactive Chart: Points progression throughout the season</div>
+                    <div style="font-size: 1rem; opacity: 0.8;">(Chart.js visualization would be implemented here)</div>
+                    <div style="font-size: 0.9rem; margin-top: 10px;">F1: Verstappen vs Norris vs Leclerc</div>
+                    <div style="font-size: 0.9rem;">Formula E: Wehrlein vs Rowland vs Cassidy</div>
                 </div>
             </div>
         </div>
@@ -495,26 +519,32 @@
         <!-- Charts Tab -->
         <div id="charts" class="stats-tab-content">
             <div class="chart-container">
-                <h3>Wins Distribution by Team</h3>
+                <h3>F1 Wins Distribution by Team (2024)</h3>
                 <div class="chart-placeholder">
-                    Pie Chart: Team victory distribution<br>
-                    Red Bull: 19 wins, McLaren: 5 wins, Ferrari: 5 wins
+                    <div>Pie Chart: Team victory distribution</div>
+                    <div style="font-size: 1rem; margin-top: 10px;">Red Bull Racing: 17 wins</div>
+                    <div style="font-size: 1rem;">McLaren: 4 wins</div>
+                    <div style="font-size: 1rem;">Ferrari: 2 wins</div>
+                    <div style="font-size: 1rem;">Mercedes: 1 win</div>
                 </div>
             </div>
 
             <div class="chart-container">
-                <h3>Podium Finishes Comparison</h3>
+                <h3>Formula E Race Winners (Season 10)</h3>
                 <div class="chart-placeholder">
-                    Bar Chart: Podium finishes by driver<br>
-                    Verstappen: 21, Leclerc: 11, Norris: 8, etc.
+                    <div>Bar Chart: Race victories by driver</div>
+                    <div style="font-size: 1rem; margin-top: 10px;">Wehrlein: 4 wins • Rowland: 3 wins</div>
+                    <div style="font-size: 1rem;">Cassidy: 2 wins • Evans: 2 wins</div>
+                    <div style="font-size: 1rem;">Da Costa: 2 wins • Dennis: 1 win</div>
                 </div>
             </div>
 
             <div class="chart-container">
-                <h3>Qualifying vs Race Performance</h3>
+                <h3>Energy Efficiency vs Performance (Formula E)</h3>
                 <div class="chart-placeholder">
-                    Scatter Plot: Average qualifying position vs average race finish<br>
-                    Performance correlation analysis
+                    <div>Scatter Plot: Energy efficiency vs championship points</div>
+                    <div style="font-size: 1rem; margin-top: 10px;">Shows correlation between energy management</div>
+                    <div style="font-size: 1rem;">and championship success in Formula E</div>
                 </div>
             </div>
         </div>
@@ -522,7 +552,7 @@
         <!-- Comparison Tab -->
         <div id="comparison" class="stats-tab-content">
             <div class="comparison-section">
-                <h2>Top 3 Drivers Head-to-Head</h2>
+                <h2>Formula 1 Top 3 Drivers Head-to-Head</h2>
                 <div class="driver-comparison">
                     <div class="driver-card">
                         <h4>Max Verstappen</h4>
@@ -592,11 +622,83 @@
                 </div>
             </div>
 
+            <div class="comparison-section">
+                <h2>Formula E Top 3 Drivers Head-to-Head</h2>
+                <div class="driver-comparison">
+                    <div class="driver-card">
+                        <h4>Pascal Wehrlein</h4>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">198</div>
+                                <div class="driver-stat-label">Points</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">4</div>
+                                <div class="driver-stat-label">Wins</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">8</div>
+                                <div class="driver-stat-label">Podiums</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">3</div>
+                                <div class="driver-stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="driver-card">
+                        <h4>Oliver Rowland</h4>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">156</div>
+                                <div class="driver-stat-label">Points</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">3</div>
+                                <div class="driver-stat-label">Wins</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">6</div>
+                                <div class="driver-stat-label">Podiums</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">4</div>
+                                <div class="driver-stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="driver-card">
+                        <h4>Nick Cassidy</h4>
+                        <div class="driver-stats">
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">142</div>
+                                <div class="driver-stat-label">Points</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">2</div>
+                                <div class="driver-stat-label">Wins</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">5</div>
+                                <div class="driver-stat-label">Podiums</div>
+                            </div>
+                            <div class="driver-stat">
+                                <div class="driver-stat-value">2</div>
+                                <div class="driver-stat-label">Poles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="chart-container">
-                <h3>Head-to-Head Performance Comparison</h3>
+                <h3>Cross-Series Performance Comparison</h3>
                 <div class="chart-placeholder">
-                    Radar Chart: Multi-dimensional performance comparison<br>
-                    Metrics: Speed, Consistency, Qualifying, Race Craft, Overtaking
+                    <div>Radar Chart: Multi-dimensional performance comparison</div>
+                    <div style="font-size: 1rem; margin-top: 10px;">F1 vs Formula E: Speed, Efficiency, Consistency</div>
+                    <div style="font-size: 0.9rem;">Overtaking, Race Craft, Qualifying Performance</div>
                 </div>
             </div>
         </div>
@@ -609,6 +711,7 @@
                     <thead>
                         <tr>
                             <th>Record</th>
+                            <th>Series</th>
                             <th>Driver/Team</th>
                             <th>Value</th>
                             <th>Previous Record</th>
@@ -617,33 +720,45 @@
                     <tbody>
                         <tr>
                             <td>Most consecutive wins</td>
+                            <td><span class="series-badge f1">F1</span></td>
                             <td>Max Verstappen</td>
                             <td>7 races</td>
                             <td>6 races (2023)</td>
                         </tr>
                         <tr>
-                            <td>Youngest pole sitter</td>
-                            <td>Oscar Piastri</td>
-                            <td>23y 144d</td>
-                            <td>Previous: 23y 151d</td>
+                            <td>Energy efficiency record</td>
+                            <td><span class="series-badge fe">FE</span></td>
+                            <td>Pascal Wehrlein</td>
+                            <td>22.5 kWh/100km</td>
+                            <td>Best efficiency in season</td>
                         </tr>
                         <tr>
                             <td>Most points in a season</td>
+                            <td><span class="series-badge f1">F1</span></td>
                             <td>Max Verstappen</td>
                             <td>575 points</td>
                             <td>549 points (2023)</td>
                         </tr>
                         <tr>
-                            <td>Constructor championship margin</td>
-                            <td>McLaren</td>
-                            <td>20 points</td>
-                            <td>Closest since 2021</td>
+                            <td>Formula E championship margin</td>
+                            <td><span class="series-badge fe">FE</span></td>
+                            <td>Pascal Wehrlein</td>
+                            <td>42 points</td>
+                            <td>Dominant season 10 win</td>
                         </tr>
                         <tr>
-                            <td>Fastest lap bonus points</td>
-                            <td>Lando Norris</td>
-                            <td>5 fastest laps</td>
-                            <td>Most by non-champion</td>
+                            <td>Youngest FE race winner</td>
+                            <td><span class="series-badge fe">FE</span></td>
+                            <td>Jake Dennis</td>
+                            <td>28y 145d</td>
+                            <td>São Paulo E-Prix</td>
+                        </tr>
+                        <tr>
+                            <td>F1 Constructor battle</td>
+                            <td><span class="series-badge f1">F1</span></td>
+                            <td>McLaren vs Red Bull</td>
+                            <td>20 points</td>
+                            <td>Closest since 2021</td>
                         </tr>
                     </tbody>
                 </table>
@@ -651,122 +766,180 @@
 
             <div class="stats-grid">
                 <div class="stat-card">
-                    <h3>Lap Record Holder</h3>
+                    <h3>F1 Lap Record Holder</h3>
                     <div class="stat-value">1:18.525</div>
                     <div class="stat-label">Lewis Hamilton • Silverstone 2024</div>
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Most Overtakes</h3>
-                    <div class="stat-value">47</div>
-                    <div class="stat-label">Fernando Alonso • Season Total</div>
+                    <h3>FE Attack Mode Master</h3>
+                    <div class="stat-card">
+                    <h3>FE Attack Mode Master</h3>
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Pascal Wehrlein • Attack Mode Success Rate</div>
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Best Comeback</h3>
-                    <div class="stat-value">P20 → P3</div>
-                    <div class="stat-label">Lewis Hamilton • Brazil GP</div>
+                    <h3>Most Pole Positions</h3>
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Lando Norris • F1 2024 Season</div>
                 </div>
                 
                 <div class="stat-card">
-                    <h3>Consistency King</h3>
-                    <div class="stat-value">95.8%</div>
-                    <div class="stat-label">Max Verstappen • Finish Rate</div>
+                    <h3>FE Fanboost Champion</h3>
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Jake Dennis • Most Fanboost wins</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Historical Records Progression</h3>
+                <div class="chart-placeholder">
+                    <div>Line Chart: Record progression over seasons</div>
+                    <div style="font-size: 1rem; margin-top: 10px;">F1: Lap times, points records, win streaks</div>
+                    <div style="font-size: 1rem;">Formula E: Energy efficiency, championship margins</div>
                 </div>
             </div>
         </div>
 
         <div class="ad-banner">
-            <p>Advertisement Space - Premium Statistics Analytics Tools</p>
+            <h3>Premium Statistics Coming Soon</h3>
+            <p>Unlock advanced analytics, predictive modeling, and exclusive insights with ioMotorsport Pro</p>
         </div>
     </main>
 
     <script>
         // Tab switching functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const tabBtns = document.querySelectorAll('.stats-tab-btn');
+            const tabButtons = document.querySelectorAll('.stats-tab-btn');
             const tabContents = document.querySelectorAll('.stats-tab-content');
-
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all tabs and contents
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding content
-                    btn.classList.add('active');
-                    const tabId = btn.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
                 });
             });
-
+            
             // Series selection functionality
             const seriesSelect = document.getElementById('series-select');
             const seasonSelect = document.getElementById('season-select');
             const statTypeSelect = document.getElementById('stat-type');
-
+            
             function updateStats() {
                 const series = seriesSelect.value;
                 const season = seasonSelect.value;
                 const statType = statTypeSelect.value;
                 
-                // In a real implementation, this would fetch new data based on selections
-                console.log(`Loading ${statType} stats for ${series} ${season}`);
+                // Update statistics based on selections
+                console.log(`Updating stats for ${series} ${season} - ${statType}`);
                 
-                // Simulate data loading with visual feedback
-                const statCards = document.querySelectorAll('.stat-card');
-                statCards.forEach(card => {
-                    card.style.opacity = '0.6';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                    }, 500);
-                });
+                // Here you would typically make an API call to fetch new data
+                // For demo purposes, we'll just update some visual elements
+                updateStatsDisplay(series, season, statType);
             }
-
+            
+            function updateStatsDisplay(series, season, statType) {
+                // Update stat cards based on series selection
+                const statCards = document.querySelectorAll('.stat-card');
+                
+                if (series === 'fe') {
+                    // Show more Formula E specific statistics
+                    document.querySelector('.stats-hero h1').textContent = 'Formula E Statistics';
+                } else {
+                    // Show Formula 1 statistics
+                    document.querySelector('.stats-hero h1').textContent = 'Formula 1 Statistics';
+                }
+                
+                // Animate progress bars
+                setTimeout(() => {
+                    const progressBars = document.querySelectorAll('.progress-fill');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }, 200);
+            }
+            
+            // Event listeners for controls
             seriesSelect.addEventListener('change', updateStats);
             seasonSelect.addEventListener('change', updateStats);
             statTypeSelect.addEventListener('change', updateStats);
-
-            // Animate progress bars on load
+            
+            // Mobile navigation toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Animate stat cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe stat cards for animation
+            document.querySelectorAll('.stat-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // Initialize with current selections
+            updateStats();
+        });
+        
+        // Simulate real-time data updates
+        setInterval(() => {
+            const statValues = document.querySelectorAll('.stat-value');
+            const randomIndex = Math.floor(Math.random() * statValues.length);
+            const statValue = statValues[randomIndex];
+            
+            // Add a subtle pulse effect to show "live" data
+            statValue.style.transform = 'scale(1.05)';
+            statValue.style.transition = 'transform 0.2s ease';
+            
             setTimeout(() => {
-                const progressBars = document.querySelectorAll('.progress-fill');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                });
-            }, 300);
-
-            // Add hover effects to stat cards
-            const statCards = document.querySelectorAll('.stat-card');
-            statCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-5px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1)';
-                });
+                statValue.style.transform = 'scale(1)';
+            }, 200);
+        }, 5000);
+        
+        // Enhanced hover effects for driver cards
+        document.querySelectorAll('.driver-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 15px 40px rgba(78, 205, 196, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = 'none';
             });
         });
-
-        // Simulated real-time data updates
-        function simulateDataUpdate() {
-            const statValues = document.querySelectorAll('.stat-value');
-            statValues.forEach(value => {
-                if (!isNaN(parseInt(value.textContent))) {
-                    value.style.color = '#4ecdc4';
-                    setTimeout(() => {
-                        value.style.color = '#fff';
-                    }, 1000);
-                }
-            });
-        }
-
-        // Update data every 30 seconds (in a real app, this would fetch from API)
-        setInterval(simulateDataUpdate, 30000);
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ioMotorsport - Your Ultimate Motorsports Data Hub</title>
-    <meta name="description" content="Complete motorsports data for Formula 1, WRC, and IndyCar. Live standings, race results, schedules, and comprehensive statistics.">
+    <meta name="description" content="Complete motorsports data for Formula 1 and Formula E. Live standings, race results, schedules, and comprehensive statistics.">
     <link rel="stylesheet" href="css/shared.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="js/shared.js"></script>
@@ -34,7 +34,7 @@
     <main class="container">
         <section class="hero">
             <h1>Welcome to ioMotorsport</h1>
-            <p>Your ultimate destination for comprehensive motorsports data. Track Formula 1, WRC, and IndyCar with real-time standings, race results, and detailed statistics.</p>
+            <p>Your ultimate destination for comprehensive motorsports data. Track Formula 1 and Formula E with real-time standings, race results, and detailed statistics.</p>
         </section>
 
         <div class="ad-banner">
@@ -48,16 +48,10 @@
                 <p>The pinnacle of motorsport with cutting-edge technology and the world's best drivers.</p>
             </div>
             
-            <div class="series-card" data-series="wrc">
-                <div class="series-icon">WRC</div>
-                <h3>World Rally Championship</h3>
-                <p>High-speed action across diverse terrains and challenging conditions worldwide.</p>
-            </div>
-            
-            <div class="series-card" data-series="indycar">
-                <div class="series-icon">IC</div>
-                <h3>IndyCar</h3>
-                <p>America's premier open-wheel racing series featuring the iconic Indianapolis 500.</p>
+            <div class="series-card" data-series="fe">
+                <div class="series-icon">FE</div>
+                <h3>Formula E</h3>
+                <p>The world's first all-electric street racing series, pioneering sustainable motorsport.</p>
             </div>
         </section>
 
@@ -245,77 +239,19 @@
             </div>
         </section>
 
-        <!-- WRC Data Section -->
-        <section id="wrc-data" class="data-section">
-            <h2>World Rally Championship - 2024 Season</h2>
+        <!-- Formula E Data Section -->
+        <section id="fe-data" class="data-section">
+            <h2>Formula E - Season 10 (2023-24)</h2>
             
             <div class="data-tabs">
-                <button class="tab-btn active" data-tab="wrc-standings">Driver Standings</button>
-                <button class="tab-btn" data-tab="wrc-calendar">Rally Calendar</button>
-                <button class="tab-btn" data-tab="wrc-results">Latest Results</button>
+                <button class="tab-btn active" data-tab="fe-standings">Driver Standings</button>
+                <button class="tab-btn" data-tab="fe-teams">Team Standings</button>
+                <button class="tab-btn" data-tab="fe-calendar">Race Calendar</button>
+                <button class="tab-btn" data-tab="fe-results">Latest Results</button>
             </div>
 
-            <div id="wrc-standings" class="data-content">
-                <h3>2024 WRC Driver Championship</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Driver</th>
-                            <th>Co-driver</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>Thierry Neuville</td>
-                            <td>Martijn Wydaeghe</td>
-                            <td>Hyundai i20 N Rally1</td>
-                            <td>242</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>Ott Tänak</td>
-                            <td>Martin Järveoja</td>
-                            <td>Hyundai i20 N Rally1</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>Elfyn Evans</td>
-                            <td>Scott Martin</td>
-                            <td>Toyota GR Yaris Rally1</td>
-                            <td>192</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="wrc-calendar" class="data-content" style="display: none;">
-                <h3>2024 WRC Calendar</h3>
-                <p>13-round WRC championship featuring diverse terrains from snow to gravel to tarmac.</p>
-            </div>
-
-            <div id="wrc-results" class="data-content" style="display: none;">
-                <h3>Rally Japan - Final Results</h3>
-                <p>Latest rally results and stage times will be displayed here.</p>
-            </div>
-        </section>
-
-        <!-- IndyCar Data Section -->
-        <section id="indycar-data" class="data-section">
-            <h2>IndyCar Series - 2024 Season</h2>
-            
-            <div class="data-tabs">
-                <button class="tab-btn active" data-tab="indycar-standings">Driver Standings</button>
-                <button class="tab-btn" data-tab="indycar-calendar">Race Calendar</button>
-                <button class="tab-btn" data-tab="indycar-results">Latest Results</button>
-            </div>
-
-            <div id="indycar-standings" class="data-content">
-                <h3>2024 IndyCar Series Championship</h3>
+            <div id="fe-standings" class="data-content">
+                <h3>Season 10 Driver Championship</h3>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -324,42 +260,166 @@
                             <th>Team</th>
                             <th>Points</th>
                             <th>Wins</th>
+                            <th>Podiums</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><span class="position p1">1</span></td>
-                            <td>Alex Palou</td>
-                            <td>Chip Ganassi Racing</td>
-                            <td>544</td>
-                            <td>3</td>
+                            <td>Pascal Wehrlein</td>
+                            <td>TAG Heuer Porsche</td>
+                            <td>199</td>
+                            <td>2</td>
+                            <td>6</td>
                         </tr>
                         <tr>
                             <td><span class="position p2">2</span></td>
-                            <td>Will Power</td>
-                            <td>Team Penske</td>
-                            <td>495</td>
+                            <td>Mitch Evans</td>
+                            <td>Jaguar TCS Racing</td>
+                            <td>192</td>
                             <td>2</td>
+                            <td>5</td>
                         </tr>
                         <tr>
                             <td><span class="position p3">3</span></td>
-                            <td>Colton Herta</td>
-                            <td>Andretti Global</td>
-                            <td>449</td>
+                            <td>Nick Cassidy</td>
+                            <td>Jaguar TCS Racing</td>
+                            <td>167</td>
                             <td>3</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position points">4</span></td>
+                            <td>Jean-Éric Vergne</td>
+                            <td>DS Penske</td>
+                            <td>139</td>
+                            <td>1</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position points">5</span></td>
+                            <td>António Félix da Costa</td>
+                            <td>TAG Heuer Porsche</td>
+                            <td>134</td>
+                            <td>1</td>
+                            <td>2</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div id="indycar-calendar" class="data-content" style="display: none;">
-                <h3>2024 IndyCar Calendar</h3>
-                <p>17-race IndyCar Series schedule including the Indianapolis 500.</p>
+            <div id="fe-teams" class="data-content" style="display: none;">
+                <h3>Season 10 Team Championship</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Wins</th>
+                            <th>Podiums</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>Jaguar TCS Racing</td>
+                            <td>359</td>
+                            <td>5</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>TAG Heuer Porsche</td>
+                            <td>333</td>
+                            <td>3</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>DS Penske</td>
+                            <td>258</td>
+                            <td>2</td>
+                            <td>6</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div id="indycar-results" class="data-content" style="display: none;">
-                <h3>Latest IndyCar Results</h3>
-                <p>Most recent race results and championship implications.</p>
+            <div id="fe-calendar" class="data-content" style="display: none;">
+                <h3>Season 10 Race Calendar</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Round</th>
+                            <th>E-Prix</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15</td>
+                            <td>Portland E-Prix</td>
+                            <td>Portland International Raceway</td>
+                            <td>Jun 29, 2024</td>
+                            <td>✅ Completed</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>London E-Prix</td>
+                            <td>ExCeL London</td>
+                            <td>Jul 20, 2024</td>
+                            <td>✅ Season Finale (Race 1)</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>London E-Prix</td>
+                            <td>ExCeL London</td>
+                            <td>Jul 21, 2024</td>
+                            <td>✅ Season Finale (Race 2)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="fe-results" class="data-content" style="display: none;">
+                <h3>London E-Prix - Race 2 Results</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Time</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="position p1">1</span></td>
+                            <td>Mitch Evans</td>
+                            <td>Jaguar TCS Racing</td>
+                            <td>46:21.479</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p2">2</span></td>
+                            <td>Pascal Wehrlein</td>
+                            <td>TAG Heuer Porsche</td>
+                            <td>+1.177s</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td><span class="position p3">3</span></td>
+                            <td>Oliver Rowland</td>
+                            <td>Nissan Formula E</td>
+                            <td>+8.372s</td>
+                            <td>15</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
