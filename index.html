@@ -3,430 +3,1137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ioMotorsport - Your Ultimate Motorsports Data Hub</title>
-    <meta name="description" content="Complete motorsports data for Formula 1 and Formula E. Live standings, race results, schedules, and comprehensive statistics.">
-    <link rel="stylesheet" href="css/shared.css">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/shared.js"></script>
-    <script src="js/index.js"></script>
+    <title>IOMotorsport - World's Greatest Racing Circuits & Tracks</title>
+    <meta name="description" content="Discover the world's most legendary racing circuits from Formula 1 to NASCAR. Explore tracks across all continents with detailed specifications and history.">
+    <meta name="keywords" content="racing tracks, motorsport circuits, Formula 1, NASCAR, IndyCar, MotoGP, racing venues">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #ff6b35;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Header */
+        .main-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .main-header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffeb3b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .main-header p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Condensed Controls */
+        .controls-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .filter-bar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 100px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .btn.active {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-color: #ff6b35;
+            transform: scale(1.05);
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 25px;
+            padding: 12px 20px;
+            color: white;
+            font-size: 1rem;
+            width: 350px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #cccccc;
+            text-transform: uppercase;
+        }
+
+        /* Enhanced World Map */
+        .map-container {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .world-map {
+            max-width: 1000px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3));
+        }
+
+        .continent {
+            cursor: pointer;
+            transition: all 0.4s ease;
+            stroke: rgba(255, 255, 255, 0.4);
+            stroke-width: 1.5;
+            fill-opacity: 0.8;
+        }
+
+        .continent:hover {
+            filter: brightness(1.3) drop-shadow(0 0 15px currentColor);
+            transform: scale(1.02);
+            stroke-width: 2;
+        }
+
+        .continent.selected {
+            filter: brightness(1.4) drop-shadow(0 0 25px #4CAF50);
+            stroke: #4CAF50;
+            stroke-width: 3;
+        }
+
+        /* Track Cards */
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .track-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+            border-color: rgba(255, 107, 53, 0.8);
+        }
+
+        .track-card h3 {
+            color: #ff6b35;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .track-card .country {
+            color: #f7931e;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .track-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .track-card .description {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .track-card .specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .track-card .spec {
+            color: #aaaaaa;
+        }
+
+        .track-card .spec strong {
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.8);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b35;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .main-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .filter-label {
+                min-width: auto;
+            }
+            
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tracks-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">ioMotorsport</div>
-            <button class="nav-toggle" aria-label="Open menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo">IOMotorsport</div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="stats.html">Statistics</a></li>
-                <li><a href="tools.html">Tools</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="store.html">Store</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="f1.html">Formula 1</a></li>
+                <li><a href="#nascar-tracks">Formula E</a></li>
+                <li><a href="#indycar-tracks">MotoGP</a></li>
+                <li><a href="#motogp-tracks">Superbikes</a></li>
+                <li><a href="#legendary-circuits">Legendary</a></li>
+                <li><a href="#about">About</a></li>
             </ul>
-        </nav>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <h1>World's Greatest Racing Circuits</h1>
+        <p>Explore legendary motorsport venues from Formula 1 to NASCAR, spanning every continent and racing discipline</p>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search tracks by name, location, or series..." id="searchBox">
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="totalTracks">12</div>
+                <div class="stat-label">Racing Circuits</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="visibleTracks">12</div>
+                <div class="stat-label">Currently Showing</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="activeFilters">0</div>
+                <div class="stat-label">Active Filters</div>
+            </div>
+        </div>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <h1>Welcome to ioMotorsport</h1>
-            <p>Your ultimate destination for comprehensive motorsports data. Track Formula 1 and Formula E with real-time standings, race results, and detailed statistics.</p>
-        </section>
+    <!-- Condensed Controls -->
+    <div class="controls-container">
+        <div class="filter-bar">
+            <div class="filter-row">
+                <div class="filter-label">Quick:</div>
+                <div class="filter-buttons">
+                    <button class="btn active" onclick="showAll()">All Tracks</button>
+                    <button class="btn" onclick="showFavorites()">🏆 Legendary</button>
+                    <button class="btn" onclick="showModern()">🚀 Modern</button>
+                    <button class="btn" onclick="discoverRandom()">🎲 Random</button>
+                </div>
+            </div>
+            
+            <div class="filter-row">
+                <div class="filter-label">Region:</div>
+                <div class="filter-buttons">
+                    <button class="btn" onclick="filterBy('continent', 'north-america')">🇺🇸 N. America</button>
+                    <button class="btn" onclick="filterBy('continent', 'south-america')">🇧🇷 S. America</button>
+                    <button class="btn" onclick="filterBy('continent', 'europe')">🇪🇺 Europe</button>
+                    <button class="btn" onclick="filterBy('continent', 'asia')">🇯🇵 Asia</button>
+                    <button class="btn" onclick="filterBy('continent', 'oceania')">🇦🇺 Oceania</button>
+                    <button class="btn" onclick="filterBy('continent', 'africa')">🌍 Africa</button>
+                </div>
+            </div>
+            
+            <div class="filter-row">
+                <div class="filter-label">Series:</div>
+                <div class="filter-buttons">
+                    <button class="btn" onclick="filterBy('series', 'f1')">🏎️ F1</button>
+                    <button class="btn" onclick="filterBy('series', 'nascar')">🚗 NASCAR</button>
+                    <button class="btn" onclick="filterBy('series', 'indycar')">🏁 IndyCar</button>
+                    <button class="btn" onclick="filterBy('series', 'motogp')">🏍️ MotoGP</button>
+                    <button class="btn" onclick="filterBy('series', 'endurance')">⏱️ Endurance</button>
+                </div>
+            </div>
+            
+            <div class="filter-row">
+                <div class="filter-label">Type:</div>
+                <div class="filter-buttons">
+                    <button class="btn" onclick="filterBy('type', 'road-course')">🛣️ Road</button>
+                    <button class="btn" onclick="filterBy('type', 'oval')">🔄 Oval</button>
+                    <button class="btn" onclick="filterBy('type', 'street-circuit')">🏙️ Street</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <div class="ad-banner">
-            <p>Advertisement Space - 728x90</p>
+    <!-- Enhanced World Map -->
+    <div class="map-container">
+        <svg class="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="oceanGradient" cx="50%" cy="50%" r="70%">
+                    <stop offset="0%" stop-color="#1a237e" stop-opacity="0.8"/>
+                    <stop offset="50%" stop-color="#283593" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#0a0a0a" stop-opacity="1"/>
+                </radialGradient>
+                
+                <linearGradient id="naGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff6b35"/>
+                    <stop offset="100%" stop-color="#f7931e"/>
+                </linearGradient>
+                
+                <linearGradient id="saGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#21CBF3"/>
+                </linearGradient>
+                
+                <linearGradient id="euGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4CAF50"/>
+                    <stop offset="100%" stop-color="#8BC34A"/>
+                </linearGradient>
+                
+                <linearGradient id="afGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#9C27B0"/>
+                    <stop offset="100%" stop-color="#E91E63"/>
+                </linearGradient>
+                
+                <linearGradient id="asGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF5722"/>
+                    <stop offset="100%" stop-color="#FF9800"/>
+                </linearGradient>
+                
+                <linearGradient id="ocGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#607D8B"/>
+                    <stop offset="100%" stop-color="#90A4AE"/>
+                </linearGradient>
+                
+                <filter id="continentGlow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <rect width="1000" height="500" fill="url(#oceanGradient)"/>
+            
+            <!-- North America -->
+            <g class="continent" data-continent="north-america" onclick="filterBy('continent', 'north-america')">
+                <path d="M50 100 C70 80, 120 70, 180 75 C240 80, 280 90, 320 110 C350 130, 360 160, 340 190 C320 210, 280 220, 240 215 C200 210, 160 200, 120 185 C80 170, 60 140, 50 110 Z" 
+                      fill="url(#naGradient)" filter="url(#continentGlow)"/>
+                <path d="M180 120 C200 115, 220 120, 230 140 C225 160, 210 170, 190 165 C170 160, 165 140, 180 120 Z" 
+                      fill="url(#naGradient)" filter="url(#continentGlow)"/>
+                <text x="200" y="145" fill="white" font-size="12" text-anchor="middle" font-weight="bold">NORTH AMERICA</text>
+            </g>
+            
+            <!-- South America -->
+            <g class="continent" data-continent="south-america" onclick="filterBy('continent', 'south-america')">
+                <path d="M280 220 C300 215, 320 220, 340 240 C350 270, 355 300, 345 340 C335 380, 315 400, 285 395 C255 390, 240 370, 235 340 C230 310, 240 280, 260 250 C270 235, 275 225, 280 220 Z" 
+                      fill="url(#saGradient)" filter="url(#continentGlow)"/>
+                <text x="295" y="310" fill="white" font-size="12" text-anchor="middle" font-weight="bold">SOUTH AMERICA</text>
+            </g>
+            
+            <!-- Europe -->
+            <g class="continent" data-continent="europe" onclick="filterBy('continent', 'europe')">
+                <path d="M420 90 C450 85, 480 88, 520 95 C560 102, 580 120, 575 150 C570 180, 550 190, 520 185 C490 180, 460 175, 430 165 C400 155, 395 125, 405 100 C410 95, 415 92, 420 90 Z" 
+                      fill="url(#euGradient)" filter="url(#continentGlow)"/>
+                <text x="490" y="140" fill="white" font-size="12" text-anchor="middle" font-weight="bold">EUROPE</text>
+            </g>
+            
+            <!-- Africa -->
+            <g class="continent" data-continent="africa" onclick="filterBy('continent', 'africa')">
+                <path d="M480 190 C510 185, 540 195, 560 220 C575 250, 570 290, 560 330 C550 370, 530 390, 500 385 C470 380, 450 360, 445 330 C440 300, 450 270, 465 240 C475 215, 477 200, 480 190 Z" 
+                      fill="url(#afGradient)" filter="url(#continentGlow)"/>
+                <text x="505" y="285" fill="white" font-size="12" text-anchor="middle" font-weight="bold">AFRICA</text>
+            </g>
+            
+            <!-- Asia -->
+            <g class="continent" data-continent="asia" onclick="filterBy('continent', 'asia')">
+                <path d="M580 100 C620 95, 660 100, 720 110 C780 120, 820 140, 840 170 C845 200, 835 230, 810 245 C785 260, 750 255, 715 245 C680 235, 645 220, 615 200 C585 180, 575 150, 580 125 C582 115, 581 108, 580 100 Z" 
+                      fill="url(#asGradient)" filter="url(#continentGlow)"/>
+                <text x="710" y="175" fill="white" font-size="12" text-anchor="middle" font-weight="bold">ASIA</text>
+            </g>
+            
+            <!-- Oceania -->
+            <g class="continent" data-continent="oceania" onclick="filterBy('continent', 'oceania')">
+                <path d="M720 320 C750 315, 780 325, 810 345 C835 365, 830 385, 810 395 C790 405, 760 400, 735 390 C710 380, 700 360, 705 340 C710 330, 715 325, 720 320 Z" 
+                      fill="url(#ocGradient)" filter="url(#continentGlow)"/>
+                <text x="770" y="365" fill="white" font-size="11" text-anchor="middle" font-weight="bold">OCEANIA</text>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Track Cards Grid -->
+    <div class="tracks-grid" id="tracksGrid">
+        <!-- Same track cards as before, but condensed for space -->
+        <!-- North America -->
+        <div class="track-card fade-in" data-continent="north-america" data-type="oval" data-series="indycar" data-era="classic">
+            <h3>Indianapolis Motor Speedway</h3>
+            <div class="country">United States 🇺🇸</div>
+            <div class="track-badges">
+                <span class="badge">Historic</span>
+                <span class="badge">Oval</span>
+                <span class="badge">IndyCar</span>
+            </div>
+            <div class="description">The legendary "Brickyard" hosts the iconic Indianapolis 500. Known for incredible speeds and motorsport history.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 2.5 miles</div>
+                <div class="spec"><strong>Opened:</strong> 1909</div>
+                <div class="spec"><strong>Type:</strong> Oval</div>
+                <div class="spec"><strong>Capacity:</strong> 300,000+</div>
+            </div>
         </div>
 
-        <section class="series-grid">
-            <div class="series-card active" data-series="f1">
-                <div class="series-icon">F1</div>
-                <h3>Formula 1</h3>
-                <p>The pinnacle of motorsport with cutting-edge technology and the world's best drivers.</p>
+        <div class="track-card fade-in" data-continent="north-america" data-type="oval" data-series="nascar" data-era="golden">
+            <h3>Daytona International Speedway</h3>
+            <div class="country">United States 🇺🇸</div>
+            <div class="track-badges">
+                <span class="badge">NASCAR</span>
+                <span class="badge">Superspeedway</span>
             </div>
-            
-            <div class="series-card" data-series="fe">
-                <div class="series-icon">FE</div>
-                <h3>Formula E</h3>
-                <p>The world's first all-electric street racing series, pioneering sustainable motorsport.</p>
+            <div class="description">Home to the Daytona 500, featuring high-banked turns and legendary pack racing.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 2.5 miles</div>
+                <div class="spec"><strong>Banking:</strong> 31°</div>
+                <div class="spec"><strong>Type:</strong> Oval</div>
+                <div class="spec"><strong>Opened:</strong> 1959</div>
             </div>
-        </section>
-
-        <!-- F1 Data Section -->
-        <section id="f1-data" class="data-section active">
-            <h2>Formula 1 - 2024 Season</h2>
-            
-            <div class="data-tabs">
-                <button class="tab-btn active" data-tab="f1-standings">Driver Standings</button>
-                <button class="tab-btn" data-tab="f1-constructors">Constructor Standings</button>
-                <button class="tab-btn" data-tab="f1-calendar">Race Calendar</button>
-                <button class="tab-btn" data-tab="f1-results">Latest Results</button>
-            </div>
-
-            <div id="f1-standings" class="data-content">
-                <h3>2024 Driver Championship Standings</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Driver</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                            <th>Wins</th>
-                            <th>Podiums</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>Max Verstappen</td>
-                            <td>Red Bull Racing</td>
-                            <td>575</td>
-                            <td>19</td>
-                            <td>21</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>Lando Norris</td>
-                            <td>McLaren</td>
-                            <td>374</td>
-                            <td>3</td>
-                            <td>8</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>Charles Leclerc</td>
-                            <td>Ferrari</td>
-                            <td>356</td>
-                            <td>3</td>
-                            <td>11</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position points">4</span></td>
-                            <td>Oscar Piastri</td>
-                            <td>McLaren</td>
-                            <td>292</td>
-                            <td>2</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position points">5</span></td>
-                            <td>Carlos Sainz</td>
-                            <td>Ferrari</td>
-                            <td>290</td>
-                            <td>2</td>
-                            <td>6</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="f1-constructors" class="data-content" style="display: none;">
-                <h3>2024 Constructor Championship Standings</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                            <th>Wins</th>
-                            <th>Podiums</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>McLaren</td>
-                            <td>666</td>
-                            <td>5</td>
-                            <td>13</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>Ferrari</td>
-                            <td>646</td>
-                            <td>5</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>Red Bull Racing</td>
-                            <td>589</td>
-                            <td>19</td>
-                            <td>22</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="f1-calendar" class="data-content" style="display: none;">
-                <h3>2024 Race Calendar</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Round</th>
-                            <th>Grand Prix</th>
-                            <th>Circuit</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>22</td>
-                            <td>Las Vegas GP</td>
-                            <td>Las Vegas Street Circuit</td>
-                            <td>Nov 23, 2024</td>
-                            <td>✅ Completed</td>
-                        </tr>
-                        <tr>
-                            <td>23</td>
-                            <td>Qatar GP</td>
-                            <td>Lusail International Circuit</td>
-                            <td>Dec 1, 2024</td>
-                            <td>✅ Completed</td>
-                        </tr>
-                        <tr>
-                            <td>24</td>
-                            <td>Abu Dhabi GP</td>
-                            <td>Yas Marina Circuit</td>
-                            <td>Dec 8, 2024</td>
-                            <td>✅ Season Finale</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="f1-results" class="data-content" style="display: none;">
-                <h3>Abu Dhabi GP - Race Results</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Driver</th>
-                            <th>Team</th>
-                            <th>Time</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>Lando Norris</td>
-                            <td>McLaren</td>
-                            <td>1:26:33.291</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>Carlos Sainz</td>
-                            <td>Ferrari</td>
-                            <td>+5.832s</td>
-                            <td>18</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>Charles Leclerc</td>
-                            <td>Ferrari</td>
-                            <td>+31.928s</td>
-                            <td>15</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Formula E Data Section -->
-        <section id="fe-data" class="data-section">
-            <h2>Formula E - Season 10 (2023-24)</h2>
-            
-            <div class="data-tabs">
-                <button class="tab-btn active" data-tab="fe-standings">Driver Standings</button>
-                <button class="tab-btn" data-tab="fe-teams">Team Standings</button>
-                <button class="tab-btn" data-tab="fe-calendar">Race Calendar</button>
-                <button class="tab-btn" data-tab="fe-results">Latest Results</button>
-            </div>
-
-            <div id="fe-standings" class="data-content">
-                <h3>Season 10 Driver Championship</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Driver</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                            <th>Wins</th>
-                            <th>Podiums</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>Pascal Wehrlein</td>
-                            <td>TAG Heuer Porsche</td>
-                            <td>199</td>
-                            <td>2</td>
-                            <td>6</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>Mitch Evans</td>
-                            <td>Jaguar TCS Racing</td>
-                            <td>192</td>
-                            <td>2</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>Nick Cassidy</td>
-                            <td>Jaguar TCS Racing</td>
-                            <td>167</td>
-                            <td>3</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position points">4</span></td>
-                            <td>Jean-Éric Vergne</td>
-                            <td>DS Penske</td>
-                            <td>139</td>
-                            <td>1</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position points">5</span></td>
-                            <td>António Félix da Costa</td>
-                            <td>TAG Heuer Porsche</td>
-                            <td>134</td>
-                            <td>1</td>
-                            <td>2</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="fe-teams" class="data-content" style="display: none;">
-                <h3>Season 10 Team Championship</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Team</th>
-                            <th>Points</th>
-                            <th>Wins</th>
-                            <th>Podiums</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>Jaguar TCS Racing</td>
-                            <td>359</td>
-                            <td>5</td>
-                            <td>9</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>TAG Heuer Porsche</td>
-                            <td>333</td>
-                            <td>3</td>
-                            <td>8</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>DS Penske</td>
-                            <td>258</td>
-                            <td>2</td>
-                            <td>6</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="fe-calendar" class="data-content" style="display: none;">
-                <h3>Season 10 Race Calendar</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Round</th>
-                            <th>E-Prix</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>15</td>
-                            <td>Portland E-Prix</td>
-                            <td>Portland International Raceway</td>
-                            <td>Jun 29, 2024</td>
-                            <td>✅ Completed</td>
-                        </tr>
-                        <tr>
-                            <td>16</td>
-                            <td>London E-Prix</td>
-                            <td>ExCeL London</td>
-                            <td>Jul 20, 2024</td>
-                            <td>✅ Season Finale (Race 1)</td>
-                        </tr>
-                        <tr>
-                            <td>17</td>
-                            <td>London E-Prix</td>
-                            <td>ExCeL London</td>
-                            <td>Jul 21, 2024</td>
-                            <td>✅ Season Finale (Race 2)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="fe-results" class="data-content" style="display: none;">
-                <h3>London E-Prix - Race 2 Results</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Driver</th>
-                            <th>Team</th>
-                            <th>Time</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="position p1">1</span></td>
-                            <td>Mitch Evans</td>
-                            <td>Jaguar TCS Racing</td>
-                            <td>46:21.479</td>
-                            <td>25</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p2">2</span></td>
-                            <td>Pascal Wehrlein</td>
-                            <td>TAG Heuer Porsche</td>
-                            <td>+1.177s</td>
-                            <td>18</td>
-                        </tr>
-                        <tr>
-                            <td><span class="position p3">3</span></td>
-                            <td>Oliver Rowland</td>
-                            <td>Nissan Formula E</td>
-                            <td>+8.372s</td>
-                            <td>15</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <div class="ad-banner">
-            <p>Advertisement Space - 728x90</p>
         </div>
-    </main>
 
+        <div class="track-card fade-in" data-continent="north-america" data-type="road-course" data-series="f1" data-era="modern">
+            <h3>Circuit of the Americas</h3>
+            <div class="country">United States 🇺🇸</div>
+            <div class="track-badges">
+                <span class="badge">Formula 1</span>
+                <span class="badge">Modern</span>
+            </div>
+            <div class="description">America's premier F1 venue with dramatic elevation changes and world-class facilities.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 3.4 miles</div>
+                <div class="spec"><strong>Turns:</strong> 20</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>Opened:</strong> 2012</div>
+            </div>
+        </div>
+
+        <!-- Europe -->
+        <div class="track-card fade-in" data-continent="europe" data-type="street-circuit" data-series="f1" data-era="legendary">
+            <h3>Circuit de Monaco</h3>
+            <div class="country">Monaco 🇲🇨</div>
+            <div class="track-badges">
+                <span class="badge">Street Circuit</span>
+                <span class="badge">Legendary</span>
+            </div>
+            <div class="description">The most prestigious street circuit, winding through Monaco's glamorous streets.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 2.1 miles</div>
+                <div class="spec"><strong>Turns:</strong> 19</div>
+                <div class="spec"><strong>Type:</strong> Street</div>
+                <div class="spec"><strong>First Race:</strong> 1929</div>
+            </div>
+        </div>
+
+        <div class="track-card fade-in" data-continent="europe" data-type="road-course" data-series="f1" data-era="classic">
+            <h3>Silverstone Circuit</h3>
+            <div class="country">United Kingdom 🇬🇧</div>
+            <div class="track-badges">
+                <span class="badge">Formula 1</span>
+                <span class="badge">Historic</span>
+            </div>
+            <div class="description">The birthplace of Formula 1, featuring high-speed corners and rich racing heritage.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 3.7 miles</div>
+                <div class="spec"><strong>Turns:</strong> 18</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>Opened:</strong> 1948</div>
+            </div>
+        </div>
+
+        <div class="track-card fade-in" data-continent="europe" data-type="road-course" data-series="f1" data-era="legendary">
+            <h3>Nürburgring</h3>
+            <div class="country">Germany 🇩🇪</div>
+            <div class="track-badges">
+                <span class="badge">Legendary</span>
+                <span class="badge">The Green Hell</span>
+            </div>
+            <div class="description">The most challenging circuit in the world, demanding ultimate respect from drivers.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 12.9 miles</div>
+                <div class="spec"><strong>Turns:</strong> 154</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>Opened:</strong> 1927</div>
+            </div>
+        </div>
+
+        <!-- Asia -->
+        <div class="track-card fade-in" data-continent="asia" data-type="road-course" data-series="f1" data-era="modern">
+            <h3>Suzuka Circuit</h3>
+            <div class="country">Japan 🇯🇵</div>
+            <div class="track-badges">
+                <span class="badge">Formula 1</span>
+                <span class="badge">Figure-8</span>
+            </div>
+            <div class="description">The world's only figure-8 F1 circuit, featuring the famous 130R corner.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 3.6 miles</div>
+                <div class="spec"><strong>Turns:</strong> 18</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>Opened:</strong> 1962</div>
+            </div>
+        </div>
+
+        <div class="track-card fade-in" data-continent="asia" data-type="street-circuit" data-series="f1" data-era="modern">
+            <h3>Marina Bay Street Circuit</h3>
+            <div class="country">Singapore 🇸🇬</div>
+            <div class="track-badges">
+                <span class="badge">Night Race</span>
+                <span class="badge">Street Circuit</span>
+            </div>
+            <div class="description">The original F1 night race, creating a spectacular urban racing experience.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 3.1 miles</div>
+                <div class="spec"><strong>Turns:</strong> 23</div>
+                <div class="spec"><strong>Type:</strong> Street</div>
+                <div class="spec"><strong>First Race:</strong> 2008</div>
+            </div>
+        </div>
+
+        <!-- South America -->
+        <div class="track-card fade-in" data-continent="south-america" data-type="road-course" data-series="f1" data-era="legendary">
+            <h3>Autódromo José Carlos Pace</h3>
+            <div class="country">Brazil 🇧🇷</div>
+            <div class="track-badges">
+                <span class="badge">Interlagos</span>
+                <span class="badge">Formula 1</span>
+            </div>
+            <div class="description">A counter-clockwise circuit known for dramatic weather and passionate fans.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 2.7 miles</div>
+                <div class="spec"><strong>Turns:</strong> 15</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>Opened:</strong> 1940</div>
+            </div>
+        </div>
+
+        <!-- Oceania -->
+        <div class="track-card fade-in" data-continent="oceania" data-type="road-course" data-series="f1" data-era="modern">
+            <h3>Albert Park Circuit</h3>
+            <div class="country">Australia 🇦🇺</div>
+            <div class="track-badges">
+                <span class="badge">Formula 1</span>
+                <span class="badge">Park Circuit</span>
+            </div>
+            <div class="description">A semi-permanent circuit in Melbourne's Albert Park, opening the F1 season.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 3.3 miles</div>
+                <div class="spec"><strong>Turns:</strong> 16</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>First F1:</strong> 1996</div>
+            </div>
+        </div>
+
+        <!-- Africa -->
+        <div class="track-card fade-in" data-continent="africa" data-type="road-course" data-series="f1" data-era="classic">
+            <h3>Kyalami Grand Prix Circuit</h3>
+            <div class="country">South Africa 🇿🇦</div>
+            <div class="track-badges">
+                <span class="badge">Historic</span>
+                <span class="badge">High Altitude</span>
+            </div>
+            <div class="description">Africa's premier racing venue, known for high altitude and challenging layout.</div>
+            <div class="specs">
+                <div class="spec"><strong>Length:</strong> 2.8 miles</div>
+                <div class="spec"><strong>Turns:</strong> 16</div>
+                <div class="spec"><strong>Type:</strong> Road Course</div>
+                <div class="spec"><strong>Altitude:</strong> 5,000 ft</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Racing Series</h3>
+                <ul>
+                    <li><a href="#f1">Formula 1</a></li>
+                    <li><a href="#nascar">NASCAR</a></li>
+                    <li><a href="#indycar">IndyCar</a></li>
+                    <li><a href="#motogp">MotoGP</a></li>
+                    <li><a href="#endurance">Endurance Racing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Regions</h3>
+                <ul>
+                    <li><a href="#north-america">North America</a></li>
+                    <li><a href="#europe">Europe</a></li>
+                    <li><a href="#asia">Asia</a></li>
+                    <li><a href="#south-america">South America</a></li>
+                    <li><a href="#oceania">Oceania</a></li>
+                    <li><a href="#africa">Africa</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#track-guides">Track Guides</a></li>
+                    <li><a href="#racing-calendar">Racing Calendar</a></li>
+                    <li><a href="#circuit-maps">Circuit Maps</a></li>
+                    <li><a href="#driver-insights">Driver Insights</a></li>
+                    <li><a href="#technical-specs">Technical Specs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>About IOMotorsport</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#partnerships">Partnerships</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#press">Press</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 107, 53, 0.3); color: #888;">
+            <p>&copy; 2025 IOMotorsport. All rights reserved. | Celebrating the world's greatest racing circuits.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Global state
+        let tracks = [];
+        let filteredTracks = [];
+        let activeFilters = {
+            continent: null,
+            series: null,
+            type: null,
+            search: ''
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTracks();
+            setupEventListeners();
+            updateDisplay();
+        });
+
+        function initializeTracks() {
+            tracks = Array.from(document.querySelectorAll('.track-card')).map(card => ({
+                element: card,
+                name: card.querySelector('h3').textContent,
+                country: card.querySelector('.country').textContent,
+                continent: card.dataset.continent,
+                series: card.dataset.series,
+                type: card.dataset.type,
+                era: card.dataset.era
+            }));
+            filteredTracks = [...tracks];
+        }
+
+        function setupEventListeners() {
+            // Search functionality
+            const searchBox = document.getElementById('searchBox');
+            searchBox.addEventListener('input', function(e) {
+                activeFilters.search = e.target.value.toLowerCase();
+                applyFilters();
+            });
+
+            // Mobile menu toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+
+            // Add animation to cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+
+            tracks.forEach(track => {
+                observer.observe(track.element);
+            });
+        }
+
+        function filterBy(filterType, value) {
+            // Toggle filter
+            if (activeFilters[filterType] === value) {
+                activeFilters[filterType] = null;
+            } else {
+                activeFilters[filterType] = value;
+            }
+            
+            updateFilterButtons();
+            applyFilters();
+        }
+
+        function updateFilterButtons() {
+            // Update button states
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Highlight active filters
+            const activeCount = Object.values(activeFilters).filter(v => v && v !== '').length;
+            document.getElementById('activeFilters').textContent = activeCount;
+        }
+
+        function applyFilters() {
+            filteredTracks = tracks.filter(track => {
+                const matchesContinent = !activeFilters.continent || track.continent === activeFilters.continent;
+                const matchesSeries = !activeFilters.series || track.series === activeFilters.series;
+                const matchesType = !activeFilters.type || track.type === activeFilters.type;
+                const matchesSearch = !activeFilters.search || 
+                    track.name.toLowerCase().includes(activeFilters.search) ||
+                    track.country.toLowerCase().includes(activeFilters.search);
+
+                return matchesContinent && matchesSeries && matchesType && matchesSearch;
+            });
+
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            // Hide all tracks first
+            tracks.forEach(track => {
+                track.element.classList.add('hidden');
+            });
+
+            // Show filtered tracks
+            filteredTracks.forEach(track => {
+                track.element.classList.remove('hidden');
+            });
+
+            // Update stats
+            document.getElementById('visibleTracks').textContent = filteredTracks.length;
+            document.getElementById('totalTracks').textContent = tracks.length;
+
+            // Update continent highlighting on map
+            updateMapHighlighting();
+        }
+
+        function updateMapHighlighting() {
+            // Reset all continents
+            document.querySelectorAll('.continent').forEach(continent => {
+                continent.classList.remove('selected');
+            });
+
+            // Highlight active continent
+            if (activeFilters.continent) {
+                const activeContinentElement = document.querySelector(`[data-continent="${activeFilters.continent}"]`);
+                if (activeContinentElement) {
+                    activeContinentElement.classList.add('selected');
+                }
+            }
+        }
+
+        // Quick filter functions
+        function showAll() {
+            activeFilters = { continent: null, series: null, type: null, search: '' };
+            document.getElementById('searchBox').value = '';
+            updateFilterButtons();
+            applyFilters();
+            
+            // Update button states
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function showFavorites() {
+            // Show legendary tracks
+            filteredTracks = tracks.filter(track => 
+                track.era === 'legendary' || 
+                track.element.querySelector('.badge').textContent.includes('Legendary')
+            );
+            updateDisplay();
+            
+            // Update button states
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function showModern() {
+            // Show modern tracks (opened after 2000)
+            filteredTracks = tracks.filter(track => track.era === 'modern');
+            updateDisplay();
+            
+            // Update button states
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function discoverRandom() {
+            // Show 6 random tracks
+            const shuffled = [...tracks].sort(() => 0.5 - Math.random());
+            filteredTracks = shuffled.slice(0, 6);
+            updateDisplay();
+            
+            // Update button states
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add some dynamic effects
+        function addDynamicEffects() {
+            // Parallax effect for header
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const header = document.querySelector('.main-header');
+                if (header) {
+                    header.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+
+            // Random track spotlight effect
+            setInterval(() => {
+                const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+                if (randomTrack && !randomTrack.element.classList.contains('hidden')) {
+                    randomTrack.element.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        randomTrack.element.style.transform = '';
+                    }, 2000);
+                }
+            }, 10000);
+        }
+
+        // Initialize dynamic effects
+        setTimeout(addDynamicEffects, 1000);
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'f':
+                        e.preventDefault();
+                        document.getElementById('searchBox').focus();
+                        break;
+                    case 'r':
+                        e.preventDefault();
+                        discoverRandom();
+                        break;
+                }
+            }
+        });
+
+        // Add touch gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next filter
+                    discoverRandom();
+                } else {
+                    // Swipe right - show all
+                    showAll();
+                }
+            }
+        }
+    </script>
 </body>
 </html>
