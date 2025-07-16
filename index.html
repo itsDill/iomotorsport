@@ -3,365 +3,706 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thailand Motorsport Hub - Racing Tracks, Events & Community</title>
-    <meta
-      name="description"
-      content="Discover Thailand's premier racing circuits, motorsport events, car meets, and racing community. Your complete guide to Thai motorsport culture and venues."
-    />
-    <meta
-      name="keywords"
-      content="Thailand racing, Buriram Circuit, Chang Circuit, Thailand motorsport, Bangkok racing, Thai racing events, car meets Thailand"
-    />
-    <meta name="author" content="Thailand Motorsport Hub" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Social Media -->
-    <meta
-      property="og:title"
-      content="Thailand Motorsport Hub - Racing Tracks & Events"
-    />
-    <meta
-      property="og:description"
-      content="Thailand's complete motorsport guide - racing circuits, events, and community"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.thailandmotorsport.com" />
-    <meta
-      property="og:image"
-      content="https://www.thailandmotorsport.com/images/og-image.jpg"
-    />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="th_TH" />
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
-
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-9G9RD6BHLN"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+    <title>CareerMatch - Find Your Perfect Job</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      gtag("js", new Date());
-      gtag("config", "G-9G9RD6BHLN");
-    </script>
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        min-height: 100vh;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .header {
+        padding: 20px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .tagline {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .role-selection {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .role-title {
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 32px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .role-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .role-btn {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .role-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .swipe-container {
+        position: relative;
+        height: calc(100vh - 80px);
+        overflow: hidden;
+      }
+
+      .card-stack {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 100px;
+      }
+
+      .job-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        cursor: grab;
+        transition: transform 0.2s ease;
+        overflow: hidden;
+        user-select: none;
+      }
+
+      .job-card.dragging {
+        cursor: grabbing;
+        z-index: 1000;
+      }
+
+      .card-header {
+        padding: 24px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .company-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .job-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .company-name {
+        font-size: 16px;
+        color: #667eea;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .job-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .meta-item {
+        background: #f7fafc;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #4a5568;
+        font-weight: 500;
+      }
+
+      .salary {
+        background: #e6fffa;
+        color: #2d7d67;
+      }
+
+      .location {
+        background: #ebf8ff;
+        color: #2b6cb0;
+      }
+
+      .card-content {
+        padding: 24px;
+      }
+
+      .description {
+        color: #4a5568;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-tag {
+        background: #667eea;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .action-buttons {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .action-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .reject-btn {
+        background: #ff6b6b;
+        color: white;
+      }
+
+      .save-btn {
+        background: #ffd93d;
+        color: #2d3748;
+      }
+
+      .like-btn {
+        background: #51cf66;
+        color: white;
+      }
+
+      .action-btn:hover {
+        transform: scale(1.1);
+      }
+
+      .swipe-indicator {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 80px;
+        font-weight: 800;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+      }
+
+      .like-indicator {
+        right: 20px;
+        color: #51cf66;
+      }
+
+      .reject-indicator {
+        left: 20px;
+        color: #ff6b6b;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .no-more-cards {
+        text-align: center;
+        color: white;
+        padding: 60px 20px;
+        font-size: 18px;
+      }
+
+      .no-more-cards h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 100%;
+          border-radius: 0;
+        }
+
+        .job-card {
+          margin: 0 10px;
+        }
+
+        .card-stack {
+          left: 10px;
+          right: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Navigation Header -->
-    <nav class="nav-header">
-      <div class="nav-container">
-        <a href="index.html" class="logo">
-          <div class="thai-flag"></div>
-          Thailand Motorsport
-        </a>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="tracks.html">Racing Tracks</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="community.html">Community</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html" class="cta-button">Contact</a></li>
-        </ul>
-        <div class="mobile-menu" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+    <div class="container">
+      <div class="header">
+        <div class="logo">CareerMatch</div>
+        <div class="tagline">Where careers meet opportunity</div>
+      </div>
+
+      <div id="roleSelection" class="role-selection">
+        <h1 class="role-title">I'm looking for:</h1>
+        <div class="role-buttons">
+          <button class="role-btn" onclick="selectRole('employee')">
+            🎯 Great Job Opportunities
+          </button>
+          <button class="role-btn" onclick="selectRole('employer')">
+            💼 Talented Professionals
+          </button>
         </div>
       </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <h1>Thailand Motorsport Hub</h1>
-        <p class="subtitle">Your Ultimate Guide to Thai Racing Culture</p>
-        <p class="thai-subtitle">
-          มอเตอร์สปอร์ตไทยแลนด์ - ครบครันทุกเรื่องแข่งรถ
+      <div id="swipeContainer" class="swipe-container hidden">
+        <div class="card-stack" id="cardStack">
+          <div class="swipe-indicator like-indicator">✓</div>
+          <div class="swipe-indicator reject-indicator">✗</div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="action-btn reject-btn" onclick="rejectCard()">
+            ✗
+          </button>
+          <button class="action-btn save-btn" onclick="saveCard()">⭐</button>
+          <button class="action-btn like-btn" onclick="likeCard()">✓</button>
+        </div>
+      </div>
+
+      <div id="noMoreCards" class="no-more-cards hidden">
+        <h2>🎉 All caught up!</h2>
+        <p>
+          You've seen all available opportunities. Check back later for new
+          matches!
         </p>
-
-        <div class="hero-buttons">
-          <a href="tracks.html" class="primary-button">Explore Tracks</a>
-          <a href="events.html" class="secondary-button">View Events</a>
-        </div>
       </div>
-
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Major Circuits</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">12+</div>
-          <div class="stat-label">Annual Events</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Car Meets/Year</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="main-content">
-      <!-- Featured Tracks Section -->
-      <section class="featured-section">
-        <div class="section-header">
-          <h2>Featured Racing Circuits</h2>
-          <p>
-            Discover Thailand's world-class racing venues - from
-            international-grade circuits to local racing hotspots
-          </p>
-        </div>
-
-        <div class="featured-grid">
-          <div class="featured-card">
-            <div class="featured-image">
-              <img
-                src="images/chang-circuit.jpg"
-                alt="Chang International Circuit"
-              />
-              <div class="featured-overlay">
-                <h3>Chang International Circuit</h3>
-                <p>Buriram Province</p>
-                <a href="tracks.html#chang" class="featured-button"
-                  >View Details</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="featured-card">
-            <div class="featured-image">
-              <img src="images/bira-circuit.jpg" alt="Bira Circuit" />
-              <div class="featured-overlay">
-                <h3>Bira Circuit</h3>
-                <p>Pattaya, Chonburi</p>
-                <a href="tracks.html#bira" class="featured-button"
-                  >View Details</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-footer">
-          <a href="tracks.html" class="view-all-button"
-            >View All Racing Tracks →</a
-          >
-        </div>
-      </section>
-
-      <!-- Upcoming Events Section -->
-      <section class="events-section">
-        <div class="section-header">
-          <h2>Upcoming Motorsport Events</h2>
-          <p>
-            Stay updated with the latest racing events, car meets, and
-            motorsport festivals across Thailand
-          </p>
-        </div>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="event-date">March 2025</div>
-            <div class="event-image">
-              <img src="images/motogp-event.jpg" alt="Thailand MotoGP" />
-            </div>
-            <div class="event-content">
-              <h4>Thailand MotoGP</h4>
-              <div class="event-location">
-                📍 Chang International Circuit, Buriram
-              </div>
-              <p>
-                The biggest motorsport event in Thailand, featuring world-class
-                MotoGP racing action with international riders.
-              </p>
-              <a href="events.html#motogp" class="event-button">Learn More</a>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-date">February 2025</div>
-            <div class="event-image">
-              <img
-                src="images/motor-show.jpg"
-                alt="Bangkok International Motor Show"
-              />
-            </div>
-            <div class="event-content">
-              <h4>Bangkok International Motor Show</h4>
-              <div class="event-location">📍 Impact Muang Thong Thani</div>
-              <p>
-                Thailand's largest automotive exhibition featuring the latest
-                cars, motorcycles, and motorsport displays.
-              </p>
-              <a href="events.html#motor-show" class="event-button"
-                >Learn More</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="section-footer">
-          <a href="events.html" class="view-all-button">View All Events →</a>
-        </div>
-      </section>
-
-      <!-- Community Spotlight -->
-      <section class="community-section">
-        <div class="section-header">
-          <h2>Community Spotlight</h2>
-          <p>
-            Connect with fellow motorsport enthusiasts and join the vibrant Thai
-            racing community
-          </p>
-        </div>
-
-        <div class="community-grid">
-          <div class="community-card">
-            <div class="community-icon">
-              <i class="icon-group"></i>
-            </div>
-            <h3>Car Meets</h3>
-            <p>
-              Join monthly gatherings of car enthusiasts showcasing modified
-              vehicles and classic cars.
-            </p>
-            <a href="community.html#car-meets" class="community-link"
-              >Learn More</a
-            >
-          </div>
-
-          <div class="community-card">
-            <div class="community-icon">
-              <i class="icon-forum"></i>
-            </div>
-            <h3>Discussion Forums</h3>
-            <p>
-              Connect with other motorsport fans in our active online community.
-            </p>
-            <a href="community.html#forums" class="community-link">Join Now</a>
-          </div>
-
-          <div class="community-card">
-            <div class="community-icon">
-              <i class="icon-photos"></i>
-            </div>
-            <h3>Photo Gallery</h3>
-            <p>Browse and share photos from recent events and track days.</p>
-            <a href="community.html#gallery" class="community-link"
-              >View Gallery</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- Newsletter Section -->
-      <section class="newsletter-section">
-        <div class="newsletter-content">
-          <h2>Stay Updated</h2>
-          <p>
-            Subscribe to our newsletter for the latest motorsport news, event
-            updates, and exclusive offers
-          </p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" required />
-            <button type="submit" class="subscribe-button">Subscribe</button>
-          </form>
-        </div>
-      </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Racing Circuits</h3>
-          <ul>
-            <li><a href="tracks.html#chang">Chang International Circuit</a></li>
-            <li><a href="tracks.html#bira">Bira Circuit Pattaya</a></li>
-            <li><a href="tracks.html#kaeng">Kaeng Krachan Circuit</a></li>
-            <li><a href="tracks.html#thailand">Thailand Circuit</a></li>
-          </ul>
-        </div>
+    <script>
+      // Sample job data
+      const jobData = [
+        {
+          id: 1,
+          title: "Senior Frontend Developer",
+          company: "TechCorp",
+          logo: "TC",
+          salary: "$120k - $150k",
+          location: "San Francisco, CA",
+          description:
+            "Join our innovative team to build next-generation web applications using React, TypeScript, and modern frameworks. We're looking for someone passionate about creating exceptional user experiences.",
+          skills: ["React", "TypeScript", "CSS", "Node.js", "GraphQL"],
+        },
+        {
+          id: 2,
+          title: "UX Designer",
+          company: "DesignLab",
+          logo: "DL",
+          salary: "$90k - $110k",
+          location: "New York, NY",
+          description:
+            "Design beautiful, intuitive interfaces that delight users. Work closely with product teams to research, prototype, and iterate on user-centered design solutions.",
+          skills: [
+            "Figma",
+            "User Research",
+            "Prototyping",
+            "Design Systems",
+            "Usability Testing",
+          ],
+        },
+        {
+          id: 3,
+          title: "Data Scientist",
+          company: "DataFlow",
+          logo: "DF",
+          salary: "$130k - $160k",
+          location: "Remote",
+          description:
+            "Analyze complex datasets to drive business insights and build predictive models. Work with cutting-edge ML tools and collaborate with cross-functional teams.",
+          skills: [
+            "Python",
+            "Machine Learning",
+            "SQL",
+            "TensorFlow",
+            "Statistics",
+          ],
+        },
+        {
+          id: 4,
+          title: "Product Manager",
+          company: "InnovateCo",
+          logo: "IC",
+          salary: "$140k - $170k",
+          location: "Austin, TX",
+          description:
+            "Lead product strategy and development for our flagship SaaS platform. Define roadmaps, work with engineering teams, and drive user adoption.",
+          skills: [
+            "Product Strategy",
+            "Agile",
+            "Analytics",
+            "User Stories",
+            "Market Research",
+          ],
+        },
+        {
+          id: 5,
+          title: "DevOps Engineer",
+          company: "CloudScale",
+          logo: "CS",
+          salary: "$110k - $140k",
+          location: "Seattle, WA",
+          description:
+            "Build and maintain scalable cloud infrastructure. Implement CI/CD pipelines, monitor system performance, and ensure high availability.",
+          skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"],
+        },
+      ];
 
-        <div class="footer-section">
-          <h3>Events & Community</h3>
-          <ul>
-            <li><a href="events.html#motogp">Thailand MotoGP</a></li>
-            <li><a href="events.html#car-meets">Bangkok Car Meets</a></li>
-            <li><a href="community.html#track-days">Track Day Calendar</a></li>
-            <li>
-              <a href="community.html#racing-series">Thai Racing Series</a>
-            </li>
-          </ul>
-        </div>
+      // Sample employee data
+      const employeeData = [
+        {
+          id: 1,
+          name: "Sarah Johnson",
+          title: "Senior Frontend Developer",
+          company: "Available",
+          logo: "SJ",
+          salary: "Seeking $120k+",
+          location: "San Francisco, CA",
+          description:
+            "5+ years of experience building scalable web applications. Passionate about clean code, performance optimization, and mentoring junior developers.",
+          skills: ["React", "Vue.js", "JavaScript", "TypeScript", "CSS"],
+        },
+        {
+          id: 2,
+          name: "Mike Chen",
+          title: "UX Designer",
+          company: "Available",
+          logo: "MC",
+          salary: "Seeking $90k+",
+          location: "New York, NY",
+          description:
+            "Creative problem-solver with 4 years of experience in user-centered design. Expertise in research, prototyping, and design systems.",
+          skills: [
+            "Figma",
+            "Sketch",
+            "User Research",
+            "Prototyping",
+            "Design Systems",
+          ],
+        },
+        {
+          id: 3,
+          name: "Emily Rodriguez",
+          title: "Data Scientist",
+          company: "Available",
+          logo: "ER",
+          salary: "Seeking $130k+",
+          location: "Remote",
+          description:
+            "PhD in Statistics with 3 years of industry experience. Specialized in machine learning, predictive modeling, and data visualization.",
+          skills: ["Python", "R", "Machine Learning", "SQL", "Tableau"],
+        },
+      ];
 
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="gear.html#driving-schools">Racing Schools</a></li>
-            <li><a href="gear.html#safety-gear">Safety Equipment</a></li>
-            <li><a href="about.html#regulations">Racing Regulations</a></li>
-            <li><a href="gear.html#insurance">Track Insurance</a></li>
-          </ul>
-        </div>
+      let currentRole = null;
+      let currentData = [];
+      let currentCardIndex = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let currentCard = null;
 
-        <div class="footer-section">
-          <h3>About</h3>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html#partnerships">Partnerships</a></li>
-            <li><a href="community.html#submit-event">Submit Event</a></li>
-          </ul>
-        </div>
+      function selectRole(role) {
+        currentRole = role;
+        currentData = role === "employee" ? jobData : employeeData;
+        currentCardIndex = 0;
 
-        <div class="footer-section">
-          <h3>Connect With Us</h3>
-          <div class="social-links">
-            <a href="#" class="social-icon"><i class="icon-facebook"></i></a>
-            <a href="#" class="social-icon"><i class="icon-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="icon-youtube"></i></a>
-            <a href="#" class="social-icon"><i class="icon-twitter"></i></a>
-          </div>
-          <div class="footer-contact">
-            <p><i class="icon-email"></i> info@thailandmotorsport.com</p>
-            <p><i class="icon-phone"></i> +66 123 456 789</p>
-          </div>
-        </div>
-      </div>
+        document.getElementById("roleSelection").classList.add("hidden");
+        document.getElementById("swipeContainer").classList.remove("hidden");
 
-      <div class="footer-bottom">
-        <p>
-          &copy; 2025 Thailand Motorsport Hub. All rights reserved. |
-          Celebrating Thai racing culture and community
-        </p>
-        <div class="footer-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="sitemap.xml">Sitemap</a>
-        </div>
-      </div>
-    </footer>
+        loadCards();
+      }
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+      function loadCards() {
+        const cardStack = document.getElementById("cardStack");
+
+        // Clear existing cards
+        const existingCards = cardStack.querySelectorAll(".job-card");
+        existingCards.forEach((card) => card.remove());
+
+        // Load next few cards
+        for (
+          let i = 0;
+          i < Math.min(3, currentData.length - currentCardIndex);
+          i++
+        ) {
+          const cardData = currentData[currentCardIndex + i];
+          const card = createCard(cardData);
+          card.style.zIndex = 10 - i;
+          card.style.transform = `scale(${1 - i * 0.05}) translateY(${
+            i * 10
+          }px)`;
+          cardStack.appendChild(card);
+        }
+
+        if (currentCardIndex >= currentData.length) {
+          showNoMoreCards();
+        }
+      }
+
+      function createCard(data) {
+        const card = document.createElement("div");
+        card.className = "job-card";
+        card.innerHTML = `
+                <div class="card-header">
+                    <div class="company-logo">${data.logo}</div>
+                    <div class="job-title">${data.title}</div>
+                    <div class="company-name">${data.company}</div>
+                    <div class="job-meta">
+                        <span class="meta-item salary">${data.salary}</span>
+                        <span class="meta-item location">${data.location}</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="description">${data.description}</div>
+                    <div class="skills">
+                        ${data.skills
+                          .map(
+                            (skill) => `<span class="skill-tag">${skill}</span>`
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            `;
+
+        addSwipeListeners(card);
+        return card;
+      }
+
+      function addSwipeListeners(card) {
+        card.addEventListener("mousedown", startDrag);
+        card.addEventListener("touchstart", startDrag);
+
+        document.addEventListener("mousemove", drag);
+        document.addEventListener("touchmove", drag);
+
+        document.addEventListener("mouseup", endDrag);
+        document.addEventListener("touchend", endDrag);
+      }
+
+      function startDrag(e) {
+        isDragging = true;
+        currentCard = e.currentTarget;
+        currentCard.classList.add("dragging");
+
+        const clientX = e.clientX || e.touches[0].clientX;
+        const clientY = e.clientY || e.touches[0].clientY;
+
+        startX = clientX;
+        startY = clientY;
+
+        e.preventDefault();
+      }
+
+      function drag(e) {
+        if (!isDragging || !currentCard) return;
+
+        const clientX = e.clientX || e.touches[0].clientX;
+        const clientY = e.clientY || e.touches[0].clientY;
+
+        const deltaX = clientX - startX;
+        const deltaY = clientY - startY;
+
+        const rotation = deltaX * 0.1;
+        currentCard.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${rotation}deg)`;
+
+        // Show indicators
+        const likeIndicator = document.querySelector(".like-indicator");
+        const rejectIndicator = document.querySelector(".reject-indicator");
+
+        if (deltaX > 50) {
+          likeIndicator.style.opacity = Math.min(1, deltaX / 150);
+          rejectIndicator.style.opacity = 0;
+        } else if (deltaX < -50) {
+          rejectIndicator.style.opacity = Math.min(1, Math.abs(deltaX) / 150);
+          likeIndicator.style.opacity = 0;
+        } else {
+          likeIndicator.style.opacity = 0;
+          rejectIndicator.style.opacity = 0;
+        }
+      }
+
+      function endDrag(e) {
+        if (!isDragging || !currentCard) return;
+
+        isDragging = false;
+        currentCard.classList.remove("dragging");
+
+        const clientX = e.clientX || e.changedTouches[0].clientX;
+        const deltaX = clientX - startX;
+
+        // Hide indicators
+        document.querySelector(".like-indicator").style.opacity = 0;
+        document.querySelector(".reject-indicator").style.opacity = 0;
+
+        if (Math.abs(deltaX) > 100) {
+          // Swipe action
+          const direction = deltaX > 0 ? "right" : "left";
+          animateCardOut(currentCard, direction);
+
+          if (direction === "right") {
+            console.log("Liked!");
+          } else {
+            console.log("Rejected!");
+          }
+
+          nextCard();
+        } else {
+          // Snap back
+          currentCard.style.transform = "";
+        }
+
+        currentCard = null;
+      }
+
+      function animateCardOut(card, direction) {
+        const distance = direction === "right" ? 1000 : -1000;
+        card.style.transform = `translateX(${distance}px) rotate(${
+          direction === "right" ? 30 : -30
+        }deg)`;
+        card.style.opacity = "0";
+
+        setTimeout(() => {
+          card.remove();
+        }, 300);
+      }
+
+      function nextCard() {
+        currentCardIndex++;
+
+        setTimeout(() => {
+          const remainingCards = document.querySelectorAll(".job-card");
+          remainingCards.forEach((card, index) => {
+            card.style.zIndex = 10 - index;
+            card.style.transform = `scale(${1 - index * 0.05}) translateY(${
+              index * 10
+            }px)`;
+          });
+
+          if (currentCardIndex < currentData.length) {
+            loadCards();
+          } else {
+            showNoMoreCards();
+          }
+        }, 100);
+      }
+
+      function likeCard() {
+        const topCard = document.querySelector(".job-card");
+        if (topCard) {
+          animateCardOut(topCard, "right");
+          nextCard();
+        }
+      }
+
+      function rejectCard() {
+        const topCard = document.querySelector(".job-card");
+        if (topCard) {
+          animateCardOut(topCard, "left");
+          nextCard();
+        }
+      }
+
+      function saveCard() {
+        console.log("Saved for later!");
+        // In a real app, this would save to favorites
+        likeCard();
+      }
+
+      function showNoMoreCards() {
+        document.getElementById("swipeContainer").classList.add("hidden");
+        document.getElementById("noMoreCards").classList.remove("hidden");
+      }
+
+      // Prevent default touch behaviors
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          if (isDragging) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+    </script>
   </body>
 </html>
