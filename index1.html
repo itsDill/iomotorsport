@@ -641,6 +641,12 @@
         </div>
       </div>
 
+      <div id="historyView" class="history-section hidden">
+        <h3 class="history-title" id="historyTitle">History</h3>
+        <div id="historyList"></div>
+        <button class="refresh-btn" onclick="goHome()">Back to Home</button>
+      </div>
+
       <div id="swipeContainer" class="swipe-container hidden">
         <div class="card-stack" id="cardStack">
           <div class="swipe-indicator like-indicator">✓</div>
@@ -656,6 +662,15 @@
         </div>
       </div>
 
+      <div id="noMoreCards" class="no-more-cards hidden">
+        <h2>🎉 All caught up!</h2>
+        <p>
+          You've seen all available opportunities. Check back later for new
+          matches!
+        </p>
+        <button class="refresh-btn" onclick="goHome()">Back to Home</button>
+      </div>
+    </div>
 
     <script>
       // Sample job data with image URLs
