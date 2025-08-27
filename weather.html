@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather - RallyData Pro</title>
+    <meta
+      name="description"
+      content="Real-time weather conditions, forecasts, surface temperatures, and weather impact analysis for WRC events."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .weather-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .location-selector select {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+
+      .refresh-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #00ff00;
+        font-size: 14px;
+      }
+
+      .refresh-dot {
+        width: 8px;
+        height: 8px;
+        background: #00ff00;
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+      }
+
+      .current-weather {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.1),
+          rgba(247, 147, 30, 0.05)
+        );
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .current-weather::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+      }
+
+      .weather-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+      }
+
+      .current-temp {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #ff6b35;
+        margin-bottom: 10px;
+      }
+
+      .weather-description {
+        font-size: 1.3rem;
+        color: #ccc;
+        margin-bottom: 30px;
+        text-transform: capitalize;
+      }
+
+      .weather-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .detail-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .detail-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+
+      .detail-label {
+        font-size: 12px;
+        color: #ccc;
+        text-transform: uppercase;
+      }
+
+      .stage-weather {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .stage-weather-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        border-radius: 15px;
+        padding: 25px;
+        position: relative;
+      }
+
+      .stage-weather-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+      }
+
+      .stage-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .stage-name {
+        color: #ff6b35;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .stage-time {
+        color: #ccc;
+        font-size: 14px;
+      }
+
+      .stage-conditions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .condition-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .condition-item:last-child {
+        border-bottom: none;
+      }
+
+      .condition-label {
+        color: #ccc;
+      }
+
+      .condition-value {
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .grip-indicator {
+        background: rgba(255, 255, 255, 0.1);
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 15px;
+      }
+
+      .grip-level {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.3s ease;
+      }
+
+      .grip-level.high {
+        width: 85%;
+        background: #00ff00;
+      }
+
+      .grip-level.medium {
+        width: 60%;
+        background: #ffa502;
+      }
+
+      .grip-level.low {
+        width: 35%;
+        background: #ff4757;
+      }
+
+      .forecast-section {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 40px 0;
+      }
+
+      .forecast-timeline {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .forecast-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .forecast-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .forecast-time {
+        color: #ff6b35;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .forecast-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .forecast-temp {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+
+      .forecast-condition {
+        font-size: 12px;
+        color: #ccc;
+      }
+
+      .radar-section {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+        margin: 40px 0;
+      }
+
+      .weather-radar {
+        background: #000;
+        border-radius: 15px;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .radar-display {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: radial-gradient(
+          circle at center,
+          rgba(0, 255, 0, 0.1) 20%,
+          rgba(0, 255, 0, 0.05) 40%,
+          rgba(0, 255, 0, 0.02) 60%,
+          transparent 80%
+        );
+      }
+
+      .radar-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+      }
+
+      .radar-sweep {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 50%;
+        background: linear-gradient(to bottom, #00ff00, transparent);
+        transform-origin: top center;
+        animation: radar-sweep 3s linear infinite;
+      }
+
+      .weather-alerts {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 77, 87, 0.1),
+          rgba(255, 77, 87, 0.05)
+        );
+        border-radius: 15px;
+        padding: 25px;
+      }
+
+      .alert-item {
+        background: rgba(255, 77, 87, 0.2);
+        border-left: 4px solid #ff4d57;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .alert-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .alert-type {
+        color: #ff4d57;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      .alert-text {
+        color: #ccc;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .historical-data {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+        padding: 30px;
+        margin-top: 40px;
+      }
+
+      .weather-chart {
+        background: #000;
+        border-radius: 10px;
+        height: 250px;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .chart-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .chart-btn {
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ccc;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .chart-btn:hover,
+      .chart-btn.active {
+        background: #ff6b35;
+        border-color: #ff6b35;
+        color: #fff;
+      }
+
+      @keyframes radar-sweep {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .weather-details {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stage-weather {
+          grid-template-columns: 1fr;
+        }
+
+        .radar-section {
+          grid-template-columns: 1fr;
+        }
+
+        .forecast-timeline {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo"><a href="index.html">RallyData Pro</a></div>
+        <ul class="nav-links">
+          <li><a href="live-timing.html">Live Timing</a></li>
+          <li><a href="stage-maps.html">Stage Maps</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="weather.html" class="active">Weather</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Weather Intelligence</h1>
+          <p>
+            Real-time weather conditions, forecasts, and surface analysis for
+            rally stages
+          </p>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="weather-header">
+            <div class="location-selector">
+              <select id="locationSelect">
+                <option value="monte-carlo">Rally Monte-Carlo</option>
+                <option value="sweden">Rally Sweden</option>
+                <option value="croatia">Rally Croatia</option>
+                <option value="portugal">Rally Portugal</option>
+              </select>
+            </div>
+
+            <div class="refresh-indicator">
+              <div class="refresh-dot"></div>
+              <span>Live Updates</span>
+            </div>
+          </div>
+
+          <div class="current-weather">
+            <div class="weather-icon">🌦️</div>
+            <div class="current-temp">12°C</div>
+            <div class="weather-description">Light Rain</div>
+
+            <div class="weather-details">
+              <div class="detail-item">
+                <div class="detail-value">85%</div>
+                <div class="detail-label">Humidity</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-value">15 km/h</div>
+                <div class="detail-label">Wind Speed</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-value">NE</div>
+                <div class="detail-label">Wind Direction</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-value">8°C</div>
+                <div class="detail-label">Road Temp</div>
+              </div>
+            </div>
+          </div>
+
+          <h2>Stage Conditions</h2>
+          <div class="stage-weather">
+            <div class="stage-weather-card">
+              <div class="stage-header">
+                <div class="stage-name">SS12 - Col de Turini</div>
+                <div class="stage-time">LIVE</div>
+              </div>
+
+              <div class="stage-conditions">
+                <div>
+                  <div class="condition-item">
+                    <span class="condition-label">Air Temp</span>
+                    <span class="condition-value">9°C</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Road Temp</span>
+                    <span class="condition-value">6°C</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Humidity</span>
+                    <span class="condition-value">92%</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="condition-item">
+                    <span class="condition-label">Wind</span>
+                    <span class="condition-value">18 km/h</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Pressure</span>
+                    <span class="condition-value">1013 hPa</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Visibility</span>
+                    <span class="condition-value">8 km</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 15px;
+                "
+              >
+                <span style="color: #ccc">Grip Level:</span>
+                <span style="color: #ffa502; font-weight: bold">Medium</span>
+              </div>
+              <div class="grip-indicator">
+                <div class="grip-level medium"></div>
+              </div>
+            </div>
+
+            <div class="stage-weather-card">
+              <div class="stage-header">
+                <div class="stage-name">SS11 - Peille</div>
+                <div class="stage-time">Completed</div>
+              </div>
+
+              <div class="stage-conditions">
+                <div>
+                  <div class="condition-item">
+                    <span class="condition-label">Air Temp</span>
+                    <span class="condition-value">14°C</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Road Temp</span>
+                    <span class="condition-value">11°C</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Humidity</span>
+                    <span class="condition-value">78%</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="condition-item">
+                    <span class="condition-label">Wind</span>
+                    <span class="condition-value">12 km/h</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Pressure</span>
+                    <span class="condition-value">1015 hPa</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Visibility</span>
+                    <span class="condition-value">15 km</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 15px;
+                "
+              >
+                <span style="color: #ccc">Grip Level:</span>
+                <span style="color: #00ff00; font-weight: bold">High</span>
+              </div>
+              <div class="grip-indicator">
+                <div class="grip-level high"></div>
+              </div>
+            </div>
+
+            <div class="stage-weather-card">
+              <div class="stage-header">
+                <div class="stage-name">SS13 - La Cabanette</div>
+                <div class="stage-time">Upcoming (14:30)</div>
+              </div>
+
+              <div class="stage-conditions">
+                <div>
+                  <div class="condition-item">
+                    <span class="condition-label">Air Temp</span>
+                    <span class="condition-value">11°C</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Road Temp</span>
+                    <span class="condition-value">7°C</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Humidity</span>
+                    <span class="condition-value">88%</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="condition-item">
+                    <span class="condition-label">Wind</span>
+                    <span class="condition-value">22 km/h</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Pressure</span>
+                    <span class="condition-value">1011 hPa</span>
+                  </div>
+                  <div class="condition-item">
+                    <span class="condition-label">Visibility</span>
+                    <span class="condition-value">6 km</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-top: 15px;
+                "
+              >
+                <span style="color: #ccc">Grip Level:</span>
+                <span style="color: #ff4757; font-weight: bold">Low</span>
+              </div>
+              <div class="grip-indicator">
+                <div class="grip-level low"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="forecast-section">
+            <h2>24-Hour Forecast</h2>
+            <div class="forecast-timeline">
+              <div class="forecast-item">
+                <div class="forecast-time">Now</div>
+                <div class="forecast-icon">🌦️</div>
+                <div class="forecast-temp">12°C</div>
+                <div class="forecast-condition">Light Rain</div>
+              </div>
+
+              <div class="forecast-item">
+                <div class="forecast-time">14:00</div>
+                <div class="forecast-icon">☁️</div>
+                <div class="forecast-temp">13°C</div>
+                <div class="forecast-condition">Cloudy</div>
+              </div>
+
+              <div class="forecast-item">
+                <div class="forecast-time">16:00</div>
+                <div class="forecast-icon">⛅</div>
+                <div class="forecast-temp">15°C</div>
+                <div class="forecast-condition">Part Cloudy</div>
+              </div>
+
+              <div class="forecast-item">
+                <div class="forecast-time">18:00</div>
+                <div class="forecast-icon">☀️</div>
+                <div class="forecast-temp">16°C</div>
+                <div class="forecast-condition">Clear</div>
+              </div>
+
+              <div class="forecast-item">
+                <div class="forecast-time">20:00</div>
+                <div class="forecast-icon">🌙</div>
+                <div class="forecast-temp">14°C</div>
+                <div class="forecast-condition">Clear Night</div>
+              </div>
+
+              <div class="forecast-item">
+                <div class="forecast-time">Tomorrow</div>
+                <div class="forecast-icon">🌤️</div>
+                <div class="forecast-temp">18°C</div>
+                <div class="forecast-condition">Mostly Sunny</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="radar-section">
+            <div class="weather-radar">
+              <div class="radar-display">
+                <svg class="radar-grid" width="100%" height="100%">
+                  <defs>
+                    <pattern
+                      id="grid"
+                      width="50"
+                      height="50"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <path
+                        d="M 50 0 L 0 0 0 50"
+                        stroke="#00ff00"
+                        stroke-width="1"
+                        fill="none"
+                        opacity="0.3"
+                      />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+
+                  <!-- Radar circles -->
+                  <g
+                    stroke="#00ff00"
+                    stroke-width="1"
+                    fill="none"
+                    opacity="0.5"
+                  >
+                    <circle cx="50%" cy="50%" r="50" />
+                    <circle cx="50%" cy="50%" r="100" />
+                    <circle cx="50%" cy="50%" r="150" />
+                  </g>
+
+                  <!-- Weather cells -->
+                  <g opacity="0.7">
+                    <circle
+                      cx="45%"
+                      cy="40%"
+                      r="15"
+                      fill="#00ff00"
+                      opacity="0.4"
+                    />
+                    <circle
+                      cx="60%"
+                      cy="35%"
+                      r="20"
+                      fill="#ffa502"
+                      opacity="0.6"
+                    />
+                    <circle
+                      cx="55%"
+                      cy="55%"
+                      r="12"
+                      fill="#ff4757"
+                      opacity="0.8"
+                    />
+                  </g>
+                </svg>
+                <div class="radar-sweep"></div>
+              </div>
+
+              <div
+                style="
+                  position: absolute;
+                  top: 15px;
+                  left: 15px;
+                  color: #00ff00;
+                  font-size: 14px;
+                "
+              >
+                Weather Radar - 100km Range
+              </div>
+              <div
+                style="
+                  position: absolute;
+                  bottom: 15px;
+                  right: 15px;
+                  color: #00ff00;
+                  font-size: 12px;
+                "
+              >
+                🟢 Light ⚪ Moderate 🔴 Heavy
+              </div>
+            </div>
+
+            <div class="weather-alerts">
+              <h3>Weather Alerts</h3>
+              <div class="alert-item">
+                <div class="alert-type">⚠️ Stage Warning</div>
+                <div class="alert-text">
+                  Increasing winds expected on SS13. Gusts up to 35 km/h may
+                  affect high-speed sections.
+                </div>
+              </div>
+
+              <div class="alert-item">
+                <div class="alert-type">🌧️ Rain Alert</div>
+                <div class="alert-text">
+                  Light rain developing over northern stages. Road surface
+                  conditions deteriorating.
+                </div>
+              </div>
+
+              <div class="alert-item">
+                <div class="alert-type">🌡️ Temperature Drop</div>
+                <div class="alert-text">
+                  Temperature falling below 5°C on mountain stages. Ice
+                  formation possible.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="historical-data">
+            <h2>Weather Trends</h2>
+            <div class="chart-controls">
+              <button class="chart-btn active" data-metric="temperature">
+                Temperature
+              </button>
+              <button class="chart-btn" data-metric="rainfall">Rainfall</button>
+              <button class="chart-btn" data-metric="wind">Wind Speed</button>
+              <button class="chart-btn" data-metric="pressure">Pressure</button>
+            </div>
+
+            <div class="weather-chart">
+              <svg width="100%" height="100%" viewBox="0 0 800 250">
+                <!-- Grid -->
+                <g stroke="#333" stroke-width="1" opacity="0.3">
+                  <line x1="50" y1="50" x2="750" y2="50" />
+                  <line x1="50" y1="100" x2="750" y2="100" />
+                  <line x1="50" y1="150" x2="750" y2="150" />
+                  <line x1="50" y1="200" x2="750" y2="200" />
+                </g>
+
+                <!-- Temperature line -->
+                <path
+                  d="M50 180 Q150 160 200 140 T350 130 Q450 120 550 125 T700 135 Q750 140 800 145"
+                  stroke="#ff6b35"
+                  stroke-width="3"
+                  fill="none"
+                />
+
+                <!-- Data points -->
+                <g fill="#ff6b35" stroke="#fff" stroke-width="2">
+                  <circle cx="150" cy="160" r="4" />
+                  <circle cx="300" cy="130" r="4" />
+                  <circle cx="450" cy="120" r="4" />
+                  <circle cx="600" cy="125" r="4" />
+                  <circle cx="750" cy="140" r="4" />
+                </g>
+
+                <!-- Labels -->
+                <g fill="#ccc" font-size="12">
+                  <text x="40" y="55">20°</text>
+                  <text x="40" y="105">15°</text>
+                  <text x="40" y="155">10°</text>
+                  <text x="40" y="205">5°</text>
+
+                  <text x="140" y="230">00:00</text>
+                  <text x="290" y="230">06:00</text>
+                  <text x="440" y="230">12:00</text>
+                  <text x="590" y="230">18:00</text>
+                  <text x="740" y="230">24:00</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Weather Data</h3>
+            <a href="weather.html">Current Conditions</a>
+            <a href="stage-maps.html">Stage Weather</a>
+            <a href="analytics.html">Impact Analysis</a>
+            <a href="calendar.html">Event Forecasts</a>
+          </div>
+          <div class="footer-section">
+            <h3>Championships</h3>
+            <a href="#">WRC</a>
+            <a href="#">WRC2</a>
+            <a href="#">WRC3</a>
+            <a href="#">Junior WRC</a>
+          </div>
+          <div class="footer-section">
+            <h3>Data Partners</h3>
+            <a href="#">Official WRC API</a>
+            <a href="#">Weather Services</a>
+            <a href="#">Mapping Data</a>
+            <a href="#">Team Partnerships</a>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <a href="#">API Documentation</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 RallyData Pro. Real-time weather intelligence for rally
+            events.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script>
+      // Weather functionality
+      class WeatherSystem {
+        constructor() {
+          this.simulator = new RallyDataPro.LiveDataSimulator();
+          this.currentLocation = "monte-carlo";
+          this.currentMetric = "temperature";
+          this.initializeControls();
+          this.startWeatherUpdates();
+        }
+
+        initializeControls() {
+          // Location selector
+          document
+            .getElementById("locationSelect")
+            .addEventListener("change", (e) => {
+              this.currentLocation = e.target.value;
+              this.updateLocation();
+            });
+
+          // Chart controls
+          document.querySelectorAll(".chart-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              document
+                .querySelectorAll(".chart-btn")
+                .forEach((b) => b.classList.remove("active"));
+              btn.classList.add("active");
+              this.currentMetric = btn.dataset.metric;
+              this.updateChart();
+            });
+          });
+        }
+
+        startWeatherUpdates() {
+          // Update weather data every 30 seconds
+          this.simulator.startTimingUpdates(() => {
+            this.updateWeatherData();
+          }, 30000);
+
+          // Update stage conditions every 60 seconds
+          this.simulator.startTimingUpdates(() => {
+            this.updateStageConditions();
+          }, 60000);
+        }
+
+        updateWeatherData() {
+          const weatherData = this.simulator.generateWeatherData();
+
+          // Update current weather
+          const tempElement = document.querySelector(".current-temp");
+          const descElement = document.querySelector(".weather-description");
+
+          if (tempElement) {
+            tempElement.textContent = `${weatherData.temperature}°C`;
+          }
+
+          if (descElement) {
+            descElement.textContent = weatherData.conditions;
+          }
+
+          // Update detail values
+          const detailValues = document.querySelectorAll(".detail-value");
+          if (detailValues.length >= 4) {
+            detailValues[0].textContent = `${weatherData.humidity}%`;
+            detailValues[1].textContent = `${weatherData.windSpeed} km/h`;
+            detailValues[2].textContent = this.getWindDirection(
+              weatherData.windDirection
+            );
+            detailValues[3].textContent = `${weatherData.temperature - 4}°C`;
+          }
+        }
+
+        updateStageConditions() {
+          const stageCards = document.querySelectorAll(".stage-weather-card");
+
+          stageCards.forEach((card, index) => {
+            const conditionValues = card.querySelectorAll(".condition-value");
+            const weatherData = this.simulator.generateWeatherData();
+
+            if (conditionValues.length >= 6) {
+              const baseTemp = weatherData.temperature + index * 2;
+              conditionValues[0].textContent = `${baseTemp}°C`;
+              conditionValues[1].textContent = `${baseTemp - 3}°C`;
+              conditionValues[2].textContent = `${
+                weatherData.humidity + index * 5
+              }%`;
+              conditionValues[3].textContent = `${
+                weatherData.windSpeed + index * 3
+              } km/h`;
+              conditionValues[4].textContent = `${
+                1010 + Math.floor(Math.random() * 10)
+              } hPa`;
+              conditionValues[5].textContent = `${
+                8 + Math.floor(Math.random() * 10)
+              } km`;
+            }
+          });
+        }
+
+        updateLocation() {
+          // Simulate loading weather for different locations
+          const locations = {
+            "monte-carlo": { temp: 12, condition: "Light Rain", icon: "🌦️" },
+            sweden: { temp: -5, condition: "Snow", icon: "❄️" },
+            croatia: { temp: 18, condition: "Partly Cloudy", icon: "⛅" },
+            portugal: { temp: 22, condition: "Sunny", icon: "☀️" },
+          };
+
+          const locationData = locations[this.currentLocation];
+          if (locationData) {
+            document.querySelector(
+              ".current-temp"
+            ).textContent = `${locationData.temp}°C`;
+            document.querySelector(".weather-description").textContent =
+              locationData.condition;
+            document.querySelector(".weather-icon").textContent =
+              locationData.icon;
+          }
+        }
+
+        updateChart() {
+          // Simulate chart updates for different metrics
+          console.log(`Updating chart for ${this.currentMetric}`);
+          // In a real application, this would update the SVG chart data
+        }
+
+        getWindDirection(degrees) {
+          const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+          const index = Math.round(degrees / 45) % 8;
+          return directions[index];
+        }
+      }
+
+      // Initialize weather system when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        new WeatherSystem();
+      });
+    </script>
+  </body>
+</html>

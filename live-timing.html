@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Timing - RallyData Pro</title>
+    <meta
+      name="description"
+      content="Real-time WRC timing data, live leaderboards, sector times, and stage progress tracking."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .timing-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .rally-selector select,
+      .stage-selector select {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+
+      .live-indicator {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+      }
+
+      .live-dot {
+        width: 12px;
+        height: 12px;
+        background: #00ff00;
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+      }
+
+      .timing-board {
+        background: #000;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border: 2px solid #333;
+      }
+
+      .timing-header {
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 50px 1fr 100px 100px 100px 100px;
+        gap: 15px;
+        font-weight: bold;
+        align-items: center;
+      }
+
+      .timing-row {
+        display: grid;
+        grid-template-columns: 50px 1fr 100px 100px 100px 100px;
+        gap: 15px;
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+        align-items: center;
+        transition: background 0.2s ease;
+        font-family: "Courier New", monospace;
+      }
+
+      .timing-row:hover {
+        background: rgba(255, 107, 53, 0.1);
+      }
+
+      .timing-row.leader {
+        background: rgba(255, 215, 0, 0.1);
+      }
+
+      .position {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .driver-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .driver-number {
+        background: #ff6b35;
+        color: #000;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      .driver-name {
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .driver-car {
+        color: #ccc;
+        font-size: 14px;
+      }
+
+      .time-cell {
+        text-align: right;
+        font-weight: bold;
+      }
+
+      .time-cell.fastest {
+        color: #9d4edd;
+      }
+
+      .time-cell.personal-best {
+        color: #00ff00;
+      }
+
+      .gap {
+        color: #ff6b35;
+      }
+
+      .sector-times {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .sector-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .sector-card h3 {
+        color: #ff6b35;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .sector-list {
+        list-style: none;
+      }
+
+      .sector-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: "Courier New", monospace;
+      }
+
+      .stage-info {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.1),
+          rgba(247, 147, 30, 0.05)
+        );
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+
+      .stage-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .stage-stat {
+        text-align: center;
+      }
+
+      .stage-stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ff6b35;
+      }
+
+      .stage-stat-label {
+        color: #ccc;
+        font-size: 14px;
+      }
+
+      .progress-bar {
+        background: rgba(255, 255, 255, 0.1);
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 10px 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        transition: width 0.3s ease;
+        animation: pulse 2s infinite;
+      }
+
+      @media (max-width: 768px) {
+        .timing-header,
+        .timing-row {
+          grid-template-columns: 40px 1fr 80px 80px;
+          font-size: 14px;
+        }
+
+        .timing-header span:nth-child(n + 5),
+        .timing-row span:nth-child(n + 5) {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo"><a href="index.html">RallyData Pro</a></div>
+        <ul class="nav-links">
+          <li><a href="live-timing.html" class="active">Live Timing</a></li>
+          <li><a href="stage-maps.html">Stage Maps</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="weather.html">Weather</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Live Timing</h1>
+          <p>
+            Real-time WRC timing data, live leaderboards, and comprehensive
+            stage analysis
+          </p>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="timing-controls">
+            <div style="display: flex; gap: 20px; align-items: center">
+              <div class="rally-selector">
+                <select id="rallySelect">
+                  <option value="monte-carlo">Rally Monte-Carlo</option>
+                  <option value="sweden">Rally Sweden</option>
+                  <option value="croatia">Rally Croatia</option>
+                  <option value="portugal">Rally Portugal</option>
+                </select>
+              </div>
+              <div class="stage-selector">
+                <select id="stageSelect">
+                  <option value="ss12">SS12 - Col de Turini (11.76 km)</option>
+                  <option value="ss11">
+                    SS11 - Peille - Peira Cava (18.82 km)
+                  </option>
+                  <option value="ss10">
+                    SS10 - La Bollène-Vésubie (23.25 km)
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="live-indicator">
+              <div class="live-dot"></div>
+              <span>LIVE</span>
+            </div>
+          </div>
+
+          <div class="stage-info">
+            <h2>Stage 12 - Col de Turini</h2>
+            <div class="stage-details">
+              <div class="stage-stat">
+                <div class="stage-stat-value">11.76</div>
+                <div class="stage-stat-label">Distance (km)</div>
+              </div>
+              <div class="stage-stat">
+                <div class="stage-stat-value">Mixed</div>
+                <div class="stage-stat-label">Surface</div>
+              </div>
+              <div class="stage-stat">
+                <div class="stage-stat-value">42/50</div>
+                <div class="stage-stat-label">Cars Finished</div>
+              </div>
+              <div class="stage-stat">
+                <div class="stage-stat-value">7:23.4</div>
+                <div class="stage-stat-label">Fastest Time</div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 84%"></div>
+            </div>
+          </div>
+
+          <div class="timing-board">
+            <div class="timing-header">
+              <span>Pos</span>
+              <span>Driver</span>
+              <span>Time</span>
+              <span>Gap</span>
+              <span>S1</span>
+              <span>S2</span>
+            </div>
+
+            <div id="timingData">
+              <div class="timing-row leader">
+                <span class="position">1</span>
+                <div class="driver-info">
+                  <span class="driver-number">11</span>
+                  <div>
+                    <div class="driver-name">T. NEUVILLE</div>
+                    <div class="driver-car">Hyundai i20 N Rally1</div>
+                  </div>
+                </div>
+                <span class="time-cell fastest">7:23.4</span>
+                <span class="gap">—</span>
+                <span class="time-cell">2:14.7</span>
+                <span class="time-cell">5:08.7</span>
+              </div>
+
+              <div class="timing-row">
+                <span class="position">2</span>
+                <div class="driver-info">
+                  <span class="driver-number">33</span>
+                  <div>
+                    <div class="driver-name">E. EVANS</div>
+                    <div class="driver-car">Toyota GR Yaris Rally1</div>
+                  </div>
+                </div>
+                <span class="time-cell">7:25.7</span>
+                <span class="gap">+2.3</span>
+                <span class="time-cell">2:15.1</span>
+                <span class="time-cell fastest">5:10.6</span>
+              </div>
+
+              <div class="timing-row">
+                <span class="position">3</span>
+                <div class="driver-info">
+                  <span class="driver-number">8</span>
+                  <div>
+                    <div class="driver-name">O. TÄNAK</div>
+                    <div class="driver-car">Hyundai i20 N Rally1</div>
+                  </div>
+                </div>
+                <span class="time-cell">7:29.1</span>
+                <span class="gap">+5.7</span>
+                <span class="time-cell personal-best">2:13.9</span>
+                <span class="time-cell">5:15.2</span>
+              </div>
+
+              <div class="timing-row">
+                <span class="position">4</span>
+                <div class="driver-info">
+                  <span class="driver-number">69</span>
+                  <div>
+                    <div class="driver-name">K. ROVANPERÄ</div>
+                    <div class="driver-car">Toyota GR Yaris Rally1</div>
+                  </div>
+                </div>
+                <span class="time-cell">7:31.5</span>
+                <span class="gap">+8.1</span>
+                <span class="time-cell">2:16.3</span>
+                <span class="time-cell">5:15.2</span>
+              </div>
+
+              <div class="timing-row">
+                <span class="position">5</span>
+                <div class="driver-info">
+                  <span class="driver-number">17</span>
+                  <div>
+                    <div class="driver-name">S. OGIER</div>
+                    <div class="driver-car">Toyota GR Yaris Rally1</div>
+                  </div>
+                </div>
+                <span class="time-cell">7:33.8</span>
+                <span class="gap">+10.4</span>
+                <span class="time-cell">2:17.1</span>
+                <span class="time-cell">5:16.7</span>
+              </div>
+
+              <div class="timing-row">
+                <span class="position">6</span>
+                <div class="driver-info">
+                  <span class="driver-number">18</span>
+                  <div>
+                    <div class="driver-name">T. KATSUTA</div>
+                    <div class="driver-car">Toyota GR Yaris Rally1</div>
+                  </div>
+                </div>
+                <span class="time-cell">7:36.2</span>
+                <span class="gap">+12.8</span>
+                <span class="time-cell">2:18.5</span>
+                <span class="time-cell">5:17.7</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sector-times">
+            <div class="sector-card">
+              <h3>Sector 1 Times (2.3 km)</h3>
+              <ul class="sector-list">
+                <li>
+                  <span>1. TÄNAK</span
+                  ><span class="time-cell fastest">2:13.9</span>
+                </li>
+                <li><span>2. NEUVILLE</span><span>2:14.7</span></li>
+                <li><span>3. EVANS</span><span>2:15.1</span></li>
+                <li><span>4. ROVANPERÄ</span><span>2:16.3</span></li>
+                <li><span>5. OGIER</span><span>2:17.1</span></li>
+              </ul>
+            </div>
+
+            <div class="sector-card">
+              <h3>Sector 2 Times (9.46 km)</h3>
+              <ul class="sector-list">
+                <li>
+                  <span>1. NEUVILLE</span
+                  ><span class="time-cell fastest">5:08.7</span>
+                </li>
+                <li><span>2. EVANS</span><span>5:10.6</span></li>
+                <li><span>3. TÄNAK</span><span>5:15.2</span></li>
+                <li><span>4. ROVANPERÄ</span><span>5:15.2</span></li>
+                <li><span>5. OGIER</span><span>5:16.7</span></li>
+              </ul>
+            </div>
+
+            <div class="sector-card">
+              <h3>Speed Trap (km/h)</h3>
+              <ul class="sector-list">
+                <li>
+                  <span>1. EVANS</span
+                  ><span class="time-cell fastest">187.3</span>
+                </li>
+                <li><span>2. ROVANPERÄ</span><span>185.7</span></li>
+                <li><span>3. NEUVILLE</span><span>184.2</span></li>
+                <li><span>4. TÄNAK</span><span>182.9</span></li>
+                <li><span>5. OGIER</span><span>181.5</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Live Data</h3>
+            <a href="live-timing.html">Live Timing</a>
+            <a href="stage-maps.html">Stage Maps</a>
+            <a href="weather.html">Weather Data</a>
+            <a href="analytics.html">Analytics</a>
+          </div>
+          <div class="footer-section">
+            <h3>Championships</h3>
+            <a href="#">WRC</a>
+            <a href="#">WRC2</a>
+            <a href="#">WRC3</a>
+            <a href="#">Junior WRC</a>
+          </div>
+          <div class="footer-section">
+            <h3>Data Partners</h3>
+            <a href="#">Official WRC API</a>
+            <a href="#">Weather Services</a>
+            <a href="#">Mapping Data</a>
+            <a href="#">Team Partnerships</a>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <a href="#">API Documentation</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 RallyData Pro. Real-time WRC timing and data analytics
+            platform.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script>
+      // Live timing functionality
+      class LiveTiming {
+        constructor() {
+          this.simulator = new RallyDataPro.LiveDataSimulator();
+          this.timingData = [
+            {
+              pos: 1,
+              driver: "T. NEUVILLE",
+              car: "Hyundai i20 N Rally1",
+              number: 11,
+              time: 443.4,
+              gap: 0,
+              s1: 134.7,
+              s2: 308.7,
+            },
+            {
+              pos: 2,
+              driver: "E. EVANS",
+              car: "Toyota GR Yaris Rally1",
+              number: 33,
+              time: 445.7,
+              gap: 2.3,
+              s1: 135.1,
+              s2: 310.6,
+            },
+            {
+              pos: 3,
+              driver: "O. TÄNAK",
+              car: "Hyundai i20 N Rally1",
+              number: 8,
+              time: 449.1,
+              gap: 5.7,
+              s1: 133.9,
+              s2: 315.2,
+            },
+            {
+              pos: 4,
+              driver: "K. ROVANPERÄ",
+              car: "Toyota GR Yaris Rally1",
+              number: 69,
+              time: 451.5,
+              gap: 8.1,
+              s1: 136.3,
+              s2: 315.2,
+            },
+            {
+              pos: 5,
+              driver: "S. OGIER",
+              car: "Toyota GR Yaris Rally1",
+              number: 17,
+              time: 453.8,
+              gap: 10.4,
+              s1: 137.1,
+              s2: 316.7,
+            },
+            {
+              pos: 6,
+              driver: "T. KATSUTA",
+              car: "Toyota GR Yaris Rally1",
+              number: 18,
+              time: 456.2,
+              gap: 12.8,
+              s1: 138.5,
+              s2: 317.7,
+            },
+          ];
+          this.initializeUpdates();
+        }
+
+        initializeUpdates() {
+          this.simulator.startTimingUpdates(() => {
+            this.updateTimes();
+          }, 2000);
+
+          this.simulator.startTimingUpdates(() => {
+            this.updateProgress();
+          }, 5000);
+        }
+
+        updateTimes() {
+          this.timingData.forEach((driver) => {
+            // Small random variations in times
+            const variance = 0.2;
+            driver.time += (Math.random() - 0.5) * variance;
+            driver.s1 += (Math.random() - 0.5) * 0.1;
+            driver.s2 += (Math.random() - 0.5) * 0.1;
+          });
+
+          // Sort by time and update gaps
+          this.timingData.sort((a, b) => a.time - b.time);
+          this.timingData.forEach((driver, index) => {
+            driver.pos = index + 1;
+            driver.gap =
+              index === 0 ? 0 : driver.time - this.timingData[0].time;
+          });
+
+          this.renderTimingBoard();
+        }
+
+        updateProgress() {
+          const progressBar = document.querySelector(".progress-fill");
+          const currentWidth = parseInt(progressBar.style.width);
+          if (currentWidth < 100) {
+            progressBar.style.width =
+              Math.min(100, currentWidth + Math.random() * 3) + "%";
+          }
+
+          // Update cars finished count
+          const finishedElement = document.querySelector(".stage-stat-value");
+          if (finishedElement && finishedElement.textContent.includes("/")) {
+            const [current, total] = finishedElement.textContent.split("/");
+            if (parseInt(current) < parseInt(total)) {
+              finishedElement.textContent = `${Math.min(
+                parseInt(total),
+                parseInt(current) + Math.floor(Math.random() * 2)
+              )}/${total}`;
+            }
+          }
+        }
+
+        renderTimingBoard() {
+          const container = document.getElementById("timingData");
+          container.innerHTML = this.timingData
+            .map((driver) => {
+              const isLeader = driver.pos === 1;
+              const timeClass = isLeader ? "fastest" : "";
+              const rowClass = isLeader ? "leader" : "";
+
+              return `
+                        <div class="timing-row ${rowClass}">
+                            <span class="position">${driver.pos}</span>
+                            <div class="driver-info">
+                                <span class="driver-number">${
+                                  driver.number
+                                }</span>
+                                <div>
+                                    <div class="driver-name">${
+                                      driver.driver
+                                    }</div>
+                                    <div class="driver-car">${driver.car}</div>
+                                </div>
+                            </div>
+                            <span class="time-cell ${timeClass}">${RallyDataPro.formatTime(
+                driver.time
+              )}</span>
+                            <span class="gap">${
+                              driver.gap === 0
+                                ? "—"
+                                : RallyDataPro.formatTimeDiff(driver.gap)
+                            }</span>
+                            <span class="time-cell">${RallyDataPro.formatTime(
+                              driver.s1
+                            )}</span>
+                            <span class="time-cell">${RallyDataPro.formatTime(
+                              driver.s2
+                            )}</span>
+                        </div>
+                    `;
+            })
+            .join("");
+        }
+      }
+
+      // Initialize live timing when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        new LiveTiming();
+      });
+    </script>
+  </body>
+</html>

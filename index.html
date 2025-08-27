@@ -3,25 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ioSkills - Master Any Skill</title>
+    <title>RallyData Pro - WRC Analytics & Live Coverage</title>
     <meta
       name="description"
-      content="Interactive platform to learn and master 30+ essential skills including programming languages, life skills, and creative abilities. Start your learning journey today."
+      content="Advanced WRC data analytics, live timing, stage maps, weather tracking, and comprehensive rally coverage. Your ultimate World Rally Championship data hub."
     />
     <meta
       name="keywords"
-      content="skills learning, programming languages, life skills, online education, interactive learning"
-    />
-    <meta name="author" content="ioSkills" />
-    <meta property="og:title" content="ioSkills - Master Any Skill" />
-    <meta
-      property="og:description"
-      content="Interactive platform to learn and master 30+ essential skills"
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://your-username.github.io/ioskills"
+      content="WRC, World Rally Championship, rally data, timing, stage maps, weather, analytics"
     />
     <style>
       * {
@@ -31,1026 +20,588 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #001438 0%, #000a1c 100%);
-        min-height: 100vh;
-        color: #333;
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        color: #ffffff;
         overflow-x: hidden;
-        position: relative;
-      }
-
-      /* Animated background particles */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-            circle at 25% 25%,
-            rgba(255, 255, 255, 0.1) 1px,
-            transparent 1px
-          ),
-          radial-gradient(
-            circle at 75% 75%,
-            rgba(255, 255, 255, 0.1) 1px,
-            transparent 1px
-          );
-        background-size: 50px 50px, 30px 30px;
-        animation: float 20s infinite linear;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        100% {
-          transform: translateY(-20px) rotate(360deg);
-        }
       }
 
       .container {
         max-width: 1400px;
         margin: 0 auto;
         padding: 0 20px;
-        position: relative;
-        z-index: 1;
       }
 
       /* Header */
       header {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 1rem 0;
-        position: sticky;
+        position: fixed;
         top: 0;
-        z-index: 100;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.3s ease;
       }
 
-      .header-content {
+      nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
       .logo {
-        font-size: 2rem;
+        font-size: 24px;
         font-weight: bold;
-        color: white;
-        text-decoration: none;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
       }
 
       .nav-links {
         display: flex;
-        gap: 2rem;
         list-style: none;
+        gap: 30px;
       }
 
       .nav-links a {
-        color: rgba(255, 255, 255, 0.9);
+        color: #ffffff;
         text-decoration: none;
-        font-weight: 500;
         transition: color 0.3s ease;
+        font-weight: 500;
       }
 
       .nav-links a:hover {
-        color: #4ecdc4;
+        color: #ff6b35;
       }
 
-      /* Main Content */
-      main {
-        padding: 3rem 0;
-        min-height: calc(100vh - 200px);
-        position: relative;
-        z-index: 1;
-      }
-
+      /* Hero Section */
       .hero {
-        text-align: center;
-        margin-bottom: 3rem;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        z-index: 2;
+        max-width: 600px;
       }
 
       .hero h1 {
-        font-size: 3.5rem;
-        color: white;
-        margin-bottom: 1rem;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, #ffffff, #ff6b35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.1;
       }
 
       .hero p {
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 2rem;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        color: #cccccc;
+        line-height: 1.6;
       }
 
-      /* Search Section */
-      .search-section {
-        margin-bottom: 2rem;
-      }
-
-      .search-container {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .search-input {
-        width: 100%;
-        padding: 15px 20px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        margin-bottom: 20px;
-        transition: all 0.3s ease;
-      }
-
-      .search-input:focus {
-        outline: none;
-        transform: scale(1.02);
-        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .filter-buttons {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .filter-btn {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 25px;
-        background: rgba(255, 255, 255, 0.15);
+      .cta-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
         color: white;
-        cursor: pointer;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
         transition: all 0.3s ease;
-        font-weight: 500;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
       }
 
-      .filter-btn:hover,
-      .filter-btn.active {
-        background: rgba(255, 255, 255, 0.95);
-        color: #333;
+      .cta-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
       }
 
-      /* Skills Grid */
-      .skills-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 20px;
-        padding: 2rem 0;
-        max-width: 1200px;
-        margin: 0 auto;
-        transition: background 0.3s ease;
+      .hero-visual {
+        position: absolute;
+        right: -200px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 800px;
+        height: 600px;
+        opacity: 0.1;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><path d="M50 150 L100 100 L150 120 L200 80 L250 110 L300 90 L350 130" stroke="%23ff6b35" stroke-width="3" fill="none"/><circle cx="100" cy="100" r="5" fill="%23ff6b35"/><circle cx="200" cy="80" r="5" fill="%23f7931e"/><circle cx="300" cy="90" r="5" fill="%23ff6b35"/></svg>')
+          no-repeat center;
+        background-size: contain;
       }
 
-      .skill-bubble {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 20px;
+      /* Features Section */
+      .features {
+        padding: 100px 0;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .features h2 {
         text-align: center;
-        cursor: grab;
-        user-select: none;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        font-size: 3rem;
+        margin-bottom: 60px;
+        background: linear-gradient(45deg, #ffffff, #ff6b35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .feature-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        min-height: 120px;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        border-radius: 15px;
         display: flex;
-        flex-direction: column;
+        align-items: center;
         justify-content: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .feature-card p {
+        color: #cccccc;
+        line-height: 1.6;
+      }
+
+      /* Live Demo Section */
+      .demo-section {
+        padding: 100px 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.1),
+          rgba(247, 147, 30, 0.05)
+        );
+      }
+
+      .demo-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
         align-items: center;
       }
 
-      .skill-bubble::before {
-        content: "";
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(
-          45deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        border-radius: 22px;
-        z-index: -1;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+      .demo-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #ffffff;
       }
 
-      .skill-bubble:hover::before {
-        opacity: 1;
+      .demo-content p {
+        font-size: 1.1rem;
+        color: #cccccc;
+        margin-bottom: 30px;
+        line-height: 1.6;
       }
 
-      .skill-bubble.hidden {
-        opacity: 0;
-        transform: scale(0.8);
-        pointer-events: none;
-      }
-
-      .skill-bubble:hover {
-        transform: translateY(-15px) scale(1.08);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        background: rgba(255, 255, 255, 1);
-      }
-
-      .skill-bubble:active {
-        cursor: grabbing;
-      }
-
-      .skill-bubble.dragging {
-        z-index: 1000;
-        transform: rotate(5deg) scale(1.1);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-        cursor: grabbing;
-        opacity: 0.9;
-      }
-
-      .skill-icon {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-        transition: transform 0.3s ease;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-      }
-
-      .skill-bubble:hover .skill-icon {
-        transform: scale(1.3) rotate(10deg);
-      }
-
-      .skill-name {
-        font-weight: 600;
-        color: #444;
-        font-size: 0.9rem;
-      }
-
-      .skill-category {
-        font-size: 0.7rem;
-        color: #888;
-        margin-top: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      /* Language Skills */
-      .skill-bubble.language {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 107, 107, 0.15),
-          rgba(255, 255, 255, 0.9)
-        );
-      }
-
-      .skill-bubble.language:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 212, 212, 0.25),
-          rgba(242, 255, 67, 0.7)
-        );
-      }
-
-      /* Life Skills */
-      .skill-bubble.life-skill {
-        background: linear-gradient(
-          135deg,
-          rgba(78, 205, 196, 0.15),
-          rgba(255, 255, 255, 0.9)
-        );
-      }
-
-      .skill-bubble.life-skill:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(78, 205, 196, 0.25),
-          rgb(33, 255, 229)
-        );
-      }
-
-      /* Drop zone styling */
-      .skills-container.drag-over {
-        background: rgba(78, 205, 196, 0.1);
+      .demo-visual {
+        background: rgba(255, 255, 255, 0.05);
         border-radius: 20px;
-        border: 2px dashed rgba(78, 205, 196, 0.5);
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        min-height: 400px;
+      }
+
+      .timing-screen {
+        background: #000;
+        border-radius: 10px;
+        padding: 20px;
+        font-family: monospace;
+        color: #00ff00;
+        margin-bottom: 20px;
+      }
+
+      .timing-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #333;
+      }
+
+      .stage-map {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ff6b35;
+        font-size: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .map-path {
+        position: absolute;
+        width: 80%;
+        height: 2px;
+        background: linear-gradient(90deg, #ff6b35, #f7931e, #ff6b35);
+        top: 50%;
+        left: 10%;
+        border-radius: 2px;
+      }
+
+      /* Stats Section */
+      .stats {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+      }
+
+      .stat-item {
+        padding: 30px;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: #cccccc;
       }
 
       /* Footer */
       footer {
-        background: rgba(0, 0, 0, 0.2);
-        color: rgba(255, 255, 255, 0.8);
-        text-align: center;
-        padding: 2rem 0;
-        margin-top: 3rem;
-        position: relative;
-        z-index: 1;
+        background: #0a0a0a;
+        padding: 60px 0 30px;
+        margin-top: 100px;
       }
 
       .footer-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
       }
 
-      .footer-links {
-        display: flex;
-        gap: 1.5rem;
-        list-style: none;
+      .footer-section h3 {
+        color: #ff6b35;
+        margin-bottom: 20px;
       }
 
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
+      .footer-section a {
+        color: #cccccc;
         text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
         transition: color 0.3s ease;
       }
 
-      .footer-links a:hover {
-        color: #4ecdc4;
+      .footer-section a:hover {
+        color: #ff6b35;
       }
 
-      /* Responsive Design */
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding-top: 30px;
+        text-align: center;
+        color: #888;
+      }
+
+      /* Responsive */
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2.5rem;
         }
 
-        .skills-container {
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-          gap: 15px;
-        }
-
-        .skill-bubble {
-          padding: 15px;
-          min-height: 100px;
-        }
-
         .nav-links {
           display: none;
         }
+
+        .demo-container {
+          grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
-      /* Floating Animation */
-      @keyframes skillFloat {
+      /* Animation */
+      @keyframes pulse {
         0%,
         100% {
-          transform: translateY(0px);
+          opacity: 0.5;
         }
         50% {
-          transform: translateY(-8px);
-        }
-      }
-
-      .skill-bubble:not(.dragging) {
-        animation: skillFloat 4s ease-in-out infinite;
-      }
-
-      .skill-bubble:nth-child(even) {
-        animation-delay: -2s;
-      }
-
-      .skill-bubble:nth-child(3n) {
-        animation-delay: -1s;
-      }
-
-      /* Modal Styles */
-      .skill-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-        animation: fadeIn 0.3s ease;
-      }
-
-      .modal-content {
-        background: white;
-        padding: 2rem;
-        border-radius: 20px;
-        text-align: center;
-        max-width: 400px;
-        width: 90%;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        animation: slideUp 0.3s ease;
-      }
-
-      .modal-content h3 {
-        margin-bottom: 1rem;
-        color: #333;
-      }
-
-      .modal-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 1.5rem;
-      }
-
-      .modal-buttons button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-
-      .modal-buttons button:first-child {
-        background: linear-gradient(45deg, #4ecdc4, #44a08d);
-        color: white;
-      }
-
-      .modal-buttons button:last-child {
-        background: #f0f0f0;
-        color: #333;
-      }
-
-      .modal-buttons button:hover {
-        transform: translateY(-2px);
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
           opacity: 1;
         }
       }
 
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .pulse {
+        animation: pulse 2s infinite;
       }
     </style>
   </head>
   <body>
     <header>
-      <div class="container">
-        <div class="header-content">
-          <a href="#" class="logo">ioSkills</a>
-          <nav>
-            <ul class="nav-links">
-              <li><a href="#skills">Skills</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+      <nav class="container">
+        <div class="logo">RallyData Pro</div>
+        <ul class="nav-links">
+          <li><a href="live-timing.html">Live Timing</a></li>
+          <li><a href="stage-maps.html">Stage Maps</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="weather.html">Weather</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-      <div class="container">
-        <section class="hero">
-          <h1>Master Any Skill</h1>
-          <p>
-            Discover, learn, and excel in 30+ essential skills. From programming
-            languages to life skills, start your journey today.
-          </p>
-        </section>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>WRC Data<br />Reimagined</h1>
+            <p>
+              Advanced analytics, live timing, interactive stage maps, and
+              comprehensive rally coverage. Experience the World Rally
+              Championship like never before with data-driven insights and
+              real-time visualizations.
+            </p>
+            <a href="#features" class="cta-button">Explore Features</a>
+          </div>
+          <div class="hero-visual"></div>
+        </div>
+      </section>
 
-        <section class="search-section">
-          <div class="search-container">
-            <input
-              type="text"
-              id="skillSearch"
-              placeholder="Search skills..."
-              class="search-input"
-            />
-            <div class="filter-buttons">
-              <button class="filter-btn active" data-filter="all">All</button>
-              <button class="filter-btn" data-filter="language">
-                Languages
-              </button>
-              <button class="filter-btn" data-filter="life-skill">
-                Life Skills
-              </button>
+      <section id="features" class="features">
+        <div class="container">
+          <h2>Comprehensive Rally Coverage</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3>Live Timing & Analytics</h3>
+              <p>
+                Real-time stage times, sector analysis, and comprehensive
+                performance metrics. Track every second of the action with
+                professional-grade timing data.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🗺️</div>
+              <h3>Interactive Stage Maps</h3>
+              <p>
+                Detailed elevation profiles, corner analysis, and hazard
+                mapping. Visualize each stage with precision topographical data
+                and strategic insights.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🌤️</div>
+              <h3>Weather Intelligence</h3>
+              <p>
+                Hyper-local weather conditions, surface temperature tracking,
+                and grip prediction models. Know the conditions before the
+                drivers do.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🏆</div>
+              <h3>Championship Tracking</h3>
+              <p>
+                Live points calculations, team standings, and manufacturer
+                championships. Complete coverage of all WRC categories and
+                classifications.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🏎️</div>
+              <h3>Car & Setup Data</h3>
+              <p>
+                Technical specifications, tire strategies, and setup analyses.
+                Deep dive into the mechanical side of rally competition.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📅</div>
+              <h3>Rally Calendar</h3>
+              <p>
+                Complete event schedules, stage timetables, and service park
+                information. Never miss a moment of the action with integrated
+                reminders.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="skills" class="skills-container">
-          <!-- Programming Languages -->
-          <div class="skill-bubble language" onclick="goToSkill('javascript')">
-            <div class="skill-icon">🟨</div>
-            <div class="skill-name">JavaScript</div>
-            <div class="skill-category">Language</div>
+      <section class="demo-section">
+        <div class="container">
+          <div class="demo-container">
+            <div class="demo-content">
+              <h2>Live Data in Action</h2>
+              <p>
+                Experience real-time WRC data visualization with our advanced
+                analytics platform. From live timing screens to interactive
+                stage maps, see how data transforms your rally viewing
+                experience.
+              </p>
+              <a href="#" class="cta-button">View Live Demo</a>
+            </div>
+            <div class="demo-visual">
+              <div class="timing-screen">
+                <div class="timing-row">
+                  <span>1. NEUVILLE</span>
+                  <span>+0.0</span>
+                </div>
+                <div class="timing-row">
+                  <span>2. EVANS</span>
+                  <span>+2.3</span>
+                </div>
+                <div class="timing-row">
+                  <span>3. TÄNAK</span>
+                  <span>+5.7</span>
+                </div>
+                <div class="timing-row">
+                  <span>4. ROVANPERÄ</span>
+                  <span>+8.1</span>
+                </div>
+              </div>
+              <div class="stage-map">
+                <div class="map-path pulse"></div>
+                Stage 12 - Col de Turini
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div class="skill-bubble language" onclick="goToSkill('python')">
-            <div class="skill-icon">🐍</div>
-            <div class="skill-name">Python</div>
-            <div class="skill-category">Language</div>
+      <section class="stats">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">13</div>
+              <div class="stat-label">Rally Events</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">300+</div>
+              <div class="stat-label">Special Stages</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">WRC Crews</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Live Coverage</div>
+            </div>
           </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('java')">
-            <div class="skill-icon">☕</div>
-            <div class="skill-name">Java</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('cpp')">
-            <div class="skill-icon">⚡</div>
-            <div class="skill-name">C++</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('react')">
-            <div class="skill-icon">⚛️</div>
-            <div class="skill-name">React</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('typescript')">
-            <div class="skill-icon">🔷</div>
-            <div class="skill-name">TypeScript</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('rust')">
-            <div class="skill-icon">🦀</div>
-            <div class="skill-name">Rust</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('go')">
-            <div class="skill-icon">🐹</div>
-            <div class="skill-name">Go</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('swift')">
-            <div class="skill-icon">🍎</div>
-            <div class="skill-name">Swift</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <div class="skill-bubble language" onclick="goToSkill('sql')">
-            <div class="skill-icon">🗄️</div>
-            <div class="skill-name">SQL</div>
-            <div class="skill-category">Language</div>
-          </div>
-
-          <!-- Life Skills -->
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('negotiation')"
-          >
-            <div class="skill-icon">🤝</div>
-            <div class="skill-name">Negotiation</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('poker')">
-            <div class="skill-icon">🃏</div>
-            <div class="skill-name">Poker</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('guitar')">
-            <div class="skill-icon">🎸</div>
-            <div class="skill-name">Guitar</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('piano')">
-            <div class="skill-icon">🎹</div>
-            <div class="skill-name">Piano</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('survival')">
-            <div class="skill-icon">🏕️</div>
-            <div class="skill-name">Survival</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('cooking')">
-            <div class="skill-icon">👨‍🍳</div>
-            <div class="skill-name">Cooking</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('photography')"
-          >
-            <div class="skill-icon">📸</div>
-            <div class="skill-name">Photography</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('meditation')"
-          >
-            <div class="skill-icon">🧘</div>
-            <div class="skill-name">Meditation</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('public-speaking')"
-          >
-            <div class="skill-icon">🎤</div>
-            <div class="skill-name">Public Speaking</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('chess')">
-            <div class="skill-icon">♟️</div>
-            <div class="skill-name">Chess</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('drawing')">
-            <div class="skill-icon">🎨</div>
-            <div class="skill-name">Drawing</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('writing')">
-            <div class="skill-icon">✍️</div>
-            <div class="skill-name">Writing</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('leadership')"
-          >
-            <div class="skill-icon">👑</div>
-            <div class="skill-name">Leadership</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('fitness')">
-            <div class="skill-icon">💪</div>
-            <div class="skill-name">Fitness</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('time-management')"
-          >
-            <div class="skill-icon">⏰</div>
-            <div class="skill-name">Time Management</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('investing')">
-            <div class="skill-icon">📈</div>
-            <div class="skill-name">Investing</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('dancing')">
-            <div class="skill-icon">💃</div>
-            <div class="skill-name">Dancing</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div class="skill-bubble life-skill" onclick="goToSkill('gardening')">
-            <div class="skill-icon">🌱</div>
-            <div class="skill-name">Gardening</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('networking')"
-          >
-            <div class="skill-icon">🌐</div>
-            <div class="skill-name">Networking</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-
-          <div
-            class="skill-bubble life-skill"
-            onclick="goToSkill('problem-solving')"
-          >
-            <div class="skill-icon">🧩</div>
-            <div class="skill-name">Problem Solving</div>
-            <div class="skill-category">Life Skill</div>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
 
     <footer>
       <div class="container">
         <div class="footer-content">
-          <p>&copy; 2025 ioSkills. All rights reserved.</p>
-          <ul class="footer-links">
-            <li><a href="#privacy">Privacy</a></li>
-            <li><a href="#terms">Terms</a></li>
-            <li><a href="#support">Support</a></li>
-            <li><a href="https://github.com/">GitHub</a></li>
-          </ul>
+          <div class="footer-section">
+            <h3>Features</h3>
+            <a href="#">Live Timing</a>
+            <a href="#">Stage Maps</a>
+            <a href="#">Weather Data</a>
+            <a href="#">Analytics</a>
+          </div>
+          <div class="footer-section">
+            <h3>Championships</h3>
+            <a href="#">WRC</a>
+            <a href="#">WRC2</a>
+            <a href="#">WRC3</a>
+            <a href="#">Junior WRC</a>
+          </div>
+          <div class="footer-section">
+            <h3>Data Partners</h3>
+            <a href="#">Official WRC API</a>
+            <a href="#">Weather Services</a>
+            <a href="#">Mapping Data</a>
+            <a href="#">Team Partnerships</a>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <a href="#">API Documentation</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 RallyData Pro. Comprehensive WRC analytics and live
+            coverage platform.
+          </p>
         </div>
       </div>
     </footer>
 
     <script>
-      // Enhanced Drag and Drop Functionality
-      let draggedElement = null;
-      let isDragging = false;
-      let clickTime = 0;
-      let startX, startY, initialX, initialY;
-      let dragThreshold = 5; // pixels before drag starts
-
-      document.querySelectorAll(".skill-bubble").forEach((bubble) => {
-        bubble.addEventListener("mousedown", handleMouseDown);
-        bubble.addEventListener("dragstart", (e) => e.preventDefault());
-
-        // Touch support for mobile
-        bubble.addEventListener("touchstart", handleTouchStart, {
-          passive: false,
-        });
-      });
-
-      function handleMouseDown(e) {
-        clickTime = Date.now();
-        const bubble = e.target.closest(".skill-bubble");
-
-        startX = e.clientX;
-        startY = e.clientY;
-
-        // Store initial position for drag threshold
-        const rect = bubble.getBoundingClientRect();
-        initialX = rect.left;
-        initialY = rect.top;
-
-        draggedElement = bubble;
-
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
-
-        e.preventDefault();
-      }
-
-      function handleTouchStart(e) {
-        const touch = e.touches[0];
-        handleMouseDown({
-          clientX: touch.clientX,
-          clientY: touch.clientY,
-          target: e.target,
-          preventDefault: () => e.preventDefault(),
-        });
-
-        document.addEventListener("touchmove", handleTouchMove, {
-          passive: false,
-        });
-        document.addEventListener("touchend", handleTouchEnd);
-      }
-
-      function handleTouchMove(e) {
-        const touch = e.touches[0];
-        handleMouseMove({
-          clientX: touch.clientX,
-          clientY: touch.clientY,
-        });
-      }
-
-      function handleTouchEnd(e) {
-        handleMouseUp(e);
-        document.removeEventListener("touchmove", handleTouchMove);
-        document.removeEventListener("touchend", handleTouchEnd);
-      }
-
-      function handleMouseMove(e) {
-        if (!draggedElement) return;
-
-        const deltaX = Math.abs(e.clientX - startX);
-        const deltaY = Math.abs(e.clientY - startY);
-
-        // Start dragging only if mouse moved beyond threshold
-        if (!isDragging && (deltaX > dragThreshold || deltaY > dragThreshold)) {
-          isDragging = true;
-
-          draggedElement.classList.add("dragging");
-          draggedElement.style.position = "fixed";
-          draggedElement.style.zIndex = "1000";
-          draggedElement.style.left = initialX + "px";
-          draggedElement.style.top = initialY + "px";
-          draggedElement.style.pointerEvents = "none";
-
-          // Add visual feedback to drop zone
-          document
-            .querySelector(".skills-container")
-            .classList.add("drag-over");
-        }
-
-        if (isDragging) {
-          const currentDeltaX = e.clientX - startX;
-          const currentDeltaY = e.clientY - startY;
-
-          draggedElement.style.left = initialX + currentDeltaX + "px";
-          draggedElement.style.top = initialY + currentDeltaY + "px";
-
-          // Add rotation based on movement speed
-          const rotationX = Math.max(-15, Math.min(15, currentDeltaX * 0.1));
-          const rotationY = Math.max(-15, Math.min(15, currentDeltaY * 0.1));
-          draggedElement.style.transform = `rotate(${rotationX}deg) scale(1.1)`;
-        }
-      }
-
-      function handleMouseUp(e) {
-        if (!draggedElement) return;
-
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-
-        // Clear drop zone visual feedback
-        document
-          .querySelector(".skills-container")
-          .classList.remove("drag-over");
-
-        if (isDragging) {
-          // Smooth return animation
-          draggedElement.style.transition =
-            "all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)";
-          draggedElement.style.transform = "rotate(0deg) scale(1)";
-
-          setTimeout(() => {
-            if (draggedElement) {
-              draggedElement.classList.remove("dragging");
-              draggedElement.style.position = "";
-              draggedElement.style.zIndex = "";
-              draggedElement.style.left = "";
-              draggedElement.style.top = "";
-              draggedElement.style.transform = "";
-              draggedElement.style.transition = "";
-              draggedElement.style.pointerEvents = "";
-            }
-          }, 600);
-
-          isDragging = false;
-        } else {
-          // Handle click if no drag occurred
-          const clickDuration = Date.now() - clickTime;
-          if (clickDuration < 200) {
-            // Quick click
-            const onclickAttr = draggedElement.getAttribute("onclick");
-            const match =
-              onclickAttr && onclickAttr.match(/goToSkill\('([^']+)'\)/);
-            const skillName = match
-              ? match[1]
-              : draggedElement
-                  .querySelector(".skill-name")
-                  .textContent.toLowerCase();
-            goToSkill(skillName);
-          }
-        }
-
-        draggedElement = null;
-      }
-
-      // Search and Filter Functionality
-      const searchInput = document.getElementById("skillSearch");
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      const skillBubbles = document.querySelectorAll(".skill-bubble");
-
-      // Search functionality
-      if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-          const searchTerm = e.target.value.toLowerCase();
-
-          skillBubbles.forEach((bubble) => {
-            const skillName = bubble
-              .querySelector(".skill-name")
-              .textContent.toLowerCase();
-            const category = bubble
-              .querySelector(".skill-category")
-              .textContent.toLowerCase();
-
-            if (
-              skillName.includes(searchTerm) ||
-              category.includes(searchTerm)
-            ) {
-              bubble.classList.remove("hidden");
-            } else {
-              bubble.classList.add("hidden");
-            }
-          });
-        });
-      }
-
-      // Filter functionality
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          // Update active button
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
-          button.classList.add("active");
-
-          const filter = button.dataset.filter;
-
-          skillBubbles.forEach((bubble) => {
-            if (filter === "all") {
-              bubble.classList.remove("hidden");
-            } else {
-              if (bubble.classList.contains(filter)) {
-                bubble.classList.remove("hidden");
-              } else {
-                bubble.classList.add("hidden");
-              }
-            }
-          });
-        });
-      });
-
-      // Simple goToSkill function without progress tracking
-      function goToSkill(skillName) {
-        if (!isDragging) {
-          showSkillModal(skillName);
-        }
-      }
-
-      // Simple Modal functionality
-      function showSkillModal(skillName) {
-        const modal = document.createElement("div");
-        modal.className = "skill-modal";
-        modal.innerHTML = `
-          <div class="modal-content">
-            <h3>🎯 ${
-              skillName.charAt(0).toUpperCase() + skillName.slice(1)
-            }</h3>
-            <p>Ready to start learning?</p>
-            <div class="modal-buttons">
-              <button onclick="startLearning('${skillName}')">Start Learning</button>
-              <button onclick="closeModal()">Close</button>
-            </div>
-          </div>
-        `;
-
-        document.body.appendChild(modal);
-
-        // Auto close after 4 seconds
-        setTimeout(() => {
-          if (document.body.contains(modal)) {
-            document.body.removeChild(modal);
-          }
-        }, 4000);
-      }
-
-      function closeModal() {
-        const modal = document.querySelector(".skill-modal");
-        if (modal) {
-          document.body.removeChild(modal);
-        }
-      }
-
-      function startLearning(skillName) {
-        closeModal();
-        window.open(
-          `https://www.google.com/search?q=learn+${skillName}+tutorial`,
-          "_blank"
-        );
-      }
-
-      // Prevent clicks during drag
-      document.querySelectorAll(".skill-bubble").forEach((bubble) => {
-        bubble.addEventListener("click", (e) => {
-          if (isDragging) {
-            e.preventDefault();
-            e.stopPropagation();
-          }
-        });
-      });
-
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -1065,35 +616,53 @@
         });
       });
 
-      // Enhanced parallax effect
-      window.addEventListener("mousemove", (e) => {
-        const bubbles = document.querySelectorAll(
-          ".skill-bubble:not(.dragging)"
-        );
-        const x = (e.clientX / window.innerWidth - 0.5) * 2;
-        const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-        bubbles.forEach((bubble, index) => {
-          const strength = ((index % 4) + 1) * 1.5;
-          const moveX = x * strength;
-          const moveY = y * strength;
-
-          if (!bubble.classList.contains("dragging")) {
-            bubble.style.transform = `translate(${moveX}px, ${moveY}px)`;
-          }
-        });
+      // Header background on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(10, 10, 10, 0.98)";
+        } else {
+          header.style.background = "rgba(10, 10, 10, 0.95)";
+        }
       });
 
-      // Add keyboard shortcuts
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "/") {
-          e.preventDefault();
-          searchInput?.focus();
-        }
-        if (e.key === "Escape") {
-          closeModal();
-          searchInput?.blur();
-        }
+      // Simulate live timing updates
+      function updateTiming() {
+        const rows = document.querySelectorAll(".timing-row span:last-child");
+        rows.forEach((row) => {
+          if (row.textContent !== "+0.0") {
+            const current = parseFloat(row.textContent.replace("+", ""));
+            const change = (Math.random() - 0.5) * 0.5;
+            const newTime = Math.max(0, current + change);
+            row.textContent = `+${newTime.toFixed(1)}`;
+          }
+        });
+      }
+
+      // Update timing every 3 seconds
+      setInterval(updateTiming, 3000);
+
+      // Add intersection observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe feature cards
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(card);
       });
     </script>
   </body>
