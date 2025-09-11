@@ -3,415 +3,211 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar - RallyData Pro</title>
+    <title>Thailand Racing Calendar - Motorsports Events Schedule</title>
     <meta
       name="description"
-      content="Complete WRC calendar, event schedules, stage timetables, and rally information."
+      content="Complete Thailand motorsports calendar featuring MotoGP, Super Series, street races, and touring car championships. Event schedules and ticket information."
+    />
+    <meta
+      name="keywords"
+      content="Thailand racing calendar, motorsports events schedule, MotoGP Thailand dates, racing events 2025, Thailand Super Series calendar"
     />
     <link rel="stylesheet" href="css/styles.css" />
     <style>
-      .calendar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .year-selector {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .year-btn {
-        background: transparent;
-        border: 2px solid #ff6b35;
-        color: #ff6b35;
-        padding: 8px 20px;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .year-btn:hover,
-      .year-btn.active {
-        background: #ff6b35;
-        color: #000;
-      }
-
-      .view-toggle {
-        display: flex;
-        gap: 5px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 25px;
-        padding: 5px;
-      }
-
-      .toggle-btn {
-        padding: 8px 20px;
-        background: transparent;
-        border: none;
-        color: #ccc;
+      .calendar-container {
+        background: rgba(255, 255, 255, 0.05);
         border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .toggle-btn.active {
-        background: #ff6b35;
-        color: #fff;
-      }
-
-      .rallies-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-        gap: 25px;
+        padding: 30px;
         margin-bottom: 40px;
       }
 
-      .rally-card {
+      .month-view {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .month-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .month-nav {
+        background: linear-gradient(45deg, #e74c3c, #f39c12);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .month-nav:hover {
+        transform: scale(1.05);
+      }
+
+      .month-title {
+        font-size: 2rem;
+        color: #e74c3c;
+        font-weight: bold;
+      }
+
+      .day-header {
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        color: #e74c3c;
+        border-bottom: 2px solid rgba(231, 76, 60, 0.3);
+      }
+
+      .calendar-day {
+        min-height: 80px;
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.02);
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .calendar-day:hover {
+        background: rgba(231, 76, 60, 0.1);
+        transform: scale(1.02);
+      }
+
+      .day-number {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .event-dot {
+        width: 8px;
+        height: 8px;
+        background: #e74c3c;
+        border-radius: 50%;
+        margin: 2px 0;
+      }
+
+      .event-preview {
+        font-size: 0.7rem;
+        color: #ccc;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .has-event {
+        border: 2px solid rgba(231, 76, 60, 0.5);
+        background: rgba(231, 76, 60, 0.05);
+      }
+
+      .upcoming-events {
+        margin-top: 40px;
+      }
+
+      .upcoming-events h3 {
+        color: #e74c3c;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .event-list {
+        display: grid;
+        gap: 15px;
+      }
+
+      .event-item {
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.1),
           rgba(255, 255, 255, 0.05)
         );
+        padding: 20px;
         border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        position: relative;
-        cursor: pointer;
-      }
-
-      .rally-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
-      }
-
-      .rally-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(45deg, #ff6b35, #f7931e);
-      }
-
-      .rally-header {
-        position: relative;
-        height: 120px;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        display: flex;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: grid;
+        grid-template-columns: 100px 1fr auto;
+        gap: 20px;
         align-items: center;
-        justify-content: center;
-        overflow: hidden;
       }
 
-      .rally-flag {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        font-size: 24px;
+      .event-date-box {
+        background: linear-gradient(45deg, #e74c3c, #f39c12);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
       }
 
-      .rally-round {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        background: rgba(255, 107, 53, 0.9);
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 12px;
+      .event-month {
+        font-size: 0.8rem;
         font-weight: bold;
+        text-transform: uppercase;
       }
 
-      .rally-name {
+      .event-day {
         font-size: 1.5rem;
         font-weight: bold;
-        text-align: center;
-        color: #fff;
       }
 
-      .rally-content {
-        padding: 20px;
-      }
-
-      .rally-dates {
-        color: #ff6b35;
-        font-size: 1.1rem;
-        font-weight: bold;
-        margin-bottom: 15px;
-      }
-
-      .rally-location {
-        color: #ccc;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .rally-stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin-bottom: 15px;
-      }
-
-      .stat-item {
-        text-align: center;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-      }
-
-      .stat-value {
+      .event-details h4 {
+        color: #ffffff;
+        margin-bottom: 8px;
         font-size: 1.2rem;
-        font-weight: bold;
-        color: #ff6b35;
       }
 
-      .stat-label {
-        font-size: 12px;
-        color: #ccc;
-        text-transform: uppercase;
-      }
-
-      .rally-status {
-        display: inline-block;
-        padding: 6px 15px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-
-      .status.upcoming {
-        background: #3742fa;
-        color: #fff;
-      }
-
-      .status.live {
-        background: #00ff00;
-        color: #000;
-        animation: pulse 1.5s infinite;
-      }
-
-      .status.completed {
-        background: #666;
-        color: #fff;
-      }
-
-      .status.cancelled {
-        background: #ff4757;
-        color: #fff;
-      }
-
-      .rally-actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
-      }
-
-      .action-btn {
-        flex: 1;
-        padding: 8px 15px;
-        background: transparent;
-        border: 1px solid #ff6b35;
-        color: #ff6b35;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 12px;
-      }
-
-      .action-btn:hover {
-        background: #ff6b35;
-        color: #fff;
-      }
-
-      .upcoming-events {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 107, 53, 0.1),
-          rgba(247, 147, 30, 0.05)
-        );
-        border-radius: 15px;
-        padding: 30px;
-        margin: 40px 0;
-      }
-
-      .upcoming-list {
-        display: grid;
-        gap: 15px;
-        margin-top: 20px;
-      }
-
-      .upcoming-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 15px 20px;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-      }
-
-      .upcoming-item:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: translateX(5px);
-      }
-
-      .event-info h4 {
-        color: #ff6b35;
+      .event-location {
+        color: #e74c3c;
+        font-size: 0.9rem;
         margin-bottom: 5px;
       }
 
-      .event-info p {
+      .event-description {
         color: #ccc;
-        font-size: 14px;
+        font-size: 0.9rem;
       }
 
-      .event-countdown {
-        text-align: right;
-        color: #ff6b35;
-        font-weight: bold;
-      }
-
-      .schedule-view {
-        display: none;
-      }
-
-      .schedule-view.active {
-        display: block;
-      }
-
-      .stage-schedule {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 15px;
-        overflow: hidden;
-        margin-bottom: 30px;
-      }
-
-      .schedule-header {
-        background: linear-gradient(45deg, #ff6b35, #f7931e);
-        color: #000;
-        padding: 20px;
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .schedule-table {
-        width: 100%;
-      }
-
-      .schedule-table th,
-      .schedule-table td {
-        padding: 15px 20px;
-        text-align: left;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .schedule-table th {
-        background: rgba(255, 255, 255, 0.05);
-        font-weight: bold;
-        color: #ff6b35;
-      }
-
-      .schedule-table tr:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .time-cell {
-        color: #00ff00;
-        font-family: monospace;
-        font-weight: bold;
-      }
-
-      .stage-name {
-        font-weight: bold;
-      }
-
-      .distance {
-        color: #ffa502;
-      }
-
-      .surface-tag {
-        display: inline-block;
-        padding: 3px 8px;
-        border-radius: 12px;
-        font-size: 11px;
+      .event-status {
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
         font-weight: bold;
         text-transform: uppercase;
       }
 
-      .championship-standings {
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 15px;
-        padding: 30px;
-        margin-top: 40px;
+      .status-upcoming {
+        background: rgba(243, 156, 18, 0.2);
+        color: #f39c12;
       }
 
-      .standings-table {
-        width: 100%;
-        border-collapse: collapse;
+      .status-live {
+        background: rgba(46, 204, 113, 0.2);
+        color: #2ecc71;
+        animation: pulse 1.5s infinite;
       }
 
-      .standings-table th,
-      .standings-table td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .standings-table th {
-        background: rgba(255, 255, 255, 0.05);
-        color: #ff6b35;
-        font-weight: bold;
-      }
-
-      .position-cell {
-        font-weight: bold;
-        font-size: 18px;
-        text-align: center;
-        width: 50px;
-      }
-
-      .points-cell {
-        font-weight: bold;
-        color: #ff6b35;
-        text-align: center;
+      .status-ended {
+        background: rgba(149, 165, 166, 0.2);
+        color: #95a5a6;
       }
 
       @media (max-width: 768px) {
-        .rallies-grid {
+        .month-view {
+          grid-template-columns: repeat(7, 1fr);
+          gap: 5px;
+        }
+
+        .calendar-day {
+          min-height: 60px;
+          padding: 4px;
+        }
+
+        .event-item {
           grid-template-columns: 1fr;
-        }
-
-        .calendar-header {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .rally-stats {
-          grid-template-columns: 1fr;
-        }
-
-        .schedule-table,
-        .standings-table {
-          font-size: 14px;
-        }
-
-        .schedule-table th,
-        .schedule-table td,
-        .standings-table th,
-        .standings-table td {
-          padding: 10px 8px;
+          text-align: center;
         }
       }
     </style>
@@ -419,13 +215,12 @@
   <body>
     <header>
       <nav class="container">
-        <div class="logo"><a href="index.html">RallyData Pro</a></div>
+        <div class="logo"><a href="index.html">Thailand Motorsports</a></div>
         <ul class="nav-links">
-          <li><a href="live-timing.html">Live Timing</a></li>
-          <li><a href="stage-maps.html">Stage Maps</a></li>
-          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="circuits.html">Circuits</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="travel-packages.html">Packages</a></li>
           <li><a href="calendar.html" class="active">Calendar</a></li>
-          <li><a href="weather.html">Weather</a></li>
         </ul>
       </nav>
     </header>
@@ -433,643 +228,170 @@
     <main>
       <section class="page-header">
         <div class="container">
-          <h1>Rally Calendar</h1>
+          <h1>Thailand Racing Calendar</h1>
           <p>
-            Complete WRC schedule, event information, and championship standings
+            Complete schedule of motorsports events across Thailand's premier
+            racing circuits
           </p>
         </div>
       </section>
 
       <section class="section-padding">
         <div class="container">
-          <div class="calendar-header">
-            <div class="year-selector">
-              <h2>2025 Championship</h2>
-              <button class="year-btn">2024</button>
-              <button class="year-btn active">2025</button>
-              <button class="year-btn">2026</button>
-            </div>
-
-            <div class="view-toggle">
-              <button class="toggle-btn active" data-view="calendar">
-                Calendar
+          <div class="calendar-container">
+            <div class="month-header">
+              <button class="month-nav" onclick="previousMonth()">
+                ‹ Prev
               </button>
-              <button class="toggle-btn" data-view="schedule">Schedule</button>
-              <button class="toggle-btn" data-view="standings">
-                Standings
-              </button>
+              <h2 class="month-title" id="monthTitle">March 2025</h2>
+              <button class="month-nav" onclick="nextMonth()">Next ›</button>
+            </div>
+
+            <div class="month-view" id="calendarGrid">
+              <div class="day-header">Sun</div>
+              <div class="day-header">Mon</div>
+              <div class="day-header">Tue</div>
+              <div class="day-header">Wed</div>
+              <div class="day-header">Thu</div>
+              <div class="day-header">Fri</div>
+              <div class="day-header">Sat</div>
+
+              <!-- Calendar days will be generated by JavaScript -->
             </div>
           </div>
 
-          <div id="calendarView" class="calendar-view">
-            <div class="upcoming-events">
-              <h3>Next Events</h3>
-              <div class="upcoming-list">
-                <div class="upcoming-item">
-                  <div class="event-info">
-                    <h4>Rally Chile Bio Bío</h4>
-                    <p>Round 10 • Concepción • Gravel</p>
+          <div class="upcoming-events">
+            <h3>🏁 Upcoming Racing Events</h3>
+            <div class="event-list">
+              <div class="event-item">
+                <div class="event-date-box">
+                  <div class="event-month">Mar</div>
+                  <div class="event-day">15-17</div>
+                </div>
+                <div class="event-details">
+                  <h4>🏆 MotoGP Thailand</h4>
+                  <div class="event-location">
+                    📍 Chang International Circuit, Buriram
                   </div>
-                  <div class="event-countdown">
-                    <div>Sep 26-29</div>
-                    <div style="color: #00ff00">Next Event</div>
+                  <div class="event-description">
+                    World championship motorcycle racing featuring top riders
+                    from around the globe.
                   </div>
                 </div>
-
-                <div class="upcoming-item">
-                  <div class="event-info">
-                    <h4>Central European Rally</h4>
-                    <p>Round 11 • Czech Republic • Tarmac</p>
-                  </div>
-                  <div class="event-countdown">
-                    <div>Oct 17-20</div>
-                    <div>7 weeks</div>
-                  </div>
-                </div>
-
-                <div class="upcoming-item">
-                  <div class="event-info">
-                    <h4>FORUM8 Rally Japan</h4>
-                    <p>Round 12 • Toyota City • Tarmac</p>
-                  </div>
-                  <div class="event-countdown">
-                    <div>Nov 21-24</div>
-                    <div>12 weeks</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="rallies-grid">
-              <div class="rally-card">
-                <div class="rally-round">Round 1</div>
-                <div class="rally-flag">🇲🇨</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Monte-Carlo</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">January 23-26, 2025</div>
-                  <div class="rally-location">📍 Gap, France</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">17</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">323</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Mixed</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
-                  </div>
-                </div>
+                <div class="event-status status-upcoming">Upcoming</div>
               </div>
 
-              <div class="rally-card">
-                <div class="rally-round">Round 2</div>
-                <div class="rally-flag">🇸🇪</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Sweden</div>
+              <div class="event-item">
+                <div class="event-date-box">
+                  <div class="event-month">Apr</div>
+                  <div class="event-day">8-9</div>
                 </div>
-                <div class="rally-content">
-                  <div class="rally-dates">February 13-16, 2025</div>
-                  <div class="rally-location">📍 Umeå, Sweden</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">17</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">253</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Snow</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
+                <div class="event-details">
+                  <h4>🏁 Thailand Super Series</h4>
+                  <div class="event-location">
+                    📍 Bira International Circuit, Pattaya
                   </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
+                  <div class="event-description">
+                    Thailand's premier touring car championship with local and
+                    international drivers.
                   </div>
                 </div>
+                <div class="event-status status-upcoming">Upcoming</div>
               </div>
 
-              <div class="rally-card">
-                <div class="rally-round">Round 3</div>
-                <div class="rally-flag">🇭🇷</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Croatia</div>
+              <div class="event-item">
+                <div class="event-date-box">
+                  <div class="event-month">Jul</div>
+                  <div class="event-day">20-21</div>
                 </div>
-                <div class="rally-content">
-                  <div class="rally-dates">April 17-20, 2025</div>
-                  <div class="rally-location">📍 Zagreb, Croatia</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">20</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">292</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Tarmac</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
+                <div class="event-details">
+                  <h4>🏖️ Bangsaen Grand Prix</h4>
+                  <div class="event-location">
+                    📍 Bangsaen Street Circuit, Chonburi
                   </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
+                  <div class="event-description">
+                    Iconic street racing festival combining motorsports with
+                    beach culture and entertainment.
                   </div>
                 </div>
+                <div class="event-status status-upcoming">Upcoming</div>
               </div>
 
-              <div class="rally-card">
-                <div class="rally-round">Round 4</div>
-                <div class="rally-flag">🇵🇹</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally de Portugal</div>
+              <div class="event-item">
+                <div class="event-date-box">
+                  <div class="event-month">Sep</div>
+                  <div class="event-day">14-15</div>
                 </div>
-                <div class="rally-content">
-                  <div class="rally-dates">May 15-18, 2025</div>
-                  <div class="rally-location">📍 Matosinhos, Portugal</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">19</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">333</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
+                <div class="event-details">
+                  <h4>🏎️ Thailand Endurance Championship</h4>
+                  <div class="event-location">
+                    📍 Chang International Circuit, Buriram
                   </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
+                  <div class="event-description">
+                    Long-distance racing challenge featuring GT cars and
+                    prototype vehicles.
                   </div>
                 </div>
+                <div class="event-status status-upcoming">Upcoming</div>
               </div>
 
-              <div class="rally-card">
-                <div class="rally-round">Round 5</div>
-                <div class="rally-flag">🇮🇹</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Italia Sardegna</div>
+              <div class="event-item">
+                <div class="event-date-box">
+                  <div class="event-month">Nov</div>
+                  <div class="event-day">3-4</div>
                 </div>
-                <div class="rally-content">
-                  <div class="rally-dates">June 5-8, 2025</div>
-                  <div class="rally-location">📍 Alghero, Italy</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">20</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">316</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
+                <div class="event-details">
+                  <h4>🚗 Thailand Drift Championship</h4>
+                  <div class="event-location">📍 Kaeng Krachan Circuit</div>
+                  <div class="event-description">
+                    Spectacular drifting competition showcasing precision
+                    driving and modified cars.
                   </div>
                 </div>
+                <div class="event-status status-upcoming">Upcoming</div>
               </div>
 
-              <div class="rally-card">
-                <div class="rally-round">Round 6</div>
-                <div class="rally-flag">🇰🇪</div>
-                <div class="rally-header">
-                  <div class="rally-name">Safari Rally Kenya</div>
+              <div class="event-item">
+                <div class="event-date-box">
+                  <div class="event-month">Dec</div>
+                  <div class="event-day">8-10</div>
                 </div>
-                <div class="rally-content">
-                  <div class="rally-dates">June 26-29, 2025</div>
-                  <div class="rally-location">📍 Naivasha, Kenya</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">19</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">320</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
+                <div class="event-details">
+                  <h4>🎌 Classic Car Festival Thailand</h4>
+                  <div class="event-location">📍 Multiple Venues, Bangkok</div>
+                  <div class="event-description">
+                    Celebration of automotive heritage with vintage cars and
+                    classic racing demonstrations.
                   </div>
                 </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 7</div>
-                <div class="rally-flag">🇪🇪</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Estonia</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">July 17-20, 2025</div>
-                  <div class="rally-location">📍 Tartu, Estonia</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">20</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">314</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 8</div>
-                <div class="rally-flag">🇫🇮</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Finland</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">July 31 - Aug 3, 2025</div>
-                  <div class="rally-location">📍 Jyväskylä, Finland</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">20</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">333</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 9</div>
-                <div class="rally-flag">��</div>
-                <div class="rally-header">
-                  <div class="rally-name">EKO Acropolis Rally</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">September 4-7, 2025</div>
-                  <div class="rally-location">📍 Athens, Greece</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">15</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">289</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status completed">Completed</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Results</button>
-                    <button class="action-btn">Highlights</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 10</div>
-                <div class="rally-flag">🇨🇱</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Chile Bio Bío</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">September 26-29, 2025</div>
-                  <div class="rally-location">📍 Concepción, Chile</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">16</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">302</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status upcoming">Upcoming</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Preview</button>
-                    <button class="action-btn">Weather</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 11</div>
-                <div class="rally-flag">🇨🇿</div>
-                <div class="rally-header">
-                  <div class="rally-name">Central European Rally</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">October 17-20, 2025</div>
-                  <div class="rally-location">📍 Czech Republic</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">17</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">291</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Tarmac</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status upcoming">Upcoming</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Preview</button>
-                    <button class="action-btn">Schedule</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 12</div>
-                <div class="rally-flag">🇯🇵</div>
-                <div class="rally-header">
-                  <div class="rally-name">FORUM8 Rally Japan</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">November 21-24, 2025</div>
-                  <div class="rally-location">📍 Toyota City, Japan</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">19</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">249</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Tarmac</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status upcoming">Upcoming</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Preview</button>
-                    <button class="action-btn">History</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rally-card">
-                <div class="rally-round">Round 13</div>
-                <div class="rally-flag">🇸🇦</div>
-                <div class="rally-header">
-                  <div class="rally-name">Rally Saudi Arabia</div>
-                </div>
-                <div class="rally-content">
-                  <div class="rally-dates">December 12-15, 2025</div>
-                  <div class="rally-location">📍 Hail, Saudi Arabia</div>
-                  <div class="rally-stats">
-                    <div class="stat-item">
-                      <div class="stat-value">16</div>
-                      <div class="stat-label">Stages</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">318</div>
-                      <div class="stat-label">SS KM</div>
-                    </div>
-                    <div class="stat-item">
-                      <div class="stat-value">Gravel</div>
-                      <div class="stat-label">Surface</div>
-                    </div>
-                  </div>
-                  <div class="status upcoming">Upcoming</div>
-                  <div class="rally-actions">
-                    <button class="action-btn">Preview</button>
-                    <button class="action-btn">Weather</button>
-                  </div>
-                </div>
+                <div class="event-status status-upcoming">Upcoming</div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div id="scheduleView" class="schedule-view">
-            <div class="stage-schedule">
-              <div class="schedule-header">
-                <h3>Rally Monte-Carlo - Stage Schedule</h3>
-                <span class="status live">LIVE</span>
-              </div>
-              <table class="schedule-table">
-                <thead>
-                  <tr>
-                    <th>Time</th>
-                    <th>Stage</th>
-                    <th>Distance</th>
-                    <th>Surface</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="time-cell">09:08</td>
-                    <td class="stage-name">SS1 - Thoard - Sisteron 1</td>
-                    <td class="distance">36.85 km</td>
-                    <td><span class="surface-tag mixed">Mixed</span></td>
-                    <td><span class="status completed">Completed</span></td>
-                  </tr>
-                  <tr style="background: rgba(255, 107, 53, 0.1)">
-                    <td class="time-cell">10:21</td>
-                    <td class="stage-name">
-                      SS2 - Barles - Châtillon-en-Diois 1
-                    </td>
-                    <td class="distance">25.49 km</td>
-                    <td><span class="surface-tag mixed">Mixed</span></td>
-                    <td><span class="status live">RUNNING</span></td>
-                  </tr>
-                  <tr>
-                    <td class="time-cell">11:43</td>
-                    <td class="stage-name">
-                      SS3 - Saint-Clément - Freissinières 1
-                    </td>
-                    <td class="distance">20.68 km</td>
-                    <td><span class="surface-tag tarmac">Tarmac</span></td>
-                    <td><span class="status upcoming">Upcoming</span></td>
-                  </tr>
-                  <tr>
-                    <td class="time-cell">14:15</td>
-                    <td class="stage-name">SS4 - Thoard - Sisteron 2</td>
-                    <td class="distance">36.85 km</td>
-                    <td><span class="surface-tag mixed">Mixed</span></td>
-                    <td><span class="status upcoming">Upcoming</span></td>
-                  </tr>
-                  <tr>
-                    <td class="time-cell">15:28</td>
-                    <td class="stage-name">
-                      SS5 - Barles - Châtillon-en-Diois 2
-                    </td>
-                    <td class="distance">25.49 km</td>
-                    <td><span class="surface-tag mixed">Mixed</span></td>
-                    <td><span class="status upcoming">Upcoming</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div id="standingsView" class="championship-standings schedule-view">
-            <h2>2025 WRC Drivers' Championship</h2>
-            <table class="standings-table">
-              <thead>
-                <tr>
-                  <th>Pos</th>
-                  <th>Driver</th>
-                  <th>Team</th>
-                  <th>Points</th>
-                  <th>Wins</th>
-                  <th>Podiums</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="position-cell">1</td>
-                  <td><strong>T. Neuville</strong></td>
-                  <td>Hyundai Shell Mobis WRT</td>
-                  <td class="points-cell">198</td>
-                  <td>5</td>
-                  <td>8</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">2</td>
-                  <td><strong>E. Evans</strong></td>
-                  <td>Toyota Gazoo Racing WRT</td>
-                  <td class="points-cell">185</td>
-                  <td>4</td>
-                  <td>7</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">3</td>
-                  <td><strong>O. Tänak</strong></td>
-                  <td>Hyundai Shell Mobis WRT</td>
-                  <td class="points-cell">167</td>
-                  <td>3</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">4</td>
-                  <td><strong>K. Rovanperä</strong></td>
-                  <td>Toyota Gazoo Racing WRT</td>
-                  <td class="points-cell">149</td>
-                  <td>2</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">5</td>
-                  <td><strong>S. Ogier</strong></td>
-                  <td>Toyota Gazoo Racing WRT</td>
-                  <td class="points-cell">132</td>
-                  <td>1</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">6</td>
-                  <td><strong>T. Katsuta</strong></td>
-                  <td>Toyota Gazoo Racing WRT</td>
-                  <td class="points-cell">98</td>
-                  <td>0</td>
-                  <td>2</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h2 style="margin-top: 40px">Manufacturers' Championship</h2>
-            <table class="standings-table">
-              <thead>
-                <tr>
-                  <th>Pos</th>
-                  <th>Manufacturer</th>
-                  <th>Points</th>
-                  <th>Wins</th>
-                  <th>1-2 Finishes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="position-cell">1</td>
-                  <td><strong>Toyota Gazoo Racing WRT</strong></td>
-                  <td class="points-cell">456</td>
-                  <td>7</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">2</td>
-                  <td><strong>Hyundai Shell Mobis WRT</strong></td>
-                  <td class="points-cell">398</td>
-                  <td>6</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td class="position-cell">3</td>
-                  <td><strong>M-Sport Ford WRT</strong></td>
-                  <td class="points-cell">89</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- AdSense Ad Section -->
+      <section
+        class="ad-section"
+        style="
+          padding: 40px 0;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.02);
+        "
+      >
+        <div class="container">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-XXXXXXXXX"
+            data-ad-slot="XXXXXXXXX"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </div>
       </section>
     </main>
@@ -1078,38 +400,38 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>Calendar</h3>
-            <a href="calendar.html">Rally Schedule</a>
-            <a href="live-timing.html">Live Events</a>
-            <a href="analytics.html">Championship</a>
-            <a href="weather.html">Event Weather</a>
+            <h3>Racing Experiences</h3>
+            <a href="#">Circuit Tours</a>
+            <a href="#">Track Days</a>
+            <a href="#">Racing Schools</a>
+            <a href="#">VIP Packages</a>
           </div>
           <div class="footer-section">
-            <h3>Championships</h3>
-            <a href="#">WRC</a>
-            <a href="#">WRC2</a>
-            <a href="#">WRC3</a>
-            <a href="#">Junior WRC</a>
+            <h3>Thai Circuits</h3>
+            <a href="#">Chang International</a>
+            <a href="#">Bira Circuit</a>
+            <a href="#">Bangsaen Street</a>
+            <a href="#">Kaeng Krachan</a>
           </div>
           <div class="footer-section">
-            <h3>Data Partners</h3>
-            <a href="#">Official WRC API</a>
-            <a href="#">Weather Services</a>
-            <a href="#">Mapping Data</a>
-            <a href="#">Team Partnerships</a>
+            <h3>Travel Services</h3>
+            <a href="#">Hotel Bookings</a>
+            <a href="#">Airport Transfers</a>
+            <a href="#">Tour Packages</a>
+            <a href="#">Group Bookings</a>
           </div>
           <div class="footer-section">
             <h3>Support</h3>
-            <a href="#">API Documentation</a>
-            <a href="#">Contact</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Travel Guide</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
           </div>
         </div>
         <div class="footer-bottom">
           <p>
-            &copy; 2025 RallyData Pro. Complete WRC calendar and championship
-            information.
+            &copy; 2025 Thailand Motorsports Tourism. Your gateway to Thailand's
+            exciting racing scene.
           </p>
         </div>
       </div>
@@ -1117,132 +439,112 @@
 
     <script src="js/common.js"></script>
     <script>
-      // Calendar functionality
-      class RallyCalendar {
-        constructor() {
-          this.currentView = "calendar";
-          this.currentYear = 2025;
-          this.initializeControls();
-          this.startCountdowns();
+      let currentMonth = 2; // March (0-based)
+      let currentYear = 2025;
+
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      const events = {
+        "2025-03-15": { name: "MotoGP Thailand", type: "major" },
+        "2025-03-16": { name: "MotoGP Thailand", type: "major" },
+        "2025-03-17": { name: "MotoGP Thailand", type: "major" },
+        "2025-04-08": { name: "Thailand Super Series", type: "local" },
+        "2025-04-09": { name: "Thailand Super Series", type: "local" },
+        "2025-07-20": { name: "Bangsaen Grand Prix", type: "festival" },
+        "2025-07-21": { name: "Bangsaen Grand Prix", type: "festival" },
+        "2025-09-14": { name: "Endurance Championship", type: "major" },
+        "2025-09-15": { name: "Endurance Championship", type: "major" },
+        "2025-11-03": { name: "Drift Championship", type: "special" },
+        "2025-11-04": { name: "Drift Championship", type: "special" },
+        "2025-12-08": { name: "Classic Car Festival", type: "festival" },
+        "2025-12-09": { name: "Classic Car Festival", type: "festival" },
+        "2025-12-10": { name: "Classic Car Festival", type: "festival" },
+      };
+
+      function generateCalendar(month, year) {
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const grid = document.getElementById("calendarGrid");
+
+        // Clear existing days (keep headers)
+        const dayHeaders = grid.querySelectorAll(".day-header");
+        grid.innerHTML = "";
+        dayHeaders.forEach((header) => grid.appendChild(header));
+
+        // Add empty cells for days before the first day of the month
+        for (let i = 0; i < firstDay; i++) {
+          const emptyDay = document.createElement("div");
+          emptyDay.className = "calendar-day";
+          grid.appendChild(emptyDay);
         }
 
-        initializeControls() {
-          // View toggle
-          document.querySelectorAll(".toggle-btn").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-              document
-                .querySelectorAll(".toggle-btn")
-                .forEach((b) => b.classList.remove("active"));
-              btn.classList.add("active");
-              this.switchView(btn.dataset.view);
-            });
-          });
+        // Add days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dayElement = document.createElement("div");
+          dayElement.className = "calendar-day";
 
-          // Year selector
-          document.querySelectorAll(".year-btn").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-              document
-                .querySelectorAll(".year-btn")
-                .forEach((b) => b.classList.remove("active"));
-              btn.classList.add("active");
-              this.currentYear = parseInt(btn.textContent);
-              this.loadYear(this.currentYear);
-            });
-          });
+          const dateStr = `${year}-${String(month + 1).padStart(
+            2,
+            "0"
+          )}-${String(day).padStart(2, "0")}`;
+          const event = events[dateStr];
 
-          // Rally card actions
-          document.querySelectorAll(".action-btn").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-              e.stopPropagation();
-              const action = btn.textContent.toLowerCase();
-              this.handleRallyAction(action);
-            });
-          });
-        }
-
-        switchView(view) {
-          // Hide all views
-          document
-            .querySelectorAll(".calendar-view, .schedule-view")
-            .forEach((v) => {
-              v.style.display = "none";
-              v.classList.remove("active");
-            });
-
-          // Show selected view
-          const viewElement = document.getElementById(view + "View");
-          if (viewElement) {
-            viewElement.style.display = "block";
-            viewElement.classList.add("active");
+          if (event) {
+            dayElement.classList.add("has-event");
+            dayElement.innerHTML = `
+              <div class="day-number">${day}</div>
+              <div class="event-dot"></div>
+              <div class="event-preview">${event.name}</div>
+            `;
+          } else {
+            dayElement.innerHTML = `<div class="day-number">${day}</div>`;
           }
 
-          this.currentView = view;
-        }
-
-        loadYear(year) {
-          // Simulate loading different year data
-          console.log(`Loading ${year} calendar...`);
-          // In a real application, this would make an API call
-        }
-
-        handleRallyAction(action) {
-          switch (action) {
-            case "live timing":
-              window.location.href = "live-timing.html";
-              break;
-            case "stage maps":
-              window.location.href = "stage-maps.html";
-              break;
-            case "weather":
-              window.location.href = "weather.html";
-              break;
-            case "preview":
-            case "schedule":
-            case "history":
-              this.showRallyDetails(action);
-              break;
-          }
-        }
-
-        showRallyDetails(type) {
-          // Placeholder for rally detail modal/page
-          alert(
-            `${
-              type.charAt(0).toUpperCase() + type.slice(1)
-            } details would be shown here.`
-          );
-        }
-
-        startCountdowns() {
-          // Update countdowns for upcoming events
-          const countdownElements =
-            document.querySelectorAll(".event-countdown");
-
-          setInterval(() => {
-            this.updateCountdowns();
-          }, 60000); // Update every minute
-        }
-
-        updateCountdowns() {
-          // Placeholder for live countdown updates
-          // In a real application, this would calculate actual time differences
-          const now = new Date();
-          document.querySelectorAll(".upcoming-item").forEach((item, index) => {
-            const countdownEl = item.querySelector(
-              ".event-countdown div:last-child"
-            );
-            if (countdownEl && !countdownEl.textContent.includes("LIVE")) {
-              // Simulate countdown updates
-              const weeks = Math.max(1, 12 - index * 4);
-              countdownEl.textContent = `${weeks} weeks`;
-            }
-          });
+          grid.appendChild(dayElement);
         }
       }
 
-      // Initialize calendar when page loads
+      function updateCalendar() {
+        document.getElementById(
+          "monthTitle"
+        ).textContent = `${months[currentMonth]} ${currentYear}`;
+        generateCalendar(currentMonth, currentYear);
+      }
+
+      function previousMonth() {
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentMonth = 11;
+          currentYear--;
+        }
+        updateCalendar();
+      }
+
+      function nextMonth() {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+        updateCalendar();
+      }
+
+      // Initialize calendar
       document.addEventListener("DOMContentLoaded", () => {
-        new RallyCalendar();
+        updateCalendar();
       });
     </script>
   </body>

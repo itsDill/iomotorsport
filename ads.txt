@@ -1,0 +1,6 @@
+# Google AdSense
+google.com, pub-XXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Replace pub-XXXXXXXXX with your actual AdSense publisher ID
+# This file helps prevent unauthorized inventory sales
+# Update this file when you get your actual AdSense approval

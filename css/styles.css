@@ -40,7 +40,7 @@ nav {
 .logo {
   font-size: 24px;
   font-weight: bold;
-  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  background: linear-gradient(45deg, #e74c3c, #f39c12);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -66,7 +66,7 @@ nav {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #ff6b35;
+  color: #e74c3c;
 }
 
 /* Main Content */
@@ -78,14 +78,18 @@ main {
 .page-header {
   padding: 60px 0 40px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(231, 76, 60, 0.1),
+    rgba(243, 156, 18, 0.05)
+  );
 }
 
 .page-header h1 {
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, #ffffff, #ff6b35);
+  background: linear-gradient(45deg, #ffffff, #e74c3c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -101,7 +105,11 @@ main {
 
 /* Cards */
 .card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
   padding: 30px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -123,14 +131,14 @@ main {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  background: linear-gradient(45deg, #e74c3c, #f39c12);
 }
 
 /* Buttons */
 .btn {
   display: inline-block;
   padding: 12px 30px;
-  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  background: linear-gradient(45deg, #e74c3c, #f39c12);
   color: white;
   text-decoration: none;
   border-radius: 25px;
@@ -143,17 +151,17 @@ main {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
 }
 
 .btn-secondary {
   background: transparent;
-  border: 2px solid #ff6b35;
-  color: #ff6b35;
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
 }
 
 .btn-secondary:hover {
-  background: #ff6b35;
+  background: #e74c3c;
   color: white;
 }
 
@@ -193,7 +201,7 @@ main {
 }
 
 .data-table th {
-  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  background: linear-gradient(45deg, #e74c3c, #f39c12);
   font-weight: bold;
 }
 
@@ -218,7 +226,7 @@ main {
 }
 
 .status.upcoming {
-  background: #f7931e;
+  background: #f39c12;
   color: #000;
 }
 
@@ -229,20 +237,29 @@ main {
 
 /* Loading animation */
 @keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 2px solid #ff6b35;
+  border: 2px solid #e74c3c;
   border-radius: 50%;
   border-top-color: transparent;
   animation: spin 1s linear infinite;
@@ -263,7 +280,7 @@ footer {
 }
 
 .footer-section h3 {
-  color: #ff6b35;
+  color: #e74c3c;
   margin-bottom: 20px;
 }
 
@@ -276,7 +293,7 @@ footer {
 }
 
 .footer-section a:hover {
-  color: #ff6b35;
+  color: #e74c3c;
 }
 
 .footer-bottom {
@@ -291,21 +308,21 @@ footer {
   .nav-links {
     display: none;
   }
-  
+
   .page-header h1 {
     font-size: 2.5rem;
   }
-  
+
   .grid-2,
   .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
   }
-  
+
   .data-table {
     font-size: 14px;
   }
-  
+
   .data-table th,
   .data-table td {
     padding: 10px;
@@ -313,8 +330,18 @@ footer {
 }
 
 /* Utility classes */
-.text-center { text-align: center; }
-.mb-20 { margin-bottom: 20px; }
-.mb-30 { margin-bottom: 30px; }
-.mt-30 { margin-top: 30px; }
-.section-padding { padding: 60px 0; }
+.text-center {
+  text-align: center;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.section-padding {
+  padding: 60px 0;
+}

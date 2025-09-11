@@ -1,4 +1,4 @@
-// Common JavaScript functionality for RallyData Pro
+// Common JavaScript functionality for Thailand Motorsports Tourism
 
 // Header scroll effect
 window.addEventListener("scroll", () => {
@@ -67,6 +67,23 @@ function formatTimeDiff(diff) {
   return `${sign}${diff.toFixed(1)}`;
 }
 
+// Thailand weather simulation
+function generateThailandWeather() {
+  const cities = ["Bangkok", "Buriram", "Pattaya", "Phetchaburi"];
+  const city = cities[Math.floor(Math.random() * cities.length)];
+
+  return {
+    city: city,
+    temperature: Math.round(25 + Math.random() * 10), // 25-35°C typical for Thailand
+    humidity: Math.round(60 + Math.random() * 30), // 60-90% typical
+    windSpeed: Math.round(Math.random() * 15),
+    windDirection: Math.round(Math.random() * 360),
+    conditions: ["Sunny", "Partly Cloudy", "Thunderstorms", "Hot"][
+      Math.floor(Math.random() * 4)
+    ],
+  };
+}
+
 // Initialize common functionality
 document.addEventListener("DOMContentLoaded", () => {
   setActiveNavLink();
@@ -87,15 +104,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Initialize AdSense ads if present
+  if (typeof adsbygoogle !== "undefined") {
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }
 });
 
-// Live data simulation utilities
-class LiveDataSimulator {
+// Live data simulation utilities for racing events
+class RacingDataSimulator {
   constructor() {
     this.intervals = [];
   }
 
-  startTimingUpdates(callback, interval = 3000) {
+  startRaceUpdates(callback, interval = 3000) {
     const intervalId = setInterval(callback, interval);
     this.intervals.push(intervalId);
     return intervalId;
@@ -110,24 +132,30 @@ class LiveDataSimulator {
     return base + (Math.random() - 0.5) * variance;
   }
 
-  generateWeatherData() {
+  generateThailandRaceData() {
+    const drivers = [
+      "Vutthikorn Inthraphuvasak",
+      "Nattavude Charoensukhawatana",
+      "Kantadhee Kusiri",
+      "Pattarawat Yokubon",
+      "Sandy Stuvik",
+    ];
+
     return {
-      temperature: Math.round(15 + Math.random() * 20),
-      humidity: Math.round(40 + Math.random() * 40),
-      windSpeed: Math.round(Math.random() * 25),
-      windDirection: Math.round(Math.random() * 360),
-      conditions: ["Sunny", "Cloudy", "Light Rain", "Heavy Rain"][
-        Math.floor(Math.random() * 4)
-      ],
+      driver: drivers[Math.floor(Math.random() * drivers.length)],
+      lapTime: this.generateRandomTime(95, 3), // ~1:35 base lap time
+      position: Math.floor(Math.random() * 20) + 1,
+      circuit: "Chang International Circuit",
     };
   }
 }
 
 // Export for use in other files
-window.RallyDataPro = {
-  LiveDataSimulator,
+window.ThailandMotorsports = {
+  RacingDataSimulator,
   formatTime,
   formatDate,
   formatTimeDiff,
   setActiveNavLink,
+  generateThailandWeather,
 };

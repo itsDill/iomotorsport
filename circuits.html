@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Racing Circuits in Thailand - Track Guide & Information</title>
+    <meta
+      name="description"
+      content="Complete guide to Thailand's premier racing circuits including Chang International, Bira Circuit, and Bangsaen Street Circuit. Track layouts, facilities, and visitor information."
+    />
+    <meta
+      name="keywords"
+      content="Thailand racing circuits, Chang International Circuit, Bira Circuit, Bangsaen Street Circuit, racing tracks Thailand, motorsports venues"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .circuit-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .circuit-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.05)
+        );
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .circuit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(231, 76, 60, 0.2);
+      }
+
+      .circuit-image {
+        height: 200px;
+        background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #e74c3c;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .circuit-info {
+        padding: 25px;
+      }
+
+      .circuit-info h3 {
+        color: #e74c3c;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .circuit-specs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .spec-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .spec-value {
+        font-weight: bold;
+        color: #e74c3c;
+        font-size: 1.1rem;
+      }
+
+      .spec-label {
+        font-size: 0.9rem;
+        color: #ccc;
+      }
+
+      .circuit-features {
+        list-style: none;
+        margin: 15px 0;
+      }
+
+      .circuit-features li {
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .feature-name {
+        color: #ccc;
+      }
+
+      .feature-status {
+        color: #00ff00;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo"><a href="index.html">Thailand Motorsports</a></div>
+        <ul class="nav-links">
+          <li><a href="circuits.html" class="active">Circuits</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="travel-packages.html">Packages</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Racing Circuits in Thailand</h1>
+          <p>
+            Discover Thailand's world-class racing venues, from
+            international-grade circuits to iconic street courses
+          </p>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="circuit-grid">
+            <div class="circuit-card">
+              <div class="circuit-image">Chang International Circuit</div>
+              <div class="circuit-info">
+                <h3>Chang International Circuit</h3>
+                <p>
+                  Thailand's premier Formula 1 grade circuit, home to MotoGP
+                  Thailand and various international racing series.
+                </p>
+
+                <div class="circuit-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">4.55</div>
+                    <div class="spec-label">km Length</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">12</div>
+                    <div class="spec-label">Turns</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">50,000</div>
+                    <div class="spec-label">Capacity</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">Grade 1</div>
+                    <div class="spec-label">FIA Rating</div>
+                  </div>
+                </div>
+
+                <ul class="circuit-features">
+                  <li>
+                    <span class="feature-name">Location</span
+                    ><span class="feature-status">Buriram</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Pit Boxes</span
+                    ><span class="feature-status">28</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Paddock Tours</span
+                    ><span class="feature-status">Available</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Track Days</span
+                    ><span class="feature-status">Monthly</span>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn">Book Experience</a>
+              </div>
+            </div>
+
+            <div class="circuit-card">
+              <div class="circuit-image">Bira International Circuit</div>
+              <div class="circuit-info">
+                <h3>Bira International Circuit</h3>
+                <p>
+                  Historic racing venue in Pattaya, known for its challenging
+                  layout and rich motorsports heritage.
+                </p>
+
+                <div class="circuit-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">2.41</div>
+                    <div class="spec-label">km Length</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">10</div>
+                    <div class="spec-label">Turns</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">15,000</div>
+                    <div class="spec-label">Capacity</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">Grade 3</div>
+                    <div class="spec-label">FIA Rating</div>
+                  </div>
+                </div>
+
+                <ul class="circuit-features">
+                  <li>
+                    <span class="feature-name">Location</span
+                    ><span class="feature-status">Pattaya</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Pit Boxes</span
+                    ><span class="feature-status">20</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Racing School</span
+                    ><span class="feature-status">Available</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Karting Track</span
+                    ><span class="feature-status">Yes</span>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn">Book Experience</a>
+              </div>
+            </div>
+
+            <div class="circuit-card">
+              <div class="circuit-image">Bangsaen Street Circuit</div>
+              <div class="circuit-info">
+                <h3>Bangsaen Street Circuit</h3>
+                <p>
+                  Thrilling street circuit through Bangsaen's beachfront,
+                  hosting the famous Bangsaen Grand Prix.
+                </p>
+
+                <div class="circuit-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">2.20</div>
+                    <div class="spec-label">km Length</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">8</div>
+                    <div class="spec-label">Turns</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">100,000</div>
+                    <div class="spec-label">Spectators</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">Annual</div>
+                    <div class="spec-label">Event</div>
+                  </div>
+                </div>
+
+                <ul class="circuit-features">
+                  <li>
+                    <span class="feature-name">Location</span
+                    ><span class="feature-status">Chonburi</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Type</span
+                    ><span class="feature-status">Street Circuit</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Beach Access</span
+                    ><span class="feature-status">Yes</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Festival</span
+                    ><span class="feature-status">December</span>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn">View Event Calendar</a>
+              </div>
+            </div>
+
+            <div class="circuit-card">
+              <div class="circuit-image">Kaeng Krachan Circuit</div>
+              <div class="circuit-info">
+                <h3>Kaeng Krachan Circuit</h3>
+                <p>
+                  Scenic mountain circuit near national park, perfect for
+                  touring car championships and club racing.
+                </p>
+
+                <div class="circuit-specs">
+                  <div class="spec-item">
+                    <div class="spec-value">3.20</div>
+                    <div class="spec-label">km Length</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">14</div>
+                    <div class="spec-label">Turns</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">8,000</div>
+                    <div class="spec-label">Capacity</div>
+                  </div>
+                  <div class="spec-item">
+                    <div class="spec-value">Grade 4</div>
+                    <div class="spec-label">FIA Rating</div>
+                  </div>
+                </div>
+
+                <ul class="circuit-features">
+                  <li>
+                    <span class="feature-name">Location</span
+                    ><span class="feature-status">Phetchaburi</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Elevation</span
+                    ><span class="feature-status">Variable</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Scenic Views</span
+                    ><span class="feature-status">Mountain</span>
+                  </li>
+                  <li>
+                    <span class="feature-name">Club Events</span
+                    ><span class="feature-status">Weekly</span>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn">Plan Visit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AdSense Ad Section -->
+      <section
+        class="ad-section"
+        style="
+          padding: 40px 0;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.02);
+        "
+      >
+        <div class="container">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-XXXXXXXXX"
+            data-ad-slot="XXXXXXXXX"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Racing Experiences</h3>
+            <a href="#">Circuit Tours</a>
+            <a href="#">Track Days</a>
+            <a href="#">Racing Schools</a>
+            <a href="#">VIP Packages</a>
+          </div>
+          <div class="footer-section">
+            <h3>Thai Circuits</h3>
+            <a href="#">Chang International</a>
+            <a href="#">Bira Circuit</a>
+            <a href="#">Bangsaen Street</a>
+            <a href="#">Kaeng Krachan</a>
+          </div>
+          <div class="footer-section">
+            <h3>Travel Services</h3>
+            <a href="#">Hotel Bookings</a>
+            <a href="#">Airport Transfers</a>
+            <a href="#">Tour Packages</a>
+            <a href="#">Group Bookings</a>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <a href="#">Contact Us</a>
+            <a href="#">Travel Guide</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Thailand Motorsports Tourism. Your gateway to Thailand's
+            exciting racing scene.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+  </body>
+</html>
