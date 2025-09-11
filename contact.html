@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Thailand Motorsports Tourism</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-SLERGKLNWP");
+    </script>
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
+      crossorigin="anonymous"
+    ></script>
+    <meta
+      name="description"
+      content="Contact Thailand Motorsports Tourism for racing event bookings, travel packages, and motorsports tourism information. Get in touch with our expert team."
+    />
+    <meta
+      name="keywords"
+      content="contact Thailand motorsports, racing tourism contact, Thailand Grand Prix booking, motorsports travel support"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://thailandmotorsports.com/contact.html" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 60px;
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        color: #ffffff;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-size: 16px;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #cccccc;
+      }
+
+      .form-group textarea {
+        height: 120px;
+        resize: vertical;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .info-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .info-card h3 {
+        color: #e74c3c;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        color: #cccccc;
+      }
+
+      .contact-item i {
+        margin-right: 15px;
+        font-size: 18px;
+        color: #e74c3c;
+        width: 20px;
+      }
+
+      .office-hours {
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.1),
+          rgba(243, 156, 18, 0.05)
+        );
+        padding: 40px 0;
+        margin: 60px 0;
+      }
+
+      .hours-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      @media (max-width: 768px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo"><a href="index.html">Thailand Motorsports</a></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="circuits.html">Circuits</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Contact Us</h1>
+          <p>Get in touch with Thailand's motorsports tourism experts</p>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-form">
+              <h2 style="color: #e74c3c; margin-bottom: 30px">
+                Send us a Message
+              </h2>
+              <form action="#" method="POST" id="contactForm">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+66 XX XXX XXXX"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="interest">I'm interested in</label>
+                  <select id="interest" name="interest">
+                    <option value="">Select an option</option>
+                    <option value="event-tickets">
+                      Event Tickets & Hospitality
+                    </option>
+                    <option value="travel-packages">
+                      Racing Travel Packages
+                    </option>
+                    <option value="circuit-tours">
+                      Circuit Tours & Experiences
+                    </option>
+                    <option value="track-days">
+                      Track Days & Driving Experiences
+                    </option>
+                    <option value="group-booking">Group Bookings</option>
+                    <option value="media-partnership">Media Partnership</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    placeholder="Tell us about your motorsports tourism needs, preferred dates, group size, or any specific requirements..."
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%">
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            <div class="contact-info">
+              <div class="info-card">
+                <h3>🏢 Main Office</h3>
+                <div class="contact-item">
+                  <i>📍</i>
+                  <span>Bangkok, Thailand<br />Central Business District</span>
+                </div>
+                <div class="contact-item">
+                  <i>📞</i>
+                  <span>+66 (0) 2 XXX XXXX</span>
+                </div>
+                <div class="contact-item">
+                  <i>✉️</i>
+                  <span>info@thailandmotorsports.com</span>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <h3>🏁 Racing Events</h3>
+                <div class="contact-item">
+                  <i>🎫</i>
+                  <span>Event Tickets & VIP Packages</span>
+                </div>
+                <div class="contact-item">
+                  <i>✉️</i>
+                  <span>events@thailandmotorsports.com</span>
+                </div>
+                <div class="contact-item">
+                  <i>📱</i>
+                  <span>WhatsApp: +66 XX XXX XXXX</span>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <h3>✈️ Travel Services</h3>
+                <div class="contact-item">
+                  <i>🏨</i>
+                  <span>Accommodation & Transport</span>
+                </div>
+                <div class="contact-item">
+                  <i>✉️</i>
+                  <span>travel@thailandmotorsports.com</span>
+                </div>
+                <div class="contact-item">
+                  <i>📞</i>
+                  <span>24/7 Travel Support</span>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <h3>🌐 Connect With Us</h3>
+                <div class="contact-item">
+                  <i>📘</i>
+                  <span>Facebook: @ThailandMotorsports</span>
+                </div>
+                <div class="contact-item">
+                  <i>📷</i>
+                  <span>Instagram: @ThailandRacing</span>
+                </div>
+                <div class="contact-item">
+                  <i>🐦</i>
+                  <span>Twitter: @ThaiMotorsport</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AdSense Ad Section -->
+      <section
+        class="ad-section"
+        style="
+          padding: 40px 0;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.02);
+        "
+      >
+        <div class="container">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-2456627863532019"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </section>
+
+      <section class="office-hours">
+        <div class="container">
+          <div class="text-center mb-30">
+            <h2>Office Hours & Response Times</h2>
+            <p style="max-width: 600px; margin: 0 auto; color: #ccc">
+              Our team is ready to help you plan your perfect motorsports
+              adventure in Thailand
+            </p>
+          </div>
+
+          <div class="hours-grid">
+            <div class="card">
+              <h3 style="color: #e74c3c; margin-bottom: 15px">
+                🕒 Business Hours
+              </h3>
+              <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM (ICT)</p>
+              <p><strong>Saturday:</strong> 9:00 AM - 2:00 PM (ICT)</p>
+              <p><strong>Sunday:</strong> Closed</p>
+            </div>
+
+            <div class="card">
+              <h3 style="color: #e74c3c; margin-bottom: 15px">
+                ⚡ Response Times
+              </h3>
+              <p><strong>Email Inquiries:</strong> Within 24 hours</p>
+              <p>
+                <strong>Phone Calls:</strong> Immediate during business hours
+              </p>
+              <p><strong>WhatsApp:</strong> Within 2-4 hours</p>
+            </div>
+
+            <div class="card">
+              <h3 style="color: #e74c3c; margin-bottom: 15px">
+                🏁 Event Weekends
+              </h3>
+              <p><strong>During Major Events:</strong> Extended hours</p>
+              <p><strong>Emergency Support:</strong> 24/7 during events</p>
+              <p><strong>On-Site Team:</strong> Available at major circuits</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding">
+        <div class="container">
+          <div class="card" style="text-align: center; padding: 40px">
+            <h2 style="color: #e74c3c; margin-bottom: 20px">
+              Emergency Support
+            </h2>
+            <p
+              style="
+                color: #ccc;
+                margin-bottom: 30px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            >
+              For urgent matters during your trip or event attendance, our
+              emergency support team is available 24/7.
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+              "
+            >
+              <div>
+                <h4 style="color: #fff; margin-bottom: 10px">
+                  📞 Emergency Hotline
+                </h4>
+                <p style="color: #e74c3c; font-size: 1.2rem; font-weight: bold">
+                  +66 XX XXX XXXX
+                </p>
+              </div>
+              <div>
+                <h4 style="color: #fff; margin-bottom: 10px">
+                  📱 Emergency WhatsApp
+                </h4>
+                <p style="color: #e74c3c; font-size: 1.2rem; font-weight: bold">
+                  +66 XX XXX XXXX
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="circuits.html">Circuits</a>
+            <a href="events.html">Events</a>
+            <a href="calendar.html">Calendar</a>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <a href="contact.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Thailand Motorsports Tourism. Your gateway to Thailand's
+            exciting racing scene.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script>
+      // Form submission handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Simple form validation
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const message = document.getElementById("message").value.trim();
+
+          if (!name || !email || !message) {
+            alert("Please fill in all required fields.");
+            return;
+          }
+
+          // In a real application, you would send this data to your server
+          alert(
+            "Thank you for your message! We will get back to you within 24 hours."
+          );
+
+          // Reset form
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
