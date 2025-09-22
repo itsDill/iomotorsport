@@ -220,6 +220,17 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 5px;
       }
 
       .logo {
@@ -577,10 +588,16 @@
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="circuits.html">Circuits</a></li>
+          <li><a href="karting.html">Go-Karting</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="calendar.html">Calendar</a></li>
           <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+          ☰
+        </button>
       </nav>
     </header>
 
@@ -666,23 +683,50 @@
         </div>
       </section>
 
-      <!-- AdSense Ad Section -->
+      <!-- AdSense Banner Ad Section -->
       <section
         class="ad-section"
         style="
           padding: 40px 0;
           text-align: center;
           background: rgba(255, 255, 255, 0.02);
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          margin: 60px 0;
         "
       >
         <div class="container">
-          <!-- Google AdSense Ad Unit -->
+          <p style="font-size: 12px; color: #888; margin-bottom: 10px">
+            Advertisement
+          </p>
+          <!-- Google AdSense Large Banner -->
           <ins
             class="adsbygoogle"
             style="display: block"
             data-ad-client="ca-pub-2456627863532019"
+            data-ad-slot="1234567890"
             data-ad-format="auto"
             data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </section>
+
+      <!-- In-Content Ad Section -->
+      <section style="padding: 20px 0; text-align: center">
+        <div class="container">
+          <p style="font-size: 12px; color: #888; margin-bottom: 10px">
+            Advertisement
+          </p>
+          <!-- Google AdSense In-Article Ad -->
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-2456627863532019"
+            data-ad-slot="9876543210"
           ></ins>
           <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
@@ -701,7 +745,11 @@
                 racing series. Our packages include circuit tours, grandstand
                 tickets, and luxury hospitality experiences.
               </p>
-              <a href="#" class="cta-button">Book Circuit Experience</a>
+              <a
+                href="contact.html?service=circuit-experience"
+                class="cta-button"
+                >Book Circuit Experience</a
+              >
             </div>
             <div class="demo-visual">
               <div class="timing-screen">
@@ -961,19 +1009,29 @@
           </div>
           <div class="footer-section">
             <h3>Popular Destinations</h3>
-            <a href="#bangkok-racing">Bangkok Racing Tours</a>
-            <a href="#buriram-motogp">Buriram MotoGP Packages</a>
-            <a href="#pattaya-circuits">Pattaya Circuit Experiences</a>
-            <a href="#cultural-tours">Racing + Cultural Tours</a>
-            <a href="#luxury-packages">VIP Racing Packages</a>
+            <a href="contact.html?service=bangkok-racing"
+              >Bangkok Racing Tours</a
+            >
+            <a href="contact.html?service=buriram-motogp"
+              >Buriram MotoGP Packages</a
+            >
+            <a href="contact.html?service=pattaya-circuits"
+              >Pattaya Circuit Experiences</a
+            >
+            <a href="contact.html?service=cultural-tours"
+              >Racing + Cultural Tours</a
+            >
+            <a href="contact.html?service=luxury-packages"
+              >VIP Racing Packages</a
+            >
           </div>
           <div class="footer-section">
             <h3>Support</h3>
             <a href="contact.html">Contact Our Experts</a>
             <a href="privacy-policy.html">Privacy Policy</a>
             <a href="terms-of-service.html">Terms of Service</a>
-            <a href="#faq">Frequently Asked Questions</a>
-            <a href="#travel-tips">Travel Tips & Guides</a>
+            <a href="faq.html">Frequently Asked Questions</a>
+            <a href="blog.html?category=travel">Travel Tips & Guides</a>
           </div>
         </div>
         <div class="footer-bottom">
