@@ -76,10 +76,15 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "TravelAgency",
+        "@type": ["TravelAgency", "WebSite"],
         "name": "Thailand Motorsports Tourism",
-        "description": "Complete guide to motorsports tourism in Thailand",
+        "description": "Complete guide to motorsports tourism in Thailand including F1, MotoGP, and racing events",
         "url": "https://thailandmotorsports.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://thailandmotorsports.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
         "sameAs": [
           "https://facebook.com/thailandmotorsports",
           "https://instagram.com/thailandmotorsports"
@@ -88,7 +93,90 @@
           "@type": "PostalAddress",
           "addressCountry": "Thailand"
         },
-        "serviceArea": "Thailand"
+        "serviceArea": {
+          "@type": "Country",
+          "name": "Thailand"
+        },
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Thailand Motorsports Experiences",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "MotoGP Thailand Travel Packages",
+                "description": "Complete travel packages for MotoGP Thailand at Chang International Circuit"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Bangkok F1 Grand Prix 2028 Packages",
+                "description": "Historic first Formula 1 race in Thailand - complete travel and hospitality packages"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Thai Racing Circuit Tours",
+                "description": "Guided tours of Thailand's premier racing circuits including Chang and Bira"
+              }
+            }
+          ]
+        },
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "name": "Motorsports Tourism Packages",
+            "description": "Complete racing holiday packages combining world-class motorsports with Thai culture",
+            "seller": {
+              "@type": "Organization",
+              "name": "Thailand Motorsports Tourism"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Events Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Bangkok F1 Grand Prix 2028",
+        "description": "Thailand's first Formula 1 Grand Prix taking place on a revolutionary street circuit in Bangkok",
+        "startDate": "2028-04-15T15:00:00+07:00",
+        "endDate": "2028-04-17T18:00:00+07:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Bangkok Street Circuit",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bangkok Historic District",
+            "addressLocality": "Bangkok",
+            "addressCountry": "Thailand"
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Formula 1",
+          "url": "https://formula1.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "name": "F1 Bangkok 2028 Tickets",
+          "url": "https://thailandmotorsports.com/bangkok-f1-2028-complete-guide.html",
+          "priceCurrency": "USD",
+          "lowPrice": "180",
+          "highPrice": "8000",
+          "availability": "https://schema.org/PreOrder"
+        }
       }
     </script>
     <style>
@@ -647,21 +735,194 @@
         <div class="container">
           <div class="stats-grid">
             <div class="stat-item">
-              <div class="stat-number">5</div>
-              <div class="stat-label">Major Racing Circuits</div>
+              <div class="stat-number">8</div>
+              <div class="stat-label">World-Class Racing Circuits</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">25+</div>
+              <div class="stat-number">50+</div>
               <div class="stat-label">Annual Racing Events</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">100k+</div>
-              <div class="stat-label">Racing Fans</div>
+              <div class="stat-number">500k+</div>
+              <div class="stat-label">International Racing Fans</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">365</div>
-              <div class="stat-label">Days of Racing</div>
+              <div class="stat-number">2028</div>
+              <div class="stat-label">Bangkok F1 Grand Prix Debut</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- New: Comprehensive Racing Information Section -->
+      <section
+        class="section-padding"
+        style="background: rgba(255, 255, 255, 0.02)"
+      >
+        <div class="container">
+          <h2
+            style="
+              text-align: center;
+              font-size: 2.5rem;
+              margin-bottom: 60px;
+              background: linear-gradient(45deg, #ffffff, #e74c3c);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+            "
+          >
+            Why Thailand is Asia's Racing Capital
+          </h2>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+              gap: 40px;
+              margin-bottom: 60px;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(255, 255, 255, 0.1),
+                  rgba(255, 255, 255, 0.05)
+                );
+                padding: 40px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              "
+            >
+              <h3
+                style="color: #e74c3c; font-size: 1.5rem; margin-bottom: 20px"
+              >
+                🏁 World-Class Circuits
+              </h3>
+              <p style="color: #cccccc; line-height: 1.6; margin-bottom: 20px">
+                Thailand hosts 8 international-standard racing circuits,
+                including the FIA Grade 1 Chang International Circuit (MotoGP
+                venue) and the iconic Bangsaen Street Circuit. Each offers
+                unique challenges and spectacular racing experiences.
+              </p>
+              <ul style="color: #cccccc; padding-left: 20px">
+                <li>
+                  Chang International Circuit - Buriram (MotoGP & World
+                  Superbike)
+                </li>
+                <li>
+                  Bira International Circuit - Pattaya (Historic racing venue)
+                </li>
+                <li>
+                  Bangsaen Street Circuit - Chonburi (Street racing festival)
+                </li>
+                <li>Kaeng Krachan Circuit - Phetchaburi (Touring cars)</li>
+              </ul>
+            </div>
+
+            <div
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(255, 255, 255, 0.1),
+                  rgba(255, 255, 255, 0.05)
+                );
+                padding: 40px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              "
+            >
+              <h3
+                style="color: #e74c3c; font-size: 1.5rem; margin-bottom: 20px"
+              >
+                💰 Incredible Value
+              </h3>
+              <p style="color: #cccccc; line-height: 1.6; margin-bottom: 20px">
+                Experience world-class motorsports at a fraction of European
+                prices. VIP experiences, luxury accommodations, and premium
+                dining cost 60-70% less than comparable European venues, making
+                Thailand the perfect destination for racing tourism.
+              </p>
+              <ul style="color: #cccccc; padding-left: 20px">
+                <li>
+                  MotoGP weekend packages from $800 (vs $3,000+ in Europe)
+                </li>
+                <li>Luxury circuit-side hotels from $200/night</li>
+                <li>Street food & fine dining at amazing prices</li>
+                <li>English-speaking guides and services</li>
+              </ul>
+            </div>
+
+            <div
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(255, 255, 255, 0.1),
+                  rgba(255, 255, 255, 0.05)
+                );
+                padding: 40px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              "
+            >
+              <h3
+                style="color: #e74c3c; font-size: 1.5rem; margin-bottom: 20px"
+              >
+                🌴 Cultural Fusion
+              </h3>
+              <p style="color: #cccccc; line-height: 1.6; margin-bottom: 20px">
+                Combine high-speed racing with Thailand's rich cultural
+                heritage. Visit ancient temples, enjoy world-famous cuisine,
+                relax on tropical beaches, and experience the legendary Thai
+                hospitality that makes every racing trip unforgettable.
+              </p>
+              <ul style="color: #cccccc; padding-left: 20px">
+                <li>UNESCO World Heritage sites near circuits</li>
+                <li>Traditional Thai cultural performances at events</li>
+                <li>Beach extensions to Phuket, Koh Samui, Pattaya</li>
+                <li>Bangkok's incredible temples, markets, and nightlife</li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: linear-gradient(
+                135deg,
+                rgba(231, 76, 60, 0.15),
+                rgba(243, 156, 18, 0.1)
+              );
+              border-radius: 20px;
+              padding: 50px;
+              text-align: center;
+              border: 2px solid rgba(231, 76, 60, 0.3);
+            "
+          >
+            <h3 style="color: #e74c3c; font-size: 2rem; margin-bottom: 20px">
+              🚨 Historic Announcement: Bangkok F1 2028
+            </h3>
+            <p style="color: #ffffff; font-size: 1.2rem; margin-bottom: 30px">
+              Thailand will host its first-ever Formula 1 Grand Prix in Bangkok,
+              2028! This revolutionary street circuit will wind through the
+              heart of Bangkok, passing iconic landmarks like the Grand Palace
+              and major Buddhist temples.
+            </p>
+            <a
+              href="bangkok-f1-2028-complete-guide.html"
+              style="
+                display: inline-block;
+                background: linear-gradient(45deg, #e74c3c, #f39c12);
+                color: white;
+                padding: 15px 40px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                margin: 10px;
+              "
+              >Learn About Bangkok F1 2028 →</a
+            >
           </div>
         </div>
       </section>
@@ -671,24 +932,57 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="circuits.html">Circuits</a>
-            <a href="events.html">Events</a>
-            <a href="calendar.html">Calendar</a>
-            <a href="blog.html">Blog</a>
+            <h3>Racing Events</h3>
+            <a href="bangkok-f1-2028-complete-guide.html"
+              >🚨 Bangkok F1 2028 Guide</a
+            >
+            <a href="motogp-thailand-2026-travel-guide.html"
+              >MotoGP Thailand 2026</a
+            >
+            <a href="chang-circuit-f1-hidden-gem.html"
+              >Chang Circuit F1 Guide</a
+            >
+            <a href="bangsaen-street-racing-beach-paradise.html"
+              >Bangsaen Street Racing</a
+            >
+            <a href="calendar.html">Complete Racing Calendar</a>
+          </div>
+          <div class="footer-section">
+            <h3>Planning Resources</h3>
+            <a href="thailand-europe-motorsports-cost-comparison.html"
+              >Cost Comparison Guide</a
+            >
+            <a href="best-hotels-thai-racing-circuits.html"
+              >Racing Hotels Guide</a
+            >
+            <a href="circuits.html">Thailand Racing Circuits</a>
+            <a href="events.html">Upcoming Events</a>
+            <a href="blog.html">Racing Blog & News</a>
+          </div>
+          <div class="footer-section">
+            <h3>Popular Destinations</h3>
+            <a href="#bangkok-racing">Bangkok Racing Tours</a>
+            <a href="#buriram-motogp">Buriram MotoGP Packages</a>
+            <a href="#pattaya-circuits">Pattaya Circuit Experiences</a>
+            <a href="#cultural-tours">Racing + Cultural Tours</a>
+            <a href="#luxury-packages">VIP Racing Packages</a>
           </div>
           <div class="footer-section">
             <h3>Support</h3>
-            <a href="contact.html">Contact Us</a>
+            <a href="contact.html">Contact Our Experts</a>
             <a href="privacy-policy.html">Privacy Policy</a>
             <a href="terms-of-service.html">Terms of Service</a>
+            <a href="#faq">Frequently Asked Questions</a>
+            <a href="#travel-tips">Travel Tips & Guides</a>
           </div>
         </div>
         <div class="footer-bottom">
           <p>
             &copy; 2025 Thailand Motorsports Tourism. Your gateway to Thailand's
-            exciting racing scene.
+            exciting racing scene including the historic
+            <a href="bangkok-f1-2028-complete-guide.html" style="color: #e74c3c"
+              >Bangkok F1 Grand Prix 2028</a
+            >.
           </p>
         </div>
       </div>
