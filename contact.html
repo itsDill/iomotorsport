@@ -20,12 +20,18 @@
       gtag("config", "G-SLERGKLNWP");
     </script>
 
-    <!-- Google AdSense -->
+    <!-- Google AdSense Auto Ads -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
       crossorigin="anonymous"
     ></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-2456627863532019",
+        enable_page_level_ads: true,
+      });
+    </script>
     <meta
       name="description"
       content="Contact Thailand Motorsports Tourism for racing event bookings, travel packages, and motorsports tourism information. Get in touch with our expert team."
@@ -73,6 +79,17 @@
         background: rgba(255, 255, 255, 0.1);
         color: #ffffff;
         font-size: 16px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #e74c3c;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 10px rgba(231, 76, 60, 0.2);
       }
 
       .form-group input::placeholder,
@@ -83,6 +100,87 @@
       .form-group textarea {
         height: 120px;
         resize: vertical;
+        min-height: 80px;
+        max-height: 200px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .btn {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn:hover {
+        background: linear-gradient(135deg, #c0392b, #a93226);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+      }
+
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .success-message {
+        background: linear-gradient(45deg, #27ae60, #2ecc71);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: bold;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .loading {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+        border-top: 2px solid #ffffff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       .contact-info {
@@ -156,6 +254,9 @@
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+          ☰
+        </button>
       </nav>
     </header>
 
@@ -174,45 +275,59 @@
               <h2 style="color: #e74c3c; margin-bottom: 30px">
                 Send us a Message
               </h2>
-              <form action="#" method="POST" id="contactForm">
-                <div class="form-group">
-                  <label for="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Enter your full name"
-                  />
+              <form id="contactForm" novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="your.email@example.com"
-                  />
-                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="Your phone number"
+                    />
+                  </div>
 
-                <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+66 XX XXX XXXX"
-                  />
+                  <div class="form-group">
+                    <label for="country">Country</label>
+                    <input
+                      type="text"
+                      id="country"
+                      name="country"
+                      placeholder="Your country"
+                    />
+                  </div>
                 </div>
 
                 <div class="form-group">
                   <label for="interest">I'm interested in</label>
                   <select id="interest" name="interest">
-                    <option value="">Select an option</option>
+                    <option value="">Select a service (optional)</option>
                     <option value="bangkok-f1-2028">
-                      🚨 Bangkok F1 2028 Packages
+                      🏎️ Bangkok F1 2028 Packages
                     </option>
                     <option value="motogp-thailand">
                       🏍️ MotoGP Thailand Packages
@@ -220,149 +335,128 @@
                     <option value="circuit-experience">
                       🏁 Circuit Experiences
                     </option>
-                    <option value="bangkok-racing">
-                      🏎️ Bangkok Racing Tours
-                    </option>
-                    <option value="buriram-motogp">
-                      🏍️ Buriram MotoGP Packages
-                    </option>
-                    <option value="pattaya-circuits">
-                      🏁 Pattaya Circuit Experiences
-                    </option>
-                    <option value="cultural-tours">
-                      🏛️ Racing + Cultural Tours
-                    </option>
-                    <option value="luxury-packages">
-                      💎 VIP Racing Packages
-                    </option>
-                    <option value="f1-tickets">🎫 F1 Tickets</option>
-                    <option value="racing-packages">📦 Racing Packages</option>
-                    <option value="vip-racing">👑 VIP Racing</option>
+                    <option value="racing-tours">�️ Racing Tours</option>
+                    <option value="vip-packages">💎 VIP Racing Packages</option>
                     <option value="event-tickets">
                       🎫 Event Tickets & Hospitality
                     </option>
                     <option value="travel-packages">
                       ✈️ Racing Travel Packages
                     </option>
-                    <option value="circuit-tours">
-                      🏁 Circuit Tours & Experiences
-                    </option>
                     <option value="track-days">
                       🚗 Track Days & Driving Experiences
                     </option>
                     <option value="group-booking">👥 Group Bookings</option>
-                    <option value="media-partnership">
-                      📺 Media Partnership
+                    <option value="corporate-events">
+                      🏢 Corporate Events
                     </option>
+                    <option value="custom-package">⭐ Custom Package</option>
                     <option value="other">❓ Other</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="message">Message *</label>
+                  <label for="message">Your Message *</label>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    placeholder="Tell us about your motorsports tourism needs, preferred dates, group size, or any specific requirements..."
+                    placeholder="Tell us about your motorsports tourism needs. Include details like preferred dates, group size, budget range, or any specific requirements..."
                   ></textarea>
                 </div>
 
                 <button type="submit" class="btn" style="width: 100%">
                   Send Message
                 </button>
+
+                <p
+                  style="
+                    color: #ccc;
+                    font-size: 14px;
+                    margin-top: 15px;
+                    text-align: center;
+                  "
+                >
+                  * Required fields. We respect your privacy and will never
+                  share your information.
+                </p>
               </form>
             </div>
 
             <div class="contact-info">
               <div class="info-card">
-                <h3>🏢 Main Office</h3>
-                <div class="contact-item">
-                  <i>📍</i>
-                  <span>Bangkok, Thailand<br />Central Business District</span>
-                </div>
-                <div class="contact-item">
-                  <i>📞</i>
-                  <span>+66 (0) 2 XXX XXXX</span>
-                </div>
+                <h3>📧 Get in Touch</h3>
                 <div class="contact-item">
                   <i>✉️</i>
                   <span>info@thailandmotorsports.com</span>
                 </div>
+                <div class="contact-item">
+                  <i>�</i>
+                  <span>We respond within 24 hours</span>
+                </div>
+                <div class="contact-item">
+                  <i>🌏</i>
+                  <span>Thailand (GMT+7)</span>
+                </div>
               </div>
 
               <div class="info-card">
-                <h3>🏁 Racing Events</h3>
+                <h3>🏁 Our Services</h3>
                 <div class="contact-item">
                   <i>🎫</i>
                   <span>Event Tickets & VIP Packages</span>
                 </div>
                 <div class="contact-item">
-                  <i>✉️</i>
-                  <span>events@thailandmotorsports.com</span>
-                </div>
-                <div class="contact-item">
-                  <i>📱</i>
-                  <span>WhatsApp: +66 XX XXX XXXX</span>
-                </div>
-              </div>
-
-              <div class="info-card">
-                <h3>✈️ Travel Services</h3>
-                <div class="contact-item">
                   <i>🏨</i>
-                  <span>Accommodation & Transport</span>
+                  <span>Racing Travel Packages</span>
                 </div>
                 <div class="contact-item">
-                  <i>✉️</i>
-                  <span>travel@thailandmotorsports.com</span>
+                  <i>🏎️</i>
+                  <span>Circuit Tours & Experiences</span>
                 </div>
                 <div class="contact-item">
-                  <i>📞</i>
-                  <span>24/7 Travel Support</span>
+                  <i>�</i>
+                  <span>Group Bookings & Corporate Events</span>
                 </div>
               </div>
 
               <div class="info-card">
-                <h3>🌐 Connect With Us</h3>
+                <h3>🌐 Follow Our Racing Updates</h3>
                 <div class="contact-item">
                   <i>📘</i>
-                  <span>Facebook: @ThailandMotorsports</span>
+                  <span>Facebook: Latest race schedules</span>
                 </div>
                 <div class="contact-item">
                   <i>📷</i>
-                  <span>Instagram: @ThailandRacing</span>
+                  <span>Instagram: Behind-the-scenes content</span>
                 </div>
                 <div class="contact-item">
-                  <i>🐦</i>
-                  <span>Twitter: @ThaiMotorsport</span>
+                  <i>�</i>
+                  <span>Twitter: Real-time race updates</span>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <h3>💡 Why Choose Us</h3>
+                <div class="contact-item">
+                  <i>⭐</i>
+                  <span>Local motorsports expertise</span>
+                </div>
+                <div class="contact-item">
+                  <i>🎯</i>
+                  <span>Tailored racing experiences</span>
+                </div>
+                <div class="contact-item">
+                  <i>🏆</i>
+                  <span>Premium event access</span>
+                </div>
+                <div class="contact-item">
+                  <i>🤝</i>
+                  <span>Dedicated customer support</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- AdSense Ad Section -->
-      <section
-        class="ad-section"
-        style="
-          padding: 40px 0;
-          text-align: center;
-          background: rgba(255, 255, 255, 0.02);
-        "
-      >
-        <div class="container">
-          <ins
-            class="adsbygoogle"
-            style="display: block"
-            data-ad-client="ca-pub-2456627863532019"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
         </div>
       </section>
 
@@ -379,31 +473,29 @@
           <div class="hours-grid">
             <div class="card">
               <h3 style="color: #e74c3c; margin-bottom: 15px">
-                🕒 Business Hours
+                � Contact Methods
               </h3>
-              <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM (ICT)</p>
-              <p><strong>Saturday:</strong> 9:00 AM - 2:00 PM (ICT)</p>
-              <p><strong>Sunday:</strong> Closed</p>
+              <p><strong>Email:</strong> Best for detailed inquiries</p>
+              <p><strong>Contact Form:</strong> Quick and convenient</p>
+              <p><strong>Social Media:</strong> For updates and news</p>
             </div>
 
             <div class="card">
               <h3 style="color: #e74c3c; margin-bottom: 15px">
-                ⚡ Response Times
+                ⚡ Response Commitment
               </h3>
-              <p><strong>Email Inquiries:</strong> Within 24 hours</p>
-              <p>
-                <strong>Phone Calls:</strong> Immediate during business hours
-              </p>
-              <p><strong>WhatsApp:</strong> Within 2-4 hours</p>
+              <p><strong>General Inquiries:</strong> Within 24 hours</p>
+              <p><strong>Booking Requests:</strong> Same business day</p>
+              <p><strong>Event Questions:</strong> Priority response</p>
             </div>
 
             <div class="card">
               <h3 style="color: #e74c3c; margin-bottom: 15px">
-                🏁 Event Weekends
+                🏁 Racing Season Support
               </h3>
-              <p><strong>During Major Events:</strong> Extended hours</p>
-              <p><strong>Emergency Support:</strong> 24/7 during events</p>
-              <p><strong>On-Site Team:</strong> Available at major circuits</p>
+              <p><strong>Event Periods:</strong> Enhanced availability</p>
+              <p><strong>Race Weekends:</strong> Priority customer service</p>
+              <p><strong>Peak Season:</strong> Extended support hours</p>
             </div>
           </div>
         </div>
@@ -413,7 +505,7 @@
         <div class="container">
           <div class="card" style="text-align: center; padding: 40px">
             <h2 style="color: #e74c3c; margin-bottom: 20px">
-              Emergency Support
+              Customer Support
             </h2>
             <p
               style="
@@ -424,8 +516,9 @@
                 margin-right: auto;
               "
             >
-              For urgent matters during your trip or event attendance, our
-              emergency support team is available 24/7.
+              Our dedicated support team is here to help you with all your
+              motorsports tourism needs. We're committed to providing
+              exceptional service throughout your racing adventure.
             </p>
             <div
               style="
@@ -437,18 +530,18 @@
             >
               <div>
                 <h4 style="color: #fff; margin-bottom: 10px">
-                  📞 Emergency Hotline
+                  � Priority Email Support
                 </h4>
                 <p style="color: #e74c3c; font-size: 1.2rem; font-weight: bold">
-                  +66 XX XXX XXXX
+                  support@thailandmotorsports.com
                 </p>
               </div>
               <div>
                 <h4 style="color: #fff; margin-bottom: 10px">
-                  📱 Emergency WhatsApp
+                  ⚡ Quick Response
                 </h4>
                 <p style="color: #e74c3c; font-size: 1.2rem; font-weight: bold">
-                  +66 XX XXX XXXX
+                  Within 2-4 hours
                 </p>
               </div>
             </div>
@@ -525,7 +618,7 @@
         }
       });
 
-      // Form submission handling with enhanced functionality
+      // Enhanced form submission handling
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {
@@ -536,19 +629,35 @@
           const name = formData.get("name").trim();
           const email = formData.get("email").trim();
           const phone = formData.get("phone").trim();
+          const country = formData.get("country").trim();
           const interest = formData.get("interest");
           const message = formData.get("message").trim();
 
+          // Clear previous error states
+          clearErrorStates();
+
           // Validation
-          if (!name || !email || !message) {
-            alert(
-              "Please fill in all required fields (Name, Email, and Message)."
-            );
-            return;
+          let hasErrors = false;
+
+          if (!name) {
+            showFieldError("name", "Name is required");
+            hasErrors = true;
           }
 
-          if (!isValidEmail(email)) {
-            alert("Please enter a valid email address.");
+          if (!email) {
+            showFieldError("email", "Email is required");
+            hasErrors = true;
+          } else if (!isValidEmail(email)) {
+            showFieldError("email", "Please enter a valid email address");
+            hasErrors = true;
+          }
+
+          if (!message) {
+            showFieldError("message", "Message is required");
+            hasErrors = true;
+          }
+
+          if (hasErrors) {
             return;
           }
 
@@ -558,21 +667,15 @@
           submitBtn.innerHTML = '<span class="loading"></span> Sending...';
           submitBtn.disabled = true;
 
-          // Simulate form submission (in real app, send to server)
+          // Simulate form submission
           setTimeout(() => {
-            // Show success message
+            // Create and show success message
             const successMessage = document.createElement("div");
-            successMessage.style.cssText = `
-              background: linear-gradient(45deg, #27ae60, #2ecc71);
-              color: white;
-              padding: 20px;
-              border-radius: 10px;
-              margin-bottom: 20px;
-              text-align: center;
-              font-weight: bold;
+            successMessage.className = "success-message";
+            successMessage.innerHTML = `
+              <strong>✅ Message Sent Successfully!</strong><br>
+              Thank you ${name}! Our motorsports tourism experts will contact you within 24 hours.
             `;
-            successMessage.innerHTML =
-              "✅ Thank you for your message! Our racing tourism experts will contact you within 24 hours.";
 
             this.parentNode.insertBefore(successMessage, this);
 
@@ -589,16 +692,90 @@
                 form_name: "contact_form",
                 interest: interest || "general",
                 has_phone: phone ? "yes" : "no",
+                country: country || "not_specified",
               });
             }
 
-            // Remove success message after 10 seconds
+            // Scroll to success message
+            successMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+
+            // Remove success message after 8 seconds
             setTimeout(() => {
               if (successMessage.parentNode) {
-                successMessage.parentNode.removeChild(successMessage);
+                successMessage.remove();
               }
-            }, 10000);
-          }, 2000);
+            }, 8000);
+          }, 1500);
+        });
+
+      // Helper functions for form validation
+      function showFieldError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        field.style.borderColor = "#e74c3c";
+        field.style.backgroundColor = "rgba(231, 76, 60, 0.1)";
+
+        // Create or update error message
+        let errorDiv = field.parentNode.querySelector(".error-message");
+        if (!errorDiv) {
+          errorDiv = document.createElement("div");
+          errorDiv.className = "error-message";
+          errorDiv.style.cssText = `
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+          `;
+          field.parentNode.appendChild(errorDiv);
+        }
+        errorDiv.textContent = message;
+      }
+
+      function clearErrorStates() {
+        const fields = document.querySelectorAll(
+          "#contactForm input, #contactForm textarea, #contactForm select"
+        );
+        fields.forEach((field) => {
+          field.style.borderColor = "";
+          field.style.backgroundColor = "";
+          const errorMsg = field.parentNode.querySelector(".error-message");
+          if (errorMsg) {
+            errorMsg.remove();
+          }
+        });
+      }
+
+      // Add real-time validation
+      document
+        .querySelectorAll("#contactForm input, #contactForm textarea")
+        .forEach((field) => {
+          field.addEventListener("blur", function () {
+            if (this.hasAttribute("required") && !this.value.trim()) {
+              showFieldError(
+                this.id,
+                `${this.previousElementSibling.textContent.replace(
+                  " *",
+                  ""
+                )} is required`
+              );
+            } else if (
+              this.type === "email" &&
+              this.value &&
+              !isValidEmail(this.value)
+            ) {
+              showFieldError(this.id, "Please enter a valid email address");
+            } else {
+              // Clear error if field is now valid
+              this.style.borderColor = "";
+              this.style.backgroundColor = "";
+              const errorMsg = this.parentNode.querySelector(".error-message");
+              if (errorMsg) {
+                errorMsg.remove();
+              }
+            }
+          });
         });
 
       // Email validation function

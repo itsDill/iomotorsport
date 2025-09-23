@@ -3,12 +3,24 @@ Allow: /
 
 Sitemap: https://thailandmotorsports.com/sitemap.xml
 
-# Allow crawling of main content
+# Allow crawling of all main content
+Allow: /index.html
 Allow: /circuits.html
+Allow: /karting.html
 Allow: /events.html
-Allow: /travel-packages.html
 Allow: /calendar.html
-Allow: /weather.html
+Allow: /blog.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /faq.html
+Allow: /bangkok-f1-2028-complete-guide.html
+Allow: /motogp-thailand-2026-travel-guide.html
+Allow: /chang-circuit-f1-hidden-gem.html
+Allow: /bangsaen-street-racing-beach-paradise.html
+Allow: /thailand-europe-motorsports-cost-comparison.html
+Allow: /best-hotels-thai-racing-circuits.html
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
 Allow: /css/
 Allow: /js/
 Allow: /images/
@@ -17,3 +29,7 @@ Allow: /images/
 Disallow: /admin/
 Disallow: /private/
 Disallow: *.php$
+Disallow: /cgi-bin/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
