@@ -41,10 +41,20 @@ function initializeStickyAd() {
   }
 }
 
-// Mobile menu functionality
+// Enhanced Mobile menu functionality
 function initializeMobileMenu() {
+  // Check if mobile toggle already exists
+  let mobileToggle = document.querySelector(".mobile-menu-toggle");
   const nav = document.querySelector("nav");
-  const mobileToggle = document.querySelector(".mobile-menu-toggle");
+
+  if (!mobileToggle && nav) {
+    // Create mobile menu toggle button if it doesn't exist
+    mobileToggle = document.createElement("button");
+    mobileToggle.className = "mobile-menu-toggle";
+    mobileToggle.innerHTML = "☰";
+    mobileToggle.setAttribute("aria-label", "Toggle mobile menu");
+    nav.appendChild(mobileToggle);
+  }
 
   if (mobileToggle && !document.querySelector(".mobile-nav")) {
     // Create mobile navigation
@@ -71,9 +81,11 @@ function initializeMobileMenu() {
       if (isActive) {
         mobileNav.classList.remove("active");
         this.innerHTML = "☰";
+        document.body.style.overflow = "";
       } else {
         mobileNav.classList.add("active");
         this.innerHTML = "✕";
+        document.body.style.overflow = "hidden";
       }
     });
 
@@ -82,6 +94,7 @@ function initializeMobileMenu() {
       if (e.target.tagName === "A") {
         mobileNav.classList.remove("active");
         mobileToggle.innerHTML = "☰";
+        document.body.style.overflow = "";
       }
     });
 
@@ -90,6 +103,7 @@ function initializeMobileMenu() {
       if (!nav.contains(e.target) && !mobileNav.contains(e.target)) {
         mobileNav.classList.remove("active");
         mobileToggle.innerHTML = "☰";
+        document.body.style.overflow = "";
       }
     });
 
@@ -98,6 +112,16 @@ function initializeMobileMenu() {
       if (window.innerWidth > 768) {
         mobileNav.classList.remove("active");
         mobileToggle.innerHTML = "☰";
+        document.body.style.overflow = "";
+      }
+    });
+
+    // Handle escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && mobileNav.classList.contains("active")) {
+        mobileNav.classList.remove("active");
+        mobileToggle.innerHTML = "☰";
+        document.body.style.overflow = "";
       }
     });
   }
