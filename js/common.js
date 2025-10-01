@@ -53,6 +53,7 @@ function initializeMobileMenu() {
     mobileToggle.className = "mobile-menu-toggle";
     mobileToggle.innerHTML = "☰";
     mobileToggle.setAttribute("aria-label", "Toggle mobile menu");
+    mobileToggle.setAttribute("type", "button");
     nav.appendChild(mobileToggle);
   }
 
@@ -74,37 +75,46 @@ function initializeMobileMenu() {
     mobileNav.appendChild(mobileNavLinks);
     document.body.appendChild(mobileNav);
 
-    // Toggle mobile menu
-    mobileToggle.addEventListener("click", function () {
+    // Toggle mobile menu with improved event handling
+    const toggleMenu = function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
       const isActive = mobileNav.classList.contains("active");
 
       if (isActive) {
         mobileNav.classList.remove("active");
-        this.innerHTML = "☰";
+        mobileToggle.innerHTML = "☰";
+        mobileToggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
       } else {
         mobileNav.classList.add("active");
-        this.innerHTML = "✕";
+        mobileToggle.innerHTML = "✕";
+        mobileToggle.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
       }
-    });
+    };
 
-    // Close mobile menu when clicking on links
-    mobileNavLinks.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        mobileNav.classList.remove("active");
-        mobileToggle.innerHTML = "☰";
-        document.body.style.overflow = "";
-      }
-    });
+    // Add multiple event listeners for better compatibility
+    mobileToggle.addEventListener("click", toggleMenu);
+    mobileToggle.addEventListener("touchstart", toggleMenu, { passive: false });
 
-    // Close mobile menu when clicking outside
+    // Close menu when clicking outside
     document.addEventListener("click", function (e) {
-      if (!nav.contains(e.target) && !mobileNav.contains(e.target)) {
+      if (!mobileNav.contains(e.target) && !mobileToggle.contains(e.target)) {
         mobileNav.classList.remove("active");
         mobileToggle.innerHTML = "☰";
+        mobileToggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
       }
+    });
+
+    // Close menu when clicking on a link
+    mobileNavLinks.addEventListener("click", function () {
+      mobileNav.classList.remove("active");
+      mobileToggle.innerHTML = "☰";
+      mobileToggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
     });
 
     // Handle window resize
@@ -112,15 +122,17 @@ function initializeMobileMenu() {
       if (window.innerWidth > 768) {
         mobileNav.classList.remove("active");
         mobileToggle.innerHTML = "☰";
+        mobileToggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
       }
     });
 
-    // Handle escape key
+    // Close menu with Escape key
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && mobileNav.classList.contains("active")) {
         mobileNav.classList.remove("active");
         mobileToggle.innerHTML = "☰";
+        mobileToggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
       }
     });
@@ -487,6 +499,23 @@ function trackRacingInterests() {
 
 // Initialize enhanced analytics
 document.addEventListener("DOMContentLoaded", function () {
+  // Register service worker for better caching and offline support
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((registration) => {
+          console.log("SW registered: ", registration);
+        })
+        .catch((registrationError) => {
+          console.log("SW registration failed: ", registrationError);
+        });
+    });
+  }
+
+  // Initialize mobile menu
+  initializeMobileMenu();
+
   // Wait a bit to ensure gtag is loaded
   setTimeout(() => {
     if (typeof gtag !== "undefined") {

@@ -20,6 +20,24 @@
     <meta name="revisit-after" content="7 days" />
     <meta name="distribution" content="global" />
     <meta name="rating" content="general" />
+    <meta name="canonical" href="https://thailandmotorsports.com" />
+
+    <!-- Performance optimizations -->
+    <link
+      rel="preload"
+      href="images/hero-background.webp"
+      as="image"
+      type="image/webp"
+    />
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="preload" href="js/common.js" as="script" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
     <link rel="canonical" href="https://thailandmotorsports.com" />
 
     <!-- Additional SEO Meta Tags -->
@@ -301,14 +319,19 @@
         position: relative;
         overflow: hidden;
         background: linear-gradient(
-            rgba(10, 10, 10, 0.7),
-            rgba(26, 26, 46, 0.8)
+            rgba(10, 10, 10, 0.8),
+            rgba(26, 26, 46, 0.9)
           ),
           url("images/Black White Red Simple Modern Elegant Video How To YouTube Thumbnail.png");
+        background: linear-gradient(
+            rgba(10, 10, 10, 0.8),
+            rgba(26, 26, 46, 0.9)
+          ),
+          url("images/hero-background.webp");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        padding: 80px 0 40px;
+        padding: 120px 0 60px;
       }
 
       .hero-content {
@@ -663,9 +686,9 @@
       /* Responsive */
       @media (max-width: 768px) {
         .hero {
-          min-height: 100vh;
+          min-height: 90vh;
           background-attachment: scroll;
-          padding: 100px 0 60px;
+          padding: 100px 0 50px;
         }
 
         .hero h1 {
@@ -725,6 +748,7 @@
       @media (max-width: 480px) {
         .hero {
           padding: 80px 0 40px;
+          background-attachment: scroll;
         }
 
         .hero h1 {
@@ -1430,5 +1454,8 @@
         observer.observe(card);
       });
     </script>
+
+    <!-- Load common JavaScript -->
+    <script src="js/common.js" defer></script>
   </body>
 </html>
