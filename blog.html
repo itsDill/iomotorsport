@@ -14,12 +14,7 @@
     />
     <meta
       name="keywords"
-      content="Thailand motorsports blog, racing news              <!-- Featured Post -->
-              <article class="featured-post" data-category="travel">
-                <div class="post-image">
-                  🏍️
-                  <div style="position: absolute; top: 10px; right: 10px; background: linear-gradient(45deg, #e74c3c, #f39c12); color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.7rem; font-weight: bold;">FEATURED</div>
-                </div>ailand, circuit guides, Thai racing insights, motorsports travel blog, racing analysis Thailand"
+      content="Thailand motorsports blog, racing news Thailand, circuit guides, Thai racing insights, motorsports travel blog, racing analysis Thailand"
     />
     <meta name="author" content="Thailand Motorsports Tourism" />
     <meta name="robots" content="index, follow" />
@@ -86,7 +81,7 @@
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-2456627863532019",
-        enable_page_level_ads: true
+        enable_page_level_ads: true,
       });
     </script>
 
@@ -112,11 +107,14 @@
       /* Blog-specific styles */
       .blog-hero {
         background: linear-gradient(
-          135deg,
-          rgba(231, 76, 60, 0.15),
-          rgba(243, 156, 18, 0.1)
-        );
-        padding: 80px 0 60px;
+            rgba(10, 10, 10, 0.8),
+            rgba(26, 26, 46, 0.9)
+          ),
+          url("images/Black White Red Simple Modern Elegant Video How To YouTube Thumbnail.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 120px 0 60px;
         text-align: center;
       }
 
@@ -234,7 +232,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.7) 100%);
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(0, 0, 0, 0.3) 70%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
         z-index: 1;
       }
 
@@ -366,7 +369,11 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), transparent);
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.1),
+          transparent
+        );
         border-radius: 10px;
       }
 
@@ -582,6 +589,45 @@
           transform: rotate(360deg);
         }
       }
+
+      /* Categories Widget */
+      .categories-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .category-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .category-item:hover {
+        background: rgba(231, 76, 60, 0.1);
+        border-color: rgba(231, 76, 60, 0.3);
+        transform: translateX(5px);
+      }
+
+      .category-name {
+        font-weight: 500;
+      }
+
+      .post-count {
+        background: linear-gradient(45deg, #e74c3c, #f39c12);
+        color: white;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
@@ -644,54 +690,150 @@
             <div class="main-content">
               <!-- Featured Post -->
               <article class="featured-post" data-category="travel">
-                <div class="post-image" style="background-image: url('images/motogp-thailand.png'); background-size: cover; background-position: center;">
-                  <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; font-weight: bold;">🏍️ MotoGP Thailand</div>
+                <div
+                  class="post-image"
+                  style="
+                    background-image: url('images/motogp-thailand.png');
+                    background-size: cover;
+                    background-position: center;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      bottom: 10px;
+                      left: 10px;
+                      background: rgba(0, 0, 0, 0.7);
+                      color: white;
+                      padding: 8px 12px;
+                      border-radius: 8px;
+                      font-size: 0.9rem;
+                      font-weight: bold;
+                    "
+                  >
+                    🏍️ MotoGP Thailand 2026
+                  </div>
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
                     <span class="post-category">Travel Guide</span>
-                    <span>📅 September 10, 2025</span>
-                    <span>👤 By Thailand Tourism Team</span>
-                    <span>⏱️ 8 min read</span>
+                    <span>📅 September 15, 2025</span>
+                    <span>👤 By Thailand Motorsports Tourism Team</span>
+                    <span>⏱️ 12 min read</span>
                   </div>
                   <h2 class="post-title">
                     <a href="motogp-thailand-2026-travel-guide.html"
-                      >MotoGP Thailand 2026: Your Ultimate Travel Package Guide</a
+                      >MotoGP Thailand 2026: Complete Travel and Hospitality
+                      Guide</a
                     >
                   </h2>
                   <p class="post-excerpt">
-                    Experience the thrill of MotoGP in the Land of Smiles! From VIP hospitality packages to budget-friendly options, discover how to combine world-class motorcycle racing with Thailand's incredible culture, cuisine, and attractions. Complete with accommodation recommendations, transportation guides, and exclusive circuit experiences that make Thailand the perfect motorsports destination.
+                    Thailand's MotoGP at Chang International Circuit offers
+                    motorsports fans an unparalleled experience combining
+                    world-class racing with Southeast Asian hospitality. Our
+                    comprehensive guide covers everything from premium
+                    grandstand tickets to luxury accommodation packages,
+                    detailed circuit information, and cultural experiences.
+                    Discover why Thailand has become the preferred MotoGP
+                    destination for international fans, offering exceptional
+                    value compared to European venues while providing unique
+                    cultural immersion opportunities. Learn about the circuit's
+                    state-of-the-art facilities, transportation options from
+                    Bangkok and Phuket, recommended hotels near the track, and
+                    exclusive VIP experiences that make Thailand MotoGP truly
+                    special.
                   </p>
-                  <a href="motogp-thailand-2026-travel-guide.html" class="read-more">Read Full Article →</a>
+                  <a
+                    href="motogp-thailand-2026-travel-guide.html"
+                    class="read-more"
+                    >Read Complete Travel Guide →</a
+                  >
                 </div>
               </article>
 
               <!-- Regular Blog Posts -->
               <div class="blog-posts">
-                <article class="blog-post" data-category="news" style="border: 2px solid #e74c3c; background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(255, 255, 255, 0.05));">
-                  <div class="post-thumbnail" style="background-image: url('images/bangkok-f1-circuit.png'); background-size: cover; background-position: center; position: relative;">
-                    <div style="position: absolute; top: 5px; right: 5px; background: #e74c3c; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold;">🚨 LIVE</div>
+                <article
+                  class="blog-post"
+                  data-category="news"
+                  style="
+                    border: 1px solid rgba(231, 76, 60, 0.3);
+                    background: rgba(231, 76, 60, 0.1);
+                  "
+                >
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/bangkok-f1-circuit.png');
+                      background-size: cover;
+                      background-position: center;
+                      position: relative;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        background: #e74c3c;
+                        color: white;
+                        padding: 4px 8px;
+                        border-radius: 4px;
+                        font-size: 0.75rem;
+                        font-weight: bold;
+                      "
+                    >
+                      NEW
+                    </div>
                   </div>
                   <div class="post-info">
                     <div class="post-meta">
-                      <span class="post-category" style="background: linear-gradient(45deg, #ff6b6b, #feca57); animation: pulse 2s infinite;">🚨 F1 BREAKING</span>
-                      <span>📅 September 22, 2025</span>
-                      <span>⏱️ 15 min read</span>
+                      <span
+                        class="post-category"
+                        style="
+                          background: linear-gradient(45deg, #e74c3c, #c0392b);
+                          color: white;
+                          padding: 4px 8px;
+                          border-radius: 12px;
+                        "
+                        >Formula 1 News</span
+                      >
+                      <span>📅 September 20, 2025</span>
+                      <span>⏱️ 10 min read</span>
                     </div>
                     <h3 class="post-title">
                       <a href="bangkok-f1-2028-complete-guide.html"
-                        >OFFICIAL: Bangkok F1 Grand Prix 2028 Announced - Complete Guide</a
+                        >Bangkok F1 Grand Prix 2028: Complete Planning Guide</a
                       >
                     </h3>
                     <p class="post-excerpt">
-                      BREAKING: F1 officially confirms Bangkok will host Thailand's first Formula 1 Grand Prix in 2028! Revolutionary street circuit through historic Bangkok with UNESCO sites. Complete guide: tickets, travel packages, accommodation, and everything fans need for this historic race.
+                      Formula 1 has officially announced Bangkok as the host
+                      city for Thailand's inaugural Grand Prix in 2028. This
+                      historic street circuit will wind through Bangkok's
+                      cultural district, creating a unique racing experience.
+                      Our comprehensive guide covers everything fans need to
+                      know about this groundbreaking event, including
+                      preliminary ticket information, accommodation
+                      recommendations, transportation planning, and what makes
+                      this circuit design revolutionary in Formula 1 history.
                     </p>
-                    <a href="bangkok-f1-2028-complete-guide.html" class="read-more">Read Complete F1 Guide →</a>
+                    <a
+                      href="bangkok-f1-2028-complete-guide.html"
+                      class="read-more"
+                      >Read Complete F1 Guide →</a
+                    >
                   </div>
                 </article>
 
                 <article class="blog-post" data-category="travel">
-                  <div class="post-thumbnail" style="background-image: url('images/motogp-thailand.png'); background-size: cover; background-position: center;"></div>
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/motogp-thailand.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
                   <div class="post-info">
                     <div class="post-meta">
                       <span class="post-category">Travel Guide</span>
@@ -700,18 +842,37 @@
                     </div>
                     <h3 class="post-title">
                       <a href="motogp-thailand-2026-travel-guide.html"
-                        >MotoGP Thailand 2026: Your Ultimate Travel Package Guide</a
+                        >MotoGP Thailand 2026: Your Ultimate Travel Package
+                        Guide</a
                       >
                     </h3>
                     <p class="post-excerpt">
-                      Experience the thrill of MotoGP in the Land of Smiles! From VIP hospitality packages to budget-friendly options, discover how to combine world-class motorcycle racing with Thailand's incredible culture, cuisine, and attractions.
+                      Planning your MotoGP Thailand experience? Our detailed
+                      guide covers Chang International Circuit's world-class
+                      facilities, ticket categories from general admission to
+                      VIP suites, recommended hotels within 30 minutes of the
+                      track, and transportation options from major Thai cities.
+                      Learn about the circuit's history, track characteristics,
+                      and why Thailand offers exceptional value for
+                      international motorsports tourism.
                     </p>
-                    <a href="motogp-thailand-2026-travel-guide.html" class="read-more">Read Full Article →</a>
+                    <a
+                      href="motogp-thailand-2026-travel-guide.html"
+                      class="read-more"
+                      >Read Full Article →</a
+                    >
                   </div>
                 </article>
 
                 <article class="blog-post" data-category="travel">
-                  <div class="post-thumbnail" style="background-image: url('images/chang-circuit.png'); background-size: cover; background-position: center;"></div>
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/chang-circuit.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
                   <div class="post-info">
                     <div class="post-meta">
                       <span class="post-category">F1 Tourism</span>
@@ -720,18 +881,36 @@
                     </div>
                     <h3 class="post-title">
                       <a href="chang-circuit-f1-hidden-gem.html"
-                        >Why Chang International Circuit is F1's Hidden Gem</a
+                        >Chang International Circuit: Thailand's Premier Racing
+                        Venue Guide</a
                       >
                     </h3>
                     <p class="post-excerpt">
-                      Discover Thailand's Formula 1-grade circuit that hosts world-class racing. Learn why international F1 fans choose Thailand over traditional European circuits - from luxury hospitality to incredible value and exotic cultural experiences.
+                      Chang International Circuit in Buriram represents
+                      Thailand's commitment to world-class motorsports
+                      infrastructure. This FIA Grade 1 circuit hosts MotoGP and
+                      various international racing series. Our comprehensive
+                      guide explores the circuit's technical specifications,
+                      facilities, upcoming events, spectator amenities, and why
+                      it's becoming a preferred destination for international
+                      racing fans seeking premium experiences at accessible
+                      prices.
                     </p>
-                    <a href="chang-circuit-f1-hidden-gem.html" class="read-more">Read More →</a>
+                    <a href="chang-circuit-f1-hidden-gem.html" class="read-more"
+                      >Read More →</a
+                    >
                   </div>
                 </article>
 
                 <article class="blog-post" data-category="travel">
-                  <div class="post-thumbnail" style="background-image: url('images/bangsaen-racing.png'); background-size: cover; background-position: center;"></div>
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/bangsaen-racing.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
                   <div class="post-info">
                     <div class="post-meta">
                       <span class="post-category">Travel Guide</span>
@@ -740,18 +919,37 @@
                     </div>
                     <h3 class="post-title">
                       <a href="bangsaen-street-racing-beach-paradise.html"
-                        >Bangsaen Street Racing + Beach Paradise: Perfect Weekend</a
+                        >Bangsaen Street Racing + Beach Paradise: Perfect
+                        Weekend</a
                       >
                     </h3>
                     <p class="post-excerpt">
-                      Experience Thailand's unique street racing festival where high-speed motorsports meets tropical beach culture. A complete guide for international visitors to enjoy racing, local seafood, and beachside festivities.
+                      Bangsaen Street Circuit offers a unique motorsports
+                      experience combining beach culture with competitive
+                      racing. This annual event transforms the coastal roads of
+                      Chonburi into a racing circuit, featuring touring cars,
+                      motorcycles, and local racing categories. Our guide covers
+                      event schedules, spectator areas, nearby accommodations,
+                      local dining recommendations, and how to combine racing
+                      with Thailand's famous beach destinations.
                     </p>
-                    <a href="bangsaen-street-racing-beach-paradise.html" class="read-more">Read More →</a>
+                    <a
+                      href="bangsaen-street-racing-beach-paradise.html"
+                      class="read-more"
+                      >Read More →</a
+                    >
                   </div>
                 </article>
 
                 <article class="blog-post" data-category="travel">
-                  <div class="post-thumbnail" style="background-image: url('images/cost-comparison.png'); background-size: cover; background-position: center;"></div>
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/cost-comparison.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
                   <div class="post-info">
                     <div class="post-meta">
                       <span class="post-category">Budget Guide</span>
@@ -760,18 +958,38 @@
                     </div>
                     <h3 class="post-title">
                       <a href="thailand-europe-motorsports-cost-comparison.html"
-                        >Motorsports Tourism: Thailand vs Europe - Cost Comparison</a
+                        >Thailand vs Europe Motorsports Tourism: Complete Cost
+                        Analysis</a
                       >
                     </h3>
                     <p class="post-excerpt">
-                      Shocked by European racing event prices? Discover how Thailand offers world-class motorsports experiences at a fraction of the cost. Complete budget breakdown including flights, accommodation, tickets, and experiences.
+                      A comprehensive financial comparison of motorsports
+                      tourism between Thailand and traditional European venues.
+                      Our detailed analysis covers race tickets, accommodation,
+                      dining, transportation, and additional experiences.
+                      Discover how Thailand offers premium motorsports
+                      experiences with potential savings of 60-70% compared to
+                      equivalent European events while providing unique cultural
+                      and culinary experiences that European venues cannot
+                      match.
                     </p>
-                    <a href="thailand-europe-motorsports-cost-comparison.html" class="read-more">Read More →</a>
+                    <a
+                      href="thailand-europe-motorsports-cost-comparison.html"
+                      class="read-more"
+                      >Read More →</a
+                    >
                   </div>
                 </article>
 
                 <article class="blog-post" data-category="guides">
-                  <div class="post-thumbnail" style="background-image: url('images/racing-hotels.png'); background-size: cover; background-position: center;"></div>
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/racing-hotels.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
                   <div class="post-info">
                     <div class="post-meta">
                       <span class="post-category">Accommodation</span>
@@ -780,13 +998,226 @@
                     </div>
                     <h3 class="post-title">
                       <a href="best-hotels-thai-racing-circuits.html"
-                        >Best Hotels Near Thai Racing Circuits for International Visitors</a
+                        >Best Hotels Near Thai Racing Circuits for International
+                        Visitors</a
                       >
                     </h3>
                     <p class="post-excerpt">
-                      From luxury resorts to budget-friendly options near Chang Circuit, Bira, and Bangkok. Curated recommendations with shuttle services, English-speaking staff, and racing packages for motorsports tourists.
+                      Comprehensive accommodation guide for motorsports tourists
+                      visiting Thailand's premier racing circuits. Our detailed
+                      analysis covers luxury resorts, boutique hotels, and
+                      budget-friendly options near Chang Circuit, Bira
+                      International Circuit, and Bangkok Motor Racing Circuit.
+                      Each recommendation includes proximity to tracks, shuttle
+                      services, English-speaking staff availability, racing
+                      packages, and local amenities to ensure international
+                      visitors have seamless access to Thailand's motorsports
+                      venues.
                     </p>
-                    <a href="best-hotels-thai-racing-circuits.html" class="read-more">Read More →</a>
+                    <a
+                      href="best-hotels-thai-racing-circuits.html"
+                      class="read-more"
+                      >Read More →</a
+                    >
+                  </div>
+                </article>
+
+                <article class="blog-post" data-category="safety">
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/1.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="post-info">
+                    <div class="post-meta">
+                      <span class="post-category">Safety Guide</span>
+                      <span>📅 August 20, 2025</span>
+                      <span>⏱️ 12 min read</span>
+                    </div>
+                    <h3 class="post-title">
+                      <a href="#motorsports-safety-thailand"
+                        >Motorsports Safety Standards in Thailand: A Complete
+                        Guide for International Visitors</a
+                      >
+                    </h3>
+                    <p class="post-excerpt">
+                      Understanding safety protocols, medical facilities, and
+                      emergency procedures at Thai racing circuits. This
+                      comprehensive guide covers FIA safety standards
+                      implementation, track medical facilities, spectator safety
+                      zones, and emergency response procedures. Learn about
+                      helmet requirements, protective gear standards, track
+                      safety barriers, and medical helicopter availability at
+                      major Thai circuits. Essential reading for participants
+                      and spectators attending motorsports events in Thailand.
+                    </p>
+                    <a href="#motorsports-safety-thailand" class="read-more"
+                      >Read More →</a
+                    >
+                  </div>
+                </article>
+
+                <article class="blog-post" data-category="culture">
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/2.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="post-info">
+                    <div class="post-meta">
+                      <span class="post-category">Cultural Guide</span>
+                      <span>📅 August 15, 2025</span>
+                      <span>⏱️ 8 min read</span>
+                    </div>
+                    <h3 class="post-title">
+                      <a href="#thai-motorsports-culture"
+                        >Thai Motorsports Culture: Traditions, Etiquette, and
+                        Local Racing Heritage</a
+                      >
+                    </h3>
+                    <p class="post-excerpt">
+                      Explore the rich heritage of motorsports in Thailand, from
+                      traditional Thai racing customs to modern international
+                      events. Learn about spectator etiquette, cultural
+                      considerations for international visitors, local racing
+                      legends, and how Thai culture influences the motorsports
+                      experience. Discover traditional ceremonies at racing
+                      events, local food culture at circuits, and the unique
+                      blend of Thai hospitality with international racing
+                      standards that makes Thailand a distinctive motorsports
+                      destination.
+                    </p>
+                    <a href="#thai-motorsports-culture" class="read-more"
+                      >Read More →</a
+                    >
+                  </div>
+                </article>
+
+                <article class="blog-post" data-category="technical">
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/3.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="post-info">
+                    <div class="post-meta">
+                      <span class="post-category">Technical Analysis</span>
+                      <span>📅 August 10, 2025</span>
+                      <span>⏱️ 15 min read</span>
+                    </div>
+                    <h3 class="post-title">
+                      <a href="#thai-circuits-technical-analysis"
+                        >Technical Analysis of Thai Racing Circuits: Track
+                        Design, Climate Challenges, and Racing Conditions</a
+                      >
+                    </h3>
+                    <p class="post-excerpt">
+                      In-depth technical examination of Thailand's premier
+                      racing circuits including Chang International Circuit,
+                      Bira International Circuit, and Bangkok Motor Racing
+                      Circuit. Comprehensive analysis covers track surface
+                      composition, elevation changes, corner configurations,
+                      climate impact on racing conditions, monsoon season
+                      considerations, and how tropical weather affects vehicle
+                      performance. Essential technical information for drivers,
+                      teams, and motorsports enthusiasts planning to participate
+                      in or attend Thai racing events.
+                    </p>
+                    <a
+                      href="#thai-circuits-technical-analysis"
+                      class="read-more"
+                      >Read More →</a
+                    >
+                  </div>
+                </article>
+
+                <article class="blog-post" data-category="travel">
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/racing-news.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="post-info">
+                    <div class="post-meta">
+                      <span class="post-category">Travel Planning</span>
+                      <span>📅 August 5, 2025</span>
+                      <span>⏱️ 11 min read</span>
+                    </div>
+                    <h3 class="post-title">
+                      <a href="#thailand-motorsports-visa-guide"
+                        >Thailand Motorsports Tourism Visa Guide: Entry
+                        Requirements, Extensions, and Racing Event
+                        Documentation</a
+                      >
+                    </h3>
+                    <p class="post-excerpt">
+                      Complete visa and entry requirements guide for
+                      international motorsports tourists visiting Thailand.
+                      Detailed information on tourist visa types,
+                      visa-on-arrival procedures, extension processes for
+                      extended racing seasons, required documentation for
+                      motorsports participants, insurance requirements, and
+                      special considerations for bringing racing equipment.
+                      Includes updated information on COVID-19 health
+                      requirements, customs regulations for racing gear, and
+                      embassy contact information for major motorsports
+                      countries.
+                    </p>
+                    <a href="#thailand-motorsports-visa-guide" class="read-more"
+                      >Read More →</a
+                    >
+                  </div>
+                </article>
+
+                <article class="blog-post" data-category="guides">
+                  <div
+                    class="post-thumbnail"
+                    style="
+                      background-image: url('images/blog-hero.png');
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="post-info">
+                    <div class="post-meta">
+                      <span class="post-category">Equipment Guide</span>
+                      <span>📅 July 30, 2025</span>
+                      <span>⏱️ 13 min read</span>
+                    </div>
+                    <h3 class="post-title">
+                      <a href="#racing-equipment-thailand"
+                        >Racing Equipment and Gear in Thailand: What to Bring,
+                        What to Buy Locally, and Where to Find Quality
+                        Supplies</a
+                      >
+                    </h3>
+                    <p class="post-excerpt">
+                      Comprehensive guide to motorsports equipment availability
+                      in Thailand. Detailed breakdown of what racing gear to
+                      bring from home versus what can be purchased locally,
+                      quality comparisons of Thai racing equipment suppliers,
+                      pricing analysis, and recommendations for different racing
+                      disciplines. Covers helmets, suits, boots, gloves, safety
+                      equipment, spare parts availability, and technical support
+                      services. Includes contact information for authorized
+                      dealers, emergency equipment rental, and shipping services
+                      for international participants.
+                    </p>
+                    <a href="#racing-equipment-thailand" class="read-more"
+                      >Read More →</a
+                    >
                   </div>
                 </article>
               </div>
@@ -805,60 +1236,187 @@
               <div class="sidebar-widget">
                 <h3 class="widget-title">Recent Posts</h3>
                 <div class="recent-posts">
-                  <a href="bangkok-f1-2028-complete-guide.html" class="recent-post" style="border-left: 3px solid #e74c3c; background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(255, 255, 255, 0.05));">
-                    <div class="recent-post-title" style="color: #e74c3c; font-weight: bold;">
-                      🚨 BREAKING: Bangkok F1 Grand Prix 2028 Complete Guide
+                  <a
+                    href="bangkok-f1-2028-complete-guide.html"
+                    class="recent-post"
+                    style="
+                      border-left: 3px solid #e74c3c;
+                      background: linear-gradient(
+                        135deg,
+                        rgba(231, 76, 60, 0.1),
+                        rgba(255, 255, 255, 0.05)
+                      );
+                    "
+                  >
+                    <div
+                      class="recent-post-title"
+                      style="color: #e74c3c; font-weight: bold"
+                    >
+                      Bangkok F1 Grand Prix 2028: Complete Travel & Ticket Guide
                     </div>
                     <div class="recent-post-date">September 22, 2025</div>
                   </a>
-                  <a href="motogp-thailand-2026-travel-guide.html" class="recent-post">
+                  <a href="#motorsports-safety-thailand" class="recent-post">
                     <div class="recent-post-title">
-                      MotoGP Thailand 2026: Your Ultimate Travel Package Guide
+                      Motorsports Safety Standards in Thailand: Complete Guide
+                    </div>
+                    <div class="recent-post-date">August 20, 2025</div>
+                  </a>
+                  <a
+                    href="#thai-circuits-technical-analysis"
+                    class="recent-post"
+                  >
+                    <div class="recent-post-title">
+                      Technical Analysis of Thai Racing Circuits
+                    </div>
+                    <div class="recent-post-date">August 10, 2025</div>
+                  </a>
+                  <a
+                    href="motogp-thailand-2026-travel-guide.html"
+                    class="recent-post"
+                  >
+                    <div class="recent-post-title">
+                      MotoGP Thailand 2026: Ultimate Travel Package Guide
                     </div>
                     <div class="recent-post-date">September 10, 2025</div>
                   </a>
-                  <a href="chang-circuit-f1-hidden-gem.html" class="recent-post">
+                  <a
+                    href="#thailand-motorsports-visa-guide"
+                    class="recent-post"
+                  >
                     <div class="recent-post-title">
-                      Why Chang International Circuit is F1's Hidden Gem
+                      Thailand Motorsports Tourism Visa Guide
                     </div>
-                    <div class="recent-post-date">September 8, 2025</div>
+                    <div class="recent-post-date">August 5, 2025</div>
                   </a>
-                  <a href="bangsaen-street-racing-beach-paradise.html" class="recent-post">
+                  <a
+                    href="best-hotels-thai-racing-circuits.html"
+                    class="recent-post"
+                  >
                     <div class="recent-post-title">
-                      Bangsaen Street Racing + Beach Paradise: Perfect Weekend
+                      Best Hotels Near Thai Racing Circuits
                     </div>
-                    <div class="recent-post-date">September 5, 2025</div>
-                  </a>
-                  <a href="thailand-europe-motorsports-cost-comparison.html" class="recent-post">
-                    <div class="recent-post-title">
-                      Motorsports Tourism: Thailand vs Europe Cost Comparison
-                    </div>
-                    <div class="recent-post-date">September 3, 2025</div>
+                    <div class="recent-post-date">August 28, 2025</div>
                   </a>
                 </div>
               </div>
 
-
+              <!-- Categories Widget -->
+              <div class="sidebar-widget">
+                <h3 class="widget-title">Browse by Category</h3>
+                <div class="categories-list">
+                  <a href="#" class="category-item" onclick="filterPosts('f1')">
+                    <span class="category-name">Formula 1</span>
+                    <span class="post-count">3</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="category-item"
+                    onclick="filterPosts('travel')"
+                  >
+                    <span class="category-name">Travel Guides</span>
+                    <span class="post-count">4</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="category-item"
+                    onclick="filterPosts('safety')"
+                  >
+                    <span class="category-name">Safety & Technical</span>
+                    <span class="post-count">2</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="category-item"
+                    onclick="filterPosts('guides')"
+                  >
+                    <span class="category-name">Planning Guides</span>
+                    <span class="post-count">3</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="category-item"
+                    onclick="filterPosts('culture')"
+                  >
+                    <span class="category-name">Culture & Heritage</span>
+                    <span class="post-count">2</span>
+                  </a>
+                  <a
+                    href="#"
+                    class="category-item"
+                    onclick="filterPosts('motogp')"
+                  >
+                    <span class="category-name">MotoGP</span>
+                    <span class="post-count">1</span>
+                  </a>
+                </div>
+              </div>
 
               <!-- Tags Cloud Widget -->
               <div class="sidebar-widget">
                 <h3 class="widget-title">Popular Tags</h3>
                 <div class="tags-cloud">
-                  <a href="bangkok-f1-2028-complete-guide.html" class="tag" style="background: linear-gradient(45deg, #e74c3c, #f39c12); color: white; font-weight: bold;">Bangkok F1 2028</a>
-                  <a href="bangkok-f1-2028-complete-guide.html" class="tag" style="background: linear-gradient(45deg, #e74c3c, #f39c12); color: white; font-weight: bold;">F1 Thailand</a>
-                  <a href="motogp-thailand-2026-travel-guide.html" class="tag">MotoGP Thailand</a>
-                  <a href="bangkok-f1-2028-complete-guide.html" class="tag">F1 Travel Guide</a>
-                  <a href="chang-circuit-f1-hidden-gem.html" class="tag">Chang Circuit</a>
-                  <a href="contact.html?service=racing-packages" class="tag">Racing Packages</a>
+                  <a
+                    href="bangkok-f1-2028-complete-guide.html"
+                    class="tag"
+                    style="
+                      background: linear-gradient(45deg, #e74c3c, #f39c12);
+                      color: white;
+                      font-weight: bold;
+                    "
+                    >Bangkok F1 2028</a
+                  >
+                  <a
+                    href="bangkok-f1-2028-complete-guide.html"
+                    class="tag"
+                    style="
+                      background: linear-gradient(45deg, #e74c3c, #f39c12);
+                      color: white;
+                      font-weight: bold;
+                    "
+                    >F1 Thailand</a
+                  >
+                  <a href="motogp-thailand-2026-travel-guide.html" class="tag"
+                    >MotoGP Thailand</a
+                  >
+                  <a href="bangkok-f1-2028-complete-guide.html" class="tag"
+                    >F1 Travel Guide</a
+                  >
+                  <a href="chang-circuit-f1-hidden-gem.html" class="tag"
+                    >Chang Circuit</a
+                  >
+                  <a href="contact.html?service=racing-packages" class="tag"
+                    >Racing Packages</a
+                  >
                   <a href="index.html" class="tag">Thailand Tourism</a>
-                  <a href="bangkok-f1-2028-complete-guide.html" class="tag">Bangkok Street Circuit</a>
-                  <a href="contact.html?service=f1-tickets" class="tag">F1 Tickets</a>
-                  <a href="bangsaen-street-racing-beach-paradise.html" class="tag">Bangsaen Festival</a>
-                  <a href="thailand-europe-motorsports-cost-comparison.html" class="tag">Budget Racing</a>
-                  <a href="best-hotels-thai-racing-circuits.html" class="tag">Motorsports Hotels</a>
-                  <a href="contact.html?service=vip-racing" class="tag">VIP Racing</a>
+                  <a href="bangkok-f1-2028-complete-guide.html" class="tag"
+                    >Bangkok Street Circuit</a
+                  >
+                  <a href="contact.html?service=f1-tickets" class="tag"
+                    >F1 Tickets</a
+                  >
+                  <a
+                    href="bangsaen-street-racing-beach-paradise.html"
+                    class="tag"
+                    >Bangsaen Festival</a
+                  >
+                  <a
+                    href="thailand-europe-motorsports-cost-comparison.html"
+                    class="tag"
+                    >Budget Racing</a
+                  >
+                  <a href="best-hotels-thai-racing-circuits.html" class="tag"
+                    >Motorsports Hotels</a
+                  >
+                  <a href="contact.html?service=vip-racing" class="tag"
+                    >VIP Racing</a
+                  >
                   <a href="index.html" class="tag">Cultural Experience</a>
-                  <a href="thailand-europe-motorsports-cost-comparison.html" class="tag">Cost Comparison</a>
+                  <a
+                    href="thailand-europe-motorsports-cost-comparison.html"
+                    class="tag"
+                    >Cost Comparison</a
+                  >
                   <a href="index.html" class="tag">International Tourism</a>
                 </div>
               </div>
@@ -888,7 +1446,6 @@
       </section>
 
       <!-- AdSense Ad Section -->
-
     </main>
 
     <footer>
@@ -1024,17 +1581,19 @@
         });
 
         // Analytics tracking for blog post clicks
-        document.querySelectorAll(".read-more, .post-title a").forEach((link) => {
-          link.addEventListener("click", function () {
-            // Track blog post clicks
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'blog_post_click', {
-                'blog_post_title': this.textContent.trim(),
-                'blog_post_url': this.href
-              });
-            }
+        document
+          .querySelectorAll(".read-more, .post-title a")
+          .forEach((link) => {
+            link.addEventListener("click", function () {
+              // Track blog post clicks
+              if (typeof gtag !== "undefined") {
+                gtag("event", "blog_post_click", {
+                  blog_post_title: this.textContent.trim(),
+                  blog_post_url: this.href,
+                });
+              }
+            });
           });
-        });
 
         // Add fade-in animation for posts
         const observer = new IntersectionObserver(
