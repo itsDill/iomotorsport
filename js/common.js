@@ -47,6 +47,22 @@ function initializeMobileMenu() {
   let mobileToggle = document.querySelector(".mobile-menu-toggle");
   const nav = document.querySelector("nav");
 
+  // If toggle exists but is not functional, remove and recreate
+  if (mobileToggle) {
+    console.log("Mobile toggle found, checking functionality...");
+    // Check if it has event listeners by testing click
+    const testDiv = document.createElement("div");
+    const hasListeners =
+      mobileToggle.onclick !== null ||
+      mobileToggle.getAttribute("aria-expanded") !== null;
+
+    if (!hasListeners) {
+      console.log("Recreating mobile toggle...");
+      mobileToggle.remove();
+      mobileToggle = null;
+    }
+  }
+
   if (!mobileToggle && nav) {
     // Create mobile menu toggle button if it doesn't exist
     mobileToggle = document.createElement("button");
@@ -54,12 +70,20 @@ function initializeMobileMenu() {
     mobileToggle.innerHTML = "☰";
     mobileToggle.setAttribute("aria-label", "Toggle mobile menu");
     mobileToggle.setAttribute("type", "button");
+    mobileToggle.setAttribute("aria-expanded", "false");
     nav.appendChild(mobileToggle);
+    console.log("Mobile toggle created");
   }
 
-  if (mobileToggle && !document.querySelector(".mobile-nav")) {
+  // Always ensure mobile nav exists and is functional
+  let mobileNav = document.querySelector(".mobile-nav");
+  if (mobileNav) {
+    mobileNav.remove(); // Remove existing to prevent duplicates
+  }
+
+  if (mobileToggle) {
     // Create mobile navigation
-    const mobileNav = document.createElement("div");
+    mobileNav = document.createElement("div");
     mobileNav.className = "mobile-nav";
 
     const mobileNavLinks = document.createElement("div");
@@ -75,12 +99,18 @@ function initializeMobileMenu() {
     mobileNav.appendChild(mobileNavLinks);
     document.body.appendChild(mobileNav);
 
+    // Clear any existing event listeners
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    mobileToggle = newToggle;
+
     // Toggle mobile menu with improved event handling
     const toggleMenu = function (e) {
       e.preventDefault();
       e.stopPropagation();
 
       const isActive = mobileNav.classList.contains("active");
+      console.log("Menu toggle clicked, currently active:", isActive);
 
       if (isActive) {
         mobileNav.classList.remove("active");
@@ -98,6 +128,8 @@ function initializeMobileMenu() {
     // Add multiple event listeners for better compatibility
     mobileToggle.addEventListener("click", toggleMenu);
     mobileToggle.addEventListener("touchstart", toggleMenu, { passive: false });
+
+    console.log("Mobile menu initialized successfully");
 
     // Close menu when clicking outside
     document.addEventListener("click", function (e) {
