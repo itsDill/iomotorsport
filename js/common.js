@@ -39,6 +39,20 @@ function initializeMobileMenu() {
 
   navLinks.forEach((link) => {
     const mobileLink = link.cloneNode(true);
+
+    // Add click handler to each individual link
+    mobileLink.addEventListener("click", function (e) {
+      console.log("Mobile link clicked:", this.href);
+      // Close menu immediately when link is clicked
+      mobileNav.classList.remove("active");
+      mobileToggle.innerHTML = "☰";
+      document.body.style.overflow = "";
+      console.log("Menu closed via individual link click");
+
+      // Allow the navigation to proceed
+      // The menu will close before the page navigation happens
+    });
+
     mobileNavLinks.appendChild(mobileLink);
   });
 
@@ -70,12 +84,15 @@ function initializeMobileMenu() {
     }
   };
 
-  // Close menu when clicking a link
-  mobileNavLinks.onclick = function () {
-    mobileNav.classList.remove("active");
-    mobileToggle.innerHTML = "☰";
-    document.body.style.overflow = "";
-    console.log("Menu closed via link click");
+  // Close menu when clicking on the mobile nav container (backup)
+  mobileNavLinks.onclick = function (e) {
+    // Only close if clicking on the container itself, not on links
+    if (e.target === mobileNavLinks) {
+      mobileNav.classList.remove("active");
+      mobileToggle.innerHTML = "☰";
+      document.body.style.overflow = "";
+      console.log("Menu closed via container click");
+    }
   };
 
   // Close menu when clicking outside
@@ -91,4 +108,34 @@ function initializeMobileMenu() {
   };
 
   console.log("=== MOBILE MENU SETUP COMPLETE ===");
+
+  // Additional safeguards for menu state
+
+  // Close menu when page becomes hidden (user navigates away)
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden && mobileNav.classList.contains("active")) {
+      mobileNav.classList.remove("active");
+      mobileToggle.innerHTML = "☰";
+      document.body.style.overflow = "";
+      console.log("Menu closed via page visibility change");
+    }
+  });
+
+  // Close menu before page unloads
+  window.addEventListener("beforeunload", function () {
+    if (mobileNav.classList.contains("active")) {
+      mobileNav.classList.remove("active");
+      mobileToggle.innerHTML = "☰";
+      document.body.style.overflow = "";
+      console.log("Menu closed via page unload");
+    }
+  });
+
+  // Ensure menu is closed when page loads
+  window.addEventListener("load", function () {
+    mobileNav.classList.remove("active");
+    mobileToggle.innerHTML = "☰";
+    document.body.style.overflow = "";
+    console.log("Menu state reset on page load");
+  });
 }
