@@ -56,6 +56,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="security-headers.js"></script>
     <style>
       .contact-grid {
         display: grid;
@@ -591,6 +592,7 @@
     </footer>
 
     <script src="js/common.js"></script>
+    <script src="js/security-utils.js"></script>
     <script>
       // Handle URL parameters to pre-select service
       document.addEventListener("DOMContentLoaded", function () {
@@ -631,42 +633,81 @@
         }
       });
 
-      // Enhanced form submission handling
+      // Enhanced form submission handling with security
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Get form data
+          // Rate limiting check
+          if (!SecurityUtils.rateLimitCheck("contact_form", 3, 300000)) {
+            alert(
+              "Too many submission attempts. Please wait 5 minutes before trying again."
+            );
+            return;
+          }
+
+          // Get form data and sanitize
           const formData = new FormData(this);
-          const name = formData.get("name").trim();
-          const email = formData.get("email").trim();
-          const phone = formData.get("phone").trim();
-          const country = formData.get("country").trim();
-          const interest = formData.get("interest");
-          const message = formData.get("message").trim();
+          const name = SecurityUtils.sanitizeInput(
+            formData.get("name").trim(),
+            100
+          );
+          const email = SecurityUtils.sanitizeInput(
+            formData.get("email").trim(),
+            254
+          );
+          const phone = SecurityUtils.sanitizeInput(
+            formData.get("phone").trim(),
+            20
+          );
+          const country = SecurityUtils.sanitizeInput(
+            formData.get("country").trim(),
+            50
+          );
+          const interest = SecurityUtils.sanitizeInput(
+            formData.get("interest"),
+            50
+          );
+          const message = SecurityUtils.sanitizeInput(
+            formData.get("message").trim(),
+            2000
+          );
 
           // Clear previous error states
           clearErrorStates();
 
-          // Validation
+          // Enhanced validation with security checks
           let hasErrors = false;
 
-          if (!name) {
-            showFieldError("name", "Name is required");
+          if (!SecurityUtils.isValidName(name)) {
+            showFieldError(
+              "name",
+              "Please enter a valid name (letters, spaces, hyphens only)"
+            );
             hasErrors = true;
           }
 
-          if (!email) {
-            showFieldError("email", "Email is required");
-            hasErrors = true;
-          } else if (!isValidEmail(email)) {
+          if (!SecurityUtils.isValidEmail(email)) {
             showFieldError("email", "Please enter a valid email address");
             hasErrors = true;
           }
 
-          if (!message) {
-            showFieldError("message", "Message is required");
+          if (phone && !SecurityUtils.isValidPhone(phone)) {
+            showFieldError("phone", "Please enter a valid phone number");
+            hasErrors = true;
+          }
+
+          if (country && !SecurityUtils.isValidCountry(country)) {
+            showFieldError("country", "Please enter a valid country name");
+            hasErrors = true;
+          }
+
+          if (!SecurityUtils.isValidText(message, 10, 2000)) {
+            showFieldError(
+              "message",
+              "Message must be between 10-2000 characters"
+            );
             hasErrors = true;
           }
 
@@ -674,21 +715,31 @@
             return;
           }
 
-          // Show loading state
+          // Show loading state - use textContent instead of innerHTML
           const submitBtn = this.querySelector('button[type="submit"]');
           const originalText = submitBtn.textContent;
-          submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+          submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
 
           // Simulate form submission
           setTimeout(() => {
-            // Create and show success message
+            // Create and show success message safely
             const successMessage = document.createElement("div");
             successMessage.className = "success-message";
-            successMessage.innerHTML = `
-              <strong>✅ Message Sent Successfully!</strong><br>
-              Thank you ${name}! Our motorsports tourism experts will contact you within 24 hours.
-            `;
+
+            const successTitle = document.createElement("strong");
+            successTitle.textContent = "✅ Message Sent Successfully!";
+
+            const successText = document.createElement("br");
+            const successContent = document.createTextNode(
+              `Thank you ${SecurityUtils.escapeHtml(
+                name
+              )}! Our motorsports tourism experts will contact you within 24 hours.`
+            );
+
+            successMessage.appendChild(successTitle);
+            successMessage.appendChild(successText);
+            successMessage.appendChild(successContent);
 
             this.parentNode.insertBefore(successMessage, this);
 
@@ -699,13 +750,13 @@
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
 
-            // Track form submission in analytics
+            // Track form submission in analytics (with sanitized data)
             if (typeof gtag !== "undefined") {
               gtag("event", "form_submit", {
                 form_name: "contact_form",
-                interest: interest || "general",
+                interest: SecurityUtils.escapeHtml(interest) || "general",
                 has_phone: phone ? "yes" : "no",
-                country: country || "not_specified",
+                country: SecurityUtils.escapeHtml(country) || "not_specified",
               });
             }
 
@@ -724,13 +775,13 @@
           }, 1500);
         });
 
-      // Helper functions for form validation
+      // Helper functions for form validation using SecurityUtils
       function showFieldError(fieldId, message) {
         const field = document.getElementById(fieldId);
         field.style.borderColor = "#e74c3c";
         field.style.backgroundColor = "rgba(231, 76, 60, 0.1)";
 
-        // Create or update error message
+        // Create or update error message safely
         let errorDiv = field.parentNode.querySelector(".error-message");
         if (!errorDiv) {
           errorDiv = document.createElement("div");
@@ -743,7 +794,8 @@
           `;
           field.parentNode.appendChild(errorDiv);
         }
-        errorDiv.textContent = message;
+        // Use textContent instead of innerHTML for security
+        errorDiv.textContent = SecurityUtils.sanitizeInput(message, 200);
       }
 
       function clearErrorStates() {
@@ -760,12 +812,14 @@
         });
       }
 
-      // Add real-time validation
+      // Add real-time validation with security
       document
         .querySelectorAll("#contactForm input, #contactForm textarea")
         .forEach((field) => {
           field.addEventListener("blur", function () {
-            if (this.hasAttribute("required") && !this.value.trim()) {
+            const value = SecurityUtils.sanitizeInput(this.value);
+
+            if (this.hasAttribute("required") && !value.trim()) {
               showFieldError(
                 this.id,
                 `${this.previousElementSibling.textContent.replace(
@@ -775,10 +829,28 @@
               );
             } else if (
               this.type === "email" &&
-              this.value &&
-              !isValidEmail(this.value)
+              value &&
+              !SecurityUtils.isValidEmail(value)
             ) {
               showFieldError(this.id, "Please enter a valid email address");
+            } else if (
+              this.type === "tel" &&
+              value &&
+              !SecurityUtils.isValidPhone(value)
+            ) {
+              showFieldError(this.id, "Please enter a valid phone number");
+            } else if (
+              this.name === "name" &&
+              value &&
+              !SecurityUtils.isValidName(value)
+            ) {
+              showFieldError(this.id, "Please enter a valid name");
+            } else if (
+              this.name === "country" &&
+              value &&
+              !SecurityUtils.isValidCountry(value)
+            ) {
+              showFieldError(this.id, "Please enter a valid country name");
             } else {
               // Clear error if field is now valid
               this.style.borderColor = "";
@@ -790,12 +862,6 @@
             }
           });
         });
-
-      // Email validation function
-      function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      }
     </script>
   </body>
 </html>

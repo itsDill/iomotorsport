@@ -41,6 +41,7 @@
       content="Thailand racing calendar, motorsports events schedule, MotoGP Thailand dates, racing events 2025, Thailand Super Series calendar"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="security-headers.js"></script>
     <style>
       .calendar-container {
         background: rgba(255, 255, 255, 0.05);
@@ -296,11 +297,9 @@
         <div class="container">
           <div class="calendar-container">
             <div class="month-header">
-              <button class="month-nav" onclick="previousMonth()">
-                ‹ Prev
-              </button>
+              <button class="month-nav" id="prevMonthBtn">‹ Prev</button>
               <h2 class="month-title" id="monthTitle">March 2025</h2>
-              <button class="month-nav" onclick="nextMonth()">Next ›</button>
+              <button class="month-nav" id="nextMonthBtn">Next ›</button>
             </div>
 
             <div class="month-view" id="calendarGrid">
@@ -565,13 +564,27 @@
 
           if (event) {
             dayElement.classList.add("has-event");
-            dayElement.innerHTML = `
-              <div class="day-number">${day}</div>
-              <div class="event-dot"></div>
-              <div class="event-preview">${event.name}</div>
-            `;
+
+            // Safely create elements without innerHTML
+            const dayNumber = document.createElement("div");
+            dayNumber.className = "day-number";
+            dayNumber.textContent = day;
+
+            const eventDot = document.createElement("div");
+            eventDot.className = "event-dot";
+
+            const eventPreview = document.createElement("div");
+            eventPreview.className = "event-preview";
+            eventPreview.textContent = event.name;
+
+            dayElement.appendChild(dayNumber);
+            dayElement.appendChild(eventDot);
+            dayElement.appendChild(eventPreview);
           } else {
-            dayElement.innerHTML = `<div class="day-number">${day}</div>`;
+            const dayNumber = document.createElement("div");
+            dayNumber.className = "day-number";
+            dayNumber.textContent = day;
+            dayElement.appendChild(dayNumber);
           }
 
           grid.appendChild(dayElement);
@@ -606,6 +619,14 @@
       // Initialize calendar
       document.addEventListener("DOMContentLoaded", () => {
         updateCalendar();
+
+        // Add secure event listeners instead of inline onclick
+        document
+          .getElementById("prevMonthBtn")
+          .addEventListener("click", previousMonth);
+        document
+          .getElementById("nextMonthBtn")
+          .addEventListener("click", nextMonth);
       });
     </script>
   </body>

@@ -103,6 +103,7 @@
     </script>
 
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="security-headers.js"></script>
     <style>
       /* Blog-specific styles */
       .blog-hero {
@@ -1691,37 +1692,70 @@
         let currentPage = 1;
 
         loadMoreBtn.addEventListener("click", function () {
-          // Simulate loading
-          this.innerHTML = '<div class="loading-spinner"></div> Loading...';
+          // Simulate loading - use textContent instead of innerHTML
+          this.textContent = "Loading...";
           this.disabled = true;
 
           setTimeout(() => {
-            // Add new posts (simulation)
+            // Add new posts (simulation) - create elements safely
             const blogPostsContainer = document.querySelector(".blog-posts");
             const newPost = document.createElement("article");
             newPost.className = "blog-post";
             newPost.dataset.category = "news";
-            newPost.innerHTML = `
-              <div class="post-thumbnail" style="background-image: url('images/image.png'); background-size: cover; background-position: center;"></div>
-              <div class="post-info">
-                <div class="post-meta">
-                  <span class="post-category">Racing News</span>
-                  <span>📅 February ${20 - currentPage}, 2025</span>
-                </div>
-                <h3 class="post-title">
-                  <a href="#post-new-${currentPage}">New Racing Development in Thailand</a>
-                </h3>
-                <p class="post-excerpt">
-                  Latest updates from Thailand's motorsports scene including new circuit developments and upcoming racing events.
-                </p>
-                <a href="#post-new-${currentPage}" class="read-more">Read More →</a>
-              </div>
-            `;
+
+            // Create elements safely without innerHTML
+            const postThumbnail = document.createElement("div");
+            postThumbnail.className = "post-thumbnail";
+            postThumbnail.style.backgroundImage = "url('images/image.png')";
+            postThumbnail.style.backgroundSize = "cover";
+            postThumbnail.style.backgroundPosition = "center";
+
+            const postInfo = document.createElement("div");
+            postInfo.className = "post-info";
+
+            const postMeta = document.createElement("div");
+            postMeta.className = "post-meta";
+
+            const postCategory = document.createElement("span");
+            postCategory.className = "post-category";
+            postCategory.textContent = "Racing News";
+
+            const postDate = document.createElement("span");
+            postDate.textContent = `📅 February ${20 - currentPage}, 2025`;
+
+            postMeta.appendChild(postCategory);
+            postMeta.appendChild(postDate);
+
+            const postTitle = document.createElement("h3");
+            postTitle.className = "post-title";
+
+            const titleLink = document.createElement("a");
+            titleLink.href = `#post-new-${currentPage}`;
+            titleLink.textContent = "New Racing Development in Thailand";
+            postTitle.appendChild(titleLink);
+
+            const postExcerpt = document.createElement("p");
+            postExcerpt.className = "post-excerpt";
+            postExcerpt.textContent =
+              "Latest updates from Thailand's motorsports scene including new circuit developments and upcoming racing events.";
+
+            const readMoreLink = document.createElement("a");
+            readMoreLink.href = `#post-new-${currentPage}`;
+            readMoreLink.className = "read-more";
+            readMoreLink.textContent = "Read More →";
+
+            postInfo.appendChild(postMeta);
+            postInfo.appendChild(postTitle);
+            postInfo.appendChild(postExcerpt);
+            postInfo.appendChild(readMoreLink);
+
+            newPost.appendChild(postThumbnail);
+            newPost.appendChild(postInfo);
 
             blogPostsContainer.appendChild(newPost);
 
-            // Reset button
-            loadMoreBtn.innerHTML = "Load More Posts";
+            // Reset button - use textContent instead of innerHTML
+            loadMoreBtn.textContent = "Load More Posts";
             loadMoreBtn.disabled = false;
 
             currentPage++;
