@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Complete GT World Challenge coverage - GTWC Europe, Asia, America schedules, GT3 racing news, standings, teams, and Spa 24 Hours information."
+    />
+    <meta
+      name="keywords"
+      content="GT World Challenge, GTWC, GT3 racing, Spa 24 Hours, GT racing, SRO Motorsports, Ferrari, Porsche, Mercedes-AMG, BMW, Audi"
+    />
+    <meta name="author" content="Endurance Racing Hub" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yourdomain.com/gtwc" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/gtwc" />
+    <meta
+      property="og:title"
+      content="GT World Challenge | GT3 Racing Coverage"
+    />
+    <meta
+      property="og:description"
+      content="Complete coverage of GT World Challenge Europe, Asia, and America"
+    />
+
+    <title>GT World Challenge | GT3 Racing & Spa 24 Hours</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #e63946;
+        --secondary: #1d3557;
+        --accent: #f77f00;
+        --dark: #0a0e27;
+        --light: #f8f9fa;
+        --text: #2b2d42;
+        --gt-red: #d32f2f;
+        --gt-black: #1a1a1a;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--light);
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 14, 39, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--gt-red) 0%,
+          var(--gt-black) 100%
+        );
+        color: white;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,0 L50,50 L100,0 L100,100 L50,50 L0,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+        background-size: 100px 100px;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+      }
+
+      .region-badges {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .badge {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .badge:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        background: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 0.8rem 2rem;
+      }
+
+      .breadcrumb-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        list-style: none;
+        font-size: 0.9rem;
+      }
+
+      .breadcrumb-item a {
+        color: var(--secondary);
+        text-decoration: none;
+      }
+
+      .breadcrumb-item a:hover {
+        color: var(--primary);
+      }
+
+      .breadcrumb-separator {
+        color: #999;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .section {
+        margin-bottom: 5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        color: var(--secondary);
+        text-align: center;
+      }
+
+      .section-intro {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Regional Cards */
+      .region-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .region-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .region-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--gt-red);
+      }
+
+      .region-header {
+        padding: 2rem;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .region-header h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .region-header p {
+        font-size: 1rem;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+      }
+
+      .region-content {
+        padding: 2rem;
+      }
+
+      .region-content h4 {
+        color: var(--secondary);
+        margin-bottom: 1rem;
+      }
+
+      .region-content ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .region-content li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        color: #666;
+      }
+
+      .region-content li::before {
+        content: "🏁";
+        position: absolute;
+        left: 0;
+      }
+
+      /* Grid Layouts */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      /* Cards */
+      .card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-top: 4px solid var(--gt-red);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .card p {
+        color: #666;
+        line-height: 1.7;
+      }
+
+      .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      /* Manufacturers Section */
+      .manufacturers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .manufacturer-card {
+        background: white;
+        padding: 2rem 1rem;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        font-weight: 700;
+        color: var(--secondary);
+        font-size: 1.1rem;
+      }
+
+      .manufacturer-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        color: var(--gt-red);
+      }
+
+      /* Stats */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--gt-red);
+        display: block;
+      }
+
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      /* CTA Buttons */
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: var(--gt-red);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      footer p {
+        opacity: 0.6;
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        opacity: 1;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          padding: 6rem 1.5rem 3rem;
+        }
+
+        .container {
+          padding: 3rem 1.5rem;
+        }
+
+        .region-grid,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .manufacturers-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <a href="/" class="logo">ENDURANCE</a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/imsa">IMSA</a></li>
+          <li><a href="/wec">WEC</a></li>
+          <li><a href="/gtwc">GTWC</a></li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>GT World Challenge</h1>
+        <p>
+          The premier global GT3 championship featuring the world's top
+          manufacturers across three continental series
+        </p>
+        <div class="region-badges">
+          <span class="badge">🇪🇺 Europe</span>
+          <span class="badge">🌏 Asia</span>
+          <span class="badge">🇺🇸 America</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+          <li class="breadcrumb-separator">/</li>
+          <li class="breadcrumb-item">GTWC</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- About Section -->
+      <section class="section">
+        <h2 class="section-title">About GT World Challenge</h2>
+        <p class="section-intro">
+          The GT World Challenge is SRO Motorsports Group's flagship GT3 racing
+          series, operating across three continents. Featuring identical
+          technical regulations worldwide, GTWC showcases the finest GT racing
+          with manufacturer-backed teams and privateer squads competing in some
+          of the world's most prestigious endurance events, including the
+          legendary Total 24 Hours of Spa.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Continental Series</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Manufacturers</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">24</span>
+            <span class="stat-label">Hours of Spa</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">GT3</span>
+            <span class="stat-label">Regulations</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Regional Series -->
+      <section class="section">
+        <h2 class="section-title">Continental Series</h2>
+        <p class="section-intro">
+          Three regional championships united by GT3 regulations and competitive
+          Balance of Performance
+        </p>
+
+        <div class="region-grid">
+          <div class="region-card">
+            <div
+              class="region-header"
+              style="
+                background: linear-gradient(135deg, #003399 0%, #ffcc00 100%);
+              "
+            >
+              <h3>GTWC Europe</h3>
+              <p>Sprint & Endurance Cup</p>
+            </div>
+            <div class="region-content">
+              <h4>Key Events</h4>
+              <ul>
+                <li>Total 24 Hours of Spa</li>
+                <li>3 Hours of Monza</li>
+                <li>6 Hours of Paul Ricard</li>
+                <li>3 Hours of Barcelona</li>
+                <li>Misano & Hockenheim</li>
+              </ul>
+              <div style="margin-top: 1.5rem">
+                <a href="/gtwc/europe" class="cta-button">Europe Series</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div
+              class="region-header"
+              style="
+                background: linear-gradient(135deg, #dc143c 0%, #ffd700 100%);
+              "
+            >
+              <h3>GTWC Asia</h3>
+              <p>Asian GT3 Championship</p>
+            </div>
+            <div class="region-content">
+              <h4>Key Events</h4>
+              <ul>
+                <li>Suzuka Circuit</li>
+                <li>Fuji Speedway</li>
+                <li>Sepang International Circuit</li>
+                <li>Autopolis</li>
+                <li>Thailand & China rounds</li>
+              </ul>
+              <div style="margin-top: 1.5rem">
+                <a href="/gtwc/asia" class="cta-button">Asia Series</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div
+              class="region-header"
+              style="
+                background: linear-gradient(135deg, #b22234 0%, #3c3b6e 100%);
+              "
+            >
+              <h3>GTWC America</h3>
+              <p>North American GT3</p>
+            </div>
+            <div class="region-content">
+              <h4>Key Events</h4>
+              <ul>
+                <li>Indianapolis Motor Speedway</li>
+                <li>Circuit of the Americas</li>
+                <li>Road America</li>
+                <li>Sonoma Raceway</li>
+                <li>VIRginia International Raceway</li>
+              </ul>
+              <div style="margin-top: 1.5rem">
+                <a href="/gtwc/america" class="cta-button">America Series</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Manufacturers Section -->
+      <section class="section">
+        <h2 class="section-title">Competing Manufacturers</h2>
+        <p class="section-intro">
+          Over 15 manufacturers compete in GT World Challenge with GT3-spec
+          machinery
+        </p>
+
+        <div class="manufacturers-grid">
+          <div class="manufacturer-card">🔴 Ferrari</div>
+          <div class="manufacturer-card">🟢 Porsche</div>
+          <div class="manufacturer-card">⚫ Mercedes-AMG</div>
+          <div class="manufacturer-card">🔵 BMW</div>
+          <div class="manufacturer-card">🔴 Audi</div>
+          <div class="manufacturer-card">🟢 Lamborghini</div>
+          <div class="manufacturer-card">🔵 Aston Martin</div>
+          <div class="manufacturer-card">🟡 McLaren</div>
+          <div class="manufacturer-card">⚫ Lexus</div>
+          <div class="manufacturer-card">🔴 Honda/Acura</div>
+          <div class="manufacturer-card">🟢 Bentley</div>
+          <div class="manufacturer-card">🔵 Alpine</div>
+        </div>
+      </section>
+
+      <!-- Info Cards -->
+      <section class="section">
+        <h2 class="section-title">GT3 Racing</h2>
+        <p class="section-intro">
+          Understanding the GT3 formula that makes GTWC racing so competitive
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="card-icon">⚖️</span>
+            <h3>Balance of Performance</h3>
+            <p>
+              BoP adjustments ensure close competition between different
+              manufacturers by adjusting weight and power parameters based on
+              performance data.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="card-icon">👥</span>
+            <h3>Pro-Am Format</h3>
+            <p>
+              Multiple driver categories from professional factory drivers to
+              talented amateurs, creating diverse and competitive racing across
+              all classes.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="card-icon">🔧</span>
+            <h3>Customer Racing</h3>
+            <p>
+              GT3 cars are available to privateer teams, making top-level GT
+              racing accessible while maintaining manufacturer involvement and
+              competitiveness.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section class="section">
+        <h2 class="section-title">Explore More</h2>
+        <div class="grid-3">
+          <div class="card" style="border-top-color: #003399">
+            <span class="card-icon">🏆</span>
+            <h3>24 Hours of Spa</h3>
+            <p>
+              The crown jewel of GT racing. Complete guide to the Total 24 Hours
+              of Spa-Francorchamps - history, entry list, and viewing info.
+            </p>
+            <a href="/gtwc/spa-24" class="cta-button">Spa 24 Guide</a>
+          </div>
+
+          <div class="card" style="border-top-color: #dc143c">
+            <span class="card-icon">📊</span>
+            <h3>Standings</h3>
+            <p>
+              Championship standings for all three continental series, including
+              overall, Sprint, and Endurance Cup classifications.
+            </p>
+            <a href="/gtwc/standings" class="cta-button">View Standings</a>
+          </div>
+
+          <div class="card" style="border-top-color: #b22234">
+            <span class="card-icon">👥</span>
+            <h3>Teams & Drivers</h3>
+            <p>
+              Complete directory of teams and drivers across GTWC Europe, Asia,
+              and America, including manufacturer lineups.
+            </p>
+            <a href="/gtwc/teams" class="cta-button">View Teams</a>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <a href="/gtwc/live-timing" class="cta-button">🔴 Live Timing</a>
+          <a href="/gtwc/results" class="cta-button">🏁 Results</a>
+          <a href="/gtwc/news" class="cta-button">📰 News</a>
+          <a href="/gtwc/schedule" class="cta-button">📅 Full Schedule</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/imsa">IMSA</a>
+        <a href="/wec">WEC</a>
+        <a href="/gtwc">GTWC</a>
+        <a href="/calendar">Calendar</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p>&copy; 2025 Endurance Racing Hub. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

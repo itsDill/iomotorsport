@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Complete IMSA SportsCar Championship coverage - race schedule, standings, teams, drivers, news, and analysis. Follow GTP, LMP2, GTD PRO, and GTD classes."
+    />
+    <meta
+      name="keywords"
+      content="IMSA, SportsCar Championship, GTP, LMP2, GTD PRO, GTD, Daytona 24, Sebring 12 Hours, Road Atlanta, Petit Le Mans, endurance racing"
+    />
+    <meta name="author" content="Endurance Racing Hub" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yourdomain.com/imsa" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/imsa" />
+    <meta
+      property="og:title"
+      content="IMSA SportsCar Championship | Complete Coverage"
+    />
+    <meta
+      property="og:description"
+      content="Live coverage, schedules, standings, and news for IMSA SportsCar Championship"
+    />
+
+    <title>IMSA SportsCar Championship | Coverage & Schedule</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #e63946;
+        --secondary: #1d3557;
+        --accent: #f77f00;
+        --dark: #0a0e27;
+        --light: #f8f9fa;
+        --text: #2b2d42;
+        --imsa-blue: #003b7a;
+        --imsa-red: #c8102e;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--light);
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 14, 39, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--imsa-blue) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 10px,
+          rgba(255, 255, 255, 0.03) 10px,
+          rgba(255, 255, 255, 0.03) 20px
+        );
+      }
+
+      .hero-content {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+      }
+
+      .class-badges {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .badge {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        background: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 0.8rem 2rem;
+      }
+
+      .breadcrumb-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        list-style: none;
+        font-size: 0.9rem;
+      }
+
+      .breadcrumb-item a {
+        color: var(--secondary);
+        text-decoration: none;
+      }
+
+      .breadcrumb-item a:hover {
+        color: var(--primary);
+      }
+
+      .breadcrumb-separator {
+        color: #999;
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .section {
+        margin-bottom: 5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        color: var(--secondary);
+        text-align: center;
+      }
+
+      .section-intro {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Grid Layouts */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+      }
+
+      /* Cards */
+      .card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--imsa-blue);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .card p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      /* Class Cards */
+      .class-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .class-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .class-header {
+        padding: 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--imsa-blue) 0%,
+          var(--imsa-red) 100%
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .class-header h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .class-content {
+        padding: 2rem;
+      }
+
+      .class-content ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .class-content li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .class-content li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--imsa-blue);
+        font-weight: bold;
+      }
+
+      /* Schedule Table */
+      .schedule-table {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .schedule-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .schedule-table th {
+        background: var(--imsa-blue);
+        color: white;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .schedule-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      .schedule-table tr:hover {
+        background: var(--light);
+      }
+
+      .track-tag {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        background: var(--light);
+        border-radius: 15px;
+        font-size: 0.85rem;
+        color: var(--imsa-blue);
+        font-weight: 600;
+      }
+
+      /* CTA Buttons */
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: var(--imsa-red);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(200, 16, 46, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(200, 16, 46, 0.4);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      /* Stats Section */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--imsa-blue);
+        display: block;
+      }
+
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      footer p {
+        opacity: 0.6;
+        font-size: 0.9rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        opacity: 1;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          padding: 6rem 1.5rem 3rem;
+        }
+
+        .container {
+          padding: 3rem 1.5rem;
+        }
+
+        .grid-3,
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .schedule-table {
+          overflow-x: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <a href="/" class="logo">ENDURANCE</a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/imsa">IMSA</a></li>
+          <li><a href="/wec">WEC</a></li>
+          <li><a href="/gtwc">GTWC</a></li>
+          <li><a href="/calendar">Calendar</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>IMSA SportsCar Championship</h1>
+        <p>
+          North America's premier endurance racing series featuring the world's
+          top teams and drivers competing across iconic circuits
+        </p>
+        <div class="class-badges">
+          <span class="badge">GTP</span>
+          <span class="badge">LMP2</span>
+          <span class="badge">GTD PRO</span>
+          <span class="badge">GTD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="breadcrumb-container">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/">Home</a>
+          </li>
+          <li class="breadcrumb-separator">/</li>
+          <li class="breadcrumb-item">IMSA</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- About Section -->
+      <section class="section">
+        <h2 class="section-title">About IMSA</h2>
+        <p class="section-intro">
+          The IMSA WeatherTech SportsCar Championship represents the pinnacle of
+          sports car racing in North America. Founded in 1969, IMSA features
+          multiple classes of prototype and GT cars competing simultaneously,
+          creating spectacular multi-class racing action at legendary venues
+          like Daytona, Sebring, and Road Atlanta.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">11</span>
+            <span class="stat-label">Races per Season</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Classes</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">24</span>
+            <span class="stat-label">Hours of Daytona</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Teams</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Classes Section -->
+      <section class="section">
+        <h2 class="section-title">Racing Classes</h2>
+        <p class="section-intro">
+          IMSA features four distinct classes, each with unique regulations and
+          competition, all racing together on track
+        </p>
+
+        <div class="grid-2">
+          <div class="class-card">
+            <div
+              class="class-header"
+              style="
+                background: linear-gradient(135deg, #c8102e 0%, #8b0000 100%);
+              "
+            >
+              <h3>GTP</h3>
+              <p>Grand Touring Prototype</p>
+            </div>
+            <div class="class-content">
+              <p>
+                The top class featuring hybrid prototypes from Acura, BMW,
+                Cadillac, and Porsche. These are the fastest cars in IMSA.
+              </p>
+              <ul>
+                <li>Hybrid power units</li>
+                <li>Over 670 horsepower</li>
+                <li>Top speeds exceeding 200 mph</li>
+                <li>Manufacturer works teams</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="class-card">
+            <div
+              class="class-header"
+              style="
+                background: linear-gradient(135deg, #003b7a 0%, #001f3f 100%);
+              "
+            >
+              <h3>LMP2</h3>
+              <p>Le Mans Prototype 2</p>
+            </div>
+            <div class="class-content">
+              <p>
+                Spec chassis prototypes using Gibson V8 engines. A highly
+                competitive class for privateer teams.
+              </p>
+              <ul>
+                <li>Spec Gibson GK428 engine</li>
+                <li>600 horsepower</li>
+                <li>Pro-Am driver lineups</li>
+                <li>Championship pathway</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="class-card">
+            <div
+              class="class-header"
+              style="
+                background: linear-gradient(135deg, #f77f00 0%, #d66900 100%);
+              "
+            >
+              <h3>GTD PRO</h3>
+              <p>GT Daytona Professional</p>
+            </div>
+            <div class="class-content">
+              <p>
+                Professional GT3 racing featuring factory-backed teams in
+                Ferrari, Porsche, BMW, and more.
+              </p>
+              <ul>
+                <li>GT3 regulations</li>
+                <li>Professional drivers only</li>
+                <li>Manufacturer support</li>
+                <li>Balance of Performance</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="class-card">
+            <div
+              class="class-header"
+              style="
+                background: linear-gradient(135deg, #2a9d8f 0%, #1a7a6f 100%);
+              "
+            >
+              <h3>GTD</h3>
+              <p>GT Daytona</p>
+            </div>
+            <div class="class-content">
+              <p>
+                Pro-Am GT3 class with the largest and most competitive fields in
+                IMSA racing.
+              </p>
+              <ul>
+                <li>GT3 regulations</li>
+                <li>Amateur drivers required</li>
+                <li>20+ car grids</li>
+                <li>Customer racing focus</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule Section -->
+      <section class="section">
+        <h2 class="section-title">2026 Season Schedule</h2>
+        <p class="section-intro">
+          11 rounds across North America's most challenging and iconic racing
+          circuits
+        </p>
+
+        <div class="schedule-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Circuit</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jan 25-26</td>
+                <td><strong>Rolex 24 at Daytona</strong></td>
+                <td>Daytona International Speedway</td>
+                <td><span class="track-tag">24 Hours</span></td>
+              </tr>
+              <tr>
+                <td>Mar 13</td>
+                <td>Grand Prix of Sebring</td>
+                <td>Sebring International Raceway</td>
+                <td><span class="track-tag">Sprint</span></td>
+              </tr>
+              <tr>
+                <td>Mar 20</td>
+                <td><strong>12 Hours of Sebring</strong></td>
+                <td>Sebring International Raceway</td>
+                <td><span class="track-tag">12 Hours</span></td>
+              </tr>
+              <tr>
+                <td>Apr 26-27</td>
+                <td>Grand Prix of Long Beach</td>
+                <td>Streets of Long Beach</td>
+                <td><span class="track-tag">Street Circuit</span></td>
+              </tr>
+              <tr>
+                <td>May 17</td>
+                <td>Grand Prix at Laguna Seca</td>
+                <td>WeatherTech Raceway Laguna Seca</td>
+                <td><span class="track-tag">Sprint</span></td>
+              </tr>
+              <tr>
+                <td>Jun 14</td>
+                <td>Detroit Grand Prix</td>
+                <td>Belle Isle Park</td>
+                <td><span class="track-tag">Street Circuit</span></td>
+              </tr>
+              <tr>
+                <td>Jul 5-6</td>
+                <td>Sahlen's Six Hours of The Glen</td>
+                <td>Watkins Glen International</td>
+                <td><span class="track-tag">6 Hours</span></td>
+              </tr>
+              <tr>
+                <td>Aug 9</td>
+                <td>Road America</td>
+                <td>Road America</td>
+                <td><span class="track-tag">Sprint</span></td>
+              </tr>
+              <tr>
+                <td>Sep 6</td>
+                <td>Indianapolis</td>
+                <td>Indianapolis Motor Speedway</td>
+                <td><span class="track-tag">Sprint</span></td>
+              </tr>
+              <tr>
+                <td>Oct 4</td>
+                <td>VIR</td>
+                <td>Virginia International Raceway</td>
+                <td><span class="track-tag">Sprint</span></td>
+              </tr>
+              <tr>
+                <td>Nov 15</td>
+                <td><strong>Petit Le Mans</strong></td>
+                <td>Road Atlanta</td>
+                <td><span class="track-tag">10 Hours</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section class="section">
+        <h2 class="section-title">Explore More</h2>
+        <div class="grid-3">
+          <div class="card">
+            <span class="card-icon">👥</span>
+            <h3>Teams & Drivers</h3>
+            <p>
+              Discover all teams and drivers competing in the 2026 IMSA season,
+              including manufacturer lineups and entry lists.
+            </p>
+            <a href="/imsa/teams" class="cta-button">View Teams</a>
+          </div>
+
+          <div class="card">
+            <span class="card-icon">📊</span>
+            <h3>Standings</h3>
+            <p>
+              Follow the championship battles across all four classes with live
+              points, race results, and season statistics.
+            </p>
+            <a href="/imsa/standings" class="cta-button">View Standings</a>
+          </div>
+
+          <div class="card">
+            <span class="card-icon">📰</span>
+            <h3>Latest News</h3>
+            <p>
+              Stay updated with breaking news, race reports, technical analysis,
+              and exclusive interviews from the IMSA paddock.
+            </p>
+            <a href="/imsa/news" class="cta-button">Read News</a>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <a href="/imsa/live-timing" class="cta-button">🔴 Live Timing</a>
+          <a href="/imsa/results" class="cta-button">🏆 Race Results</a>
+          <a href="/imsa/tracks" class="cta-button">🛣️ Track Guides</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/imsa">IMSA</a>
+        <a href="/wec">WEC</a>
+        <a href="/gtwc">GTWC</a>
+        <a href="/calendar">Calendar</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p>&copy; 2025 Endurance Racing Hub. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

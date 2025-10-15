@@ -1,9 +1,0 @@
-# Google AdSense - Thailand Motorsports Tourism
-google.com, pub-2456627863532019, DIRECT, f08c47fec0942fa0
-
-# Google Ad Manager (required for AdSense)
-google.com, pub-2456627863532019, DIRECT, f08c47fec0942fa0
-
-# This file helps prevent unauthorized inventory sales and ad fraud
-# Updated for Google AdSense Auto Ads implementation
-# Site: thailandmotorsports.com
