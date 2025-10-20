@@ -100,6 +100,37 @@
         color: var(--primary);
       }
 
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 5px;
+        z-index: 1001;
+      }
+
+      .mobile-toggle span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+
+      .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+      }
+
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+      }
+
       /* Hero Section */
       .hero {
         background: linear-gradient(
@@ -459,7 +490,25 @@
       /* Responsive */
       @media (max-width: 768px) {
         .nav-links {
-          display: none;
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          flex-direction: column;
+          background: var(--dark);
+          width: 100%;
+          padding: 2rem;
+          transition: left 0.3s ease;
+          align-items: flex-start;
+          max-height: calc(100vh - 70px);
+          overflow-y: auto;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .mobile-toggle {
+          display: flex;
         }
 
         .hero {
@@ -486,7 +535,7 @@
     <nav>
       <div class="nav-container">
         <a href="/" class="logo">ENDURANCE</a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
           <li><a href="/">Home</a></li>
           <li><a href="/imsa">IMSA</a></li>
           <li><a href="/wec">WEC</a></li>
@@ -494,6 +543,16 @@
           <li><a href="/calendar">Calendar</a></li>
           <li><a href="/blog">Blog</a></li>
         </ul>
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
 
@@ -814,5 +873,8 @@
       </div>
       <p>&copy; 2025 Endurance Racing Hub. All rights reserved.</p>
     </footer>
+
+    <!-- External JavaScript -->
+    <script src="/js/common.js"></script>
   </body>
 </html>

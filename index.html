@@ -51,6 +51,36 @@
       Endurance Racing Hub | WEC, IMSA, GTWC Coverage & Racing Tools
     </title>
 
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#e63946" />
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/photos/hero.png" as="image" />
+    <link rel="preload" href="/css/styles.css" as="style" />
+    <link rel="preload" href="/js/common.js" as="script" />
+
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
       {
@@ -983,10 +1013,16 @@
               >Regional</a
             >
             <div class="dropdown-content" role="menu">
-              <a href="#asia" role="menuitem">Asia</a>
-              <a href="#africa" role="menuitem">Africa</a>
-              <a href="#europe" role="menuitem">Europe</a>
-              <a href="#americas" role="menuitem">Americas</a>
+              <a href="/asian-le-mans" role="menuitem"
+                >🌏 Asian Le Mans Series</a
+              >
+              <a href="/european-le-mans" role="menuitem"
+                >🇪🇺 European Le Mans Series</a
+              >
+              <a href="/imsa-pilot-challenge" role="menuitem"
+                >🇺🇸 IMSA Pilot Challenge</a
+              >
+              <a href="/igtc" role="menuitem">🌍 Intercontinental GT</a>
             </div>
           </li>
           <li><a href="#tools" aria-label="Racing Tools">Tools</a></li>
@@ -1457,6 +1493,27 @@
       <p>&copy; 2025 Endurance Racing Hub. All rights reserved.</p>
     </footer>
 
+    <!-- External JavaScript -->
+    <script src="/js/common.js" defer></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+      // Additional homepage-specific functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Scroll indicator click handler
+        const scrollIndicator = document.querySelector(".scroll-indicator");
+        if (scrollIndicator) {
+          scrollIndicator.addEventListener("click", (e) => {
+            e.preventDefault();
+            document.querySelector("#championships").scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        }
+      });
+    </script>
+
+    <!-- Legacy inline script (can be removed if common.js is working) -->
     <script>
       // Mobile menu toggle
       const mobileToggle = document.getElementById("mobileToggle");
