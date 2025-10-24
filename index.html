@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Your ultimate hub for endurance racing coverage. Complete WEC, IMSA, GTWC news, race calendars, lap time tools, track guides, and expert analysis. Never miss a 24 Hours of Le Mans or Daytona update."
+      content="Complete endurance racing championship coverage from top-tier WEC & IMSA to feeder series ELMS & ALMS, GT racing (GTWC/IGTC), 24H Series, and Le Mans Classic. Follow the entire multi-class endurance racing ladder."
     />
     <meta
       name="keywords"
-      content="endurance racing, WEC, IMSA, GTWC, Le Mans 24 Hours, Daytona 24, Sebring 12 Hours, motorsport news, racing calendar, lap time calculator, GT3 racing, LMH, GTP, Asian Le Mans, ELMS, track guide, racing tools, sim racing"
+      content="endurance racing, WEC, IMSA, ELMS, ALMS, Le Mans 24 Hours, Daytona 24, LMH, Hypercar, GTP, LMP2, GTWC, IGTC, 24H Series, Le Mans Classic, Le Mans Cup, endurance racing ladder, multi-class racing, prototype racing"
     />
     <meta name="author" content="Endurance Racing Hub" />
     <meta name="robots" content="index, follow" />
@@ -20,11 +20,11 @@
     <meta property="og:url" content="https://yourdomain.com/" />
     <meta
       property="og:title"
-      content="Endurance Racing Hub | WEC, IMSA, GTWC Coverage & Tools"
+      content="Endurance Racing Hub | Complete Championship Ladder Coverage"
     />
     <meta
       property="og:description"
-      content="Complete coverage of global endurance racing championships. Live updates, race calendars, tools, and expert analysis for WEC, IMSA, GTWC and more."
+      content="Follow the complete endurance racing pyramid - from WEC & IMSA top tier to ELMS/ALMS feeders, GT championships, 24H Series, and Le Mans Classic."
     />
     <meta
       property="og:image"
@@ -36,11 +36,11 @@
     <meta name="twitter:url" content="https://yourdomain.com/" />
     <meta
       name="twitter:title"
-      content="Endurance Racing Hub | WEC, IMSA, GTWC Coverage"
+      content="Endurance Racing Hub | The Complete Racing Ladder"
     />
     <meta
       name="twitter:description"
-      content="Your ultimate source for endurance racing news, calendars, and tools."
+      content="Top tier WEC & IMSA • Feeder series ELMS & ALMS • GT racing • 24H Series • Le Mans Classic"
     />
     <meta
       name="twitter:image"
@@ -48,7 +48,8 @@
     />
 
     <title>
-      Endurance Racing Hub | WEC, IMSA, GTWC Coverage & Racing Tools
+      Endurance Racing Hub | Complete Championship Ladder - WEC to Le Mans
+      Classic
     </title>
 
     <!-- Preconnect for Performance -->
@@ -219,23 +220,31 @@
         top: 100%;
         left: 0;
         background: rgba(10, 14, 39, 0.98);
-        min-width: 200px;
-        border-radius: 8px;
-        padding: 1rem 0;
+        min-width: 220px;
+        border-radius: 12px;
+        padding: 0.8rem 0;
         margin-top: 0.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .dropdown:hover .dropdown-content {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .dropdown-content a {
         display: block;
-        padding: 0.7rem 1.5rem;
+        padding: 0.8rem 1.5rem;
         color: white;
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
       }
 
       .dropdown-content a::after {
@@ -243,8 +252,13 @@
       }
 
       .dropdown-content a:hover {
-        background: rgba(230, 57, 70, 0.1);
+        background: linear-gradient(
+          90deg,
+          rgba(230, 57, 70, 0.15),
+          rgba(247, 127, 0, 0.1)
+        );
         padding-left: 2rem;
+        color: var(--accent);
       }
 
       .mobile-toggle {
@@ -876,6 +890,82 @@
         gap: 1rem;
       }
 
+      /* Scroll Animations */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        z-index: 9999;
+        transition: width 0.1s ease-out;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .fade-in-right {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .stagger-delay-1 {
+        transition-delay: 0.1s;
+      }
+
+      .stagger-delay-2 {
+        transition-delay: 0.2s;
+      }
+
+      .stagger-delay-3 {
+        transition-delay: 0.3s;
+      }
+
+      .stagger-delay-4 {
+        transition-delay: 0.4s;
+      }
+
       /* Footer */
       footer {
         background: var(--dark);
@@ -993,41 +1083,76 @@
     </style>
   </head>
   <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Navigation -->
     <nav id="navbar" role="navigation" aria-label="Main navigation">
       <div class="nav-container">
         <a href="/" class="logo" aria-label="Endurance Racing Hub Home"
-          >ENDURANCE</a
+          >🏁 IO MOTORSPORT</a
         >
         <ul class="nav-links" id="navLinks">
-          <li>
-            <a href="#championships" aria-label="View Championships"
-              >Championships</a
-            >
-          </li>
+          <li><a href="/" aria-label="Home">Home</a></li>
           <li class="dropdown">
             <a
-              href="#regional"
-              aria-label="Regional Series"
+              href="#championships"
+              aria-label="Championships"
               aria-haspopup="true"
-              >Regional</a
+              >Championships ▾</a
             >
             <div class="dropdown-content" role="menu">
-              <a href="/asian-le-mans" role="menuitem"
-                >🌏 Asian Le Mans Series</a
+              <div
+                style="
+                  padding: 0.5rem 1.5rem;
+                  opacity: 0.5;
+                  font-size: 0.8rem;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  pointer-events: none;
+                "
               >
-              <a href="/european-le-mans" role="menuitem"
-                >🇪🇺 European Le Mans Series</a
+                Top Tier
+              </div>
+              <a href="/wec" role="menuitem">WEC</a>
+              <a href="/imsa" role="menuitem">IMSA</a>
+              <div
+                style="
+                  padding: 0.5rem 1.5rem;
+                  opacity: 0.5;
+                  font-size: 0.8rem;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  margin-top: 0.5rem;
+                  pointer-events: none;
+                "
               >
-              <a href="/imsa-pilot-challenge" role="menuitem"
-                >🇺🇸 IMSA Pilot Challenge</a
+                Feeders
+              </div>
+              <a href="/european-le-mans" role="menuitem">ELMS</a>
+              <a href="/asian-le-mans" role="menuitem">ALMS</a>
+              <a href="/le-mans-cup" role="menuitem">Le Mans Cup</a>
+              <div
+                style="
+                  padding: 0.5rem 1.5rem;
+                  opacity: 0.5;
+                  font-size: 0.8rem;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  margin-top: 0.5rem;
+                  pointer-events: none;
+                "
               >
-              <a href="/igtc" role="menuitem">🌍 Intercontinental GT</a>
+                GT & Specials
+              </div>
+              <a href="/gtwc" role="menuitem">GT World Challenge</a>
+              <a href="/igtc" role="menuitem">Intercontinental GT</a>
+              <a href="/24h-series" role="menuitem">24H Series</a>
+              <a href="/le-mans-classic" role="menuitem">Le Mans Classic</a>
             </div>
           </li>
-          <li><a href="#tools" aria-label="Racing Tools">Tools</a></li>
-          <li><a href="#calendar" aria-label="Race Calendar">Calendar</a></li>
-          <li><a href="#blog" aria-label="Racing Blog">Blog</a></li>
+          <li><a href="/calendar" aria-label="Race Calendar">Calendar</a></li>
+          <li><a href="/blog" aria-label="Racing Blog">Blog</a></li>
         </ul>
         <button
           class="mobile-toggle"
@@ -1046,10 +1171,12 @@
     <header class="hero" role="banner">
       <div class="hero-background"></div>
       <div class="hero-content">
-        <h1>The Ultimate <span>Endurance Racing</span> Hub</h1>
+        <h1>The Complete <span>Endurance Racing</span> Ladder</h1>
         <p>
-          Complete coverage of WEC, IMSA, GTWC, regional championships, race
-          calendars, expert analysis, and professional racing tools
+          Track your journey from feeder series to Le Mans. Complete coverage of
+          WEC, IMSA, ELMS, ALMS, GT championships, 24-hour marathons, and
+          historic classics - all the multi-class endurance racing you need in
+          one place.
         </p>
         <a
           href="#championships"
@@ -1092,29 +1219,80 @@
       </div>
     </nav>
 
+    <!-- Next Races Countdown Widget -->
+    <div style="max-width: 1400px; margin: 2rem auto; padding: 0 2rem">
+      <div id="nextRacesCountdown"></div>
+    </div>
+
     <!-- Main Content -->
     <main class="content-wrapper">
       <!-- Major Championships -->
       <section
-        class="section"
+        class="section fade-in"
         id="championships"
         aria-labelledby="championships-title"
       >
         <h2 class="section-title" id="championships-title">
-          Major Championships
+          Championship Ladder
         </h2>
         <p class="section-intro">
-          Explore the world's premier endurance racing championships. From the
-          legendary 24 Hours of Le Mans to the iconic Daytona 24, discover
-          comprehensive coverage, race schedules, team information, and expert
-          analysis for each series.
+          From feeder series to Le Mans glory. Explore the complete hierarchy of
+          professional endurance racing across four tiers - top-tier prototypes,
+          development series, GT championships, and legendary endurance events.
+        </p>
+
+        <!-- Top Tier -->
+        <h3
+          style="
+            font-size: 2rem;
+            text-align: center;
+            color: var(--primary);
+            margin: 3rem 0 1rem;
+            font-weight: 800;
+          "
+        >
+          🏆 Top Tier
+        </h3>
+        <p
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #666;
+            font-size: 1.05rem;
+          "
+        >
+          The pinnacle of endurance racing. Hypercars and GTP prototypes battle
+          at legendary circuits worldwide, including the 24 Hours of Le Mans and
+          Daytona 24.
         </p>
         <div class="championship-grid">
-          <article class="championship-card">
+          <article class="championship-card fade-in scale-in">
+            <div class="card-image">WEC</div>
+            <div class="card-content">
+              <h3>World Endurance Championship</h3>
+              <p>
+                The pinnacle of endurance racing. Hypercars, LMP2, and LMGT3
+                battle across 8 rounds including the legendary 24 Hours of Le
+                Mans. The ultimate test of speed, strategy, and reliability.
+              </p>
+              <div>
+                <span class="card-tag">🌍 Global</span>
+                <span class="card-tag">Hypercar • LMP2 • LMGT3</span>
+              </div>
+              <div class="card-links">
+                <a href="/wec" class="card-link">Championship Info</a>
+                <a href="/wec#schedule" class="card-link">2025 Schedule</a>
+                <a href="/wec#le-mans" class="card-link">Le Mans 24h</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="championship-card fade-in scale-in stagger-delay-1">
             <div
               class="card-image"
               style="
-                background: linear-gradient(135deg, #1d3557 0%, #f77f00 100%);
+                background: linear-gradient(135deg, #003b7a 0%, #c8102e 100%);
               "
             >
               IMSA
@@ -1122,48 +1300,165 @@
             <div class="card-content">
               <h3>IMSA SportsCar Championship</h3>
               <p>
-                North America's premier endurance racing series with GTP, LMP2,
-                GTD PRO, and GTD classes battling across iconic circuits
-                including Daytona, Sebring, and Road Atlanta.
+                North America's premier series. GTP, LMP2, GTD PRO, and GTD
+                compete at Daytona 24, Sebring 12, and 9 more iconic tracks.
+                Action-packed prototype and GT racing.
               </p>
               <div>
-                <span class="card-tag">North America</span>
+                <span class="card-tag">🇺🇸 North America</span>
                 <span class="card-tag">GTP • LMP2 • GTD</span>
               </div>
               <div class="card-links">
-                <a href="/imsa/schedule" class="card-link">Race Calendar</a>
-                <a href="/imsa/teams" class="card-link">Teams & Drivers</a>
-                <a href="/imsa/news" class="card-link">Latest News</a>
+                <a href="/imsa" class="card-link">Championship Info</a>
+                <a href="/imsa#schedule" class="card-link">2026 Schedule</a>
+                <a href="/imsa#daytona" class="card-link">Daytona 24h</a>
               </div>
             </div>
           </article>
+        </div>
 
-          <article class="championship-card">
-            <div class="card-image">WEC</div>
-            <div class="card-content">
-              <h3>World Endurance Championship</h3>
-              <p>
-                The pinnacle of endurance racing featuring legendary races like
-                the 24 Hours of Le Mans, showcasing Hypercars and cutting-edge
-                technology across five continents.
-              </p>
-              <div>
-                <span class="card-tag">Global Series</span>
-                <span class="card-tag">Hypercar • LMP2</span>
-              </div>
-              <div class="card-links">
-                <a href="/wec/schedule" class="card-link">Race Calendar</a>
-                <a href="/wec/le-mans" class="card-link">Le Mans Guide</a>
-                <a href="/wec/teams" class="card-link">Teams & Drivers</a>
-              </div>
-            </div>
-          </article>
+        <!-- Feeder Series Section -->
+        <div class="tier-section" style="margin-top: 4rem">
+          <h3
+            class="tier-header"
+            style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem"
+          >
+            📈 Feeder Series
+          </h3>
+          <p
+            class="tier-description"
+            style="max-width: 800px; margin: 0 auto 2.5rem; font-size: 1.05rem"
+          >
+            The road to Le Mans. Regional endurance championships where drivers
+            and teams earn qualification spots for the 24 Hours of Le Mans and
+            prepare for top-tier competition.
+          </p>
+        </div>
 
-          <article class="championship-card">
+        <div class="championship-grid">
+          <article class="championship-card scale-in">
             <div
               class="card-image"
               style="
-                background: linear-gradient(135deg, #e63946 0%, #1d3557 100%);
+                background: linear-gradient(135deg, #e30613 0%, #000000 100%);
+              "
+            >
+              ELMS
+            </div>
+            <div class="card-content">
+              <h3>European Le Mans Series</h3>
+              <p>
+                Europe's premier endurance series. LMP2, LMP3, and LMGT3 race
+                across 6 legendary European circuits. Direct pathway to Le Mans
+                24 Hours entry.
+              </p>
+              <div>
+                <span class="card-tag">🇪🇺 Europe</span>
+                <span class="card-tag">LMP2 • LMP3 • LMGT3</span>
+              </div>
+              <div class="card-links">
+                <a href="/european-le-mans" class="card-link"
+                  >Championship Info</a
+                >
+                <a href="/european-le-mans#schedule" class="card-link"
+                  >2025 Schedule</a
+                >
+                <a href="/european-le-mans#le-mans-road" class="card-link"
+                  >Road to Le Mans</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="championship-card scale-in stagger-delay-1">
+            <div
+              class="card-image"
+              style="
+                background: linear-gradient(135deg, #0066cc 0%, #ffb81c 100%);
+              "
+            >
+              ALMS
+            </div>
+            <div class="card-content">
+              <h3>Asian Le Mans Series</h3>
+              <p>
+                Asia's leading endurance championship. LMP2, LMP3, and GT cars
+                compete in 4-hour races across UAE, Malaysia, and Thailand. Le
+                Mans qualification opportunity.
+              </p>
+              <div>
+                <span class="card-tag">🌏 Asia</span>
+                <span class="card-tag">LMP2 • LMP3 • GT</span>
+              </div>
+              <div class="card-links">
+                <a href="/asian-le-mans" class="card-link">Championship Info</a>
+                <a href="/asian-le-mans#schedule" class="card-link"
+                  >2025-26 Schedule</a
+                >
+                <a href="/asian-le-mans#le-mans-road" class="card-link"
+                  >Road to Le Mans</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="championship-card scale-in stagger-delay-2">
+            <div
+              class="card-image"
+              style="
+                background: linear-gradient(135deg, #00509e 0%, #003d7a 100%);
+              "
+            >
+              LMC
+            </div>
+            <div class="card-content">
+              <h3>Michelin Le Mans Cup</h3>
+              <p>
+                GT3 and LMP3 championship racing on Le Mans weekends. The
+                essential stepping stone to European endurance racing and ELMS
+                competition.
+              </p>
+              <div>
+                <span class="card-tag">🇪🇺 Europe</span>
+                <span class="card-tag">GT3 • LMP3</span>
+              </div>
+              <div class="card-links">
+                <a href="/le-mans-cup" class="card-link">Championship Info</a>
+                <a href="/le-mans-cup#schedule" class="card-link"
+                  >2025 Schedule</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- GT Championships Section -->
+        <div class="tier-section" style="margin-top: 4rem">
+          <h3
+            class="tier-header"
+            style="
+              font-size: 2rem;
+              color: var(--secondary);
+              margin-bottom: 1rem;
+            "
+          >
+            🏁 GT Championships
+          </h3>
+          <p
+            class="tier-description"
+            style="max-width: 800px; margin: 0 auto 2.5rem; font-size: 1.05rem"
+          >
+            World-class GT3 racing. Production-based supercars compete in sprint
+            and endurance formats at the planet's most legendary circuits.
+          </p>
+        </div>
+
+        <div class="championship-grid">
+          <article class="championship-card scale-in">
+            <div
+              class="card-image"
+              style="
+                background: linear-gradient(135deg, #ff6b00 0%, #d84315 100%);
               "
             >
               GTWC
@@ -1171,120 +1466,177 @@
             <div class="card-content">
               <h3>GT World Challenge</h3>
               <p>
-                The premier global GT3 championship with series across Europe,
-                Asia, and America featuring the world's top manufacturers
-                including Ferrari, Porsche, Mercedes-AMG, and more.
+                Global GT3 championship with regional series across Europe,
+                Asia, and America. Sprint races and endurance classics including
+                Spa 24 Hours.
               </p>
               <div>
-                <span class="card-tag">GT Racing</span>
-                <span class="card-tag">GT3 • GT4</span>
+                <span class="card-tag">🌍 Worldwide</span>
+                <span class="card-tag">GT3</span>
               </div>
               <div class="card-links">
-                <a href="/gtwc/europe" class="card-link">GTWC Europe</a>
-                <a href="/gtwc/asia" class="card-link">GTWC Asia</a>
-                <a href="/gtwc/america" class="card-link">GTWC America</a>
+                <a href="/gtwc" class="card-link">Championship Info</a>
+                <a href="/gtwc#regions" class="card-link">Regional Series</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="championship-card scale-in stagger-delay-1">
+            <div
+              class="card-image"
+              style="
+                background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+              "
+            >
+              IGTC
+            </div>
+            <div class="card-content">
+              <h3>Intercontinental GT Challenge</h3>
+              <p>
+                Five of the world's greatest GT3 endurance races: Bathurst 12
+                Hour, Spa 24 Hours, Suzuka 10 Hours, Indianapolis 8 Hour, and
+                Kyalami 9 Hour.
+              </p>
+              <div>
+                <span class="card-tag">🌏 Global</span>
+                <span class="card-tag">GT3 Endurance</span>
+              </div>
+              <div class="card-links">
+                <a href="/igtc" class="card-link">Championship Info</a>
+                <a href="/igtc#events" class="card-link">2025 Events</a>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- Quick Links -->
-        <div class="quick-links">
-          <h3>🔍 Quick Access</h3>
-          <p style="text-align: center; opacity: 0.9; margin-bottom: 1rem">
-            Jump directly to what you're looking for
+        <!-- Endurance Specials Section -->
+        <div class="tier-section" style="margin-top: 4rem">
+          <h3
+            class="tier-header"
+            style="font-size: 2rem; color: #7c3aed; margin-bottom: 1rem"
+          >
+            🌍 Endurance Specials
+          </h3>
+          <p
+            class="tier-description"
+            style="max-width: 800px; margin: 0 auto 2.5rem; font-size: 1.05rem"
+          >
+            Legendary marathons and historic celebrations. 24-hour battles and
+            classic car showcases that define endurance racing's spirit and
+            heritage.
           </p>
-          <div class="quick-links-grid">
-            <a href="/live" class="quick-link-item">
-              <span>🔴</span>
-              <strong>Live Timing</strong>
-              <small>Real-time race data</small>
-            </a>
-            <a href="/results" class="quick-link-item">
-              <span>🏆</span>
-              <strong>Results</strong>
-              <small>Race outcomes</small>
-            </a>
-            <a href="/standings" class="quick-link-item">
-              <span>📊</span>
-              <strong>Standings</strong>
-              <small>Championship tables</small>
-            </a>
-            <a href="/drivers" class="quick-link-item">
-              <span>👤</span>
-              <strong>Drivers</strong>
-              <small>Profiles & stats</small>
-            </a>
-            <a href="/teams" class="quick-link-item">
-              <span>🏁</span>
-              <strong>Teams</strong>
-              <small>Team information</small>
-            </a>
-            <a href="/circuits" class="quick-link-item">
-              <span>🛣️</span>
-              <strong>Circuits</strong>
-              <small>Track guides</small>
-            </a>
-          </div>
         </div>
-      </section>
 
-      <!-- Tools Section -->
-      <section class="section" id="tools" aria-labelledby="tools-title">
-        <h2 class="section-title" id="tools-title">Racing Tools & Resources</h2>
-        <p class="section-intro">
-          Professional-grade tools and resources for endurance racing
-          enthusiasts. Calculate lap times, analyze strategies, explore track
-          data, and enhance your racing knowledge with our comprehensive
-          toolkit.
-        </p>
-        <div class="tools-grid">
-          <div class="tool-card">
-            <div class="tool-icon">📊</div>
-            <h3>Lap Time Calculator</h3>
-            <p>
-              Calculate average speeds, fuel consumption, pit stop windows, and
-              race strategy timing for endurance races. Perfect for team
-              strategists and sim racers.
-            </p>
-            <a href="/tools/lap-calculator" class="tool-button">Launch Tool</a>
-          </div>
+        <div class="championship-grid">
+          <article class="championship-card scale-in">
+            <div
+              class="card-image"
+              style="
+                background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+              "
+            >
+              24H
+            </div>
+            <div class="card-content">
+              <h3>24H Series</h3>
+              <p>
+                Round-the-clock endurance racing at iconic venues: Dubai 24H,
+                Spa 24H, and Nürburgring 24H. GT3, GT4, and TCE classes battle
+                day and night.
+              </p>
+              <div>
+                <span class="card-tag">🌍 Worldwide</span>
+                <span class="card-tag">GT3 • GT4 • TCE</span>
+              </div>
+              <div class="card-links">
+                <a href="/24h-series" class="card-link">Championship Info</a>
+                <a href="/24h-series#events" class="card-link">Major Events</a>
+              </div>
+            </div>
+          </article>
 
-          <div class="tool-card">
-            <div class="tool-icon">🏁</div>
-            <h3>Track Database</h3>
-            <p>
-              Comprehensive information on 100+ circuits worldwide including
-              track layouts, lap records, turn-by-turn guides, and historical
-              statistics.
-            </p>
-            <a href="/tools/tracks" class="tool-button">Explore Tracks</a>
-          </div>
+          <article class="championship-card scale-in stagger-delay-1">
+            <div
+              class="card-image"
+              style="
+                background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+              "
+            >
+              CLASSIC
+            </div>
+            <div class="card-content">
+              <h3>Le Mans Classic</h3>
+              <p>
+                Biennial celebration of Le Mans history. Historic race cars from
+                1923-2000 compete in 6 grids on the full Circuit de la Sarthe.
+                Next event: July 2026.
+              </p>
+              <div>
+                <span class="card-tag">🇫🇷 Le Mans</span>
+                <span class="card-tag">Historic Racing</span>
+              </div>
+              <div class="card-links">
+                <a href="/le-mans-classic" class="card-link">Event Info</a>
+                <a href="/le-mans-classic#grids" class="card-link"
+                  >Racing Grids</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
 
-          <div class="tool-card">
-            <div class="tool-icon">⚙️</div>
-            <h3>Setup Analyzer</h3>
-            <p>
-              Compare car setups, analyze telemetry data, and optimize vehicle
-              performance for different tracks and conditions.
-            </p>
-            <a href="/tools/setup-analyzer" class="tool-button">Analyze Data</a>
-          </div>
-
-          <div class="tool-card">
-            <div class="tool-icon">🎮</div>
-            <h3>Sim Racing Guide</h3>
-            <p>
-              Complete guide to endurance sim racing - hardware recommendations,
-              setup tutorials, driving techniques, and top league information.
-            </p>
-            <a href="/guides/sim-racing" class="tool-button">Get Started</a>
+        <!-- Featured Events CTA -->
+        <div class="quick-links fade-in" style="margin-top: 4rem">
+          <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem">
+            Don't Miss These Races
+          </h3>
+          <div class="quick-links-grid" style="gap: 1.5rem">
+            <a
+              href="/wec#le-mans"
+              class="quick-link-item scale-in"
+              style="
+                background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+                color: white;
+              "
+            >
+              <span style="font-size: 2rem">🏁</span>
+              <strong>24 Hours of Le Mans</strong>
+              <small style="opacity: 0.95">June 14-15, 2025</small>
+            </a>
+            <a
+              href="/imsa#daytona"
+              class="quick-link-item scale-in stagger-delay-1"
+              style="
+                background: linear-gradient(135deg, #003b7a 0%, #c8102e 100%);
+                color: white;
+              "
+            >
+              <span style="font-size: 2rem">🏆</span>
+              <strong>24 Hours of Daytona</strong>
+              <small style="opacity: 0.95">January 25-26, 2026</small>
+            </a>
+            <a
+              href="/calendar"
+              class="quick-link-item scale-in stagger-delay-2"
+              style="
+                background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+                color: white;
+              "
+            >
+              <span style="font-size: 2rem">📅</span>
+              <strong>Full Race Calendar</strong>
+              <small style="opacity: 0.95">All championships, all races</small>
+            </a>
           </div>
         </div>
       </section>
 
       <!-- Calendar Section -->
-      <section class="section" id="calendar" aria-labelledby="calendar-title">
+      <section
+        class="section fade-in"
+        id="calendar"
+        aria-labelledby="calendar-title"
+      >
         <h2
           class="section-title"
           id="calendar-title"
@@ -1305,37 +1657,37 @@
           </div>
 
           <div class="calendar-grid">
-            <div class="event-card">
+            <div class="event-card scale-in">
               <div class="event-date">November 2-3, 2025</div>
               <h4>Bahrain 8 Hours</h4>
               <p class="event-series">WEC • Season Finale</p>
             </div>
 
-            <div class="event-card">
+            <div class="event-card scale-in stagger-delay-1">
               <div class="event-date">November 15, 2025</div>
               <h4>Petit Le Mans</h4>
               <p class="event-series">IMSA • Road Atlanta</p>
             </div>
 
-            <div class="event-card">
+            <div class="event-card scale-in stagger-delay-2">
               <div class="event-date">December 6-8, 2025</div>
               <h4>Macau GT Cup</h4>
               <p class="event-series">GTWC Asia • Guia Circuit</p>
             </div>
 
-            <div class="event-card">
+            <div class="event-card scale-in stagger-delay-3">
               <div class="event-date">January 25-26, 2026</div>
               <h4>24 Hours of Daytona</h4>
               <p class="event-series">IMSA • Season Opener</p>
             </div>
 
-            <div class="event-card">
+            <div class="event-card scale-in stagger-delay-4">
               <div class="event-date">February 14-16, 2026</div>
               <h4>4 Hours of Dubai</h4>
               <p class="event-series">Asian Le Mans Series</p>
             </div>
 
-            <div class="event-card">
+            <div class="event-card scale-in stagger-delay-1">
               <div class="event-date">March 20-22, 2026</div>
               <h4>12 Hours of Sebring</h4>
               <p class="event-series">IMSA • Historic Track</p>
@@ -1350,7 +1702,7 @@
 
       <!-- Blog Section -->
       <section
-        class="section blog-section"
+        class="section blog-section fade-in"
         id="blog"
         aria-labelledby="blog-title"
       >
@@ -1361,7 +1713,7 @@
           and industry insiders.
         </p>
         <div class="blog-grid">
-          <div class="blog-card">
+          <div class="blog-card scale-in">
             <div class="blog-image">📝</div>
             <div class="blog-content">
               <div class="blog-meta">
@@ -1381,7 +1733,7 @@
             </div>
           </div>
 
-          <div class="blog-card">
+          <div class="blog-card scale-in stagger-delay-1">
             <div
               class="blog-image"
               style="
@@ -1407,7 +1759,7 @@
             </div>
           </div>
 
-          <div class="blog-card">
+          <div class="blog-card scale-in stagger-delay-2">
             <div
               class="blog-image"
               style="
@@ -1483,12 +1835,11 @@
         <a href="/">Home</a>
         <a href="/wec">WEC</a>
         <a href="/imsa">IMSA</a>
-        <a href="/gtwc">GTWC</a>
-        <a href="/calendar">Calendar</a>
-        <a href="/tools">Tools</a>
-        <a href="/blog">Blog</a>
+        <a href="/european-le-mans">ELMS</a>
+        <a href="/asian-le-mans">ALMS</a>
+        <a href="#calendar">Calendar</a>
+        <a href="#blog">Blog</a>
         <a href="/about">About</a>
-        <a href="/contact">Contact</a>
       </div>
       <p>&copy; 2025 Endurance Racing Hub. All rights reserved.</p>
     </footer>
@@ -1622,37 +1973,247 @@
         });
       });
 
-      // Simple fade-in on scroll
+      // Scroll Progress Bar
+      const scrollProgress = document.getElementById("scrollProgress");
+      window.addEventListener("scroll", () => {
+        const windowHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (window.pageYOffset / windowHeight) * 100;
+        scrollProgress.style.width = scrolled + "%";
+      });
+
+      // Simple fade-in on scroll with improved observer
       const fadeObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              fadeObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      // Observe all elements with animation classes
+      document
+        .querySelectorAll(".fade-in, .fade-in-left, .fade-in-right, .scale-in")
+        .forEach((element) => {
+          fadeObserver.observe(element);
+        });
+
+      // Stagger animation for championship cards
+      const cardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
             }
           });
         },
         {
           threshold: 0.15,
-          rootMargin: "0px",
+          rootMargin: "0px 0px -100px 0px",
         }
       );
 
-      // Apply fade effect to sections only
-      document.querySelectorAll(".section").forEach((section) => {
-        section.style.opacity = "0";
-        section.style.transition = "opacity 0.6s ease";
-        fadeObserver.observe(section);
-      });
-
-      // Add visible class style
-      const style = document.createElement("style");
-      style.textContent = ".visible { opacity: 1 !important; }";
-      document.head.appendChild(style);
+      // Observe championship cards
+      document
+        .querySelectorAll(".championship-card, .event-card, .blog-card")
+        .forEach((card) => {
+          cardObserver.observe(card);
+        });
 
       // Performance: Preload important images
       const heroImg = new Image();
       heroImg.src = "photos/hero.png";
+    </script>
+
+    <!-- Countdown Widget Script -->
+    <script src="/js/countdown.js"></script>
+    <script>
+      // Events data - same as calendar.html
+      const raceEvents = [
+        // 2025 WEC
+        {
+          date: "2025-02-28",
+          name: "Prologue Test",
+          location: "Qatar",
+          series: "wec",
+          duration: "3 Days",
+          link: "wec.html",
+        },
+        {
+          date: "2025-03-01",
+          name: "1812km of Qatar",
+          location: "Lusail International Circuit",
+          series: "wec",
+          duration: "6 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-04-13",
+          name: "6 Hours of Imola",
+          location: "Autodromo Enzo e Dino Ferrari, Italy",
+          series: "wec",
+          duration: "6 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-05-11",
+          name: "6 Hours of Spa-Francorchamps",
+          location: "Circuit de Spa-Francorchamps, Belgium",
+          series: "wec",
+          duration: "6 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-06-14",
+          name: "24 Hours of Le Mans",
+          location: "Circuit de la Sarthe, France",
+          series: "wec",
+          duration: "24 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-07-13",
+          name: "6 Hours of São Paulo",
+          location: "Autódromo José Carlos Pace, Brazil",
+          series: "wec",
+          duration: "6 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-09-14",
+          name: "Lone Star Le Mans",
+          location: "Circuit of the Americas, USA",
+          series: "wec",
+          duration: "6 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-09-21",
+          name: "6 Hours of Fuji",
+          location: "Fuji Speedway, Japan",
+          series: "wec",
+          duration: "6 Hours",
+          link: "wec.html",
+        },
+        {
+          date: "2025-11-02",
+          name: "8 Hours of Bahrain",
+          location: "Bahrain International Circuit",
+          series: "wec",
+          duration: "8 Hours",
+          link: "wec.html",
+        },
+
+        // 2025 IMSA
+        {
+          date: "2025-01-25",
+          name: "24 Hours of Daytona",
+          location: "Daytona International Speedway, USA",
+          series: "imsa",
+          duration: "24 Hours",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-03-14",
+          name: "12 Hours of Sebring",
+          location: "Sebring International Raceway, USA",
+          series: "imsa",
+          duration: "12 Hours",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-04-12",
+          name: "Grand Prix of Long Beach",
+          location: "Streets of Long Beach, USA",
+          series: "imsa",
+          duration: "100 Min",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-05-03",
+          name: "Acura Sports Car Challenge",
+          location: "Mid-Ohio Sports Car Course, USA",
+          series: "imsa",
+          duration: "2h40m",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-05-17",
+          name: "Detroit Grand Prix",
+          location: "Belle Isle Street Circuit, USA",
+          series: "imsa",
+          duration: "100 Min",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-06-28",
+          name: "Sahlen's Six Hours",
+          location: "Watkins Glen International, USA",
+          series: "imsa",
+          duration: "6 Hours",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-07-06",
+          name: "Canadian Tire Motorsport Park",
+          location: "Mosport, Canada",
+          series: "imsa",
+          duration: "2h40m",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-08-03",
+          name: "Road America",
+          location: "Elkhart Lake, USA",
+          series: "imsa",
+          duration: "2h40m",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-09-07",
+          name: "Indianapolis Motor Speedway",
+          location: "Indianapolis, USA",
+          series: "imsa",
+          duration: "6 Hours",
+          link: "imsa.html",
+        },
+        {
+          date: "2025-10-11",
+          name: "Petit Le Mans",
+          location: "Road Atlanta, USA",
+          series: "imsa",
+          duration: "10 Hours",
+          link: "imsa.html",
+        },
+
+        // Add more races as needed...
+        {
+          date: "2025-11-30",
+          name: "4 Hours of Buriram",
+          location: "Chang International Circuit, Thailand",
+          series: "alms",
+          duration: "4 Hours",
+          link: "asian-le-mans.html",
+        },
+        {
+          date: "2025-12-14",
+          name: "4 Hours of Yas Marina",
+          location: "Yas Marina Circuit, UAE",
+          series: "alms",
+          duration: "4 Hours",
+          link: "asian-le-mans.html",
+        },
+      ];
+
+      // Initialize countdown widget
+      initCountdownWidget("nextRacesCountdown", raceEvents);
     </script>
   </body>
 </html>
