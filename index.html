@@ -5,113 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Complete endurance racing championship coverage from top-tier WEC & IMSA to feeder series ELMS & ALMS, GT racing (GTWC/IGTC), 24H Series, and Le Mans Classic. Follow the entire multi-class endurance racing ladder."
+      content="Advanced motorsport analytics and interactive data visualizations for WEC and IMSA endurance racing"
     />
-    <meta
-      name="keywords"
-      content="endurance racing, WEC, IMSA, ELMS, ALMS, Le Mans 24 Hours, Daytona 24, LMH, Hypercar, GTP, LMP2, GTWC, IGTC, 24H Series, Le Mans Classic, Le Mans Cup, endurance racing ladder, multi-class racing, prototype racing"
-    />
-    <meta name="author" content="Endurance Racing Hub" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://yourdomain.com/" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourdomain.com/" />
     <meta
       property="og:title"
-      content="Endurance Racing Hub | Complete Championship Ladder Coverage"
+      content="iomotorsport - Professional Endurance Racing Analytics"
     />
     <meta
       property="og:description"
-      content="Follow the complete endurance racing pyramid - from WEC & IMSA top tier to ELMS/ALMS feeders, GT championships, 24H Series, and Le Mans Classic."
+      content="Real-time race data, interactive visualizations, and deep insights for WEC and IMSA"
     />
-    <meta
-      property="og:image"
-      content="https://yourdomain.com/photos/hero.png"
-    />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://yourdomain.com/" />
-    <meta
-      name="twitter:title"
-      content="Endurance Racing Hub | The Complete Racing Ladder"
-    />
-    <meta
-      name="twitter:description"
-      content="Top tier WEC & IMSA • Feeder series ELMS & ALMS • GT racing • 24H Series • Le Mans Classic"
-    />
-    <meta
-      name="twitter:image"
-      content="https://yourdomain.com/photos/hero.png"
-    />
-
-    <title>
-      Endurance Racing Hub | Complete Championship Ladder - WEC to Le Mans
-      Classic
-    </title>
-
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/images/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/images/favicon-16x16.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/images/apple-touch-icon.png"
-    />
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#e63946" />
-
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="/photos/hero.png" as="image" />
-    <link rel="preload" href="/css/styles.css" as="style" />
-    <link rel="preload" href="/js/common.js" as="script" />
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Endurance Racing Hub",
-        "url": "https://yourdomain.com",
-        "description": "Complete coverage of global endurance racing championships including WEC, IMSA, GTWC, with race calendars, tools, and expert analysis",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://yourdomain.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SportsOrganization",
-        "name": "Endurance Racing Hub",
-        "sport": "Endurance Racing",
-        "url": "https://yourdomain.com",
-        "sameAs": [
-          "https://twitter.com/yourhandle",
-          "https://facebook.com/yourpage"
-        ]
-      }
-    </script>
-
+    <title>iomotorsport | Professional Endurance Racing Analytics</title>
     <style>
       * {
         margin: 0;
@@ -119,2101 +23,651 @@
         box-sizing: border-box;
       }
 
-      :root {
-        --primary: #e63946;
-        --secondary: #1d3557;
-        --accent: #f77f00;
-        --dark: #0a0e27;
-        --light: #f8f9fa;
-        --text: #2b2d42;
-      }
-
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        color: #e0e0e0;
         line-height: 1.6;
-        color: var(--text);
-        background: var(--light);
-        overflow-x: hidden;
+        min-height: 100vh;
       }
 
-      /* Prevent mobile zooming on input focus */
-      input,
-      select,
-      textarea {
-        font-size: 16px;
-      }
-
-      /* Navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(10, 14, 39, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        transition: all 0.3s ease;
-      }
-
-      nav.scrolled {
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .nav-container {
-        max-width: 1400px;
+      .container {
+        max-width: 1200px;
         margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid #e63946;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
       }
 
       .logo {
         font-size: 1.5rem;
         font-weight: 800;
-        color: var(--primary);
-        text-decoration: none;
-        letter-spacing: -0.5px;
+        color: #fff;
+        text-transform: lowercase;
+        letter-spacing: 1px;
+        font-family: "Courier New", monospace;
       }
 
-      .nav-links {
+      .logo span {
+        color: #e63946;
+      }
+
+      .logo::before {
+        content: ">";
+        color: #e63946;
+        margin-right: 5px;
+        animation: blink 1.5s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50%,
+        100% {
+          opacity: 1;
+        }
+        25%,
+        75% {
+          opacity: 0.3;
+        }
+      }
+
+      nav ul {
         display: flex;
-        gap: 2rem;
+        gap: 30px;
         list-style: none;
-        align-items: center;
       }
 
-      .nav-links a {
-        color: white;
+      nav a {
+        color: #e0e0e0;
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.3s ease;
-        position: relative;
+        transition: color 0.3s;
       }
 
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--primary);
-        transition: width 0.3s ease;
+      nav a:hover {
+        color: #e63946;
       }
 
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      .dropdown {
-        position: relative;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: rgba(10, 14, 39, 0.98);
-        min-width: 220px;
-        border-radius: 12px;
-        padding: 0.8rem 0;
-        margin-top: 0.5rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .dropdown-content a {
-        display: block;
-        padding: 0.8rem 1.5rem;
-        color: white;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        font-size: 0.95rem;
-      }
-
-      .dropdown-content a::after {
-        display: none;
-      }
-
-      .dropdown-content a:hover {
-        background: linear-gradient(
-          90deg,
-          rgba(230, 57, 70, 0.15),
-          rgba(247, 127, 0, 0.1)
-        );
-        padding-left: 2rem;
-        color: var(--accent);
-      }
-
-      .mobile-toggle {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        background: transparent;
-        border: none;
-        padding: 5px;
-        z-index: 1001;
-      }
-
-      .mobile-toggle span {
-        width: 25px;
-        height: 3px;
-        background: white;
-        transition: all 0.3s ease;
-        border-radius: 2px;
-      }
-
-      .mobile-toggle[aria-expanded="true"] span:nth-child(1) {
-        transform: rotate(45deg) translateY(8px);
-      }
-
-      .mobile-toggle[aria-expanded="true"] span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .mobile-toggle[aria-expanded="true"] span:nth-child(3) {
-        transform: rotate(-45deg) translateY(-8px);
-      }
-
-      /* Hero Section */
       .hero {
-        position: relative;
-        height: 100vh;
-        min-height: 600px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        background: var(--dark);
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("photos/hero.png") no-repeat center center;
-        background-size: cover;
-        background-attachment: fixed;
-        opacity: 0.6;
-        z-index: 1;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(10, 14, 39, 0.6) 0%,
-          rgba(29, 53, 87, 0.5) 100%
-        );
-        z-index: 1;
-      }
-
-      .hero-content {
         text-align: center;
-        z-index: 2;
-        color: white;
-        padding: 2rem;
-        max-width: 900px;
+        padding: 80px 0;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(230, 57, 70, 0.1) 100%
+        );
       }
 
       .hero h1 {
-        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-size: 3.5rem;
         font-weight: 900;
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-        color: white;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-      }
-
-      .hero h1 span {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff 0%, #e63946 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        text-transform: lowercase;
+        font-family: "Courier New", monospace;
+        letter-spacing: 3px;
       }
 
       .hero p {
-        font-size: clamp(1rem, 2vw, 1.3rem);
-        margin-bottom: 2.5rem;
-        color: white;
-        opacity: 1;
-        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+        font-size: 1.3rem;
+        color: #b0b0b0;
         max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
+      }
+
+      .stats-bar {
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 30px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+        border: 1px solid rgba(230, 57, 70, 0.3);
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #e63946;
+        display: block;
+        font-family: "Courier New", monospace;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+      }
+
+      .series-tags {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .tag {
+        background: rgba(230, 57, 70, 0.2);
+        border: 1px solid #e63946;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+      }
+
+      .tag:hover {
+        background: rgba(230, 57, 70, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+      }
+
+      .posts-section {
+        padding: 60px 0;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+        color: #fff;
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .filter-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #e0e0e0;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #e63946;
+        border-color: #e63946;
+        color: #fff;
+      }
+
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .post-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .post-card:hover {
+        transform: translateY(-5px);
+        border-color: #e63946;
+        box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+      }
+
+      .post-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #e63946 0%, #ff6b6b 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.9);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .post-image::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.8;
+        }
+      }
+
+      .data-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5px 12px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        color: #e63946;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 1px solid #e63946;
+      }
+
+      .post-content {
+        padding: 25px;
+      }
+
+      .post-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        font-size: 0.85rem;
+        color: #888;
+      }
+
+      .post-series {
+        background: rgba(230, 57, 70, 0.2);
+        padding: 4px 12px;
+        border-radius: 4px;
+        color: #e63946;
+        font-weight: 600;
+      }
+
+      .post-card h3 {
+        font-size: 1.4rem;
+        color: #fff;
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+
+      .post-card p {
+        color: #b0b0b0;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      .read-more {
+        color: #e63946;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: gap 0.3s;
+      }
+
+      .read-more:hover {
+        gap: 10px;
+      }
+
+      footer {
+        background: rgba(0, 0, 0, 0.8);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 40px 0;
+        margin-top: 80px;
+        text-align: center;
+      }
+
+      footer p {
+        color: #888;
+        font-family: "Courier New", monospace;
+      }
+
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 57, 70, 0.1) 0%,
+          rgba(230, 57, 70, 0.05) 100%
+        );
+        border: 1px solid rgba(230, 57, 70, 0.3);
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+        margin: 60px auto;
+        max-width: 800px;
+      }
+
+      .cta-section h3 {
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 15px;
+      }
+
+      .cta-section p {
+        color: #b0b0b0;
+        margin-bottom: 25px;
       }
 
       .cta-button {
         display: inline-block;
-        padding: 1rem 2.5rem;
-        background: var(--primary);
-        color: white;
+        background: #e63946;
+        color: #fff;
+        padding: 15px 40px;
+        border-radius: 8px;
         text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        border: 2px solid #e63946;
       }
 
       .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(230, 57, 70, 0.4);
+        background: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
       }
 
-      .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.1;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z" fill="%23f77f00"/></svg>')
-          no-repeat center;
-        background-size: cover;
-      }
-
-      .scroll-indicator {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: bounce 2s infinite;
-        z-index: 3;
-        cursor: pointer;
-        padding: 10px;
-        transition: all 0.3s ease;
-      }
-
-      .scroll-indicator:hover {
-        transform: translateX(-50%) scale(1.2);
-      }
-
-      @keyframes bounce {
-        0%,
-        20%,
-        50%,
-        80%,
-        100% {
-          transform: translateX(-50%) translateY(0);
-        }
-        40% {
-          transform: translateX(-50%) translateY(-10px);
-        }
-        60% {
-          transform: translateX(-50%) translateY(-5px);
-        }
-      }
-
-      /* Main Content */
-      .content-wrapper {
-        background: var(--light);
-        position: relative;
-        z-index: 2;
-        scroll-margin-top: 70px;
-      }
-
-      .section {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 5rem 2rem;
-        scroll-margin-top: 70px;
-      }
-
-      .section-title {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 800;
-        margin-bottom: 3rem;
-        text-align: center;
-        color: var(--secondary);
-        position: relative;
-        padding-bottom: 1rem;
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        border-radius: 2px;
-      }
-
-      /* Breadcrumb Navigation */
-      .breadcrumb {
-        background: white;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        position: sticky;
-        top: 70px;
-        z-index: 999;
-      }
-
-      .breadcrumb-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0.8rem 2rem;
-      }
-
-      .breadcrumb-list {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        list-style: none;
-        font-size: 0.9rem;
-        flex-wrap: wrap;
-      }
-
-      .breadcrumb-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .breadcrumb-item a {
-        color: var(--secondary);
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-
-      .breadcrumb-item a:hover {
-        color: var(--primary);
-      }
-
-      .breadcrumb-item.active {
-        color: #666;
-      }
-
-      .breadcrumb-separator {
-        color: #999;
-      }
-
-      /* Section Introduction */
-      .section-intro {
-        max-width: 900px;
-        margin: 0 auto 3rem;
-        text-align: center;
-        color: #666;
-        font-size: 1.1rem;
-        line-height: 1.8;
-      }
-
-      /* Quick Links Box */
-      .quick-links {
-        background: linear-gradient(
-          135deg,
-          var(--secondary) 0%,
-          var(--dark) 100%
-        );
-        border-radius: 15px;
-        padding: 3rem 2rem;
-        margin-top: 4rem;
-        color: white;
-      }
-
-      .quick-links h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
-
-      .quick-links-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .quick-link-item {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem;
-        border-radius: 10px;
-        text-align: center;
-        text-decoration: none;
-        color: white;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: block;
-      }
-
-      .quick-link-item:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-3px);
-        border-color: var(--accent);
-      }
-
-      .quick-link-item span {
-        display: block;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .quick-link-item strong {
-        display: block;
-        font-size: 1.1rem;
-        margin-bottom: 0.3rem;
-      }
-
-      .quick-link-item small {
-        font-size: 0.85rem;
-        opacity: 0.8;
-      }
-
-      /* Championship Grid */
-      .championship-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-bottom: 4rem;
-      }
-
-      .championship-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        position: relative;
-        border: 2px solid transparent;
-        text-decoration: none;
-        display: block;
-        color: inherit;
-      }
-
-      .championship-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary);
-      }
-
-      .card-image {
-        height: 200px;
-        background: linear-gradient(
-          135deg,
-          var(--secondary) 0%,
-          var(--primary) 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        color: white;
-        font-weight: 900;
-      }
-
-      .card-content {
-        padding: 2rem;
-      }
-
-      .card-content h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: var(--secondary);
-      }
-
-      .card-content p {
-        color: #666;
-        margin-bottom: 1.5rem;
-        line-height: 1.7;
-      }
-
-      .card-tag {
-        display: inline-block;
-        padding: 0.3rem 0.8rem;
-        background: var(--light);
-        border-radius: 20px;
-        font-size: 0.85rem;
-        color: var(--primary);
-        font-weight: 600;
-        margin-right: 0.5rem;
-      }
-
-      .card-links {
-        display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--light);
-      }
-
-      .card-link {
-        font-size: 0.9rem;
-        color: var(--secondary);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-      }
-
-      .card-link:hover {
-        color: var(--primary);
-      }
-
-      .card-link::after {
-        content: "→";
-        transition: transform 0.3s ease;
-      }
-
-      .card-link:hover::after {
-        transform: translateX(3px);
-      }
-
-      /* Tools Section */
-      .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-      }
-
-      .tool-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        text-align: center;
-        transition: all 0.3s ease;
-        border-top: 4px solid var(--accent);
-        position: relative;
-      }
-
-      .tool-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        border-top-color: var(--primary);
-      }
-
-      .tool-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .tool-card h3 {
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-        color: var(--secondary);
-      }
-
-      .tool-card p {
-        color: #666;
-        margin-bottom: 1.5rem;
-      }
-
-      .tool-button {
-        display: inline-block;
-        padding: 0.7rem 1.5rem;
-        background: var(--primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-      }
-
-      .tool-button:hover {
-        background: var(--secondary);
-        transform: scale(1.05);
-      }
-
-      /* Calendar Section */
-      .calendar-section {
-        background: linear-gradient(
-          135deg,
-          var(--secondary) 0%,
-          var(--dark) 100%
-        );
-        color: white;
-        border-radius: 20px;
-        padding: 4rem 2rem;
-      }
-
-      .calendar-header {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-
-      .calendar-header h2 {
-        color: white;
-        margin-bottom: 1rem;
-      }
-
-      .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .event-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border-left: 4px solid var(--accent);
-        transition: all 0.3s ease;
-      }
-
-      .event-card:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: translateX(10px);
-      }
-
-      .event-date {
-        font-size: 0.9rem;
-        color: var(--accent);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-
-      .event-card h4 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .event-series {
-        font-size: 0.85rem;
-        opacity: 0.8;
-      }
-
-      /* Blog Section */
-      .blog-section {
-        background: var(--light);
-      }
-
-      .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-      }
-
-      .blog-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-      }
-
-      .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .blog-image {
-        height: 200px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 4rem;
-      }
-
-      .blog-content {
-        padding: 2rem;
-      }
-
-      .blog-meta {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        font-size: 0.85rem;
-        color: #999;
-      }
-
-      .blog-content h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
-        color: var(--secondary);
-        line-height: 1.4;
-      }
-
-      .blog-content p {
-        color: #666;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-      }
-
-      .read-more {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: gap 0.3s ease;
-      }
-
-      .read-more:hover {
-        gap: 1rem;
-      }
-
-      /* Scroll Animations */
-      .scroll-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        z-index: 9999;
-        transition: width 0.1s ease-out;
-      }
-
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .fade-in-left {
-        opacity: 0;
-        transform: translateX(-30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-
-      .fade-in-left.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .fade-in-right {
-        opacity: 0;
-        transform: translateX(30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-
-      .fade-in-right.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .scale-in {
-        opacity: 0;
-        transform: scale(0.95);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-      }
-
-      .scale-in.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      .stagger-delay-1 {
-        transition-delay: 0.1s;
-      }
-
-      .stagger-delay-2 {
-        transition-delay: 0.2s;
-      }
-
-      .stagger-delay-3 {
-        transition-delay: 0.3s;
-      }
-
-      .stagger-delay-4 {
-        transition-delay: 0.4s;
-      }
-
-      /* Footer */
-      footer {
-        background: var(--dark);
-        color: white;
-        padding: 2rem;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      footer p {
-        opacity: 0.6;
-        font-size: 0.9rem;
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .footer-links a {
-        color: white;
-        text-decoration: none;
-        opacity: 0.7;
-        transition: opacity 0.3s ease;
-        font-size: 0.9rem;
-      }
-
-      .footer-links a:hover {
-        opacity: 1;
-      }
-
-      /* Accessibility & UX Improvements */
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 70px;
-      }
-
-      *:focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-      }
-
-      /* Loading Performance */
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      /* Responsive */
       @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          top: 70px;
-          left: -100%;
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .header-content {
           flex-direction: column;
-          background: var(--dark);
-          width: 100%;
-          padding: 2rem;
-          transition: left 0.3s ease;
-          align-items: flex-start;
-          max-height: calc(100vh - 70px);
-          overflow-y: auto;
+          gap: 20px;
         }
 
-        .nav-links.active {
-          left: 0;
+        nav ul {
+          gap: 15px;
         }
 
-        .mobile-toggle {
-          display: flex;
-        }
-
-        .championship-grid,
-        .regional-grid,
-        .tools-grid,
-        .blog-grid {
+        .posts-grid {
           grid-template-columns: 1fr;
         }
 
-        .hero::before {
-          background-attachment: scroll;
-        }
-
-        .section {
-          padding: 3rem 1.5rem;
-        }
-
-        .dropdown-content {
-          position: static;
-          display: none;
-          background: rgba(230, 57, 70, 0.1);
-          margin: 0.5rem 0;
-          border-radius: 8px;
-        }
-
-        .dropdown.active .dropdown-content {
-          display: block;
-        }
-      }
-
-      @media (min-width: 769px) and (max-width: 1024px) {
-        .championship-grid,
-        .tools-grid {
-          grid-template-columns: repeat(2, 1fr);
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Navigation -->
-    <nav id="navbar" role="navigation" aria-label="Main navigation">
-      <div class="nav-container">
-        <a href="/" class="logo" aria-label="Endurance Racing Hub Home"
-          >🏁 IO MOTORSPORT</a
-        >
-        <ul class="nav-links" id="navLinks">
-          <li><a href="/" aria-label="Home">Home</a></li>
-          <li class="dropdown">
-            <a
-              href="#championships"
-              aria-label="Championships"
-              aria-haspopup="true"
-              >Championships ▾</a
-            >
-            <div class="dropdown-content" role="menu">
-              <div
-                style="
-                  padding: 0.5rem 1.5rem;
-                  opacity: 0.5;
-                  font-size: 0.8rem;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  pointer-events: none;
-                "
-              >
-                Top Tier
-              </div>
-              <a href="/wec" role="menuitem">WEC</a>
-              <a href="/imsa" role="menuitem">IMSA</a>
-              <div
-                style="
-                  padding: 0.5rem 1.5rem;
-                  opacity: 0.5;
-                  font-size: 0.8rem;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  margin-top: 0.5rem;
-                  pointer-events: none;
-                "
-              >
-                Feeders
-              </div>
-              <a href="/european-le-mans" role="menuitem">ELMS</a>
-              <a href="/asian-le-mans" role="menuitem">ALMS</a>
-              <a href="/le-mans-cup" role="menuitem">Le Mans Cup</a>
-              <div
-                style="
-                  padding: 0.5rem 1.5rem;
-                  opacity: 0.5;
-                  font-size: 0.8rem;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  margin-top: 0.5rem;
-                  pointer-events: none;
-                "
-              >
-                GT & Specials
-              </div>
-              <a href="/gtwc" role="menuitem">GT World Challenge</a>
-              <a href="/igtc" role="menuitem">Intercontinental GT</a>
-              <a href="/24h-series" role="menuitem">24H Series</a>
-              <a href="/le-mans-classic" role="menuitem">Le Mans Classic</a>
-            </div>
-          </li>
-          <li><a href="/calendar" aria-label="Race Calendar">Calendar</a></li>
-          <li><a href="/blog" aria-label="Racing Blog">Blog</a></li>
-        </ul>
-        <button
-          class="mobile-toggle"
-          id="mobileToggle"
-          aria-label="Toggle mobile menu"
-          aria-expanded="false"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">iomotorsport</div>
+          <nav>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#wec">WEC</a></li>
+              <li><a href="#imsa">IMSA</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero" role="banner">
-      <div class="hero-background"></div>
-      <div class="hero-content">
-        <h1>The Complete <span>Endurance Racing</span> Ladder</h1>
-        <p>
-          Track your journey from feeder series to Le Mans. Complete coverage of
-          WEC, IMSA, ELMS, ALMS, GT championships, 24-hour marathons, and
-          historic classics - all the multi-class endurance racing you need in
-          one place.
-        </p>
-        <a
-          href="#championships"
-          class="cta-button"
-          aria-label="Explore racing championships"
-          >Explore Championships</a
-        >
-      </div>
-      <a
-        href="#championships"
-        class="scroll-indicator"
-        aria-label="Scroll to content"
-      >
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
-          fill="none"
-          stroke="white"
-          stroke-width="2"
-          aria-hidden="true"
-        >
-          <polyline points="7.5,11.25 15,18.75 22.5,11.25"></polyline>
-        </svg>
-      </a>
     </header>
 
-    <!-- Breadcrumb Navigation -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="breadcrumb-container">
-        <ol class="breadcrumb-list">
-          <li class="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li class="breadcrumb-separator" aria-hidden="true">/</li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Endurance Racing Hub
-          </li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- Next Races Countdown Widget -->
-    <div style="max-width: 1400px; margin: 2rem auto; padding: 0 2rem">
-      <div id="nextRacesCountdown"></div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="content-wrapper">
-      <!-- Major Championships -->
-      <section
-        class="section fade-in"
-        id="championships"
-        aria-labelledby="championships-title"
-      >
-        <h2 class="section-title" id="championships-title">
-          Championship Ladder
-        </h2>
-        <p class="section-intro">
-          From feeder series to Le Mans glory. Explore the complete hierarchy of
-          professional endurance racing across four tiers - top-tier prototypes,
-          development series, GT championships, and legendary endurance events.
-        </p>
-
-        <!-- Top Tier -->
-        <h3
-          style="
-            font-size: 2rem;
-            text-align: center;
-            color: var(--primary);
-            margin: 3rem 0 1rem;
-            font-weight: 800;
-          "
-        >
-          🏆 Top Tier
-        </h3>
-        <p
-          style="
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            color: #666;
-            font-size: 1.05rem;
-          "
-        >
-          The pinnacle of endurance racing. Hypercars and GTP prototypes battle
-          at legendary circuits worldwide, including the 24 Hours of Le Mans and
-          Daytona 24.
-        </p>
-        <div class="championship-grid">
-          <article class="championship-card fade-in scale-in">
-            <div class="card-image">WEC</div>
-            <div class="card-content">
-              <h3>World Endurance Championship</h3>
-              <p>
-                The pinnacle of endurance racing. Hypercars, LMP2, and LMGT3
-                battle across 8 rounds including the legendary 24 Hours of Le
-                Mans. The ultimate test of speed, strategy, and reliability.
-              </p>
-              <div>
-                <span class="card-tag">🌍 Global</span>
-                <span class="card-tag">Hypercar • LMP2 • LMGT3</span>
-              </div>
-              <div class="card-links">
-                <a href="/wec" class="card-link">Championship Info</a>
-                <a href="/wec#schedule" class="card-link">2025 Schedule</a>
-                <a href="/wec#le-mans" class="card-link">Le Mans 24h</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="championship-card fade-in scale-in stagger-delay-1">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #003b7a 0%, #c8102e 100%);
-              "
-            >
-              IMSA
-            </div>
-            <div class="card-content">
-              <h3>IMSA SportsCar Championship</h3>
-              <p>
-                North America's premier series. GTP, LMP2, GTD PRO, and GTD
-                compete at Daytona 24, Sebring 12, and 9 more iconic tracks.
-                Action-packed prototype and GT racing.
-              </p>
-              <div>
-                <span class="card-tag">🇺🇸 North America</span>
-                <span class="card-tag">GTP • LMP2 • GTD</span>
-              </div>
-              <div class="card-links">
-                <a href="/imsa" class="card-link">Championship Info</a>
-                <a href="/imsa#schedule" class="card-link">2026 Schedule</a>
-                <a href="/imsa#daytona" class="card-link">Daytona 24h</a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Feeder Series Section -->
-        <div class="tier-section" style="margin-top: 4rem">
-          <h3
-            class="tier-header"
-            style="font-size: 2rem; color: var(--accent); margin-bottom: 1rem"
-          >
-            📈 Feeder Series
-          </h3>
-          <p
-            class="tier-description"
-            style="max-width: 800px; margin: 0 auto 2.5rem; font-size: 1.05rem"
-          >
-            The road to Le Mans. Regional endurance championships where drivers
-            and teams earn qualification spots for the 24 Hours of Le Mans and
-            prepare for top-tier competition.
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>enduranceanalytics</h1>
+          <p>
+            Real-time telemetry, lap-by-lap breakdowns, and interactive data
+            visualizations that transform raw race data into strategic insights
           </p>
-        </div>
-
-        <div class="championship-grid">
-          <article class="championship-card scale-in">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #e30613 0%, #000000 100%);
-              "
-            >
-              ELMS
+          <div class="stats-bar">
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Races Analyzed</span>
             </div>
-            <div class="card-content">
-              <h3>European Le Mans Series</h3>
-              <p>
-                Europe's premier endurance series. LMP2, LMP3, and LMGT3 race
-                across 6 legendary European circuits. Direct pathway to Le Mans
-                24 Hours entry.
-              </p>
-              <div>
-                <span class="card-tag">🇪🇺 Europe</span>
-                <span class="card-tag">LMP2 • LMP3 • LMGT3</span>
-              </div>
-              <div class="card-links">
-                <a href="/european-le-mans" class="card-link"
-                  >Championship Info</a
-                >
-                <a href="/european-le-mans#schedule" class="card-link"
-                  >2025 Schedule</a
-                >
-                <a href="/european-le-mans#le-mans-road" class="card-link"
-                  >Road to Le Mans</a
-                >
-              </div>
+            <div class="stat-item">
+              <span class="stat-number">10k+</span>
+              <span class="stat-label">Data Points</span>
             </div>
-          </article>
-
-          <article class="championship-card scale-in stagger-delay-1">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #0066cc 0%, #ffb81c 100%);
-              "
-            >
-              ALMS
+            <div class="stat-item">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Series Tracked</span>
             </div>
-            <div class="card-content">
-              <h3>Asian Le Mans Series</h3>
-              <p>
-                Asia's leading endurance championship. LMP2, LMP3, and GT cars
-                compete in 4-hour races across UAE, Malaysia, and Thailand. Le
-                Mans qualification opportunity.
-              </p>
-              <div>
-                <span class="card-tag">🌏 Asia</span>
-                <span class="card-tag">LMP2 • LMP3 • GT</span>
-              </div>
-              <div class="card-links">
-                <a href="/asian-le-mans" class="card-link">Championship Info</a>
-                <a href="/asian-le-mans#schedule" class="card-link"
-                  >2025-26 Schedule</a
-                >
-                <a href="/asian-le-mans#le-mans-road" class="card-link"
-                  >Road to Le Mans</a
-                >
-              </div>
-            </div>
-          </article>
-
-          <article class="championship-card scale-in stagger-delay-2">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #00509e 0%, #003d7a 100%);
-              "
-            >
-              LMC
-            </div>
-            <div class="card-content">
-              <h3>Michelin Le Mans Cup</h3>
-              <p>
-                GT3 and LMP3 championship racing on Le Mans weekends. The
-                essential stepping stone to European endurance racing and ELMS
-                competition.
-              </p>
-              <div>
-                <span class="card-tag">🇪🇺 Europe</span>
-                <span class="card-tag">GT3 • LMP3</span>
-              </div>
-              <div class="card-links">
-                <a href="/le-mans-cup" class="card-link">Championship Info</a>
-                <a href="/le-mans-cup#schedule" class="card-link"
-                  >2025 Schedule</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- GT Championships Section -->
-        <div class="tier-section" style="margin-top: 4rem">
-          <h3
-            class="tier-header"
-            style="
-              font-size: 2rem;
-              color: var(--secondary);
-              margin-bottom: 1rem;
-            "
-          >
-            🏁 GT Championships
-          </h3>
-          <p
-            class="tier-description"
-            style="max-width: 800px; margin: 0 auto 2.5rem; font-size: 1.05rem"
-          >
-            World-class GT3 racing. Production-based supercars compete in sprint
-            and endurance formats at the planet's most legendary circuits.
-          </p>
-        </div>
-
-        <div class="championship-grid">
-          <article class="championship-card scale-in">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #ff6b00 0%, #d84315 100%);
-              "
-            >
-              GTWC
-            </div>
-            <div class="card-content">
-              <h3>GT World Challenge</h3>
-              <p>
-                Global GT3 championship with regional series across Europe,
-                Asia, and America. Sprint races and endurance classics including
-                Spa 24 Hours.
-              </p>
-              <div>
-                <span class="card-tag">🌍 Worldwide</span>
-                <span class="card-tag">GT3</span>
-              </div>
-              <div class="card-links">
-                <a href="/gtwc" class="card-link">Championship Info</a>
-                <a href="/gtwc#regions" class="card-link">Regional Series</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="championship-card scale-in stagger-delay-1">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
-              "
-            >
-              IGTC
-            </div>
-            <div class="card-content">
-              <h3>Intercontinental GT Challenge</h3>
-              <p>
-                Five of the world's greatest GT3 endurance races: Bathurst 12
-                Hour, Spa 24 Hours, Suzuka 10 Hours, Indianapolis 8 Hour, and
-                Kyalami 9 Hour.
-              </p>
-              <div>
-                <span class="card-tag">🌏 Global</span>
-                <span class="card-tag">GT3 Endurance</span>
-              </div>
-              <div class="card-links">
-                <a href="/igtc" class="card-link">Championship Info</a>
-                <a href="/igtc#events" class="card-link">2025 Events</a>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Endurance Specials Section -->
-        <div class="tier-section" style="margin-top: 4rem">
-          <h3
-            class="tier-header"
-            style="font-size: 2rem; color: #7c3aed; margin-bottom: 1rem"
-          >
-            🌍 Endurance Specials
-          </h3>
-          <p
-            class="tier-description"
-            style="max-width: 800px; margin: 0 auto 2.5rem; font-size: 1.05rem"
-          >
-            Legendary marathons and historic celebrations. 24-hour battles and
-            classic car showcases that define endurance racing's spirit and
-            heritage.
-          </p>
-        </div>
-
-        <div class="championship-grid">
-          <article class="championship-card scale-in">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-              "
-            >
-              24H
-            </div>
-            <div class="card-content">
-              <h3>24H Series</h3>
-              <p>
-                Round-the-clock endurance racing at iconic venues: Dubai 24H,
-                Spa 24H, and Nürburgring 24H. GT3, GT4, and TCE classes battle
-                day and night.
-              </p>
-              <div>
-                <span class="card-tag">🌍 Worldwide</span>
-                <span class="card-tag">GT3 • GT4 • TCE</span>
-              </div>
-              <div class="card-links">
-                <a href="/24h-series" class="card-link">Championship Info</a>
-                <a href="/24h-series#events" class="card-link">Major Events</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="championship-card scale-in stagger-delay-1">
-            <div
-              class="card-image"
-              style="
-                background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
-              "
-            >
-              CLASSIC
-            </div>
-            <div class="card-content">
-              <h3>Le Mans Classic</h3>
-              <p>
-                Biennial celebration of Le Mans history. Historic race cars from
-                1923-2000 compete in 6 grids on the full Circuit de la Sarthe.
-                Next event: July 2026.
-              </p>
-              <div>
-                <span class="card-tag">🇫🇷 Le Mans</span>
-                <span class="card-tag">Historic Racing</span>
-              </div>
-              <div class="card-links">
-                <a href="/le-mans-classic" class="card-link">Event Info</a>
-                <a href="/le-mans-classic#grids" class="card-link"
-                  >Racing Grids</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Featured Events CTA -->
-        <div class="quick-links fade-in" style="margin-top: 4rem">
-          <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem">
-            Don't Miss These Races
-          </h3>
-          <div class="quick-links-grid" style="gap: 1.5rem">
-            <a
-              href="/wec#le-mans"
-              class="quick-link-item scale-in"
-              style="
-                background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
-                color: white;
-              "
-            >
-              <span style="font-size: 2rem">🏁</span>
-              <strong>24 Hours of Le Mans</strong>
-              <small style="opacity: 0.95">June 14-15, 2025</small>
-            </a>
-            <a
-              href="/imsa#daytona"
-              class="quick-link-item scale-in stagger-delay-1"
-              style="
-                background: linear-gradient(135deg, #003b7a 0%, #c8102e 100%);
-                color: white;
-              "
-            >
-              <span style="font-size: 2rem">🏆</span>
-              <strong>24 Hours of Daytona</strong>
-              <small style="opacity: 0.95">January 25-26, 2026</small>
-            </a>
-            <a
-              href="/calendar"
-              class="quick-link-item scale-in stagger-delay-2"
-              style="
-                background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
-                color: white;
-              "
-            >
-              <span style="font-size: 2rem">📅</span>
-              <strong>Full Race Calendar</strong>
-              <small style="opacity: 0.95">All championships, all races</small>
-            </a>
+          </div>
+          <div class="series-tags">
+            <span class="tag">WEC</span>
+            <span class="tag">IMSA</span>
+            <span class="tag">Interactive Charts</span>
+            <span class="tag">Live Data</span>
           </div>
         </div>
       </section>
 
-      <!-- Calendar Section -->
-      <section
-        class="section fade-in"
-        id="calendar"
-        aria-labelledby="calendar-title"
-      >
-        <h2
-          class="section-title"
-          id="calendar-title"
-          style="color: var(--secondary)"
-        >
-          Upcoming Events
-        </h2>
-        <p class="section-intro">
-          Stay up-to-date with the complete endurance racing calendar. Track
-          upcoming races, set reminders, and never miss a green flag across all
-          major championships.
-        </p>
-        <div class="calendar-section">
-          <div class="calendar-header" style="margin-bottom: 2rem">
-            <p style="opacity: 0.9; font-size: 1rem">
-              📅 Next 6 major endurance racing events
+      <section class="posts-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Latest Analysis</h2>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="wec">WEC</button>
+              <button class="filter-btn" data-filter="imsa">IMSA</button>
+            </div>
+          </div>
+
+          <div class="posts-grid" id="postsGrid">
+            <!-- Posts will be inserted here by JavaScript -->
+          </div>
+
+          <div class="cta-section">
+            <h3>Want More Data?</h3>
+            <p>
+              Get access to exclusive lap-by-lap telemetry, pit stop analysis,
+              and predictive race models
             </p>
-          </div>
-
-          <div class="calendar-grid">
-            <div class="event-card scale-in">
-              <div class="event-date">November 2-3, 2025</div>
-              <h4>Bahrain 8 Hours</h4>
-              <p class="event-series">WEC • Season Finale</p>
-            </div>
-
-            <div class="event-card scale-in stagger-delay-1">
-              <div class="event-date">November 15, 2025</div>
-              <h4>Petit Le Mans</h4>
-              <p class="event-series">IMSA • Road Atlanta</p>
-            </div>
-
-            <div class="event-card scale-in stagger-delay-2">
-              <div class="event-date">December 6-8, 2025</div>
-              <h4>Macau GT Cup</h4>
-              <p class="event-series">GTWC Asia • Guia Circuit</p>
-            </div>
-
-            <div class="event-card scale-in stagger-delay-3">
-              <div class="event-date">January 25-26, 2026</div>
-              <h4>24 Hours of Daytona</h4>
-              <p class="event-series">IMSA • Season Opener</p>
-            </div>
-
-            <div class="event-card scale-in stagger-delay-4">
-              <div class="event-date">February 14-16, 2026</div>
-              <h4>4 Hours of Dubai</h4>
-              <p class="event-series">Asian Le Mans Series</p>
-            </div>
-
-            <div class="event-card scale-in stagger-delay-1">
-              <div class="event-date">March 20-22, 2026</div>
-              <h4>12 Hours of Sebring</h4>
-              <p class="event-series">IMSA • Historic Track</p>
-            </div>
-          </div>
-
-          <div style="text-align: center; margin-top: 2.5rem">
-            <a href="/calendar" class="cta-button">View Full Calendar</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Blog Section -->
-      <section
-        class="section blog-section fade-in"
-        id="blog"
-        aria-labelledby="blog-title"
-      >
-        <h2 class="section-title" id="blog-title">Latest Stories</h2>
-        <p class="section-intro">
-          Expert analysis, race recaps, technical deep-dives, and the latest
-          news from the world of endurance racing. Written by passionate fans
-          and industry insiders.
-        </p>
-        <div class="blog-grid">
-          <div class="blog-card scale-in">
-            <div class="blog-image">📝</div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span>Oct 12, 2025</span>
-                <span>•</span>
-                <span>Analysis</span>
-              </div>
-              <h3>The Evolution of Hypercar Technology in WEC</h3>
-              <p>
-                How the new Hypercar regulations have transformed the World
-                Endurance Championship and what it means for the future of the
-                sport.
-              </p>
-              <a href="/blog/hypercar-evolution-wec" class="read-more"
-                >Read More <span>→</span></a
-              >
-            </div>
-          </div>
-
-          <div class="blog-card scale-in stagger-delay-1">
-            <div
-              class="blog-image"
-              style="
-                background: linear-gradient(135deg, #f77f00 0%, #1d3557 100%);
-              "
-            >
-              📝
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span>Oct 10, 2025</span>
-                <span>•</span>
-                <span>Guide</span>
-              </div>
-              <h3>Beginner's Guide to Endurance Racing Strategy</h3>
-              <p>
-                Understanding fuel windows, driver stints, and tire management
-                in long-distance racing competitions.
-              </p>
-              <a href="/blog/endurance-racing-strategy-guide" class="read-more"
-                >Read More <span>→</span></a
-              >
-            </div>
-          </div>
-
-          <div class="blog-card scale-in stagger-delay-2">
-            <div
-              class="blog-image"
-              style="
-                background: linear-gradient(135deg, #1d3557 0%, #e63946 100%);
-              "
-            >
-              📝
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span>Oct 8, 2025</span>
-                <span>•</span>
-                <span>Preview</span>
-              </div>
-              <h3>2026 IMSA Season Preview: What to Expect</h3>
-              <p>
-                A look ahead at the upcoming IMSA season with new teams, driver
-                lineups, and championship contenders.
-              </p>
-              <a href="/blog/2026-imsa-season-preview" class="read-more"
-                >Read More <span>→</span></a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem">
-          <a href="/blog" class="cta-button">View All Articles</a>
-        </div>
-
-        <!-- Content Hub Links -->
-        <div class="quick-links" style="margin-top: 4rem">
-          <h3>📚 Explore More Content</h3>
-          <div class="quick-links-grid">
-            <a href="/guides" class="quick-link-item">
-              <span>📖</span>
-              <strong>Racing Guides</strong>
-              <small>Learn the fundamentals</small>
-            </a>
-            <a href="/history" class="quick-link-item">
-              <span>🏛️</span>
-              <strong>Racing History</strong>
-              <small>Legendary moments</small>
-            </a>
-            <a href="/technical" class="quick-link-item">
-              <span>🔧</span>
-              <strong>Technical Analysis</strong>
-              <small>Deep dives & data</small>
-            </a>
-            <a href="/interviews" class="quick-link-item">
-              <span>🎤</span>
-              <strong>Interviews</strong>
-              <small>Driver & team talks</small>
-            </a>
-            <a href="/videos" class="quick-link-item">
-              <span>🎥</span>
-              <strong>Video Content</strong>
-              <small>Highlights & analysis</small>
-            </a>
-            <a href="/podcasts" class="quick-link-item">
-              <span>🎧</span>
-              <strong>Podcasts</strong>
-              <small>Audio discussions</small>
-            </a>
+            <a href="#" class="cta-button">Explore Premium Analytics</a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/wec">WEC</a>
-        <a href="/imsa">IMSA</a>
-        <a href="/european-le-mans">ELMS</a>
-        <a href="/asian-le-mans">ALMS</a>
-        <a href="#calendar">Calendar</a>
-        <a href="#blog">Blog</a>
-        <a href="/about">About</a>
+      <div class="container">
+        <p>&copy; 2025 iomotorsport. Race data analytics reimagined.</p>
       </div>
-      <p>&copy; 2025 Endurance Racing Hub. All rights reserved.</p>
     </footer>
 
-    <!-- External JavaScript -->
-    <script src="/js/common.js" defer></script>
-
-    <!-- Page-specific JavaScript -->
     <script>
-      // Additional homepage-specific functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        // Scroll indicator click handler
-        const scrollIndicator = document.querySelector(".scroll-indicator");
-        if (scrollIndicator) {
-          scrollIndicator.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.querySelector("#championships").scrollIntoView({
-              behavior: "smooth",
-            });
-          });
-        }
-      });
-    </script>
-
-    <!-- Legacy inline script (can be removed if common.js is working) -->
-    <script>
-      // Mobile menu toggle
-      const mobileToggle = document.getElementById("mobileToggle");
-      const navLinks = document.getElementById("navLinks");
-
-      mobileToggle.addEventListener("click", () => {
-        const isActive = navLinks.classList.toggle("active");
-        mobileToggle.setAttribute("aria-expanded", isActive);
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = isActive ? "hidden" : "";
-      });
-
-      // Mobile dropdown handling
-      const dropdowns = document.querySelectorAll(".dropdown");
-      dropdowns.forEach((dropdown) => {
-        dropdown.addEventListener("click", (e) => {
-          if (window.innerWidth <= 768) {
-            e.preventDefault();
-            dropdown.classList.toggle("active");
-          }
-        });
-      });
-
-      // Close mobile menu on link click
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          // Don't close if it's a dropdown trigger on mobile
-          if (
-            !link.parentElement.classList.contains("dropdown") ||
-            window.innerWidth > 768
-          ) {
-            navLinks.classList.remove("active");
-            mobileToggle.setAttribute("aria-expanded", "false");
-            document.body.style.overflow = "";
-          }
-        });
-      });
-
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest("nav") && navLinks.classList.contains("active")) {
-          navLinks.classList.remove("active");
-          mobileToggle.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "";
-        }
-      });
-
-      // Navbar scroll effect
-      const navbar = document.getElementById("navbar");
-      let lastScroll = 0;
-
-      window.addEventListener(
-        "scroll",
-        () => {
-          const currentScroll = window.pageYOffset;
-
-          if (currentScroll > 100) {
-            navbar.classList.add("scrolled");
-          } else {
-            navbar.classList.remove("scrolled");
-          }
-
-          lastScroll = currentScroll;
-        },
-        { passive: true }
-      );
-
-      // Enhanced smooth scrolling with proper offset
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          const href = this.getAttribute("href");
-
-          // Skip if it's just "#"
-          if (href === "#") {
-            e.preventDefault();
-            return;
-          }
-
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-
-            // Close mobile menu if open
-            if (navLinks.classList.contains("active")) {
-              navLinks.classList.remove("active");
-              mobileToggle.setAttribute("aria-expanded", "false");
-              document.body.style.overflow = "";
-            }
-
-            // Smooth scroll with proper offset
-            const navHeight = navbar.offsetHeight;
-            const targetPosition =
-              target.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = targetPosition - navHeight - 20;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
-
-            // Update URL without jumping
-            if (history.pushState) {
-              history.pushState(null, null, href);
-            }
-          }
-        });
-      });
-
-      // Scroll Progress Bar
-      const scrollProgress = document.getElementById("scrollProgress");
-      window.addEventListener("scroll", () => {
-        const windowHeight =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrolled = (window.pageYOffset / windowHeight) * 100;
-        scrollProgress.style.width = scrolled + "%";
-      });
-
-      // Simple fade-in on scroll with improved observer
-      const fadeObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
+      const posts = [
+        {
+          series: "WEC",
+          title: "2024 Bahrain 8 Hours - Hypercar Battle Analysis",
+          excerpt:
+            "Breaking down the intense championship-deciding finale with lap-by-lap pace analysis and strategic breakdowns.",
+          date: "Nov 2, 2024",
+          icon: "🏁",
+          dataPoints: "2,847",
         },
         {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        }
-      );
-
-      // Observe all elements with animation classes
-      document
-        .querySelectorAll(".fade-in, .fade-in-left, .fade-in-right, .scale-in")
-        .forEach((element) => {
-          fadeObserver.observe(element);
-        });
-
-      // Stagger animation for championship cards
-      const cardObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
+          series: "WEC",
+          title: "Le Mans 24 Hours - The Data Behind Victory",
+          excerpt:
+            "How Ferrari dominated the race through superior tire management and pit stop efficiency.",
+          date: "Jun 16, 2024",
+          icon: "🏆",
+          dataPoints: "8,912",
         },
         {
-          threshold: 0.15,
-          rootMargin: "0px 0px -100px 0px",
-        }
-      );
-
-      // Observe championship cards
-      document
-        .querySelectorAll(".championship-card, .event-card, .blog-card")
-        .forEach((card) => {
-          cardObserver.observe(card);
-        });
-
-      // Performance: Preload important images
-      const heroImg = new Image();
-      heroImg.src = "photos/hero.png";
-    </script>
-
-    <!-- Countdown Widget Script -->
-    <script src="/js/countdown.js"></script>
-    <script>
-      // Events data - same as calendar.html
-      const raceEvents = [
-        // 2025 WEC
-        {
-          date: "2025-02-28",
-          name: "Prologue Test",
-          location: "Qatar",
-          series: "wec",
-          duration: "3 Days",
-          link: "wec.html",
+          series: "IMSA",
+          title: "Petit Le Mans - Multi-Class Traffic Analysis",
+          excerpt:
+            "Visualizing how traffic patterns affected race outcomes across all four classes at Road Atlanta.",
+          date: "Oct 12, 2024",
+          icon: "📊",
+          dataPoints: "4,203",
         },
         {
-          date: "2025-03-01",
-          name: "1812km of Qatar",
-          location: "Lusail International Circuit",
-          series: "wec",
-          duration: "6 Hours",
-          link: "wec.html",
+          series: "WEC",
+          title: "Spa 6 Hours - Weather Impact on Pace",
+          excerpt:
+            "Interactive charts showing how changing conditions created dramatic pace differentials in the Hypercar class.",
+          date: "May 11, 2024",
+          icon: "🌧️",
+          dataPoints: "1,956",
         },
         {
-          date: "2025-04-13",
-          name: "6 Hours of Imola",
-          location: "Autodromo Enzo e Dino Ferrari, Italy",
-          series: "wec",
-          duration: "6 Hours",
-          link: "wec.html",
+          series: "IMSA",
+          title: "Sebring 12 Hours - Endurance vs Sprint Pace",
+          excerpt:
+            "Comparing qualification pace to race pace reveals surprising strategic approaches from top teams.",
+          date: "Mar 16, 2024",
+          icon: "⚡",
+          dataPoints: "5,431",
         },
         {
-          date: "2025-05-11",
-          name: "6 Hours of Spa-Francorchamps",
-          location: "Circuit de Spa-Francorchamps, Belgium",
-          series: "wec",
-          duration: "6 Hours",
-          link: "wec.html",
-        },
-        {
-          date: "2025-06-14",
-          name: "24 Hours of Le Mans",
-          location: "Circuit de la Sarthe, France",
-          series: "wec",
-          duration: "24 Hours",
-          link: "wec.html",
-        },
-        {
-          date: "2025-07-13",
-          name: "6 Hours of São Paulo",
-          location: "Autódromo José Carlos Pace, Brazil",
-          series: "wec",
-          duration: "6 Hours",
-          link: "wec.html",
-        },
-        {
-          date: "2025-09-14",
-          name: "Lone Star Le Mans",
-          location: "Circuit of the Americas, USA",
-          series: "wec",
-          duration: "6 Hours",
-          link: "wec.html",
-        },
-        {
-          date: "2025-09-21",
-          name: "6 Hours of Fuji",
-          location: "Fuji Speedway, Japan",
-          series: "wec",
-          duration: "6 Hours",
-          link: "wec.html",
-        },
-        {
-          date: "2025-11-02",
-          name: "8 Hours of Bahrain",
-          location: "Bahrain International Circuit",
-          series: "wec",
-          duration: "8 Hours",
-          link: "wec.html",
-        },
-
-        // 2025 IMSA
-        {
-          date: "2025-01-25",
-          name: "24 Hours of Daytona",
-          location: "Daytona International Speedway, USA",
-          series: "imsa",
-          duration: "24 Hours",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-03-14",
-          name: "12 Hours of Sebring",
-          location: "Sebring International Raceway, USA",
-          series: "imsa",
-          duration: "12 Hours",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-04-12",
-          name: "Grand Prix of Long Beach",
-          location: "Streets of Long Beach, USA",
-          series: "imsa",
-          duration: "100 Min",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-05-03",
-          name: "Acura Sports Car Challenge",
-          location: "Mid-Ohio Sports Car Course, USA",
-          series: "imsa",
-          duration: "2h40m",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-05-17",
-          name: "Detroit Grand Prix",
-          location: "Belle Isle Street Circuit, USA",
-          series: "imsa",
-          duration: "100 Min",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-06-28",
-          name: "Sahlen's Six Hours",
-          location: "Watkins Glen International, USA",
-          series: "imsa",
-          duration: "6 Hours",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-07-06",
-          name: "Canadian Tire Motorsport Park",
-          location: "Mosport, Canada",
-          series: "imsa",
-          duration: "2h40m",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-08-03",
-          name: "Road America",
-          location: "Elkhart Lake, USA",
-          series: "imsa",
-          duration: "2h40m",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-09-07",
-          name: "Indianapolis Motor Speedway",
-          location: "Indianapolis, USA",
-          series: "imsa",
-          duration: "6 Hours",
-          link: "imsa.html",
-        },
-        {
-          date: "2025-10-11",
-          name: "Petit Le Mans",
-          location: "Road Atlanta, USA",
-          series: "imsa",
-          duration: "10 Hours",
-          link: "imsa.html",
-        },
-
-        // Add more races as needed...
-        {
-          date: "2025-11-30",
-          name: "4 Hours of Buriram",
-          location: "Chang International Circuit, Thailand",
-          series: "alms",
-          duration: "4 Hours",
-          link: "asian-le-mans.html",
-        },
-        {
-          date: "2025-12-14",
-          name: "4 Hours of Yas Marina",
-          location: "Yas Marina Circuit, UAE",
-          series: "alms",
-          duration: "4 Hours",
-          link: "asian-le-mans.html",
+          series: "IMSA",
+          title: "Daytona 24 - Full Season Points Projection",
+          excerpt:
+            "Using opening round data to model potential championship scenarios across the 2024 season.",
+          date: "Jan 28, 2024",
+          icon: "📈",
+          dataPoints: "9,674",
         },
       ];
 
-      // Initialize countdown widget
-      initCountdownWidget("nextRacesCountdown", raceEvents);
+      function renderPosts(filter = "all") {
+        const grid = document.getElementById("postsGrid");
+        const filteredPosts =
+          filter === "all"
+            ? posts
+            : posts.filter((post) => post.series.toLowerCase() === filter);
+
+        grid.innerHTML = filteredPosts
+          .map(
+            (post) => `
+                <div class="post-card" data-series="${post.series.toLowerCase()}">
+                    <div class="post-image">
+                        ${post.icon}
+                        <span class="data-badge">${post.dataPoints} pts</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-series">${post.series}</span>
+                            <span>${post.date}</span>
+                        </div>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <a href="#" class="read-more">Read Analysis →</a>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      // Filter functionality
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          renderPosts(this.dataset.filter);
+        });
+      });
+
+      // Initial render
+      renderPosts();
+
+      // Add click animation to cards
+      document.addEventListener("click", function (e) {
+        const card = e.target.closest(".post-card");
+        if (card) {
+          card.style.transform = "scale(0.98)";
+          setTimeout(() => (card.style.transform = ""), 100);
+        }
+      });
+
+      // Animate stats on scroll
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: "0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll(".stat-number");
+            statNumbers.forEach((stat) => {
+              const target = stat.textContent.replace(/[^0-9]/g, "");
+              animateValue(stat, 0, parseInt(target), 2000);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const statsBar = document.querySelector(".stats-bar");
+      if (statsBar) {
+        observer.observe(statsBar);
+      }
+
+      function animateValue(element, start, end, duration) {
+        const startTime = performance.now();
+        const suffix = element.textContent.replace(/[0-9]/g, "");
+
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const current = Math.floor(progress * (end - start) + start);
+          element.textContent = current + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
     </script>
   </body>
 </html>
