@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop - iomotorsport | Motorsport Inspired Gifts & Gear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
+        color: #e0e0e0;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(ellipse at 20% 20%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 80%, rgba(230, 57, 70, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid #e63946;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #fff;
+        text-transform: lowercase;
+        letter-spacing: 2px;
+        font-family: 'Orbitron', monospace;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .logo span {
+        color: #e63946;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 35px;
+        list-style: none;
+      }
+
+      nav a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        position: relative;
+        padding: 5px 0;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #e63946;
+        transition: width 0.3s;
+      }
+
+      nav a:hover {
+        color: #e63946;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .cart-btn {
+        background: rgba(230, 57, 70, 0.15);
+        border: 2px solid #e63946;
+        color: #e63946;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .cart-btn:hover {
+        background: #e63946;
+        color: #fff;
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #e63946;
+        color: #fff;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      /* Hero Section */
+      .shop-hero {
+        text-align: center;
+        padding: 80px 0 60px;
+        background: linear-gradient(180deg, transparent 0%, rgba(230, 57, 70, 0.08) 100%);
+        position: relative;
+      }
+
+      .shop-hero h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff 0%, #e63946 50%, #ff6b6b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+        font-family: 'Orbitron', monospace;
+        letter-spacing: 4px;
+      }
+
+      .shop-hero p {
+        font-size: 1.3rem;
+        color: #b0b0b0;
+        margin-bottom: 40px;
+      }
+
+      .hero-badges {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-badge {
+        background: rgba(230, 57, 70, 0.15);
+        border: 1px solid rgba(230, 57, 70, 0.4);
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Shop Controls */
+      .shop-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 50px 0 40px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .category-filters {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #e0e0e0;
+        padding: 12px 28px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #e63946;
+        border-color: #e63946;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .sort-dropdown {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .sort-dropdown select {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #e0e0e0;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      /* Products Grid */
+      .products-section {
+        padding: 40px 0 100px;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .product-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(230, 57, 70, 0.5);
+        box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #e63946;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+
+      .product-badge.limited {
+        background: #ff6b6b;
+      }
+
+      .product-badge.sale {
+        background: #4CAF50;
+      }
+
+      .product-image {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(230, 57, 70, 0.1) 0%, transparent 50%);
+      }
+
+      .product-info {
+        padding: 25px;
+      }
+
+      .product-category {
+        color: #e63946;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+
+      .product-info h3 {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .product-desc {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .product-price {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #e63946;
+        font-family: 'Orbitron', monospace;
+      }
+
+      .product-price .original {
+        text-decoration: line-through;
+        color: #666;
+        font-size: 1rem;
+        margin-right: 10px;
+      }
+
+      .add-to-cart-btn {
+        background: rgba(230, 57, 70, 0.15);
+        border: 1px solid #e63946;
+        color: #e63946;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .add-to-cart-btn:hover {
+        background: #e63946;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 10px;
+        font-size: 0.85rem;
+        color: #888;
+      }
+
+      .stars {
+        color: #ffc107;
+      }
+
+      /* Featured Section */
+      .featured-section {
+        background: rgba(230, 57, 70, 0.05);
+        border: 1px solid rgba(230, 57, 70, 0.2);
+        border-radius: 20px;
+        padding: 60px;
+        margin: 80px 0;
+        text-align: center;
+      }
+
+      .featured-section h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fff;
+        font-family: 'Orbitron', monospace;
+        margin-bottom: 15px;
+      }
+
+      .featured-section p {
+        color: #b0b0b0;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+      }
+
+      .featured-products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(0, 0, 0, 0.9);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 60px 0 30px;
+        margin-top: 100px;
+      }
+
+      .footer-content {
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: #fff;
+        font-family: 'Orbitron', monospace;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin: 30px 0;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #e63946;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 30px;
+        margin-top: 30px;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .shop-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .shop-controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .category-filters {
+          justify-content: center;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .featured-section {
+          padding: 40px 25px;
+        }
+
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        nav ul {
+          gap: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="#" class="logo">
+            <div class="logo-icon">🏎️</div>
+            io<span>motorsport</span>
+          </a>
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="cart-btn" onclick="alert('Cart feature coming soon!')">
+            🛒 Cart
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="shop-hero">
+        <div class="container">
+          <h1>Motorsport Shop</h1>
+          <p>Premium racing-inspired gifts, gear, and accessories for true motorsport enthusiasts</p>
+          <div class="hero-badges">
+            <span class="hero-badge">🏁 Free Shipping $75+</span>
+            <span class="hero-badge">🎁 Gift Wrapping Available</span>
+            <span class="hero-badge">↩️ 30-Day Returns</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop Controls -->
+      <div class="container">
+        <div class="shop-controls">
+          <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All Products</button>
+            <button class="filter-btn" data-category="jewelry">Jewelry</button>
+            <button class="filter-btn" data-category="accessories">Accessories</button>
+            <button class="filter-btn" data-category="apparel">Apparel</button>
+            <button class="filter-btn" data-category="home">Home & Bar</button>
+            <button class="filter-btn" data-category="collectibles">Collectibles</button>
+            <button class="filter-btn" data-category="gear">Racing Gear</button>
+          </div>
+          <div class="sort-dropdown">
+            <label style="color: #888;">Sort by:</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Section -->
+      <section class="products-section">
+        <div class="container">
+          <div class="products-grid" id="productsGrid">
+            <!-- Products will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Collection -->
+      <div class="container">
+        <div class="featured-section">
+          <h2>Limited Edition Collection</h2>
+          <p>Exclusive motorsport pieces you won't find anywhere else</p>
+          <div class="featured-products" id="featuredProducts">
+            <!-- Featured products inserted by JS -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span>🏎️</span> iomotorsport
+          </div>
+          <div class="footer-links">
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">Contact Support</a>
+            <a href="#">Track Order</a>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 iomotorsport. Premium motorsport merchandise.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Products Data
+      const products = [
+        // Jewelry
+        {
+          name: "Steering Wheel Cufflinks",
+          category: "jewelry",
+          description: "Sterling silver racing wheel cufflinks with checkered flag detail",
+          price: 89,
+          originalPrice: null,
+          badge: "Premium",
+          icon: "⚙️",
+          rating: 4.8,
+          reviews: 124
+        },
+        {
+          name: "Piston Pendant Necklace",
+          category: "jewelry",
+          description: "Titanium piston replica pendant on stainless steel chain",
+          price: 65,
+          originalPrice: null,
+          badge: null,
+          icon: "🔩",
+          rating: 4.9,
+          reviews: 89
+        },
+        {
+          name: "Checkered Flag Ring",
+          category: "jewelry",
+          description: "Hand-crafted silver ring with black enamel checkered pattern",
+          price: 75,
+          originalPrice: null,
+          badge: "New",
+          icon: "💍",
+          rating: 4.7,
+          reviews: 56
+        },
+        {
+          name: "Racing Stripe Bracelet",
+          category: "jewelry",
+          description: "Leather wrap bracelet with metallic racing stripes",
+          price: 45,
+          originalPrice: 60,
+          badge: "Sale",
+          icon: "📿",
+          rating: 4.6,
+          reviews: 143
+        },
+        {
+          name: "Tachometer Watch",
+          category: "jewelry",
+          description: "Automatic watch with racing tachometer dial design",
+          price: 345,
+          originalPrice: null,
+          badge: "Limited",
+          icon: "⌚",
+          rating: 5.0,
+          reviews: 37
+        },
+        {
+          name: "Spark Plug Tie Bar",
+          category: "jewelry",
+          description: "Polished brass tie clip shaped like a spark plug",
+          price: 38,
+          originalPrice: null,
+          badge: null,
+          icon: "🔧",
+          rating: 4.5,
+          reviews: 72
+        },
+
+        // Accessories
+        {
+          name: "Piston Bottle Opener",
+          category: "accessories",
+          description: "Authentic F1 piston converted into a wall-mounted bottle opener",
+          price: 125,
+          originalPrice: null,
+          badge: "Best Seller",
+          icon: "🍾",
+          rating: 4.9,
+          reviews: 312
+        },
+        {
+          name: "Gear Shift Keychain",
+          category: "accessories",
+          description: "Miniature 6-speed gear shifter keychain with working mechanism",
+          price: 28,
+          originalPrice: null,
+          badge: null,
+          icon: "🔑",
+          rating: 4.7,
+          reviews: 445
+        },
+        {
+          name: "Racing Helmet Wallet",
+          category: "accessories",
+          description: "Leather bifold wallet with embossed racing helmet design",
+          price: 68,
+          originalPrice: null,
+          badge: null,
+          icon: "👛",
+          rating: 4.6,
+          reviews: 178
+        },
+        {
+          name: "Steering Wheel Phone Grip",
+          category: "accessories",
+          description: "3D mini steering wheel pop socket for smartphones",
+          price: 18,
+          originalPrice: 25,
+          badge: "Sale",
+          icon: "📱",
+          rating: 4.4,
+          reviews: 523
+        },
+        {
+          name: "Carbon Fiber Sunglasses",
+          category: "accessories",
+          description: "Polarized sunglasses with real carbon fiber frames",
+          price: 189,
+          originalPrice: null,
+          badge: "Premium",
+          icon: "🕶️",
+          rating: 4.8,
+          reviews: 94
+        },
+        {
+          name: "Track Map Luggage Tag",
+          category: "accessories",
+          description: "Leather luggage tag featuring famous circuit layouts",
+          price: 24,
+          originalPrice: null,
+          badge: null,
+          icon: "🏷️",
+          rating: 4.5,
+          reviews: 201
+        },
+
+        // Apparel
+        {
+          name: "Racing Stripe Polo",
+          category: "apparel",
+          description: "Premium cotton polo with vertical racing stripes",
+          price: 78,
+          originalPrice: null,
+          badge: null,
+          icon: "👕",
+          rating: 4.7,
+          reviews: 267
+        },
+        {
+          name: "Vintage Racing Jacket",
+          category: "apparel",
+          description: "Retro-style bomber jacket with racing patches",
+          price: 189,
+          originalPrice: 250,
+          badge: "Sale",
+          icon: "🧥",
+          rating: 4.9,
+          reviews: 156
+        },
+        {
+          name: "Pit Crew Hoodie",
+          category: "apparel",
+          description: "Heavy-duty hoodie with pit stop timer graphics",
+          price: 95,
+          originalPrice: null,
+          badge: "New",
+          icon: "👔",
+          rating: 4.8,
+          reviews: 189
+        },
+        {
+          name: "Racing Gloves - Street",
+          category: "apparel",
+          description: "Leather driving gloves with perforated palms",
+          price: 65,
+          originalPrice: null,
+          badge: null,
+          icon: "🧤",
+          rating: 4.6,
+          reviews: 234
+        },
+        {
+          name: "Snapback Racing Cap",
+          category: "apparel",
+          description: "Adjustable cap with 3D embroidered racing logos",
+          price: 42,
+          originalPrice: null,
+          badge: "Best Seller",
+          icon: "🧢",
+          rating: 4.7,
+          reviews: 678
+        },
+        {
+          name: "Carbon Print T-Shirt",
+          category: "apparel",
+          description: "Soft cotton tee with carbon fiber texture print",
+          price: 38,
+          originalPrice: null,
+          badge: null,
+          icon: "👚",
+          rating: 4.5,
+          reviews: 412
+        },
+
+        // Home & Bar
+        {
+          name: "Exhaust Tip Wine Holder",
+          category: "home",
+          description: "Polished stainless steel exhaust pipe wine bottle holder",
+          price: 95,
+          originalPrice: null,
+          badge: "Unique",
+          icon: "🍷",
+          rating: 4.9,
+          reviews: 143
+        },
+        {
+          name: "Piston Coffee Mug Set",
+          category: "home",
+          description: "Set of 4 ceramic mugs shaped like engine pistons",
+          price: 68,
+          originalPrice: null,
+          badge: null,
+          icon: "☕",
+          rating: 4.7,
+          reviews: 287
+        },
+        {
+          name: "Racing Wheel Coaster Set",
+          category: "home",
+          description: "6 cork-backed coasters featuring iconic steering wheels",
+          price: 34,
+          originalPrice: null,
+          badge: null,
+          icon: "🎯",
+          rating: 4.6,
+          reviews: 345
+        },
+        {
+          name: "Brake Disc Wall Clock",
+          category: "home",
+          description: "Real brake disc rotor converted into working wall clock",
+          price: 145,
+          originalPrice: null,
+          badge: "Limited",
+          icon: "🕐",
+          rating: 5.0,
+          reviews: 78
+        },
+        {
+          name: "Oil Can Lamp",
+          category: "home",
+          description: "Vintage racing oil can converted to table lamp",
+          price: 125,
+          originalPrice: 165,
+          badge: "Sale",
+          icon: "💡",
+          rating: 4.8,
+          reviews: 92
+        },
+        {
+          name: "Track Map Throw Pillow",
+          category: "home",
+          description: "Velvet cushion with embroidered circuit layout",
+          price: 48,
+          originalPrice: null,
+          badge: null,
+          icon: "🛋️",
+          rating: 4.5,
+          reviews: 167
+        },
+
+        // Collectibles
+        {
+          name: "1:18 Scale F1 Diecast",
+          category: "collectibles",
+          description: "Highly detailed championship-winning F1 car replica",
+          price: 185,
+          originalPrice: null,
+          badge: "Premium",
+          icon: "🏎️",
+          rating: 5.0,
+          reviews: 124
+        },
+        {
+          name: "Signed Driver Card Set",
+          category: "collectibles",
+          description: "Limited edition autographed trading card collection",
+          price: 249,
+          originalPrice: null,
+          b
