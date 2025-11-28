@@ -5,2543 +5,372 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="iomotorsport - Endurance racing coverage, calendars, entry lists, BoP updates, race predictions, esports team, and motorsport analytics for WEC, IMSA, ELMS, ALMS, and GT World Challenge"
+      content="iomotorsport - Your complete endurance racing hub. Esports, fantasy leagues, predictions, and motorsport community."
     />
-    <meta
-      property="og:title"
-      content="iomotorsport - Endurance Racing Hub & Esports"
-    />
-    <meta
-      property="og:description"
-      content="Complete endurance racing coverage: calendars, entry lists, BoP changes, race predictions, esports team, and in-depth analytics"
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
     <link
       rel="icon"
       type="image/svg+xml"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
     />
-    <title>iomotorsport | Esports Racing Team & Analytics</title>
+    <title>iomotorsport | Racing Hub & Esports</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        background: linear-gradient(
-          135deg,
-          #0a0a0a 0%,
-          #1a1a2e 50%,
-          #0f0f1a 100%
-        );
-        color: #e0e0e0;
-        line-height: 1.6;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      /* Animated background */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-            ellipse at 20% 20%,
-            rgba(230, 57, 70, 0.08) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 80% 80%,
-            rgba(230, 57, 70, 0.05) 0%,
-            transparent 50%
-          );
-        pointer-events: none;
-        z-index: -1;
-      }
-
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* Header Styles */
-      header {
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(20px);
-        border-bottom: 2px solid #e63946;
-        padding: 15px 0;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
-      .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-size: 1.8rem;
-        font-weight: 900;
-        color: #fff;
-        text-transform: lowercase;
-        letter-spacing: 2px;
-        font-family: "Orbitron", monospace;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .logo-icon {
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, #e63946, #ff6b6b);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-      }
-
-      .logo span {
-        color: #e63946;
-      }
-
-      .logo::after {
-        content: "_";
-        color: #e63946;
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        50%,
-        100% {
-          opacity: 1;
-        }
-        25%,
-        75% {
-          opacity: 0;
-        }
-      }
-
-      nav {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
-      nav ul {
-        display: flex;
-        gap: 35px;
-        list-style: none;
-      }
-
-      nav a {
-        color: #e0e0e0;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.3s;
-        position: relative;
-        padding: 5px 0;
-      }
-
-      nav a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #e63946;
-        transition: width 0.3s;
-      }
-
-      nav a:hover {
-        color: #e63946;
-      }
-
-      nav a:hover::after {
-        width: 100%;
-      }
-
-      .nav-cta {
-        background: #e63946;
-        color: #fff !important;
-        padding: 10px 24px;
-        border-radius: 6px;
-        font-weight: 600;
-        border: 2px solid #e63946;
-        transition: all 0.3s;
-      }
-
-      .nav-cta::after {
-        display: none;
-      }
-
-      .nav-cta:hover {
-        background: transparent;
-        color: #e63946 !important;
-      }
-
-      .mobile-menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-
-      /* Hero Section */
-      .hero {
-        text-align: center;
-        padding: 100px 0 80px;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(230, 57, 70, 0.08) 100%
-        );
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(
-          circle,
-          rgba(230, 57, 70, 0.15) 0%,
-          transparent 70%
-        );
-        animation: heroGlow 4s ease-in-out infinite;
-      }
-
-      @keyframes heroGlow {
-        0%,
-        100% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 0.5;
-        }
-        50% {
-          transform: translate(-50%, -50%) scale(1.2);
-          opacity: 0.8;
-        }
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(230, 57, 70, 0.15);
-        border: 1px solid rgba(230, 57, 70, 0.4);
-        padding: 8px 20px;
-        border-radius: 50px;
-        margin-bottom: 30px;
-        font-size: 0.85rem;
-        color: #e63946;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .hero-badge::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        background: #e63946;
-        border-radius: 50%;
-        animation: livePulse 2s infinite;
-      }
-
-      @keyframes livePulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.5;
-          transform: scale(1.5);
-        }
-      }
-
-      .hero h1 {
-        font-size: 4.5rem;
-        font-weight: 900;
-        margin-bottom: 25px;
-        background: linear-gradient(135deg, #fff 0%, #e63946 50%, #ff6b6b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-transform: uppercase;
-        font-family: "Orbitron", monospace;
-        letter-spacing: 4px;
-        line-height: 1.1;
-      }
-
-      .hero-subtitle {
-        font-size: 1.5rem;
-        color: #b0b0b0;
-        max-width: 800px;
-        margin: 0 auto 40px;
-        font-weight: 300;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-bottom: 50px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 16px 36px;
-        border-radius: 8px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.95rem;
-        text-decoration: none;
-        transition: all 0.3s;
-        cursor: pointer;
-        border: 2px solid transparent;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #e63946, #ff6b6b);
-        color: #fff;
-        border-color: #e63946;
-        box-shadow: 0 4px 20px rgba(230, 57, 70, 0.4);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(230, 57, 70, 0.6);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        color: #fff;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-      }
-
-      .btn-secondary:hover {
-        border-color: #e63946;
-        color: #e63946;
-        background: rgba(230, 57, 70, 0.1);
-      }
-
-      /* Stats Bar */
-      .stats-bar {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
-        margin-top: 50px;
-        padding: 40px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 16px;
-        border: 1px solid rgba(230, 57, 70, 0.2);
-        backdrop-filter: blur(10px);
-      }
-
-      .stat-item {
-        text-align: center;
-        padding: 20px;
-        border-radius: 12px;
-        transition: all 0.3s;
-      }
-
-      .stat-item:hover {
-        background: rgba(230, 57, 70, 0.1);
-        transform: translateY(-5px);
-      }
-
-      .stat-number {
-        font-size: 3rem;
-        font-weight: 900;
-        color: #e63946;
-        display: block;
-        font-family: "Orbitron", monospace;
-        margin-bottom: 5px;
-      }
-
-      .stat-label {
-        font-size: 0.85rem;
-        color: #888;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      /* Series Tags */
-      .series-tags {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin-top: 40px;
-        flex-wrap: wrap;
-      }
-
-      .tag {
-        background: rgba(230, 57, 70, 0.15);
-        border: 1px solid rgba(230, 57, 70, 0.4);
-        padding: 10px 24px;
-        border-radius: 25px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: all 0.3s;
-        cursor: pointer;
-      }
-
-      .tag:hover {
-        background: #e63946;
-        color: #fff;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.5);
-      }
-
-      /* Section Styles */
-      .section {
-        padding: 100px 0;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-
-      .section-tag {
-        display: inline-block;
-        background: rgba(230, 57, 70, 0.15);
-        color: #e63946;
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 20px;
-      }
-
-      .section-header h2 {
-        font-size: 3rem;
-        font-weight: 800;
-        color: #fff;
-        font-family: "Orbitron", monospace;
-        margin-bottom: 15px;
-      }
-
-      .section-header p {
-        color: #888;
-        font-size: 1.1rem;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* Esports Team Section */
-      #esports {
-        background: linear-gradient(
-          180deg,
-          rgba(230, 57, 70, 0.05) 0%,
-          transparent 100%
-        );
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-      }
-
-      .team-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.4s;
-        position: relative;
-      }
-
-      .team-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #e63946, #ff6b6b);
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .team-card:hover {
-        transform: translateY(-10px);
-        border-color: rgba(230, 57, 70, 0.5);
-        box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
-      }
-
-      .team-card:hover::before {
-        opacity: 1;
-      }
-
-      .team-avatar {
-        width: 100%;
-        height: 220px;
-        background: linear-gradient(135deg, #1a1a2e, #2d2d44);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 5rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .team-avatar::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 80px;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      }
-
-      .team-role {
-        position: absolute;
-        bottom: 15px;
-        left: 15px;
-        background: #e63946;
-        color: #fff;
-        padding: 5px 12px;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        z-index: 1;
-      }
-
-      .team-info {
-        padding: 25px;
-      }
-
-      .team-info h3 {
-        font-size: 1.4rem;
-        color: #fff;
-        margin-bottom: 5px;
-        font-family: "Orbitron", monospace;
-      }
-
-      .team-handle {
-        color: #e63946;
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-      }
-
-      .team-stats {
-        display: flex;
-        gap: 20px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .team-stat {
-        text-align: center;
-      }
-
-      .team-stat-value {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #fff;
-        font-family: "Orbitron", monospace;
-      }
-
-      .team-stat-label {
-        font-size: 0.7rem;
-        color: #666;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .team-socials {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
-      }
-
-      .social-link {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-size: 0.9rem;
-      }
-
-      .social-link:hover {
-        background: #e63946;
-        border-color: #e63946;
-        color: #fff;
-      }
-
-      /* Blog Section */
-      #blog {
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(230, 57, 70, 0.03) 100%
-        );
-      }
-
-      .blog-featured {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 30px;
-        margin-bottom: 50px;
-      }
-
-      .blog-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.4s;
-        cursor: pointer;
-      }
-
-      .blog-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(230, 57, 70, 0.5);
-        box-shadow: 0 15px 40px rgba(230, 57, 70, 0.15);
-      }
-
-      .blog-card.featured {
-        grid-row: span 2;
-      }
-
-      .blog-image {
-        width: 100%;
-        height: 250px;
-        background: linear-gradient(
-          135deg,
-          #e63946 0%,
-          #ff6b6b 50%,
-          #e63946 100%
-        );
-        background-size: 200% 200%;
-        animation: gradientShift 5s ease infinite;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 4rem;
-        position: relative;
-      }
-
-      .blog-card.featured .blog-image {
-        height: 100%;
-        min-height: 400px;
-      }
-
-      @keyframes gradientShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .blog-category {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        color: #e63946;
-        padding: 6px 14px;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border: 1px solid #e63946;
-      }
-
-      .blog-content {
-        padding: 30px;
-      }
-
-      .blog-meta {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 15px;
-        font-size: 0.85rem;
-        color: #666;
-      }
-
-      .blog-card h3 {
-        font-size: 1.5rem;
-        color: #fff;
-        margin-bottom: 15px;
-        line-height: 1.3;
-        transition: color 0.3s;
-      }
-
-      .blog-card:hover h3 {
-        color: #e63946;
-      }
-
-      .blog-card p {
-        color: #888;
-        font-size: 0.95rem;
-        line-height: 1.7;
-      }
-
-      .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      }
-
-      .blog-grid .blog-image {
-        height: 180px;
-        font-size: 2.5rem;
-      }
-
-      .blog-grid .blog-content {
-        padding: 25px;
-      }
-
-      .blog-grid h3 {
-        font-size: 1.2rem;
-      }
-
-      .read-more {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #e63946;
-        font-weight: 600;
-        text-decoration: none;
-        margin-top: 15px;
-        transition: gap 0.3s;
-      }
-
-      .read-more:hover {
-        gap: 15px;
-      }
-
-      .view-all-btn {
-        text-align: center;
-        margin-top: 50px;
-      }
-
-      /* Store Section */
-      #store {
-        background: linear-gradient(
-          180deg,
-          rgba(230, 57, 70, 0.03) 0%,
-          transparent 100%
-        );
-      }
-
-      .store-categories {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-bottom: 50px;
-        flex-wrap: wrap;
-      }
-
-      .store-category {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #e0e0e0;
-        padding: 12px 28px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: 500;
-      }
-
-      .store-category:hover,
-      .store-category.active {
-        background: #e63946;
-        border-color: #e63946;
-        color: #fff;
-      }
-
-      .store-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-      }
-
-      .product-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.4s;
-        position: relative;
-      }
-
-      .product-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(230, 57, 70, 0.5);
-        box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
-      }
-
-      .product-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: #e63946;
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        z-index: 2;
-      }
-
-      .product-image {
-        width: 100%;
-        height: 280px;
-        background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 5rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .product-image::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(230, 57, 70, 0.1) 0%,
-          transparent 50%
-        );
-      }
-
-      .product-info {
-        padding: 25px;
-      }
-
-      .product-info h3 {
-        font-size: 1.2rem;
-        color: #fff;
-        margin-bottom: 8px;
-      }
-
-      .product-desc {
-        color: #888;
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-      }
-
-      .product-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .product-price {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #e63946;
-        font-family: "Orbitron", monospace;
-      }
-
-      .product-price .original {
-        text-decoration: line-through;
-        color: #666;
-        font-size: 1rem;
-        margin-right: 10px;
-      }
-
-      .add-to-cart {
-        background: rgba(230, 57, 70, 0.15);
-        border: 1px solid #e63946;
-        color: #e63946;
-        padding: 12px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s;
-      }
-
-      .add-to-cart:hover {
-        background: #e63946;
-        color: #fff;
-      }
-
-      /* Analytics Section (existing posts) */
-      .posts-section {
-        padding: 100px 0;
-      }
-
-      .filter-buttons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin-bottom: 50px;
-      }
-
-      .filter-btn {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: #e0e0e0;
-        padding: 12px 28px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.95rem;
-        font-weight: 500;
-      }
-
-      .filter-btn:hover,
-      .filter-btn.active {
-        background: #e63946;
-        border-color: #e63946;
-        color: #fff;
-      }
-
-      .posts-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-        gap: 30px;
-      }
-
-      .post-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.4s;
-        cursor: pointer;
-      }
-
-      .post-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(230, 57, 70, 0.5);
-        box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
-      }
-
-      .post-image {
-        width: 100%;
-        height: 220px;
-        background: linear-gradient(135deg, #e63946 0%, #ff6b6b 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3.5rem;
-        color: rgba(255, 255, 255, 0.9);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .post-image::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.15) 0%,
-          transparent 70%
-        );
-        animation: pulse 4s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.5;
-        }
-        50% {
-          transform: scale(1.3);
-          opacity: 0.8;
-        }
-      }
-
-      .data-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 6px 14px;
-        border-radius: 6px;
-        font-size: 0.75rem;
-        color: #e63946;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border: 1px solid #e63946;
-      }
-
-      .post-content {
-        padding: 30px;
-      }
-
-      .post-meta {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-        font-size: 0.85rem;
-        color: #666;
-      }
-
-      .post-series {
-        background: rgba(230, 57, 70, 0.2);
-        padding: 5px 14px;
-        border-radius: 4px;
-        color: #e63946;
-        font-weight: 600;
-      }
-
-      .post-card h3 {
-        font-size: 1.4rem;
-        color: #fff;
-        margin-bottom: 12px;
-        line-height: 1.3;
-        transition: color 0.3s;
-      }
-
-      .post-card:hover h3 {
-        color: #e63946;
-      }
-
-      .post-card p {
-        color: #888;
-        font-size: 0.95rem;
-        margin-bottom: 15px;
-        line-height: 1.6;
-      }
-
-      /* Newsletter Section */
-      .newsletter {
-        background: linear-gradient(
-          135deg,
-          rgba(230, 57, 70, 0.15) 0%,
-          rgba(230, 57, 70, 0.05) 100%
-        );
-        border: 1px solid rgba(230, 57, 70, 0.3);
-        border-radius: 20px;
-        padding: 60px;
-        text-align: center;
-        margin: 80px auto;
-        max-width: 900px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .newsletter::before {
-        content: "";
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(
-          circle,
-          rgba(230, 57, 70, 0.2) 0%,
-          transparent 70%
-        );
-      }
-
-      .newsletter h3 {
-        font-size: 2.5rem;
-        color: #fff;
-        margin-bottom: 15px;
-        font-family: "Orbitron", monospace;
-        position: relative;
-      }
-
-      .newsletter p {
-        color: #b0b0b0;
-        margin-bottom: 30px;
-        font-size: 1.1rem;
-        position: relative;
-      }
-
-      .newsletter-form {
-        display: flex;
-        gap: 15px;
-        max-width: 500px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      .newsletter-form input {
-        flex: 1;
-        padding: 18px 24px;
-        border-radius: 10px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        background: rgba(0, 0, 0, 0.4);
-        color: #fff;
-        font-size: 1rem;
-        transition: all 0.3s;
-      }
-
-      .newsletter-form input:focus {
-        outline: none;
-        border-color: #e63946;
-      }
-
-      .newsletter-form input::placeholder {
-        color: #666;
-      }
-
-      .newsletter-form button {
-        background: #e63946;
-        color: #fff;
-        padding: 18px 36px;
-        border-radius: 10px;
-        border: none;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: all 0.3s;
-        white-space: nowrap;
-      }
-
-      .newsletter-form button:hover {
-        background: #ff6b6b;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
-      }
-
-      /* CTA Section */
-      .cta-section {
-        background: linear-gradient(
-          135deg,
-          rgba(230, 57, 70, 0.12) 0%,
-          rgba(230, 57, 70, 0.05) 100%
-        );
-        border: 1px solid rgba(230, 57, 70, 0.3);
-        border-radius: 20px;
-        padding: 50px;
-        text-align: center;
-        margin: 60px auto;
-        max-width: 900px;
-      }
-
-      .cta-section h3 {
-        font-size: 2.2rem;
-        color: #fff;
-        margin-bottom: 15px;
-        font-family: "Orbitron", monospace;
-      }
-
-      .cta-section p {
-        color: #b0b0b0;
-        margin-bottom: 30px;
-        font-size: 1.1rem;
-      }
-
-      .cta-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: linear-gradient(135deg, #e63946, #ff6b6b);
-        color: #fff;
-        padding: 18px 45px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s;
-        border: 2px solid #e63946;
-      }
-
-      .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(230, 57, 70, 0.5);
-      }
-
-      /* Footer */
-      footer {
-        background: rgba(0, 0, 0, 0.9);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 80px 0 40px;
-        margin-top: 100px;
-      }
-
-      /* Racing Calendar Section */
-      #calendar {
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(230, 57, 70, 0.05) 100%
-        );
-      }
-
-      .calendar-tabs {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-      }
-
-      .calendar-tab {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #e0e0e0;
-        padding: 12px 24px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: 600;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .calendar-tab:hover,
-      .calendar-tab.active {
-        background: #e63946;
-        border-color: #e63946;
-        color: #fff;
-      }
-
-      .calendar-grid {
-        display: grid;
-        gap: 20px;
-      }
-
-      .calendar-event {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 25px 30px;
-        display: grid;
-        grid-template-columns: 100px 1fr auto;
-        gap: 30px;
-        align-items: center;
-        transition: all 0.3s;
-      }
-
-      .calendar-event:hover {
-        border-color: rgba(230, 57, 70, 0.5);
-        transform: translateX(5px);
-        box-shadow: 0 5px 20px rgba(230, 57, 70, 0.15);
-      }
-
-      .calendar-event.next-race {
-        border-color: #e63946;
-        background: rgba(230, 57, 70, 0.08);
-      }
-
-      .calendar-date {
-        text-align: center;
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-      }
-
-      .calendar-month {
-        font-size: 0.75rem;
-        color: #e63946;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-weight: 700;
-      }
-
-      .calendar-day {
-        font-size: 2rem;
-        font-weight: 900;
-        color: #fff;
-        font-family: "Orbitron", monospace;
-        line-height: 1;
-        margin: 5px 0;
-      }
-
-      .calendar-year {
-        font-size: 0.75rem;
-        color: #666;
-      }
-
-      .calendar-info h4 {
-        font-size: 1.3rem;
-        color: #fff;
-        margin-bottom: 8px;
-        font-family: "Orbitron", monospace;
-      }
-
-      .calendar-details {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .calendar-detail {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.9rem;
-        color: #888;
-      }
-
-      .calendar-detail-icon {
-        color: #e63946;
-      }
-
-      .calendar-series-badge {
-        background: rgba(230, 57, 70, 0.2);
-        color: #e63946;
-        padding: 6px 14px;
-        border-radius: 6px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .calendar-status {
-        text-align: right;
-      }
-
-      .status-badge {
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .status-upcoming {
-        background: rgba(255, 193, 7, 0.15);
-        color: #ffc107;
-        border: 1px solid rgba(255, 193, 7, 0.3);
-      }
-
-      .status-next {
-        background: rgba(230, 57, 70, 0.2);
-        color: #e63946;
-        border: 1px solid #e63946;
-        animation: statusPulse 2s infinite;
-      }
-
-      @keyframes statusPulse {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4);
-        }
-        50% {
-          box-shadow: 0 0 0 8px rgba(230, 57, 70, 0);
-        }
-      }
-
-      .status-completed {
-        background: rgba(40, 167, 69, 0.15);
-        color: #28a745;
-        border: 1px solid rgba(40, 167, 69, 0.3);
-      }
-
-      .countdown {
-        font-size: 0.85rem;
-        color: #888;
-        margin-top: 8px;
-      }
-
-      /* Entry List Section */
-      #entries {
-        background: linear-gradient(
-          180deg,
-          rgba(230, 57, 70, 0.05) 0%,
-          transparent 100%
-        );
-      }
-
-      .entries-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .entries-race-select {
-        display: flex;
-        gap: 15px;
-        align-items: center;
-      }
-
-      .entries-race-select select {
-        background: rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        padding: 12px 20px;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        cursor: pointer;
-        min-width: 250px;
-      }
-
-      .entries-race-select select:focus {
-        outline: none;
-        border-color: #e63946;
-      }
-
-      .class-filters {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .class-filter {
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s;
-        border: 1px solid;
-      }
-
-      .class-hypercar {
-        background: rgba(230, 57, 70, 0.2);
-        border-color: #e63946;
-        color: #e63946;
-      }
-      .class-lmgt3 {
-        background: rgba(0, 123, 255, 0.2);
-        border-color: #007bff;
-        color: #007bff;
-      }
-      .class-lmp2 {
-        background: rgba(255, 193, 7, 0.2);
-        border-color: #ffc107;
-        color: #ffc107;
-      }
-      .class-gtd {
-        background: rgba(40, 167, 69, 0.2);
-        border-color: #28a745;
-        color: #28a745;
-      }
-      .class-gtp {
-        background: rgba(156, 39, 176, 0.2);
-        border-color: #9c27b0;
-        color: #9c27b0;
-      }
-
-      .class-filter:hover,
-      .class-filter.active {
-        transform: translateY(-2px);
-      }
-
-      .entries-table {
-        width: 100%;
-        border-collapse: collapse;
-        background: rgba(255, 255, 255, 0.02);
-        border-radius: 12px;
-        overflow: hidden;
-      }
-
-      .entries-table th {
-        background: rgba(0, 0, 0, 0.4);
-        padding: 18px 20px;
-        text-align: left;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #888;
-        font-weight: 600;
-      }
-
-      .entries-table td {
-        padding: 18px 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        font-size: 0.95rem;
-      }
-
-      .entries-table tr:hover {
-        background: rgba(230, 57, 70, 0.05);
-      }
-
-      .entry-number {
-        font-family: "Orbitron", monospace;
-        font-weight: 900;
-        font-size: 1.2rem;
-        color: #fff;
-        width: 60px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-      }
-
-      .entry-team {
-        color: #fff;
-        font-weight: 600;
-      }
-
-      .entry-manufacturer {
-        color: #888;
-        font-size: 0.85rem;
-      }
-
-      .entry-drivers {
-        color: #b0b0b0;
-      }
-
-      .driver-name {
-        display: inline-block;
-        margin-right: 8px;
-      }
-
-      .driver-flag {
-        font-size: 0.8rem;
-      }
-
-      /* BoP Section */
-      #bop {
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(230, 57, 70, 0.03) 100%
-        );
-      }
-
-      .bop-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 25px;
-      }
-
-      .bop-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 25px;
-        transition: all 0.3s;
-      }
-
-      .bop-card:hover {
-        border-color: rgba(230, 57, 70, 0.4);
-        transform: translateY(-3px);
-      }
-
-      .bop-card.has-changes {
-        border-left: 3px solid #e63946;
-      }
-
-      .bop-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 20px;
-      }
-
-      .bop-car-info h4 {
-        font-size: 1.1rem;
-        color: #fff;
-        margin-bottom: 5px;
-      }
-
-      .bop-manufacturer {
-        color: #888;
-        font-size: 0.85rem;
-      }
-
-      .bop-class-badge {
-        padding: 5px 12px;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .bop-changes {
-        display: grid;
-        gap: 12px;
-      }
-
-      .bop-change-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 15px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
-      }
-
-      .bop-param {
-        color: #888;
-        font-size: 0.9rem;
-      }
-
-      .bop-value {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .bop-current {
-        font-weight: 700;
-        color: #fff;
-        font-family: "Orbitron", monospace;
-      }
-
-      .bop-delta {
-        font-size: 0.8rem;
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-weight: 700;
-      }
-
-      .bop-delta.increase {
-        background: rgba(230, 57, 70, 0.2);
-        color: #e63946;
-      }
-
-      .bop-delta.decrease {
-        background: rgba(40, 167, 69, 0.2);
-        color: #28a745;
-      }
-
-      .bop-delta.neutral {
-        background: rgba(255, 255, 255, 0.1);
-        color: #888;
-      }
-
-      .bop-effective-date {
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.8rem;
-        color: #666;
-      }
-
-      /* Predictions Section */
-      #predictions {
-        background: linear-gradient(
-          180deg,
-          rgba(230, 57, 70, 0.03) 0%,
-          transparent 100%
-        );
-      }
-
-      .prediction-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 30px;
-      }
-
-      .prediction-header {
-        background: linear-gradient(
-          135deg,
-          rgba(230, 57, 70, 0.2) 0%,
-          rgba(230, 57, 70, 0.05) 100%
-        );
-        padding: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .prediction-race h3 {
-        font-size: 1.5rem;
-        color: #fff;
-        font-family: "Orbitron", monospace;
-        margin-bottom: 8px;
-      }
-
-      .prediction-race-details {
-        display: flex;
-        gap: 20px;
-        color: #888;
-        font-size: 0.9rem;
-      }
-
-      .prediction-meta {
-        text-align: right;
-      }
-
-      .prediction-accuracy {
-        font-size: 0.8rem;
-        color: #888;
-        margin-bottom: 5px;
-      }
-
-      .accuracy-bar {
-        width: 150px;
-        height: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        overflow: hidden;
-      }
-
-      .accuracy-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #e63946, #28a745);
-        border-radius: 4px;
-      }
-
-      .prediction-body {
-        padding: 30px;
-      }
-
-      .prediction-podium {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        margin-bottom: 30px;
-      }
-
-      .podium-position {
-        text-align: center;
-        padding: 25px 20px;
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.3);
-        position: relative;
-      }
-
-      .podium-position.p1 {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 215, 0, 0.15) 0%,
-          rgba(255, 215, 0, 0.05) 100%
-        );
-        border: 1px solid rgba(255, 215, 0, 0.3);
-      }
-
-      .podium-position.p2 {
-        background: linear-gradient(
-          135deg,
-          rgba(192, 192, 192, 0.15) 0%,
-          rgba(192, 192, 192, 0.05) 100%
-        );
-        border: 1px solid rgba(192, 192, 192, 0.3);
-      }
-
-      .podium-position.p3 {
-        background: linear-gradient(
-          135deg,
-          rgba(205, 127, 50, 0.15) 0%,
-          rgba(205, 127, 50, 0.05) 100%
-        );
-        border: 1px solid rgba(205, 127, 50, 0.3);
-      }
-
-      .podium-rank {
-        font-size: 2rem;
-        margin-bottom: 15px;
-      }
-
-      .podium-team {
-        font-size: 1.1rem;
-        color: #fff;
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-
-      .podium-car {
-        font-size: 0.85rem;
-        color: #888;
-        margin-bottom: 10px;
-      }
-
-      .podium-odds {
-        font-size: 0.9rem;
-        color: #e63946;
-        font-weight: 700;
-      }
-
-      .prediction-factors {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-      }
-
-      .factor-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 8px;
-      }
-
-      .factor-icon {
-        font-size: 1.5rem;
-      }
-
-      .factor-info h5 {
-        color: #fff;
-        font-size: 0.9rem;
-        margin-bottom: 3px;
-      }
-
-      .factor-info p {
-        color: #888;
-        font-size: 0.8rem;
-      }
-
-      /* Race Summaries Section */
-      #summaries {
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(230, 57, 70, 0.05) 100%
-        );
-      }
-
-      .summary-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 25px;
-        transition: all 0.3s;
-      }
-
-      .summary-card:hover {
-        border-color: rgba(230, 57, 70, 0.4);
-        transform: translateY(-3px);
-      }
-
-      .summary-header {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        gap: 25px;
-        padding: 25px 30px;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .summary-series {
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .summary-series.wec {
-        background: rgba(230, 57, 70, 0.2);
-        color: #e63946;
-      }
-      .summary-series.imsa {
-        background: rgba(0, 123, 255, 0.2);
-        color: #007bff;
-      }
-      .summary-series.elms {
-        background: rgba(40, 167, 69, 0.2);
-        color: #28a745;
-      }
-      .summary-series.gtworld {
-        background: rgba(255, 193, 7, 0.2);
-        color: #ffc107;
-      }
-
-      .summary-race-info h4 {
-        font-size: 1.3rem;
-        color: #fff;
-        margin-bottom: 5px;
-        font-family: "Orbitron", monospace;
-      }
-
-      .summary-race-info p {
-        color: #888;
-        font-size: 0.9rem;
-      }
-
-      .summary-result {
-        text-align: right;
-      }
-
-      .winner-label {
-        font-size: 0.75rem;
-        color: #888;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .winner-name {
-        font-size: 1.1rem;
-        color: #fff;
-        font-weight: 700;
-      }
-
-      .summary-body {
-        padding: 25px 30px;
-      }
-
-      .summary-highlights {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-bottom: 20px;
-      }
-
-      .highlight-item {
-        display: flex;
-        gap: 15px;
-        align-items: flex-start;
-      }
-
-      .highlight-icon {
-        font-size: 1.5rem;
-        line-height: 1;
-      }
-
-      .highlight-content h5 {
-        color: #fff;
-        font-size: 0.95rem;
-        margin-bottom: 5px;
-      }
-
-      .highlight-content p {
-        color: #888;
-        font-size: 0.85rem;
-        line-height: 1.5;
-      }
-
-      .summary-stats {
-        display: flex;
-        gap: 30px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        flex-wrap: wrap;
-      }
-
-      .summary-stat {
-        text-align: center;
-      }
-
-      .summary-stat-value {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: #e63946;
-        font-family: "Orbitron", monospace;
-      }
-
-      .summary-stat-label {
-        font-size: 0.75rem;
-        color: #666;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 50px;
-        margin-bottom: 50px;
-      }
-
-      .footer-brand {
-        max-width: 350px;
-      }
-
-      .footer-logo {
-        font-size: 1.6rem;
-        font-weight: 900;
-        color: #fff;
-        font-family: "Orbitron", monospace;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .footer-brand p {
-        color: #666;
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 25px;
-      }
-
-      .footer-socials {
-        display: flex;
-        gap: 12px;
-      }
-
-      .footer-socials a {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-size: 1.1rem;
-      }
-
-      .footer-socials a:hover {
-        background: #e63946;
-        border-color: #e63946;
-        color: #fff;
-        transform: translateY(-3px);
-      }
-
-      .footer-column h4 {
-        color: #fff;
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 25px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .footer-column ul {
-        list-style: none;
-      }
-
-      .footer-column li {
-        margin-bottom: 12px;
-      }
-
-      .footer-column a {
-        color: #888;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-size: 0.95rem;
-      }
-
-      .footer-column a:hover {
-        color: #e63946;
-        padding-left: 5px;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .footer-bottom p {
-        color: #666;
-        font-size: 0.9rem;
-      }
-
-      .footer-links {
-        display: flex;
-        gap: 30px;
-      }
-
-      .footer-links a {
-        color: #666;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.3s;
-      }
-
-      .footer-links a:hover {
-        color: #e63946;
-      }
-
-      /* Responsive */
-      @media (max-width: 1024px) {
-        .hero h1 {
-          font-size: 3.5rem;
-        }
-
-        .stats-bar {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .blog-featured {
-          grid-template-columns: 1fr;
-        }
-
-        .blog-card.featured {
-          grid-row: span 1;
-        }
-
-        .blog-card.featured .blog-image {
-          height: 250px;
-          min-height: unset;
-        }
-
-        .blog-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .footer-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero-subtitle {
-          font-size: 1.1rem;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .header-content {
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        nav ul {
-          gap: 15px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .stats-bar {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .posts-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .blog-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .section-header h2 {
-          font-size: 2rem;
-        }
-
-        .newsletter {
-          padding: 40px 25px;
-        }
-
-        .newsletter-form {
-          flex-direction: column;
-        }
-
-        .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-
-        .footer-bottom {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Navigation -->
     <header>
       <div class="container">
         <div class="header-content">
-          <a href="#home" class="logo">
+          <a href="index.html" class="logo">
             <div class="logo-icon">🏎️</div>
             io<span>motorsport</span>
           </a>
           <nav>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#calendar">Calendar</a></li>
-              <li><a href="#entries">Entry Lists</a></li>
-              <li><a href="#bop">BoP</a></li>
-              <li><a href="#predictions">Predictions</a></li>
-              <li><a href="#summaries">Summaries</a></li>
-              <li><a href="#esports">Esports</a></li>
-              <li><a href="#store" class="nav-cta">Store</a></li>
+            <ul class="nav-links">
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="endurance.html">Endurance</a></li>
+              <li><a href="esports.html">Esports</a></li>
+              <li><a href="fantasy.html">Fantasy</a></li>
+              <li><a href="predictions.html">Predictions</a></li>
+              <li><a href="hub.html">Hub</a></li>
+              <li><a href="store.html" class="nav-cta">Store</a></li>
             </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+            </button>
           </nav>
-          <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+          <a href="index.html" class="active">Home</a>
+          <a href="endurance.html">Endurance</a>
+          <a href="esports.html">Esports</a>
+          <a href="fantasy.html">Fantasy</a>
+          <a href="predictions.html">Predictions</a>
+          <a href="hub.html">Hub</a>
+          <a href="store.html">Store</a>
         </div>
       </div>
     </header>
 
     <main>
       <!-- Hero Section -->
-      <section class="hero" id="home">
+      <section class="hero">
+        <div class="hero-bg"></div>
         <div class="container">
           <div class="hero-content">
-            <div class="hero-badge">🔴 2025 Season Coverage</div>
-            <h1>io<span style="color: #e63946">motorsport</span></h1>
+            <div class="hero-badge">
+              <span class="live-dot"></span>
+              Racing Community Hub
+            </div>
+            <h1>
+              Your Complete<br /><span class="gradient-text">Motorsport</span>
+              Experience
+            </h1>
             <p class="hero-subtitle">
-              Your complete endurance racing hub: calendars, entry lists, BoP
-              updates, race predictions, summaries, and professional esports
-              coverage
+              Endurance racing coverage, esports team, fantasy leagues, race
+              predictions, and a passionate community of racing enthusiasts.
             </p>
             <div class="hero-buttons">
-              <a href="#calendar" class="btn btn-primary">Race Calendar</a>
-              <a href="#predictions" class="btn btn-secondary">Predictions</a>
+              <a href="endurance.html" class="btn btn-primary">
+                <span>🏁</span> Explore Racing
+              </a>
+              <a href="hub.html" class="btn btn-secondary">
+                <span>👥</span> Join Community
+              </a>
             </div>
-            <div class="stats-bar">
+
+            <!-- Quick Stats -->
+            <div class="hero-stats">
               <div class="stat-item">
                 <span class="stat-number">5</span>
-                <span class="stat-label">Series Covered</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">75+</span>
-                <span class="stat-label">Races Tracked</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">200+</span>
-                <span class="stat-label">Teams & Entries</span>
+                <span class="stat-label">Racing Series</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number">12</span>
-                <span class="stat-label">Pro Esports Drivers</span>
+                <span class="stat-label">Esports Drivers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">2.5K+</span>
+                <span class="stat-label">Community Members</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">85%</span>
+                <span class="stat-label">Prediction Accuracy</span>
               </div>
             </div>
-            <div class="series-tags">
-              <span class="tag">WEC</span>
-              <span class="tag">IMSA</span>
-              <span class="tag">ELMS</span>
-              <span class="tag">ALMS</span>
-              <span class="tag">GT World</span>
-              <span class="tag">Esports</span>
-            </div>
           </div>
         </div>
       </section>
 
-      <!-- Racing Calendar Section -->
-      <section class="section" id="calendar">
+      <!-- Features Grid -->
+      <section class="section features-section">
         <div class="container">
           <div class="section-header">
-            <span class="section-tag">2025 Season</span>
-            <h2>Racing Calendar</h2>
-            <p>Complete schedule for all major endurance racing series</p>
+            <span class="section-tag">What We Offer</span>
+            <h2>Everything Racing</h2>
+            <p>From live coverage to fantasy leagues, we've got it all</p>
           </div>
 
-          <div class="calendar-tabs" id="calendarTabs">
-            <button class="calendar-tab active" data-series="all">
-              All Series
-            </button>
-            <button class="calendar-tab" data-series="wec">WEC</button>
-            <button class="calendar-tab" data-series="imsa">IMSA</button>
-            <button class="calendar-tab" data-series="elms">ELMS</button>
-            <button class="calendar-tab" data-series="gtworld">GT World</button>
-          </div>
+          <div class="features-grid">
+            <a href="endurance.html" class="feature-card feature-large">
+              <div class="feature-icon">🏎️</div>
+              <div class="feature-content">
+                <h3>Endurance Racing</h3>
+                <p>
+                  Complete coverage of WEC, IMSA, ELMS & more. Calendars, entry
+                  lists, BoP updates, and race summaries.
+                </p>
+                <span class="feature-link">Explore Coverage →</span>
+              </div>
+              <div class="feature-tags">
+                <span class="tag">WEC</span>
+                <span class="tag">IMSA</span>
+                <span class="tag">ELMS</span>
+              </div>
+            </a>
 
-          <div class="calendar-grid" id="calendarGrid">
-            <!-- Calendar events inserted by JS -->
+            <a href="esports.html" class="feature-card">
+              <div class="feature-icon">🎮</div>
+              <div class="feature-content">
+                <h3>Esports Team</h3>
+                <p>
+                  Meet our competitive sim racing roster competing across
+                  multiple platforms.
+                </p>
+                <span class="feature-link">Meet the Team →</span>
+              </div>
+            </a>
+
+            <a href="fantasy.html" class="feature-card">
+              <div class="feature-icon">🏆</div>
+              <div class="feature-content">
+                <h3>Fantasy Racing</h3>
+                <p>
+                  Build your dream team and compete with other fans in our
+                  fantasy leagues.
+                </p>
+                <span class="feature-link">Start Playing →</span>
+              </div>
+            </a>
+
+            <a href="predictions.html" class="feature-card">
+              <div class="feature-icon">📊</div>
+              <div class="feature-content">
+                <h3>Race Predictions</h3>
+                <p>Data-driven predictions and analytics for upcoming races.</p>
+                <span class="feature-link">View Predictions →</span>
+              </div>
+            </a>
+
+            <a href="hub.html" class="feature-card">
+              <div class="feature-icon">💬</div>
+              <div class="feature-content">
+                <h3>Community Hub</h3>
+                <p>
+                  Connect with fellow enthusiasts, share insights, and stay
+                  updated.
+                </p>
+                <span class="feature-link">Join Discussion →</span>
+              </div>
+            </a>
+
+            <a href="store.html" class="feature-card">
+              <div class="feature-icon">🛒</div>
+              <div class="feature-content">
+                <h3>Merch Store</h3>
+                <p>
+                  Premium motorsport-inspired gear, apparel, and collectibles.
+                </p>
+                <span class="feature-link">Shop Now →</span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- Entry Lists Section -->
-      <section class="section" id="entries">
+      <!-- Upcoming Race Banner -->
+      <section class="section upcoming-section">
         <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Full Grid</span>
-            <h2>Entry Lists</h2>
-            <p>Complete driver and team entries for upcoming races</p>
-          </div>
-
-          <div class="entries-header">
-            <div class="entries-race-select">
-              <select id="entryRaceSelect">
-                <option value="lemans">24 Hours of Le Mans - WEC</option>
-                <option value="daytona">Rolex 24 at Daytona - IMSA</option>
-                <option value="sebring">12 Hours of Sebring - IMSA</option>
-                <option value="spa">TotalEnergies 6H of Spa - WEC</option>
-                <option value="barcelona">4H Barcelona - ELMS</option>
-              </select>
+          <div class="upcoming-banner">
+            <div class="upcoming-content">
+              <span class="upcoming-tag">Next Race</span>
+              <h3>24 Hours of Le Mans</h3>
+              <p>The ultimate test of endurance racing</p>
+              <div class="upcoming-details">
+                <span>📅 June 14-15, 2025</span>
+                <span>📍 Circuit de la Sarthe</span>
+                <span>🏁 WEC Round 4</span>
+              </div>
             </div>
-            <div class="class-filters" id="classFilters">
-              <button
-                class="class-filter class-hypercar active"
-                data-class="all"
+            <div class="countdown-wrapper">
+              <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                  <span class="countdown-number" id="days">--</span>
+                  <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="hours">--</span>
+                  <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="mins">--</span>
+                  <span class="countdown-label">Mins</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="secs">--</span>
+                  <span class="countdown-label">Secs</span>
+                </div>
+              </div>
+              <a href="endurance.html" class="btn btn-primary btn-sm"
+                >View Full Calendar</a
               >
-                All Classes
-              </button>
-              <button class="class-filter class-hypercar" data-class="hypercar">
-                Hypercar
-              </button>
-              <button class="class-filter class-lmgt3" data-class="lmgt3">
-                LMGT3
-              </button>
-              <button class="class-filter class-lmp2" data-class="lmp2">
-                LMP2
-              </button>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="table-container" style="overflow-x: auto">
-            <table class="entries-table" id="entriesTable">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Team</th>
-                  <th>Car</th>
-                  <th>Drivers</th>
-                  <th>Class</th>
-                </tr>
-              </thead>
-              <tbody id="entriesBody">
-                <!-- Entries inserted by JS -->
-              </tbody>
-            </table>
+      <!-- Latest Updates -->
+      <section class="section updates-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Stay Updated</span>
+            <h2>Latest from iomotorsport</h2>
+            <p>News, predictions, and community highlights</p>
+          </div>
+
+          <div class="updates-grid">
+            <div class="update-card featured">
+              <div class="update-image">
+                <span class="update-category">Predictions</span>
+                🏁
+              </div>
+              <div class="update-content">
+                <span class="update-meta">November 28, 2025</span>
+                <h3>Qatar 8 Hours Preview: Who Will Dominate?</h3>
+                <p>
+                  Our data-driven analysis breaks down the favorites for the WEC
+                  season finale...
+                </p>
+                <a href="predictions.html" class="update-link"
+                  >Read Analysis →</a
+                >
+              </div>
+            </div>
+
+            <div class="update-card">
+              <div class="update-image small">
+                <span class="update-category">Esports</span>
+                🎮
+              </div>
+              <div class="update-content">
+                <span class="update-meta">November 25, 2025</span>
+                <h3>Team Secures P2 in IMSA Virtual Championship</h3>
+                <a href="esports.html" class="update-link">Read More →</a>
+              </div>
+            </div>
+
+            <div class="update-card">
+              <div class="update-image small">
+                <span class="update-category">Fantasy</span>
+                🏆
+              </div>
+              <div class="update-content">
+                <span class="update-meta">November 23, 2025</span>
+                <h3>Fantasy WEC: Final Round Points Preview</h3>
+                <a href="fantasy.html" class="update-link">Read More →</a>
+              </div>
+            </div>
+
+            <div class="update-card">
+              <div class="update-image small">
+                <span class="update-category">Community</span>
+                💬
+              </div>
+              <div class="update-content">
+                <span class="update-meta">November 20, 2025</span>
+                <h3>New Discord Features: Live Race Threads</h3>
+                <a href="hub.html" class="update-link">Read More →</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- BoP Section -->
-      <section class="section" id="bop">
+      <!-- Series Coverage -->
+      <section class="section series-section">
         <div class="container">
           <div class="section-header">
-            <span class="section-tag">Balance of Performance</span>
-            <h2>Latest BoP Changes</h2>
-            <p>Track weight, power, and aero adjustments across all classes</p>
-          </div>
-
-          <div class="calendar-tabs" id="bopTabs">
-            <button class="calendar-tab active" data-series="wec">
-              WEC Hypercar
-            </button>
-            <button class="calendar-tab" data-series="imsa">IMSA GTP</button>
-            <button class="calendar-tab" data-series="gt3">LMGT3 / GTD</button>
-          </div>
-
-          <div class="bop-grid" id="bopGrid">
-            <!-- BoP cards inserted by JS -->
-          </div>
-        </div>
-      </section>
-
-      <!-- Predictions Section -->
-      <section class="section" id="predictions">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">AI-Powered Analysis</span>
-            <h2>Race Predictions</h2>
+            <span class="section-tag">Coverage</span>
+            <h2>Racing Series We Follow</h2>
             <p>
-              Data-driven predictions based on historical performance, BoP, and
-              track characteristics
+              Comprehensive coverage across the biggest endurance championships
             </p>
           </div>
 
-          <div id="predictionsContainer">
-            <!-- Predictions inserted by JS -->
+          <div class="series-grid">
+            <div class="series-card">
+              <div class="series-logo">WEC</div>
+              <h3>FIA World Endurance Championship</h3>
+              <p>The pinnacle of global endurance racing</p>
+              <div class="series-stats">
+                <span>8 Rounds</span>
+                <span>5 Classes</span>
+              </div>
+            </div>
+            <div class="series-card">
+              <div class="series-logo">IMSA</div>
+              <h3>IMSA SportsCar Championship</h3>
+              <p>North America's premier sportscar series</p>
+              <div class="series-stats">
+                <span>12 Rounds</span>
+                <span>4 Classes</span>
+              </div>
+            </div>
+            <div class="series-card">
+              <div class="series-logo">ELMS</div>
+              <h3>European Le Mans Series</h3>
+              <p>Europe's top Le Mans prototype series</p>
+              <div class="series-stats">
+                <span>6 Rounds</span>
+                <span>3 Classes</span>
+              </div>
+            </div>
+            <div class="series-card">
+              <div class="series-logo">GT</div>
+              <h3>GT World Challenge</h3>
+              <p>Global GT3 racing excellence</p>
+              <div class="series-stats">
+                <span>Multiple Regions</span>
+                <span>GT3 Cars</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Race Summaries Section -->
-      <section class="section" id="summaries">
+      <!-- CTA Section -->
+      <section class="section cta-section">
         <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Race Reports</span>
-            <h2>Race Summaries</h2>
-            <p>In-depth analysis and highlights from recent endurance races</p>
-          </div>
-
-          <div class="calendar-tabs" id="summaryTabs">
-            <button class="calendar-tab active" data-series="all">
-              All Races
-            </button>
-            <button class="calendar-tab" data-series="wec">WEC</button>
-            <button class="calendar-tab" data-series="imsa">IMSA</button>
-            <button class="calendar-tab" data-series="elms">ELMS</button>
-            <button class="calendar-tab" data-series="gtworld">GT World</button>
-          </div>
-
-          <div id="summariesContainer">
-            <!-- Summaries inserted by JS -->
-          </div>
-        </div>
-      </section>
-
-      <!-- Esports Team Section -->
-      <section class="section" id="esports">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Sim Racing Team</span>
-            <h2>Esports Division</h2>
+          <div class="cta-card">
+            <h2>Ready to Join the Community?</h2>
             <p>
-              Professional sim racers competing in iRacing, ACC, and F1 Esports
-              at the highest levels
+              Connect with thousands of motorsport enthusiasts, get exclusive
+              predictions, and never miss a race.
             </p>
-          </div>
-
-          <div class="calendar-tabs" id="esportsTabs">
-            <button class="calendar-tab active" data-platform="all">
-              All Drivers
-            </button>
-            <button class="calendar-tab" data-platform="iracing">
-              iRacing
-            </button>
-            <button class="calendar-tab" data-platform="acc">ACC</button>
-            <button class="calendar-tab" data-platform="f1">F1 Esports</button>
-          </div>
-
-          <div class="team-grid" id="teamGrid">
-            <!-- Team cards inserted by JS -->
-          </div>
-
-          <div class="cta-section" style="margin-top: 60px">
-            <h3>Join Our Esports Team</h3>
-            <p>
-              Think you have what it takes? We're always looking for talented
-              sim racers to join our roster.
-            </p>
-            <a href="#" class="cta-button">Apply Now →</a>
+            <div class="cta-buttons">
+              <a href="hub.html" class="btn btn-primary">Join Discord</a>
+              <a href="fantasy.html" class="btn btn-secondary"
+                >Start Fantasy League</a
+              >
+            </div>
           </div>
         </div>
       </section>
-
-      <!-- Blog Section -->
-      <section class="section" id="blog">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Latest News</span>
-            <h2>The Blog</h2>
-            <p>
-              Stories, updates, and insights from endurance racing and esports
-            </p>
-          </div>
-
-          <div class="blog-featured" id="blogFeatured">
-            <!-- Featured blog posts inserted by JS -->
-          </div>
-
-          <div class="blog-grid" id="blogGrid">
-            <!-- Blog posts inserted by JS -->
-          </div>
-
-          <div class="view-all-btn">
-            <a href="#" class="btn btn-secondary">View All Articles →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Store Section -->
-      <section class="section" id="store">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Official Merch</span>
-            <h2>The Store</h2>
-            <p>Rep iomotorsport with official team gear and accessories</p>
-          </div>
-
-          <div class="store-categories">
-            <button class="store-category active" data-category="all">
-              All Products
-            </button>
-            <button class="store-category" data-category="apparel">
-              Apparel
-            </button>
-            <button class="store-category" data-category="accessories">
-              Accessories
-            </button>
-            <button class="store-category" data-category="gear">
-              Sim Gear
-            </button>
-          </div>
-
-          <div class="store-grid" id="storeGrid">
-            <!-- Products inserted by JS -->
-          </div>
-
-          <div class="view-all-btn">
-            <a href="#" class="btn btn-primary">Browse Full Store →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Newsletter Section -->
-      <div class="container">
-        <div class="newsletter">
-          <h3>Join the Grid</h3>
-          <p>
-            Subscribe for race updates, exclusive content, and early access to
-            new merch drops
-          </p>
-          <form
-            class="newsletter-form"
-            onsubmit="event.preventDefault(); alert('Thanks for subscribing!');"
-          >
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              required
-            />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-      </div>
     </main>
 
     <!-- Footer -->
@@ -2549,518 +378,91 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <div class="footer-logo"><span>🏎️</span> iomotorsport</div>
+            <a href="index.html" class="logo">
+              <div class="logo-icon">🏎️</div>
+              io<span>motorsport</span>
+            </a>
             <p>
-              Professional sim racing esports team delivering race analytics,
-              competitive esports content, and premium motorsport merchandise.
+              Your complete motorsport experience. Racing coverage, esports,
+              fantasy, and community.
             </p>
-            <div class="footer-socials">
-              <a href="#" aria-label="Twitter">𝕏</a>
-              <a href="#" aria-label="YouTube">▶</a>
-              <a href="#" aria-label="Twitch">◉</a>
-              <a href="#" aria-label="Discord">💬</a>
-              <a href="#" aria-label="Instagram">📷</a>
+            <div class="social-links">
+              <a href="#" class="social-link">𝕏</a>
+              <a href="#" class="social-link">📸</a>
+              <a href="#" class="social-link">💬</a>
+              <a href="#" class="social-link">▶️</a>
             </div>
           </div>
-          <div class="footer-column">
+
+          <div class="footer-links">
             <h4>Racing</h4>
-            <ul>
-              <li><a href="#calendar">Calendar</a></li>
-              <li><a href="#entries">Entry Lists</a></li>
-              <li><a href="#bop">BoP Updates</a></li>
-              <li><a href="#predictions">Predictions</a></li>
-              <li><a href="#summaries">Summaries</a></li>
-            </ul>
+            <a href="endurance.html">Endurance</a>
+            <a href="endurance.html#calendar">Calendar</a>
+            <a href="endurance.html#entries">Entry Lists</a>
+            <a href="predictions.html">Predictions</a>
           </div>
-          <div class="footer-column">
-            <h4>Series</h4>
-            <ul>
-              <li><a href="#">WEC</a></li>
-              <li><a href="#">IMSA</a></li>
-              <li><a href="#">ELMS</a></li>
-              <li><a href="#">GT World</a></li>
-            </ul>
+
+          <div class="footer-links">
+            <h4>Community</h4>
+            <a href="esports.html">Esports Team</a>
+            <a href="fantasy.html">Fantasy League</a>
+            <a href="hub.html">Hub</a>
+            <a href="hub.html#discord">Discord</a>
           </div>
-          <div class="footer-column">
-            <h4>Esports</h4>
-            <ul>
-              <li><a href="#esports">Our Team</a></li>
-              <li><a href="#">Results</a></li>
-              <li><a href="#">Join Us</a></li>
-              <li><a href="#store">Store</a></li>
-            </ul>
+
+          <div class="footer-links">
+            <h4>More</h4>
+            <a href="store.html">Store</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
           </div>
         </div>
+
         <div class="footer-bottom">
-          <p>&copy; 2025 iomotorsport. Race data analytics reimagined.</p>
-          <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact</a>
-          </div>
+          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
     <script>
-      // Team Data
-      const teamMembers = [
-        {
-          name: "Alex 'Apex' Rodriguez",
-          handle: "@apex_racing",
-          role: "Team Captain",
-          avatar: "👨‍✈️",
-          wins: 34,
-          podiums: 87,
-          rating: "A+ 5.2k",
-        },
-        {
-          name: "Sarah 'Swift' Chen",
-          handle: "@swiftchen_",
-          role: "GT Driver",
-          avatar: "👩‍🦰",
-          wins: 28,
-          podiums: 65,
-          rating: "A+ 4.8k",
-        },
-        {
-          name: "Marcus 'Maverick' Johnson",
-          handle: "@maverick_sim",
-          role: "Prototype Driver",
-          avatar: "🧔",
-          wins: 41,
-          podiums: 92,
-          rating: "A+ 5.5k",
-        },
-        {
-          name: "Emma 'Echo' Williams",
-          handle: "@echo_racing",
-          role: "F1 Specialist",
-          avatar: "👩",
-          wins: 22,
-          podiums: 58,
-          rating: "A+ 4.6k",
-        },
-        {
-          name: "Jake 'Jet' Thompson",
-          handle: "@jetspeed_",
-          role: "Endurance Driver",
-          avatar: "👱‍♂️",
-          wins: 19,
-          podiums: 44,
-          rating: "A 4.2k",
-        },
-        {
-          name: "Luna 'Lightning' Park",
-          handle: "@lightning_luna",
-          role: "GT Driver",
-          avatar: "👩‍🦱",
-          wins: 31,
-          podiums: 71,
-          rating: "A+ 5.0k",
-        },
-      ];
-
-      // Blog Data
-      const blogPosts = [
-        {
-          featured: true,
-          category: "Team News",
-          title: "iomotorsport Signs Three New Drivers for 2025 Season",
-          excerpt:
-            "We're excited to announce the addition of three world-class sim racers to our roster as we prepare for the most competitive season yet.",
-          date: "Nov 25, 2025",
-          readTime: "5 min read",
-          icon: "🏆",
-        },
-        {
-          featured: true,
-          category: "Race Report",
-          title: "Victory at Virtual Le Mans 24",
-          excerpt:
-            "Our team secured a dominant win after 24 hours of intense racing.",
-          date: "Nov 20, 2025",
-          readTime: "8 min read",
-          icon: "🥇",
-        },
-        {
-          featured: true,
-          category: "Strategy",
-          title: "Wet Weather Mastery Tips",
-          excerpt: "How our drivers handle the most challenging conditions.",
-          date: "Nov 18, 2025",
-          readTime: "6 min read",
-          icon: "🌧️",
-        },
-        {
-          category: "Tutorial",
-          title: "Setup Guide: Finding the Perfect Balance",
-          excerpt:
-            "Learn how our engineers approach car setups for maximum performance.",
-          date: "Nov 15, 2025",
-          readTime: "10 min read",
-          icon: "⚙️",
-        },
-        {
-          category: "Esports",
-          title: "Road to the World Championship",
-          excerpt:
-            "Inside our preparation for the biggest esports racing event of the year.",
-          date: "Nov 12, 2025",
-          readTime: "7 min read",
-          icon: "🎮",
-        },
-        {
-          category: "Community",
-          title: "Fan Meetup Recap: SimRacing Expo 2025",
-          excerpt: "Thank you to everyone who came out to meet the team!",
-          date: "Nov 8, 2025",
-          readTime: "4 min read",
-          icon: "🤝",
-        },
-      ];
-
-      // Store Products
-      const products = [
-        {
-          name: "iomotorsport Team Jersey 2025",
-          description:
-            "Official race-day replica jersey with breathable fabric",
-          price: 79,
-          originalPrice: null,
-          category: "apparel",
-          badge: "Best Seller",
-          icon: "👕",
-        },
-        {
-          name: "Racing Cap - Snapback",
-          description: "Adjustable cap with embroidered team logo",
-          price: 34,
-          originalPrice: null,
-          category: "accessories",
-          badge: null,
-          icon: "🧢",
-        },
-        {
-          name: "Pro Sim Racing Gloves",
-          description: "Enhanced grip gloves designed for long stints",
-          price: 49,
-          originalPrice: 65,
-          category: "gear",
-          badge: "Sale",
-          icon: "🧤",
-        },
-        {
-          name: "Team Hoodie - Premium",
-          description: "Heavyweight hoodie with fleece lining",
-          price: 89,
-          originalPrice: null,
-          category: "apparel",
-          badge: "New",
-          icon: "🧥",
-        },
-        {
-          name: "Wireless Charging Pad",
-          description: "Fast charge pad with iomotorsport branding",
-          price: 29,
-          originalPrice: null,
-          category: "accessories",
-          badge: null,
-          icon: "🔌",
-        },
-        {
-          name: "Sim Rig LED Strip Kit",
-          description: "RGB lighting kit for your racing cockpit",
-          price: 45,
-          originalPrice: 59,
-          category: "gear",
-          badge: "Sale",
-          icon: "💡",
-        },
-        {
-          name: "Team T-Shirt Classic",
-          description: "100% cotton tee with vintage team design",
-          price: 35,
-          originalPrice: null,
-          category: "apparel",
-          badge: null,
-          icon: "👔",
-        },
-        {
-          name: "Wheel Stand Adapter",
-          description: "Universal mounting bracket for any rig",
-          price: 119,
-          originalPrice: null,
-          category: "gear",
-          badge: "Pro",
-          icon: "🔧",
-        },
-      ];
-
-      // Analytics Posts
-      const posts = [
-        {
-          series: "WEC",
-          title: "2024 Bahrain 8 Hours - Hypercar Battle Analysis",
-          excerpt:
-            "Breaking down the intense championship-deciding finale with lap-by-lap pace analysis and strategic breakdowns.",
-          date: "Nov 2, 2024",
-          icon: "🏁",
-          dataPoints: "2,847",
-        },
-        {
-          series: "WEC",
-          title: "Le Mans 24 Hours - The Data Behind Victory",
-          excerpt:
-            "How Ferrari dominated the race through superior tire management and pit stop efficiency.",
-          date: "Jun 16, 2024",
-          icon: "🏆",
-          dataPoints: "8,912",
-        },
-        {
-          series: "IMSA",
-          title: "Petit Le Mans - Multi-Class Traffic Analysis",
-          excerpt:
-            "Visualizing how traffic patterns affected race outcomes across all four classes at Road Atlanta.",
-          date: "Oct 12, 2024",
-          icon: "📊",
-          dataPoints: "4,203",
-        },
-        {
-          series: "iRacing",
-          title: "iRacing 24H Nürburgring - Stint Analysis",
-          excerpt:
-            "Deep dive into optimal stint lengths and tire degradation patterns from the virtual endurance classic.",
-          date: "Sep 28, 2024",
-          icon: "🎮",
-          dataPoints: "6,721",
-        },
-        {
-          series: "WEC",
-          title: "Spa 6 Hours - Weather Impact on Pace",
-          excerpt:
-            "Interactive charts showing how changing conditions created dramatic pace differentials in the Hypercar class.",
-          date: "May 11, 2024",
-          icon: "🌧️",
-          dataPoints: "1,956",
-        },
-        {
-          series: "IMSA",
-          title: "Sebring 12 Hours - Endurance vs Sprint Pace",
-          excerpt:
-            "Comparing qualification pace to race pace reveals surprising strategic approaches from top teams.",
-          date: "Mar 16, 2024",
-          icon: "⚡",
-          dataPoints: "5,431",
-        },
-      ];
-
-      // Render Team
-      function renderTeam() {
-        const grid = document.getElementById("teamGrid");
-        grid.innerHTML = teamMembers
-          .map(
-            (member) => `
-          <div class="team-card">
-            <div class="team-avatar">
-              ${member.avatar}
-              <span class="team-role">${member.role}</span>
-            </div>
-            <div class="team-info">
-              <h3>${member.name}</h3>
-              <div class="team-handle">${member.handle}</div>
-              <div class="team-stats">
-                <div class="team-stat">
-                  <div class="team-stat-value">${member.wins}</div>
-                  <div class="team-stat-label">Wins</div>
-                </div>
-                <div class="team-stat">
-                  <div class="team-stat-value">${member.podiums}</div>
-                  <div class="team-stat-label">Podiums</div>
-                </div>
-                <div class="team-stat">
-                  <div class="team-stat-value">${member.rating}</div>
-                  <div class="team-stat-label">Rating</div>
-                </div>
-              </div>
-              <div class="team-socials">
-                <a href="#" class="social-link">𝕏</a>
-                <a href="#" class="social-link">▶</a>
-                <a href="#" class="social-link">◉</a>
-              </div>
-            </div>
-          </div>
-        `
-          )
-          .join("");
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        mobileNav.classList.toggle("active");
       }
 
-      // Render Blog
-      function renderBlog() {
-        const featured = blogPosts.filter((p) => p.featured);
-        const regular = blogPosts.filter((p) => !p.featured);
+      // Countdown Timer
+      function updateCountdown() {
+        const raceDate = new Date("2025-06-14T14:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = raceDate - now;
 
-        const featuredGrid = document.getElementById("blogFeatured");
-        featuredGrid.innerHTML = featured
-          .map(
-            (post, i) => `
-          <div class="blog-card ${i === 0 ? "featured" : ""}">
-            <div class="blog-image">
-              ${post.icon}
-              <span class="blog-category">${post.category}</span>
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span>${post.date}</span>
-                <span>•</span>
-                <span>${post.readTime}</span>
-              </div>
-              <h3>${post.title}</h3>
-              <p>${post.excerpt}</p>
-              <a href="#" class="read-more">Read Article →</a>
-            </div>
-          </div>
-        `
-          )
-          .join("");
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-        const regularGrid = document.getElementById("blogGrid");
-        regularGrid.innerHTML = regular
-          .map(
-            (post) => `
-          <div class="blog-card">
-            <div class="blog-image">
-              ${post.icon}
-              <span class="blog-category">${post.category}</span>
-            </div>
-            <div class="blog-content">
-              <div class="blog-meta">
-                <span>${post.date}</span>
-                <span>•</span>
-                <span>${post.readTime}</span>
-              </div>
-              <h3>${post.title}</h3>
-              <a href="#" class="read-more">Read Article →</a>
-            </div>
-          </div>
-        `
-          )
-          .join("");
-      }
-
-      // Render Store
-      function renderStore(filter = "all") {
-        const grid = document.getElementById("storeGrid");
-        const filteredProducts =
-          filter === "all"
-            ? products
-            : products.filter((p) => p.category === filter);
-
-        grid.innerHTML = filteredProducts
-          .map(
-            (product) => `
-          <div class="product-card">
-            ${
-              product.badge
-                ? `<span class="product-badge">${product.badge}</span>`
-                : ""
-            }
-            <div class="product-image">
-              ${product.icon}
-            </div>
-            <div class="product-info">
-              <h3>${product.name}</h3>
-              <p class="product-desc">${product.description}</p>
-              <div class="product-footer">
-                <div class="product-price">
-                  ${
-                    product.originalPrice
-                      ? `<span class="original">$${product.originalPrice}</span>`
-                      : ""
-                  }
-                  $${product.price}
-                </div>
-                <button class="add-to-cart">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-        `
-          )
-          .join("");
-      }
-
-      // Render Posts (Analytics)
-      function renderPosts(filter = "all") {
-        const grid = document.getElementById("postsGrid");
-        const filteredPosts =
-          filter === "all"
-            ? posts
-            : posts.filter((post) => post.series.toLowerCase() === filter);
-
-        grid.innerHTML = filteredPosts
-          .map(
-            (post) => `
-          <div class="post-card" data-series="${post.series.toLowerCase()}">
-            <div class="post-image">
-              ${post.icon}
-              <span class="data-badge">${post.dataPoints} pts</span>
-            </div>
-            <div class="post-content">
-              <div class="post-meta">
-                <span class="post-series">${post.series}</span>
-                <span>${post.date}</span>
-              </div>
-              <h3>${post.title}</h3>
-              <p>${post.excerpt}</p>
-              <a href="#" class="read-more">Read Analysis →</a>
-            </div>
-          </div>
-        `
-          )
-          .join("");
-      }
-
-      // Filter functionality for analytics
-      document.querySelectorAll(".filter-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          document
-            .querySelectorAll(".filter-btn")
-            .forEach((b) => b.classList.remove("active"));
-          this.classList.add("active");
-          renderPosts(this.dataset.filter);
-        });
-      });
-
-      // Filter functionality for store
-      document.querySelectorAll(".store-category").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          document
-            .querySelectorAll(".store-category")
-            .forEach((b) => b.classList.remove("active"));
-          this.classList.add("active");
-          renderStore(this.dataset.category);
-        });
-      });
-
-      // Add to cart functionality
-      document.addEventListener("click", function (e) {
-        if (e.target.classList.contains("add-to-cart")) {
-          e.target.textContent = "Added! ✓";
-          e.target.style.background = "#e63946";
-          e.target.style.color = "#fff";
-          setTimeout(() => {
-            e.target.textContent = "Add to Cart";
-            e.target.style.background = "";
-            e.target.style.color = "";
-          }, 2000);
+          document.getElementById("days").textContent = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("mins").textContent = mins
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("secs").textContent = secs
+            .toString()
+            .padStart(2, "0");
         }
-      });
+      }
 
-      // Initial render
-      renderTeam();
-      renderBlog();
-      renderStore();
-      renderPosts();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -3068,82 +470,9 @@
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
+            target.scrollIntoView({ behavior: "smooth" });
           }
         });
-      });
-
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px",
-      };
-
-      const fadeInObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      }, observerOptions);
-
-      // Animate stat numbers
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll(".stat-number");
-            statNumbers.forEach((stat) => {
-              const target = stat.textContent.replace(/[^0-9]/g, "");
-              if (target) {
-                animateValue(stat, 0, parseInt(target), 2000);
-              }
-            });
-            statsObserver.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      const statsBar = document.querySelector(".stats-bar");
-      if (statsBar) {
-        statsObserver.observe(statsBar);
-      }
-
-      function animateValue(element, start, end, duration) {
-        const startTime = performance.now();
-        const suffix = element.textContent.replace(/[0-9]/g, "");
-
-        function update(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3); // Ease out cubic
-          const current = Math.floor(eased * (end - start) + start);
-          element.textContent = current + suffix;
-
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          }
-        }
-
-        requestAnimationFrame(update);
-      }
-
-      // Header scroll effect
-      let lastScroll = 0;
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
-          header.style.background = "rgba(0, 0, 0, 0.95)";
-        } else {
-          header.style.background = "rgba(0, 0, 0, 0.85)";
-        }
-
-        lastScroll = currentScroll;
       });
     </script>
   </body>

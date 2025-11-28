@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="iomotorsport Community Hub - Join our Discord, connect with fellow motorsport enthusiasts, and stay updated."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+    />
+    <title>Community Hub | iomotorsport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Hub Page Specific Styles */
+      .community-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 60px;
+      }
+
+      .community-stat {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .community-stat:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-5px);
+      }
+
+      .community-stat-value {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #e63946;
+        font-family: "Orbitron", monospace;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .community-stat-label {
+        color: #888;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Discord Section */
+      .discord-section {
+        background: linear-gradient(
+          135deg,
+          rgba(88, 101, 242, 0.15) 0%,
+          rgba(88, 101, 242, 0.05) 100%
+        );
+        border: 1px solid rgba(88, 101, 242, 0.3);
+        border-radius: 20px;
+        padding: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 60px;
+      }
+
+      .discord-content h2 {
+        color: #fff;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+      }
+
+      .discord-content p {
+        color: #b0b0b0;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        line-height: 1.7;
+      }
+
+      .discord-features {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .discord-feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #b0b0b0;
+        font-size: 0.95rem;
+      }
+
+      .discord-feature-icon {
+        width: 30px;
+        height: 30px;
+        background: rgba(88, 101, 242, 0.2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+      }
+
+      .discord-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: #5865f2;
+        color: #fff;
+        padding: 16px 32px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+
+      .discord-btn:hover {
+        background: #4752c4;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+      }
+
+      .discord-preview {
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid rgba(88, 101, 242, 0.2);
+      }
+
+      .discord-channels {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .channel-category {
+        color: #888;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+
+      .channel-category:first-child {
+        margin-top: 0;
+      }
+
+      .channel-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        border-radius: 6px;
+        color: #b0b0b0;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+      }
+
+      .channel-item:hover {
+        background: rgba(88, 101, 242, 0.15);
+        color: #fff;
+      }
+
+      .channel-icon {
+        color: #888;
+      }
+
+      .channel-live {
+        margin-left: auto;
+        background: #e63946;
+        color: #fff;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      /* Social Links */
+      .socials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .social-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: all 0.4s;
+        text-decoration: none;
+      }
+
+      .social-card:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(230, 57, 70, 0.15);
+      }
+
+      .social-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .social-card h3 {
+        color: #fff;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .social-card p {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .social-followers {
+        color: #e63946;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      /* Recent Activity Feed */
+      .activity-feed {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .activity-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 25px;
+        background: rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .activity-header h3 {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .activity-filter {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+
+      .activity-list {
+        padding: 10px 0;
+      }
+
+      .activity-item {
+        display: flex;
+        gap: 15px;
+        padding: 18px 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.3s;
+      }
+
+      .activity-item:last-child {
+        border-bottom: none;
+      }
+
+      .activity-item:hover {
+        background: rgba(230, 57, 70, 0.05);
+      }
+
+      .activity-avatar {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .activity-content {
+        flex: 1;
+      }
+
+      .activity-user {
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .activity-user span {
+        color: #888;
+        font-weight: 400;
+      }
+
+      .activity-text {
+        color: #b0b0b0;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .activity-time {
+        color: #666;
+        font-size: 0.8rem;
+        margin-top: 8px;
+      }
+
+      .activity-type {
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+
+      .activity-type.prediction {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+      }
+      .activity-type.fantasy {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+      .activity-type.discussion {
+        background: rgba(0, 123, 255, 0.2);
+        color: #007bff;
+      }
+      .activity-type.esports {
+        background: rgba(156, 39, 176, 0.2);
+        color: #9c27b0;
+      }
+
+      /* Contributors */
+      .contributors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .contributor-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .contributor-card:hover {
+        border-color: rgba(230, 57, 70, 0.3);
+        transform: translateY(-5px);
+      }
+
+      .contributor-avatar {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 auto 15px;
+      }
+
+      .contributor-name {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .contributor-role {
+        color: #e63946;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+      }
+
+      .contributor-stats {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      /* Newsletter Section */
+      .newsletter-section {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 57, 70, 0.15) 0%,
+          rgba(230, 57, 70, 0.05) 100%
+        );
+        border: 1px solid rgba(230, 57, 70, 0.3);
+        border-radius: 20px;
+        padding: 50px;
+        text-align: center;
+      }
+
+      .newsletter-section h2 {
+        color: #fff;
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .newsletter-section p {
+        color: #888;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 15px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 16px 20px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      .newsletter-form input:focus {
+        outline: none;
+        border-color: #e63946;
+      }
+
+      .newsletter-form input::placeholder {
+        color: #666;
+      }
+
+      .newsletter-form button {
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        color: #fff;
+        padding: 16px 32px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        white-space: nowrap;
+      }
+
+      .newsletter-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+      }
+
+      @media (max-width: 992px) {
+        .discord-section {
+          grid-template-columns: 1fr;
+        }
+
+        .community-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .discord-section {
+          padding: 30px;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .newsletter-form button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">🏎️</div>
+            io<span>motorsport</span>
+          </a>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="endurance.html">Endurance</a></li>
+              <li><a href="esports.html">Esports</a></li>
+              <li><a href="fantasy.html">Fantasy</a></li>
+              <li><a href="predictions.html">Predictions</a></li>
+              <li><a href="hub.html" class="active">Hub</a></li>
+              <li><a href="store.html" class="nav-cta">Store</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+            </button>
+          </nav>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+          <a href="index.html">Home</a>
+          <a href="endurance.html">Endurance</a>
+          <a href="esports.html">Esports</a>
+          <a href="fantasy.html">Fantasy</a>
+          <a href="predictions.html">Predictions</a>
+          <a href="hub.html" class="active">Hub</a>
+          <a href="store.html">Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <span class="section-tag">👥 Community</span>
+          <h1>Community <span class="gradient-text">Hub</span></h1>
+          <p>
+            Connect with thousands of motorsport enthusiasts. Share insights,
+            discuss races, and be part of the action.
+          </p>
+        </div>
+      </section>
+
+      <!-- Community Stats -->
+      <section class="section" style="padding-top: 40px">
+        <div class="container">
+          <div class="community-stats">
+            <div class="community-stat">
+              <span class="community-stat-value">2.5K+</span>
+              <span class="community-stat-label">Discord Members</span>
+            </div>
+            <div class="community-stat">
+              <span class="community-stat-value">15K</span>
+              <span class="community-stat-label">Twitter Followers</span>
+            </div>
+            <div class="community-stat">
+              <span class="community-stat-value">500+</span>
+              <span class="community-stat-label">Fantasy Players</span>
+            </div>
+            <div class="community-stat">
+              <span class="community-stat-value">24/7</span>
+              <span class="community-stat-label">Active Community</span>
+            </div>
+          </div>
+
+          <!-- Discord Section -->
+          <div class="discord-section" id="discord">
+            <div class="discord-content">
+              <h2>Join Our Discord</h2>
+              <p>
+                The heart of our community. Get live race discussions,
+                predictions, fantasy tips, and connect with fellow enthusiasts.
+              </p>
+
+              <div class="discord-features">
+                <div class="discord-feature">
+                  <span class="discord-feature-icon">🏁</span>
+                  <span>Live race discussion threads</span>
+                </div>
+                <div class="discord-feature">
+                  <span class="discord-feature-icon">📊</span>
+                  <span>Exclusive prediction insights</span>
+                </div>
+                <div class="discord-feature">
+                  <span class="discord-feature-icon">🏆</span>
+                  <span>Fantasy league coordination</span>
+                </div>
+                <div class="discord-feature">
+                  <span class="discord-feature-icon">🎮</span>
+                  <span>Sim racing events & lobbies</span>
+                </div>
+                <div class="discord-feature">
+                  <span class="discord-feature-icon">🎁</span>
+                  <span>Member-only giveaways</span>
+                </div>
+              </div>
+
+              <a href="#" class="discord-btn"> 💬 Join Discord Server </a>
+            </div>
+
+            <div class="discord-preview">
+              <div class="discord-channels">
+                <span class="channel-category">📢 Announcements</span>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  news-updates
+                </div>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  race-alerts
+                  <span class="channel-live">Live</span>
+                </div>
+
+                <span class="channel-category">💬 General</span>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  general-chat
+                </div>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  introductions
+                </div>
+
+                <span class="channel-category">🏎️ Racing</span>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  wec-discussion
+                </div>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  imsa-discussion
+                </div>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  le-mans-hype
+                  <span class="channel-live">Active</span>
+                </div>
+
+                <span class="channel-category">🎮 Esports</span>
+                <div class="channel-item">
+                  <span class="channel-icon">#</span>
+                  sim-racing-lobbies
+                </div>
+                <div class="channel-item">
+                  <span class="channel-icon">🔊</span>
+                  Race Room
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Links -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Connect</span>
+            <h2>Follow Us Everywhere</h2>
+            <p>Stay updated across all our social platforms</p>
+          </div>
+
+          <div class="socials-grid">
+            <a href="#" class="social-card">
+              <span class="social-icon">𝕏</span>
+              <h3>Twitter / X</h3>
+              <p>Breaking news, race updates, and hot takes</p>
+              <span class="social-followers">15.2K Followers</span>
+            </a>
+
+            <a href="#" class="social-card">
+              <span class="social-icon">📸</span>
+              <h3>Instagram</h3>
+              <p>Race photography and behind-the-scenes content</p>
+              <span class="social-followers">8.7K Followers</span>
+            </a>
+
+            <a href="#" class="social-card">
+              <span class="social-icon">▶️</span>
+              <h3>YouTube</h3>
+              <p>Race highlights, analysis videos, and esports streams</p>
+              <span class="social-followers">12.4K Subscribers</span>
+            </a>
+
+            <a href="#" class="social-card">
+              <span class="social-icon">📺</span>
+              <h3>Twitch</h3>
+              <p>Live sim racing streams and race watch parties</p>
+              <span class="social-followers">3.2K Followers</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activity Feed -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Live</span>
+            <h2>Community Activity</h2>
+            <p>See what's happening in our community right now</p>
+          </div>
+
+          <div class="activity-feed">
+            <div class="activity-header">
+              <h3>Recent Activity</h3>
+              <select class="activity-filter">
+                <option>All Activity</option>
+                <option>Predictions</option>
+                <option>Fantasy</option>
+                <option>Discussions</option>
+              </select>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-avatar">🏆</div>
+                <div class="activity-content">
+                  <div class="activity-user">
+                    SpeedDemon_42 <span>climbed to #1 in WEC Fantasy</span>
+                  </div>
+                  <div class="activity-text">
+                    After Le Mans predictions, they've taken the lead with 2,847
+                    points!
+                  </div>
+                  <div class="activity-time">5 minutes ago</div>
+                </div>
+                <span class="activity-type fantasy">Fantasy</span>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-avatar">📊</div>
+                <div class="activity-content">
+                  <div class="activity-user">
+                    iomotorsport <span>posted a new prediction</span>
+                  </div>
+                  <div class="activity-text">
+                    24 Hours of Le Mans prediction is now live! Check out our
+                    full analysis.
+                  </div>
+                  <div class="activity-time">1 hour ago</div>
+                </div>
+                <span class="activity-type prediction">Prediction</span>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-avatar">💬</div>
+                <div class="activity-content">
+                  <div class="activity-user">
+                    EnduranceKing <span>started a discussion</span>
+                  </div>
+                  <div class="activity-text">
+                    Toyota vs Ferrari: Who has the better long-run pace for Le
+                    Mans?
+                  </div>
+                  <div class="activity-time">2 hours ago</div>
+                </div>
+                <span class="activity-type discussion">Discussion</span>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-avatar">🎮</div>
+                <div class="activity-content">
+                  <div class="activity-user">
+                    Alex Velocity <span>won a race</span>
+                  </div>
+                  <div class="activity-text">
+                    iomotorsport Esports takes P1 at the ACC Intercontinental GT
+                    Challenge!
+                  </div>
+                  <div class="activity-time">3 hours ago</div>
+                </div>
+                <span class="activity-type esports">Esports</span>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-avatar">🏁</div>
+                <div class="activity-content">
+                  <div class="activity-user">
+                    GT3Master <span>joined the community</span>
+                  </div>
+                  <div class="activity-text">
+                    Welcome to iomotorsport! Check out our fantasy leagues and
+                    predictions.
+                  </div>
+                  <div class="activity-time">4 hours ago</div>
+                </div>
+                <span class="activity-type discussion">New Member</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Top Contributors -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Recognition</span>
+            <h2>Top Contributors</h2>
+            <p>Community members who make iomotorsport great</p>
+          </div>
+
+          <div class="contributors-grid">
+            <div class="contributor-card">
+              <div class="contributor-avatar">👑</div>
+              <div class="contributor-name">SpeedDemon_42</div>
+              <div class="contributor-role">Fantasy Champion</div>
+              <div class="contributor-stats">
+                <span>🏆 3 Wins</span>
+                <span>📊 2,847 pts</span>
+              </div>
+            </div>
+
+            <div class="contributor-card">
+              <div class="contributor-avatar">🎯</div>
+              <div class="contributor-name">PredictionPro</div>
+              <div class="contributor-role">Analysis Expert</div>
+              <div class="contributor-stats">
+                <span>✓ 89% Accuracy</span>
+                <span>📝 45 Posts</span>
+              </div>
+            </div>
+
+            <div class="contributor-card">
+              <div class="contributor-avatar">💬</div>
+              <div class="contributor-name">RaceChatter</div>
+              <div class="contributor-role">Community Leader</div>
+              <div class="contributor-stats">
+                <span>💬 1.2K Messages</span>
+                <span>👍 500+ Likes</span>
+              </div>
+            </div>
+
+            <div class="contributor-card">
+              <div class="contributor-avatar">🎮</div>
+              <div class="contributor-name">SimRacer_Mike</div>
+              <div class="contributor-role">Event Organizer</div>
+              <div class="contributor-stats">
+                <span>🎮 25 Events</span>
+                <span>👥 150 Racers</span>
+              </div>
+            </div>
+
+            <div class="contributor-card">
+              <div class="contributor-avatar">📸</div>
+              <div class="contributor-name">RacingLens</div>
+              <div class="contributor-role">Content Creator</div>
+              <div class="contributor-stats">
+                <span>📷 200+ Photos</span>
+                <span>❤️ 5K Likes</span>
+              </div>
+            </div>
+
+            <div class="contributor-card">
+              <div class="contributor-avatar">🔧</div>
+              <div class="contributor-name">TechAnalyst</div>
+              <div class="contributor-role">Technical Expert</div>
+              <div class="contributor-stats">
+                <span>📊 30 Articles</span>
+                <span>👀 25K Views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="section">
+        <div class="container">
+          <div class="newsletter-section">
+            <h2>Stay in the Loop</h2>
+            <p>
+              Get weekly race previews, predictions, and community highlights
+              delivered to your inbox.
+            </p>
+            <form
+              class="newsletter-form"
+              onsubmit="event.preventDefault(); alert('Thanks for subscribing!');"
+            >
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                required
+              />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <h2>Ready to Join?</h2>
+            <p>
+              Become part of the fastest-growing motorsport community online.
+            </p>
+            <div class="cta-buttons">
+              <a href="#discord" class="btn btn-primary">Join Discord</a>
+              <a href="fantasy.html" class="btn btn-secondary">Play Fantasy</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">🏎️</div>
+              io<span>motorsport</span>
+            </a>
+            <p>
+              Your complete motorsport experience. Racing coverage, esports,
+              fantasy, and community.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">𝕏</a>
+              <a href="#" class="social-link">📸</a>
+              <a href="#" class="social-link">💬</a>
+              <a href="#" class="social-link">▶️</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Racing</h4>
+            <a href="endurance.html">Endurance</a>
+            <a href="endurance.html#calendar">Calendar</a>
+            <a href="endurance.html#entries">Entry Lists</a>
+            <a href="predictions.html">Predictions</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Community</h4>
+            <a href="esports.html">Esports Team</a>
+            <a href="fantasy.html">Fantasy League</a>
+            <a href="hub.html">Hub</a>
+            <a href="hub.html#discord">Discord</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>More</h4>
+            <a href="store.html">Store</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("mobileNav").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

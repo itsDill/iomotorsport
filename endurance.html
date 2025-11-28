@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="iomotorsport Endurance - Complete coverage of WEC, IMSA, ELMS racing. Calendars, entry lists, BoP updates, and race summaries."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+    />
+    <title>Endurance Racing | iomotorsport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Endurance Page Specific Styles */
+      .calendar-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .calendar-event {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 25px 30px;
+        display: grid;
+        grid-template-columns: 100px 1fr auto;
+        gap: 30px;
+        align-items: center;
+        transition: all 0.3s;
+      }
+
+      .calendar-event:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateX(5px);
+      }
+
+      .calendar-event.next-race {
+        border-color: #e63946;
+        background: rgba(230, 57, 70, 0.08);
+      }
+
+      .calendar-date {
+        text-align: center;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      .calendar-month {
+        font-size: 0.75rem;
+        color: #e63946;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+      }
+
+      .calendar-day {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #fff;
+        font-family: "Orbitron", monospace;
+        line-height: 1;
+        margin: 5px 0;
+      }
+
+      .calendar-year {
+        font-size: 0.75rem;
+        color: #666;
+      }
+
+      .calendar-info h4 {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 8px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .calendar-details {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      .calendar-series-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-right: 10px;
+      }
+
+      .calendar-status {
+        text-align: right;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .status-upcoming {
+        background: rgba(255, 193, 7, 0.15);
+        color: #ffc107;
+      }
+      .status-next {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+        animation: statusPulse 2s infinite;
+      }
+      .status-completed {
+        background: rgba(40, 167, 69, 0.15);
+        color: #28a745;
+      }
+
+      @keyframes statusPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 8px rgba(230, 57, 70, 0);
+        }
+      }
+
+      /* Entry List Styles */
+      .entries-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .class-filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .class-filter {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid;
+        background: transparent;
+      }
+
+      .class-filter.hypercar {
+        border-color: #e63946;
+        color: #e63946;
+      }
+      .class-filter.lmgt3 {
+        border-color: #007bff;
+        color: #007bff;
+      }
+      .class-filter.lmp2 {
+        border-color: #ffc107;
+        color: #ffc107;
+      }
+      .class-filter.gtp {
+        border-color: #9c27b0;
+        color: #9c27b0;
+      }
+      .class-filter.gtd {
+        border-color: #28a745;
+        color: #28a745;
+      }
+
+      .class-filter:hover,
+      .class-filter.active {
+        transform: translateY(-2px);
+      }
+
+      .class-filter.hypercar:hover,
+      .class-filter.hypercar.active {
+        background: rgba(230, 57, 70, 0.2);
+      }
+      .class-filter.lmgt3:hover,
+      .class-filter.lmgt3.active {
+        background: rgba(0, 123, 255, 0.2);
+      }
+      .class-filter.lmp2:hover,
+      .class-filter.lmp2.active {
+        background: rgba(255, 193, 7, 0.2);
+      }
+      .class-filter.gtp:hover,
+      .class-filter.gtp.active {
+        background: rgba(156, 39, 176, 0.2);
+      }
+      .class-filter.gtd:hover,
+      .class-filter.gtd.active {
+        background: rgba(40, 167, 69, 0.2);
+      }
+
+      .entry-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: all 0.3s;
+      }
+
+      .entry-card:hover {
+        border-color: rgba(230, 57, 70, 0.3);
+        transform: translateX(5px);
+      }
+
+      .entry-number {
+        font-family: "Orbitron", monospace;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
+      }
+
+      .entry-info h4 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 5px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .entry-manufacturer {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+      }
+
+      .entry-drivers {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: #b0b0b0;
+      }
+
+      /* BoP Section */
+      .bop-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .bop-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 25px;
+        transition: all 0.3s;
+      }
+
+      .bop-card:hover {
+        border-color: rgba(230, 57, 70, 0.3);
+      }
+
+      .bop-card.has-changes {
+        border-left: 3px solid #e63946;
+      }
+
+      .bop-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .bop-car h4 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      .bop-manufacturer {
+        color: #888;
+        font-size: 0.85rem;
+      }
+
+      .bop-changes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .bop-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+      }
+
+      .bop-param {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .bop-value {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .bop-current {
+        font-weight: 700;
+        color: #fff;
+        font-family: "Orbitron", monospace;
+      }
+
+      .bop-delta {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 700;
+      }
+
+      .bop-delta.up {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+      }
+      .bop-delta.down {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+
+      /* Summary Cards */
+      .summary-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+
+      .summary-card:hover {
+        border-color: rgba(230, 57, 70, 0.3);
+      }
+
+      .summary-header {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 25px;
+        padding: 25px 30px;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .summary-series {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .summary-series.wec {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+      }
+      .summary-series.imsa {
+        background: rgba(0, 123, 255, 0.2);
+        color: #007bff;
+      }
+
+      .summary-race h4 {
+        color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .summary-race p {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .summary-winner {
+        text-align: right;
+      }
+
+      .winner-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .winner-name {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .summary-body {
+        padding: 25px 30px;
+      }
+
+      .summary-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .highlight {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      .highlight-icon {
+        font-size: 1.5rem;
+      }
+
+      .highlight-content h5 {
+        color: #fff;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .highlight-content p {
+        color: #888;
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 768px) {
+        .calendar-event {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .calendar-date {
+          margin: 0 auto;
+        }
+
+        .calendar-status {
+          text-align: center;
+        }
+
+        .entry-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .summary-header {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .summary-winner {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">🏎️</div>
+            io<span>motorsport</span>
+          </a>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="endurance.html" class="active">Endurance</a></li>
+              <li><a href="esports.html">Esports</a></li>
+              <li><a href="fantasy.html">Fantasy</a></li>
+              <li><a href="predictions.html">Predictions</a></li>
+              <li><a href="hub.html">Hub</a></li>
+              <li><a href="store.html" class="nav-cta">Store</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+            </button>
+          </nav>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+          <a href="index.html">Home</a>
+          <a href="endurance.html" class="active">Endurance</a>
+          <a href="esports.html">Esports</a>
+          <a href="fantasy.html">Fantasy</a>
+          <a href="predictions.html">Predictions</a>
+          <a href="hub.html">Hub</a>
+          <a href="store.html">Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <span class="section-tag">Racing Coverage</span>
+          <h1>Endurance <span class="gradient-text">Racing</span></h1>
+          <p>
+            Complete coverage of WEC, IMSA, ELMS, and GT World Challenge.
+            Calendars, entry lists, BoP updates, and race summaries.
+          </p>
+        </div>
+      </section>
+
+      <!-- Quick Nav Tabs -->
+      <section class="section" style="padding-top: 40px">
+        <div class="container">
+          <div class="tabs" style="justify-content: center">
+            <button class="tab-btn active" onclick="showSection('calendar')">
+              📅 Calendar
+            </button>
+            <button class="tab-btn" onclick="showSection('entries')">
+              📋 Entry Lists
+            </button>
+            <button class="tab-btn" onclick="showSection('bop')">
+              ⚖️ BoP Updates
+            </button>
+            <button class="tab-btn" onclick="showSection('summaries')">
+              🏁 Race Summaries
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calendar Section -->
+      <section class="section" id="calendar-section">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 30px"
+          >
+            <h2>2025 Race Calendar</h2>
+            <p>Upcoming races across all major endurance series</p>
+          </div>
+
+          <div class="tabs">
+            <button class="tab-btn active">All Series</button>
+            <button class="tab-btn">WEC</button>
+            <button class="tab-btn">IMSA</button>
+            <button class="tab-btn">ELMS</button>
+            <button class="tab-btn">GT World</button>
+          </div>
+
+          <div class="calendar-grid">
+            <div class="calendar-event next-race">
+              <div class="calendar-date">
+                <span class="calendar-month">Jun</span>
+                <span class="calendar-day">14</span>
+                <span class="calendar-year">2025</span>
+              </div>
+              <div class="calendar-info">
+                <h4>
+                  <span class="calendar-series-badge badge-red">WEC</span>24
+                  Hours of Le Mans
+                </h4>
+                <div class="calendar-details">
+                  <span>📍 Circuit de la Sarthe, France</span>
+                  <span>⏱️ 24 Hours</span>
+                  <span>🏁 Round 4</span>
+                </div>
+              </div>
+              <div class="calendar-status">
+                <span class="status-badge status-next">Next Race</span>
+              </div>
+            </div>
+
+            <div class="calendar-event">
+              <div class="calendar-date">
+                <span class="calendar-month">Jul</span>
+                <span class="calendar-day">12</span>
+                <span class="calendar-year">2025</span>
+              </div>
+              <div class="calendar-info">
+                <h4>
+                  <span class="calendar-series-badge badge-red">WEC</span>6
+                  Hours of São Paulo
+                </h4>
+                <div class="calendar-details">
+                  <span>📍 Interlagos, Brazil</span>
+                  <span>⏱️ 6 Hours</span>
+                  <span>🏁 Round 5</span>
+                </div>
+              </div>
+              <div class="calendar-status">
+                <span class="status-badge status-upcoming">Upcoming</span>
+              </div>
+            </div>
+
+            <div class="calendar-event">
+              <div class="calendar-date">
+                <span class="calendar-month">Jul</span>
+                <span class="calendar-day">20</span>
+                <span class="calendar-year">2025</span>
+              </div>
+              <div class="calendar-info">
+                <h4>
+                  <span class="calendar-series-badge badge-blue">IMSA</span
+                  >Sahlen's Six Hours
+                </h4>
+                <div class="calendar-details">
+                  <span>📍 Watkins Glen, USA</span>
+                  <span>⏱️ 6 Hours</span>
+                  <span>🏁 Round 7</span>
+                </div>
+              </div>
+              <div class="calendar-status">
+                <span class="status-badge status-upcoming">Upcoming</span>
+              </div>
+            </div>
+
+            <div class="calendar-event">
+              <div class="calendar-date">
+                <span class="calendar-month">Aug</span>
+                <span class="calendar-day">31</span>
+                <span class="calendar-year">2025</span>
+              </div>
+              <div class="calendar-info">
+                <h4>
+                  <span class="calendar-series-badge badge-red">WEC</span>6
+                  Hours of Fuji
+                </h4>
+                <div class="calendar-details">
+                  <span>📍 Fuji Speedway, Japan</span>
+                  <span>⏱️ 6 Hours</span>
+                  <span>🏁 Round 6</span>
+                </div>
+              </div>
+              <div class="calendar-status">
+                <span class="status-badge status-upcoming">Upcoming</span>
+              </div>
+            </div>
+
+            <div class="calendar-event">
+              <div class="calendar-date">
+                <span class="calendar-month">Sep</span>
+                <span class="calendar-day">14</span>
+                <span class="calendar-year">2025</span>
+              </div>
+              <div class="calendar-info">
+                <h4>
+                  <span class="calendar-series-badge badge-green">ELMS</span>4
+                  Hours of Spa
+                </h4>
+                <div class="calendar-details">
+                  <span>📍 Spa-Francorchamps, Belgium</span>
+                  <span>⏱️ 4 Hours</span>
+                  <span>🏁 Round 5</span>
+                </div>
+              </div>
+              <div class="calendar-status">
+                <span class="status-badge status-upcoming">Upcoming</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Entry Lists Section -->
+      <section class="section" id="entries-section" style="display: none">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 30px"
+          >
+            <h2>Entry Lists</h2>
+            <p>Full team and driver lineups for upcoming races</p>
+          </div>
+
+          <div class="entries-controls">
+            <select class="form-select" style="max-width: 300px">
+              <option>24 Hours of Le Mans - WEC</option>
+              <option>Sahlen's Six Hours - IMSA</option>
+              <option>6 Hours of Fuji - WEC</option>
+            </select>
+            <div class="class-filters">
+              <button class="class-filter hypercar active">Hypercar</button>
+              <button class="class-filter lmgt3">LMGT3</button>
+              <button class="class-filter lmp2">LMP2</button>
+            </div>
+          </div>
+
+          <div class="entries-list">
+            <div class="entry-card">
+              <div class="entry-number">#7</div>
+              <div class="entry-info">
+                <h4>Toyota Gazoo Racing</h4>
+                <div class="entry-manufacturer">Toyota GR010 Hybrid</div>
+                <div class="entry-drivers">
+                  <span>🇯🇵 K. Kobayashi</span>
+                  <span>🇳🇿 B. Hartley</span>
+                  <span>🇦🇷 J.M. López</span>
+                </div>
+              </div>
+              <span class="badge badge-red">Hypercar</span>
+            </div>
+
+            <div class="entry-card">
+              <div class="entry-number">#8</div>
+              <div class="entry-info">
+                <h4>Toyota Gazoo Racing</h4>
+                <div class="entry-manufacturer">Toyota GR010 Hybrid</div>
+                <div class="entry-drivers">
+                  <span>🇬🇧 M. Conway</span>
+                  <span>🇦🇹 S. Buemi</span>
+                  <span>🇯🇵 R. Hirakawa</span>
+                </div>
+              </div>
+              <span class="badge badge-red">Hypercar</span>
+            </div>
+
+            <div class="entry-card">
+              <div class="entry-number">#50</div>
+              <div class="entry-info">
+                <h4>Ferrari AF Corse</h4>
+                <div class="entry-manufacturer">Ferrari 499P</div>
+                <div class="entry-drivers">
+                  <span>🇮🇹 A. Pier Guidi</span>
+                  <span>🇬🇧 J. Calado</span>
+                  <span>🇮🇹 A. Giovinazzi</span>
+                </div>
+              </div>
+              <span class="badge badge-red">Hypercar</span>
+            </div>
+
+            <div class="entry-card">
+              <div class="entry-number">#51</div>
+              <div class="entry-info">
+                <h4>Ferrari AF Corse</h4>
+                <div class="entry-manufacturer">Ferrari 499P</div>
+                <div class="entry-drivers">
+                  <span>🇩🇰 N. Nielsen</span>
+                  <span>🇮🇹 A. Fuoco</span>
+                  <span>🇩🇪 M. Molina</span>
+                </div>
+              </div>
+              <span class="badge badge-red">Hypercar</span>
+            </div>
+
+            <div class="entry-card">
+              <div class="entry-number">#6</div>
+              <div class="entry-info">
+                <h4>Porsche Penske Motorsport</h4>
+                <div class="entry-manufacturer">Porsche 963</div>
+                <div class="entry-drivers">
+                  <span>🇫🇷 K. Estre</span>
+                  <span>🇩🇪 A. Lotterer</span>
+                  <span>🇳🇿 L. Vanthoor</span>
+                </div>
+              </div>
+              <span class="badge badge-red">Hypercar</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BoP Section -->
+      <section class="section" id="bop-section" style="display: none">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 30px"
+          >
+            <h2>Balance of Performance</h2>
+            <p>Latest BoP adjustments for Hypercar class</p>
+          </div>
+
+          <div class="bop-grid">
+            <div class="bop-card has-changes">
+              <div class="bop-header">
+                <div class="bop-car">
+                  <h4>Toyota GR010 Hybrid</h4>
+                  <span class="bop-manufacturer">Toyota Gazoo Racing</span>
+                </div>
+                <span class="badge badge-red">Hypercar</span>
+              </div>
+              <div class="bop-changes">
+                <div class="bop-item">
+                  <span class="bop-param">Minimum Weight</span>
+                  <div class="bop-value">
+                    <span class="bop-current">1,066 kg</span>
+                    <span class="bop-delta up">+5 kg</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Power</span>
+                  <div class="bop-value">
+                    <span class="bop-current">500 kW</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Energy per Stint</span>
+                  <div class="bop-value">
+                    <span class="bop-current">911 MJ</span>
+                    <span class="bop-delta down">-3 MJ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bop-card">
+              <div class="bop-header">
+                <div class="bop-car">
+                  <h4>Ferrari 499P</h4>
+                  <span class="bop-manufacturer">Ferrari AF Corse</span>
+                </div>
+                <span class="badge badge-red">Hypercar</span>
+              </div>
+              <div class="bop-changes">
+                <div class="bop-item">
+                  <span class="bop-param">Minimum Weight</span>
+                  <div class="bop-value">
+                    <span class="bop-current">1,063 kg</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Power</span>
+                  <div class="bop-value">
+                    <span class="bop-current">500 kW</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Energy per Stint</span>
+                  <div class="bop-value">
+                    <span class="bop-current">908 MJ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bop-card has-changes">
+              <div class="bop-header">
+                <div class="bop-car">
+                  <h4>Porsche 963</h4>
+                  <span class="bop-manufacturer"
+                    >Porsche Penske Motorsport</span
+                  >
+                </div>
+                <span class="badge badge-red">Hypercar</span>
+              </div>
+              <div class="bop-changes">
+                <div class="bop-item">
+                  <span class="bop-param">Minimum Weight</span>
+                  <div class="bop-value">
+                    <span class="bop-current">1,055 kg</span>
+                    <span class="bop-delta down">-5 kg</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Power</span>
+                  <div class="bop-value">
+                    <span class="bop-current">520 kW</span>
+                    <span class="bop-delta up">+10 kW</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Energy per Stint</span>
+                  <div class="bop-value">
+                    <span class="bop-current">913 MJ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bop-card">
+              <div class="bop-header">
+                <div class="bop-car">
+                  <h4>Cadillac V-Series.R</h4>
+                  <span class="bop-manufacturer">Cadillac Racing</span>
+                </div>
+                <span class="badge badge-red">Hypercar</span>
+              </div>
+              <div class="bop-changes">
+                <div class="bop-item">
+                  <span class="bop-param">Minimum Weight</span>
+                  <div class="bop-value">
+                    <span class="bop-current">1,047 kg</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Power</span>
+                  <div class="bop-value">
+                    <span class="bop-current">520 kW</span>
+                  </div>
+                </div>
+                <div class="bop-item">
+                  <span class="bop-param">Energy per Stint</span>
+                  <div class="bop-value">
+                    <span class="bop-current">910 MJ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Race Summaries Section -->
+      <section class="section" id="summaries-section" style="display: none">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 30px"
+          >
+            <h2>Race Summaries</h2>
+            <p>Results and highlights from recent races</p>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-header">
+              <span class="summary-series wec">WEC</span>
+              <div class="summary-race">
+                <h4>1000 Miles of Sebring</h4>
+                <p>March 14, 2025 • Sebring International Raceway, USA</p>
+              </div>
+              <div class="summary-winner">
+                <span class="winner-label">Overall Winner</span>
+                <span class="winner-name">#7 Toyota GR010</span>
+              </div>
+            </div>
+            <div class="summary-body">
+              <div class="summary-highlights">
+                <div class="highlight">
+                  <span class="highlight-icon">🏆</span>
+                  <div class="highlight-content">
+                    <h5>Toyota Double Podium</h5>
+                    <p>
+                      Both Toyotas finished on the podium with #7 taking victory
+                      after a fierce battle with Ferrari.
+                    </p>
+                  </div>
+                </div>
+                <div class="highlight">
+                  <span class="highlight-icon">⚡</span>
+                  <div class="highlight-content">
+                    <h5>Last Hour Drama</h5>
+                    <p>
+                      Contact between leaders in the final hour created a
+                      nail-biting finish.
+                    </p>
+                  </div>
+                </div>
+                <div class="highlight">
+                  <span class="highlight-icon">🌧️</span>
+                  <div class="highlight-content">
+                    <h5>Weather Challenges</h5>
+                    <p>
+                      Rain in the final stint shuffled the running order
+                      significantly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-header">
+              <span class="summary-series imsa">IMSA</span>
+              <div class="summary-race">
+                <h4>12 Hours of Sebring</h4>
+                <p>March 15, 2025 • Sebring International Raceway, USA</p>
+              </div>
+              <div class="summary-winner">
+                <span class="winner-label">Overall Winner</span>
+                <span class="winner-name">#10 Cadillac V-Series.R</span>
+              </div>
+            </div>
+            <div class="summary-body">
+              <div class="summary-highlights">
+                <div class="highlight">
+                  <span class="highlight-icon">🇺🇸</span>
+                  <div class="highlight-content">
+                    <h5>American Victory</h5>
+                    <p>
+                      Wayne Taylor Racing Cadillac takes home win in commanding
+                      fashion.
+                    </p>
+                  </div>
+                </div>
+                <div class="highlight">
+                  <span class="highlight-icon">🔥</span>
+                  <div class="highlight-content">
+                    <h5>GTD Pro Battle</h5>
+                    <p>
+                      Intense fight between BMW and Corvette in GTD Pro class.
+                    </p>
+                  </div>
+                </div>
+                <div class="highlight">
+                  <span class="highlight-icon">💪</span>
+                  <div class="highlight-content">
+                    <h5>Endurance Test</h5>
+                    <p>
+                      Brutal conditions tested both cars and drivers to the
+                      limit.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <h2>Get Race Predictions</h2>
+            <p>
+              Our data-driven predictions help you understand the likely
+              outcomes before races begin.
+            </p>
+            <div class="cta-buttons">
+              <a href="predictions.html" class="btn btn-primary"
+                >View Predictions</a
+              >
+              <a href="fantasy.html" class="btn btn-secondary"
+                >Join Fantasy League</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">🏎️</div>
+              io<span>motorsport</span>
+            </a>
+            <p>
+              Your complete motorsport experience. Racing coverage, esports,
+              fantasy, and community.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">𝕏</a>
+              <a href="#" class="social-link">📸</a>
+              <a href="#" class="social-link">💬</a>
+              <a href="#" class="social-link">▶️</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Racing</h4>
+            <a href="endurance.html">Endurance</a>
+            <a href="endurance.html#calendar">Calendar</a>
+            <a href="endurance.html#entries">Entry Lists</a>
+            <a href="predictions.html">Predictions</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Community</h4>
+            <a href="esports.html">Esports Team</a>
+            <a href="fantasy.html">Fantasy League</a>
+            <a href="hub.html">Hub</a>
+            <a href="hub.html#discord">Discord</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>More</h4>
+            <a href="store.html">Store</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("mobileNav").classList.toggle("active");
+      }
+
+      function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('[id$="-section"]').forEach((section) => {
+          section.style.display = "none";
+        });
+
+        // Show selected section
+        document.getElementById(sectionId + "-section").style.display = "block";
+
+        // Update tab buttons
+        document.querySelectorAll(".tabs .tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        event.target.classList.add("active");
+      }
+    </script>
+  </body>
+</html>

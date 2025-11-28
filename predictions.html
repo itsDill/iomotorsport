@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="iomotorsport Predictions - Data-driven race predictions and analytics for WEC, IMSA, and endurance racing."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+    />
+    <title>Race Predictions | iomotorsport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Predictions Page Specific Styles */
+      .accuracy-banner {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 167, 69, 0.15) 0%,
+          rgba(40, 167, 69, 0.05) 100%
+        );
+        border: 1px solid rgba(40, 167, 69, 0.3);
+        border-radius: 16px;
+        padding: 30px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .accuracy-info h3 {
+        color: #fff;
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+      }
+
+      .accuracy-info p {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .accuracy-stats {
+        display: flex;
+        gap: 40px;
+      }
+
+      .accuracy-stat {
+        text-align: center;
+      }
+
+      .accuracy-value {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #28a745;
+        font-family: "Orbitron", monospace;
+      }
+
+      .accuracy-label {
+        font-size: 0.75rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Prediction Card */
+      .prediction-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        transition: all 0.3s;
+      }
+
+      .prediction-card:hover {
+        border-color: rgba(230, 57, 70, 0.3);
+      }
+
+      .prediction-header {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 57, 70, 0.15) 0%,
+          rgba(230, 57, 70, 0.05) 100%
+        );
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .prediction-race h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .prediction-meta {
+        display: flex;
+        gap: 20px;
+        color: #888;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .prediction-confidence {
+        text-align: right;
+      }
+
+      .confidence-label {
+        font-size: 0.75rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .confidence-bar {
+        width: 150px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .confidence-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #e63946, #28a745);
+        border-radius: 5px;
+        transition: width 0.5s ease;
+      }
+
+      .confidence-value {
+        font-size: 0.85rem;
+        color: #28a745;
+        margin-top: 5px;
+        font-weight: 600;
+      }
+
+      .prediction-body {
+        padding: 30px;
+      }
+
+      /* Podium Prediction */
+      .podium-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .podium-card {
+        text-align: center;
+        padding: 30px 20px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.3);
+        position: relative;
+        transition: all 0.3s;
+      }
+
+      .podium-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .podium-card.p1 {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.15) 0%,
+          rgba(255, 215, 0, 0.05) 100%
+        );
+        border: 1px solid rgba(255, 215, 0, 0.3);
+      }
+
+      .podium-card.p2 {
+        background: linear-gradient(
+          135deg,
+          rgba(192, 192, 192, 0.15) 0%,
+          rgba(192, 192, 192, 0.05) 100%
+        );
+        border: 1px solid rgba(192, 192, 192, 0.3);
+      }
+
+      .podium-card.p3 {
+        background: linear-gradient(
+          135deg,
+          rgba(205, 127, 50, 0.15) 0%,
+          rgba(205, 127, 50, 0.05) 100%
+        );
+        border: 1px solid rgba(205, 127, 50, 0.3);
+      }
+
+      .podium-position {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .podium-team {
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .podium-car {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+
+      .podium-odds {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      /* Factors Grid */
+      .factors-section {
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .factors-title {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .factors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+      }
+
+      .factor-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        transition: all 0.3s;
+      }
+
+      .factor-card:hover {
+        background: rgba(230, 57, 70, 0.08);
+      }
+
+      .factor-icon {
+        font-size: 1.8rem;
+        flex-shrink: 0;
+      }
+
+      .factor-info h5 {
+        color: #fff;
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .factor-info p {
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      /* Class Predictions */
+      .class-predictions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .class-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 25px;
+      }
+
+      .class-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .class-name {
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+
+      .class-badge {
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .class-badge.hypercar {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+      }
+      .class-badge.lmgt3 {
+        background: rgba(0, 123, 255, 0.2);
+        color: #007bff;
+      }
+      .class-badge.lmp2 {
+        background: rgba(255, 193, 7, 0.2);
+        color: #ffc107;
+      }
+
+      .class-prediction-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .class-prediction-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+      }
+
+      .prediction-position {
+        font-weight: 900;
+        font-family: "Orbitron", monospace;
+        margin-right: 15px;
+      }
+
+      .prediction-team-name {
+        color: #fff;
+        font-weight: 500;
+        flex: 1;
+      }
+
+      .prediction-prob {
+        color: #e63946;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      /* Historical Accuracy */
+      .history-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .history-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .history-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .history-race h4 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      .history-race p {
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      .history-result {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .history-result.correct {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+
+      .history-result.partial {
+        background: rgba(255, 193, 7, 0.2);
+        color: #ffc107;
+      }
+
+      .history-body {
+        padding: 20px;
+      }
+
+      .history-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .comparison-col {
+        text-align: center;
+      }
+
+      .comparison-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+
+      .comparison-value {
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .accuracy-banner {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .accuracy-stats {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .podium-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .prediction-header {
+          flex-direction: column;
+        }
+
+        .prediction-confidence {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">🏎️</div>
+            io<span>motorsport</span>
+          </a>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="endurance.html">Endurance</a></li>
+              <li><a href="esports.html">Esports</a></li>
+              <li><a href="fantasy.html">Fantasy</a></li>
+              <li><a href="predictions.html" class="active">Predictions</a></li>
+              <li><a href="hub.html">Hub</a></li>
+              <li><a href="store.html" class="nav-cta">Store</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+            </button>
+          </nav>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+          <a href="index.html">Home</a>
+          <a href="endurance.html">Endurance</a>
+          <a href="esports.html">Esports</a>
+          <a href="fantasy.html">Fantasy</a>
+          <a href="predictions.html" class="active">Predictions</a>
+          <a href="hub.html">Hub</a>
+          <a href="store.html">Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <span class="section-tag">📊 Analytics</span>
+          <h1>Race <span class="gradient-text">Predictions</span></h1>
+          <p>
+            Data-driven predictions powered by historical performance, track
+            analysis, and current form.
+          </p>
+        </div>
+      </section>
+
+      <!-- Accuracy Banner -->
+      <section class="section" style="padding-top: 40px">
+        <div class="container">
+          <div class="accuracy-banner">
+            <div class="accuracy-info">
+              <h3>Our Prediction Track Record</h3>
+              <p>Based on podium predictions from the 2024-2025 seasons</p>
+            </div>
+            <div class="accuracy-stats">
+              <div class="accuracy-stat">
+                <span class="accuracy-value">85%</span>
+                <span class="accuracy-label">Winner Accuracy</span>
+              </div>
+              <div class="accuracy-stat">
+                <span class="accuracy-value">72%</span>
+                <span class="accuracy-label">Full Podium</span>
+              </div>
+              <div class="accuracy-stat">
+                <span class="accuracy-value">24</span>
+                <span class="accuracy-label">Races Predicted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upcoming Race Prediction -->
+      <section class="section">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 30px"
+          >
+            <span class="section-tag">Next Race</span>
+            <h2>24 Hours of Le Mans Prediction</h2>
+            <p>Our analysis for the greatest endurance race in the world</p>
+          </div>
+
+          <div class="prediction-card">
+            <div class="prediction-header">
+              <div class="prediction-race">
+                <h3>24 Hours of Le Mans</h3>
+                <div class="prediction-meta">
+                  <span>📅 June 14-15, 2025</span>
+                  <span>📍 Circuit de la Sarthe</span>
+                  <span>🏁 WEC Round 4</span>
+                </div>
+              </div>
+              <div class="prediction-confidence">
+                <span class="confidence-label">Model Confidence</span>
+                <div class="confidence-bar">
+                  <div class="confidence-fill" style="width: 78%"></div>
+                </div>
+                <span class="confidence-value">78% Confidence</span>
+              </div>
+            </div>
+            <div class="prediction-body">
+              <h4
+                class="factors-title"
+                style="margin-bottom: 20px; margin-top: 0"
+              >
+                Overall Podium Prediction
+              </h4>
+              <div class="podium-grid">
+                <div class="podium-card p1">
+                  <span class="podium-position">🥇</span>
+                  <div class="podium-team">#7 Toyota GR010</div>
+                  <div class="podium-car">Toyota Gazoo Racing</div>
+                  <span class="podium-odds">32% Win Probability</span>
+                </div>
+                <div class="podium-card p2">
+                  <span class="podium-position">🥈</span>
+                  <div class="podium-team">#50 Ferrari 499P</div>
+                  <div class="podium-car">Ferrari AF Corse</div>
+                  <span class="podium-odds">28% Win Probability</span>
+                </div>
+                <div class="podium-card p3">
+                  <span class="podium-position">🥉</span>
+                  <div class="podium-team">#6 Porsche 963</div>
+                  <div class="podium-car">Porsche Penske Motorsport</div>
+                  <span class="podium-odds">18% Win Probability</span>
+                </div>
+              </div>
+
+              <div class="factors-section">
+                <h4 class="factors-title">Key Prediction Factors</h4>
+                <div class="factors-grid">
+                  <div class="factor-card">
+                    <span class="factor-icon">📈</span>
+                    <div class="factor-info">
+                      <h5>Recent Form</h5>
+                      <p>Toyota won 2 of last 3 races</p>
+                    </div>
+                  </div>
+                  <div class="factor-card">
+                    <span class="factor-icon">🏁</span>
+                    <div class="factor-info">
+                      <h5>Track History</h5>
+                      <p>Ferrari won here in 2023</p>
+                    </div>
+                  </div>
+                  <div class="factor-card">
+                    <span class="factor-icon">⚖️</span>
+                    <div class="factor-info">
+                      <h5>BoP Changes</h5>
+                      <p>Porsche received favorable adjustments</p>
+                    </div>
+                  </div>
+                  <div class="factor-card">
+                    <span class="factor-icon">🌧️</span>
+                    <div class="factor-info">
+                      <h5>Weather Forecast</h5>
+                      <p>30% chance of rain overnight</p>
+                    </div>
+                  </div>
+                  <div class="factor-card">
+                    <span class="factor-icon">👨‍🔧</span>
+                    <div class="factor-info">
+                      <h5>Driver Lineup</h5>
+                      <p>Strong platinum lineups across top teams</p>
+                    </div>
+                  </div>
+                  <div class="factor-card">
+                    <span class="factor-icon">⛽</span>
+                    <div class="factor-info">
+                      <h5>Stint Efficiency</h5>
+                      <p>Toyota leads in fuel economy</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="class-predictions">
+                <div class="class-card">
+                  <div class="class-header">
+                    <span class="class-name">Hypercar Class</span>
+                    <span class="class-badge hypercar">Hypercar</span>
+                  </div>
+                  <div class="class-prediction-list">
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">1.</span>
+                      <span class="prediction-team-name">#7 Toyota GR010</span>
+                      <span class="prediction-prob">32%</span>
+                    </div>
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">2.</span>
+                      <span class="prediction-team-name">#50 Ferrari 499P</span>
+                      <span class="prediction-prob">28%</span>
+                    </div>
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">3.</span>
+                      <span class="prediction-team-name">#6 Porsche 963</span>
+                      <span class="prediction-prob">18%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="class-card">
+                  <div class="class-header">
+                    <span class="class-name">LMGT3 Class</span>
+                    <span class="class-badge lmgt3">LMGT3</span>
+                  </div>
+                  <div class="class-prediction-list">
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">1.</span>
+                      <span class="prediction-team-name"
+                        >#92 Manthey Porsche</span
+                      >
+                      <span class="prediction-prob">25%</span>
+                    </div>
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">2.</span>
+                      <span class="prediction-team-name">#46 BMW M4</span>
+                      <span class="prediction-prob">22%</span>
+                    </div>
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">3.</span>
+                      <span class="prediction-team-name">#87 Corvette Z06</span>
+                      <span class="prediction-prob">18%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="class-card">
+                  <div class="class-header">
+                    <span class="class-name">LMP2 Class</span>
+                    <span class="class-badge lmp2">LMP2</span>
+                  </div>
+                  <div class="class-prediction-list">
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">1.</span>
+                      <span class="prediction-team-name"
+                        >#22 United Autosports</span
+                      >
+                      <span class="prediction-prob">30%</span>
+                    </div>
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">2.</span>
+                      <span class="prediction-team-name">#38 JOTA</span>
+                      <span class="prediction-prob">24%</span>
+                    </div>
+                    <div class="class-prediction-item">
+                      <span class="prediction-position">3.</span>
+                      <span class="prediction-team-name">#9 Prema</span>
+                      <span class="prediction-prob">18%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Historical Accuracy -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Track Record</span>
+            <h2>Recent Prediction Results</h2>
+            <p>How our predictions performed in recent races</p>
+          </div>
+
+          <div class="history-grid">
+            <div class="history-card">
+              <div class="history-header">
+                <div class="history-race">
+                  <h4>1000 Miles of Sebring</h4>
+                  <p>WEC • March 2025</p>
+                </div>
+                <span class="history-result correct">✓ Correct</span>
+              </div>
+              <div class="history-body">
+                <div class="history-comparison">
+                  <div class="comparison-col">
+                    <span class="comparison-label">Predicted Winner</span>
+                    <span class="comparison-value">#7 Toyota</span>
+                  </div>
+                  <div class="comparison-col">
+                    <span class="comparison-label">Actual Winner</span>
+                    <span class="comparison-value">#7 Toyota ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-card">
+              <div class="history-header">
+                <div class="history-race">
+                  <h4>12 Hours of Sebring</h4>
+                  <p>IMSA • March 2025</p>
+                </div>
+                <span class="history-result correct">✓ Correct</span>
+              </div>
+              <div class="history-body">
+                <div class="history-comparison">
+                  <div class="comparison-col">
+                    <span class="comparison-label">Predicted Winner</span>
+                    <span class="comparison-value">#10 Cadillac</span>
+                  </div>
+                  <div class="comparison-col">
+                    <span class="comparison-label">Actual Winner</span>
+                    <span class="comparison-value">#10 Cadillac ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-card">
+              <div class="history-header">
+                <div class="history-race">
+                  <h4>6 Hours of Qatar</h4>
+                  <p>WEC • February 2025</p>
+                </div>
+                <span class="history-result partial">~ Partial</span>
+              </div>
+              <div class="history-body">
+                <div class="history-comparison">
+                  <div class="comparison-col">
+                    <span class="comparison-label">Predicted Winner</span>
+                    <span class="comparison-value">#50 Ferrari</span>
+                  </div>
+                  <div class="comparison-col">
+                    <span class="comparison-label">Actual Winner</span>
+                    <span class="comparison-value">#51 Ferrari</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-card">
+              <div class="history-header">
+                <div class="history-race">
+                  <h4>Rolex 24 at Daytona</h4>
+                  <p>IMSA • January 2025</p>
+                </div>
+                <span class="history-result correct">✓ Correct</span>
+              </div>
+              <div class="history-body">
+                <div class="history-comparison">
+                  <div class="comparison-col">
+                    <span class="comparison-label">Predicted Winner</span>
+                    <span class="comparison-value">#01 Cadillac</span>
+                  </div>
+                  <div class="comparison-col">
+                    <span class="comparison-label">Actual Winner</span>
+                    <span class="comparison-value">#01 Cadillac ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-card">
+              <div class="history-header">
+                <div class="history-race">
+                  <h4>8 Hours of Bahrain</h4>
+                  <p>WEC • November 2024</p>
+                </div>
+                <span class="history-result correct">✓ Correct</span>
+              </div>
+              <div class="history-body">
+                <div class="history-comparison">
+                  <div class="comparison-col">
+                    <span class="comparison-label">Predicted Winner</span>
+                    <span class="comparison-value">#8 Toyota</span>
+                  </div>
+                  <div class="comparison-col">
+                    <span class="comparison-label">Actual Winner</span>
+                    <span class="comparison-value">#8 Toyota ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-card">
+              <div class="history-header">
+                <div class="history-race">
+                  <h4>6 Hours of Fuji</h4>
+                  <p>WEC • September 2024</p>
+                </div>
+                <span class="history-result correct">✓ Correct</span>
+              </div>
+              <div class="history-body">
+                <div class="history-comparison">
+                  <div class="comparison-col">
+                    <span class="comparison-label">Predicted Winner</span>
+                    <span class="comparison-value">#7 Toyota</span>
+                  </div>
+                  <div class="comparison-col">
+                    <span class="comparison-label">Actual Winner</span>
+                    <span class="comparison-value">#7 Toyota ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <h2>Use Our Predictions in Fantasy</h2>
+            <p>
+              Leverage our data-driven insights to build winning fantasy teams.
+            </p>
+            <div class="cta-buttons">
+              <a href="fantasy.html" class="btn btn-primary"
+                >Join Fantasy League</a
+              >
+              <a href="endurance.html" class="btn btn-secondary"
+                >View Race Calendar</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">🏎️</div>
+              io<span>motorsport</span>
+            </a>
+            <p>
+              Your complete motorsport experience. Racing coverage, esports,
+              fantasy, and community.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">𝕏</a>
+              <a href="#" class="social-link">📸</a>
+              <a href="#" class="social-link">💬</a>
+              <a href="#" class="social-link">▶️</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Racing</h4>
+            <a href="endurance.html">Endurance</a>
+            <a href="endurance.html#calendar">Calendar</a>
+            <a href="endurance.html#entries">Entry Lists</a>
+            <a href="predictions.html">Predictions</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Community</h4>
+            <a href="esports.html">Esports Team</a>
+            <a href="fantasy.html">Fantasy League</a>
+            <a href="hub.html">Hub</a>
+            <a href="hub.html#discord">Discord</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>More</h4>
+            <a href="store.html">Store</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("mobileNav").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="iomotorsport Fantasy Racing - Build your dream team and compete in endurance racing fantasy leagues."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+    />
+    <title>Fantasy Racing | iomotorsport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Fantasy Page Specific Styles */
+      .fantasy-hero-extra {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .fantasy-badge {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 24px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: #b0b0b0;
+      }
+
+      .fantasy-badge span {
+        color: #e63946;
+        font-weight: 700;
+      }
+
+      /* How It Works */
+      .how-it-works-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        margin-top: 50px;
+      }
+
+      .step-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 35px 25px;
+        text-align: center;
+        position: relative;
+        transition: all 0.3s;
+      }
+
+      .step-card:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-5px);
+      }
+
+      .step-number {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: #fff;
+        font-family: "Orbitron", monospace;
+      }
+
+      .step-icon {
+        font-size: 3rem;
+        margin: 20px 0;
+      }
+
+      .step-card h3 {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .step-card p {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /* Leagues Section */
+      .leagues-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+      }
+
+      .league-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s;
+      }
+
+      .league-card:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(230, 57, 70, 0.15);
+      }
+
+      .league-header {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 57, 70, 0.2) 0%,
+          rgba(230, 57, 70, 0.05) 100%
+        );
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .league-info h3 {
+        color: #fff;
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .league-series {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .league-status {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .league-status.active {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+
+      .league-status.upcoming {
+        background: rgba(255, 193, 7, 0.2);
+        color: #ffc107;
+      }
+
+      .league-body {
+        padding: 25px 30px;
+      }
+
+      .league-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .league-stat {
+        text-align: center;
+      }
+
+      .league-stat-value {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #e63946;
+        font-family: "Orbitron", monospace;
+      }
+
+      .league-stat-label {
+        font-size: 0.7rem;
+        color: #666;
+        text-transform: uppercase;
+      }
+
+      .league-prizes {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .league-prizes h4 {
+        color: #fff;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+        font-family: "Inter", sans-serif;
+      }
+
+      .prize-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .prize-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+      }
+
+      .prize-position {
+        color: #888;
+      }
+
+      .prize-value {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .league-join-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .league-join-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+      }
+
+      /* Leaderboard */
+      .leaderboard-section {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .leaderboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 25px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .leaderboard-header h3 {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .leaderboard-tabs {
+        display: flex;
+        gap: 10px;
+      }
+
+      .leaderboard-tab {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+      }
+
+      .leaderboard-tab.active,
+      .leaderboard-tab:hover {
+        background: #e63946;
+        border-color: #e63946;
+        color: #fff;
+      }
+
+      .leaderboard-list {
+        padding: 0;
+      }
+
+      .leaderboard-item {
+        display: grid;
+        grid-template-columns: 60px 1fr auto auto;
+        gap: 20px;
+        align-items: center;
+        padding: 18px 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transition: background 0.3s;
+      }
+
+      .leaderboard-item:hover {
+        background: rgba(230, 57, 70, 0.05);
+      }
+
+      .leaderboard-rank {
+        font-size: 1.5rem;
+        font-weight: 900;
+        font-family: "Orbitron", monospace;
+        text-align: center;
+      }
+
+      .leaderboard-rank.gold {
+        color: #ffd700;
+      }
+      .leaderboard-rank.silver {
+        color: #c0c0c0;
+      }
+      .leaderboard-rank.bronze {
+        color: #cd7f32;
+      }
+
+      .leaderboard-user {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .user-avatar {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, #e63946, #ff6b6b);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .user-info h4 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 2px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+      }
+
+      .user-info p {
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      .leaderboard-points {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #e63946;
+        font-family: "Orbitron", monospace;
+      }
+
+      .leaderboard-change {
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      .leaderboard-change.up {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+
+      .leaderboard-change.down {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+      }
+
+      .leaderboard-change.same {
+        background: rgba(255, 255, 255, 0.1);
+        color: #888;
+      }
+
+      /* Team Builder Preview */
+      .team-builder-preview {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .team-builder-preview h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .team-builder-preview p {
+        color: #888;
+        margin-bottom: 30px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .team-slots {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+        max-width: 600px;
+        margin: 0 auto 30px;
+      }
+
+      .team-slot {
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px dashed rgba(230, 57, 70, 0.3);
+        border-radius: 12px;
+        padding: 25px 15px;
+        transition: all 0.3s;
+      }
+
+      .team-slot:hover {
+        border-color: #e63946;
+        background: rgba(230, 57, 70, 0.1);
+      }
+
+      .slot-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .slot-role {
+        color: #888;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .budget-bar {
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .budget-label {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .budget-value {
+        color: #e63946;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: "Orbitron", monospace;
+      }
+
+      @media (max-width: 992px) {
+        .how-it-works-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .leaderboard-item {
+          grid-template-columns: 50px 1fr auto;
+        }
+
+        .leaderboard-change {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .how-it-works-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-slots {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .leagues-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .leaderboard-header {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">🏎️</div>
+            io<span>motorsport</span>
+          </a>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="endurance.html">Endurance</a></li>
+              <li><a href="esports.html">Esports</a></li>
+              <li><a href="fantasy.html" class="active">Fantasy</a></li>
+              <li><a href="predictions.html">Predictions</a></li>
+              <li><a href="hub.html">Hub</a></li>
+              <li><a href="store.html" class="nav-cta">Store</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+              ☰
+            </button>
+          </nav>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+          <a href="index.html">Home</a>
+          <a href="endurance.html">Endurance</a>
+          <a href="esports.html">Esports</a>
+          <a href="fantasy.html" class="active">Fantasy</a>
+          <a href="predictions.html">Predictions</a>
+          <a href="hub.html">Hub</a>
+          <a href="store.html">Store</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <span class="section-tag">🏆 Fantasy Leagues</span>
+          <h1>Fantasy <span class="gradient-text">Racing</span></h1>
+          <p>
+            Build your dream team, compete against other fans, and win prizes
+            based on real race results.
+          </p>
+          <div class="fantasy-hero-extra">
+            <div class="fantasy-badge"><span>500+</span> Active Players</div>
+            <div class="fantasy-badge"><span>$5K+</span> Prize Pool</div>
+            <div class="fantasy-badge"><span>Free</span> To Join</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Getting Started</span>
+            <h2>How It Works</h2>
+            <p>Pick drivers, earn points, climb the leaderboard</p>
+          </div>
+
+          <div class="how-it-works-grid">
+            <div class="step-card">
+              <span class="step-number">1</span>
+              <span class="step-icon">👥</span>
+              <h3>Pick Your Drivers</h3>
+              <p>
+                Select 5 drivers within your budget from any class or
+                manufacturer.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">2</span>
+              <span class="step-icon">🏁</span>
+              <h3>Watch the Race</h3>
+              <p>
+                Your drivers earn points based on their finishing positions and
+                achievements.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">3</span>
+              <span class="step-icon">📊</span>
+              <h3>Climb the Ranks</h3>
+              <p>
+                Compete against other players and climb the global leaderboard.
+              </p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">4</span>
+              <span class="step-icon">🎁</span>
+              <h3>Win Prizes</h3>
+              <p>Top performers win exclusive prizes and bragging rights!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active Leagues -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Join Now</span>
+            <h2>Active Leagues</h2>
+            <p>Choose a league and start competing</p>
+          </div>
+
+          <div class="leagues-grid">
+            <div class="league-card">
+              <div class="league-header">
+                <div class="league-info">
+                  <h3>WEC Fantasy 2025</h3>
+                  <span class="league-series"
+                    >FIA World Endurance Championship</span
+                  >
+                </div>
+                <span class="league-status active">Active</span>
+              </div>
+              <div class="league-body">
+                <div class="league-stats">
+                  <div class="league-stat">
+                    <span class="league-stat-value">342</span>
+                    <span class="league-stat-label">Players</span>
+                  </div>
+                  <div class="league-stat">
+                    <span class="league-stat-value">4/8</span>
+                    <span class="league-stat-label">Rounds</span>
+                  </div>
+                  <div class="league-stat">
+                    <span class="league-stat-value">Free</span>
+                    <span class="league-stat-label">Entry</span>
+                  </div>
+                </div>
+                <div class="league-prizes">
+                  <h4>🏆 Season Prizes</h4>
+                  <div class="prize-list">
+                    <div class="prize-item">
+                      <span class="prize-position">🥇 1st Place</span>
+                      <span class="prize-value">$500 Store Credit</span>
+                    </div>
+                    <div class="prize-item">
+                      <span class="prize-position">🥈 2nd Place</span>
+                      <span class="prize-value">$250 Store Credit</span>
+                    </div>
+                    <div class="prize-item">
+                      <span class="prize-position">🥉 3rd Place</span>
+                      <span class="prize-value">$100 Store Credit</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="league-join-btn">Join League</button>
+              </div>
+            </div>
+
+            <div class="league-card">
+              <div class="league-header">
+                <div class="league-info">
+                  <h3>IMSA Fantasy 2025</h3>
+                  <span class="league-series">IMSA SportsCar Championship</span>
+                </div>
+                <span class="league-status active">Active</span>
+              </div>
+              <div class="league-body">
+                <div class="league-stats">
+                  <div class="league-stat">
+                    <span class="league-stat-value">198</span>
+                    <span class="league-stat-label">Players</span>
+                  </div>
+                  <div class="league-stat">
+                    <span class="league-stat-value">7/12</span>
+                    <span class="league-stat-label">Rounds</span>
+                  </div>
+                  <div class="league-stat">
+                    <span class="league-stat-value">Free</span>
+                    <span class="league-stat-label">Entry</span>
+                  </div>
+                </div>
+                <div class="league-prizes">
+                  <h4>🏆 Season Prizes</h4>
+                  <div class="prize-list">
+                    <div class="prize-item">
+                      <span class="prize-position">🥇 1st Place</span>
+                      <span class="prize-value">$300 Store Credit</span>
+                    </div>
+                    <div class="prize-item">
+                      <span class="prize-position">🥈 2nd Place</span>
+                      <span class="prize-value">$150 Store Credit</span>
+                    </div>
+                    <div class="prize-item">
+                      <span class="prize-position">🥉 3rd Place</span>
+                      <span class="prize-value">$75 Store Credit</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="league-join-btn">Join League</button>
+              </div>
+            </div>
+
+            <div class="league-card">
+              <div class="league-header">
+                <div class="league-info">
+                  <h3>Le Mans 24H Special</h3>
+                  <span class="league-series">Single Race Event</span>
+                </div>
+                <span class="league-status upcoming">Opens Soon</span>
+              </div>
+              <div class="league-body">
+                <div class="league-stats">
+                  <div class="league-stat">
+                    <span class="league-stat-value">--</span>
+                    <span class="league-stat-label">Players</span>
+                  </div>
+                  <div class="league-stat">
+                    <span class="league-stat-value">1</span>
+                    <span class="league-stat-label">Round</span>
+                  </div>
+                  <div class="league-stat">
+                    <span class="league-stat-value">Free</span>
+                    <span class="league-stat-label">Entry</span>
+                  </div>
+                </div>
+                <div class="league-prizes">
+                  <h4>🏆 Race Prizes</h4>
+                  <div class="prize-list">
+                    <div class="prize-item">
+                      <span class="prize-position">🥇 1st Place</span>
+                      <span class="prize-value">Le Mans Merchandise Pack</span>
+                    </div>
+                    <div class="prize-item">
+                      <span class="prize-position">Top 10</span>
+                      <span class="prize-value">Exclusive Badge</span>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="league-join-btn"
+                  style="opacity: 0.6; cursor: not-allowed"
+                >
+                  Coming June 2025
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Builder Preview -->
+      <section class="section">
+        <div class="container">
+          <div class="team-builder-preview">
+            <h3>Build Your Dream Team</h3>
+            <p>
+              Pick 5 drivers within your budget. Balance star power with value
+              picks to maximize points.
+            </p>
+
+            <div class="team-slots">
+              <div class="team-slot">
+                <span class="slot-icon">🏎️</span>
+                <span class="slot-role">Driver 1</span>
+              </div>
+              <div class="team-slot">
+                <span class="slot-icon">🏎️</span>
+                <span class="slot-role">Driver 2</span>
+              </div>
+              <div class="team-slot">
+                <span class="slot-icon">🏎️</span>
+                <span class="slot-role">Driver 3</span>
+              </div>
+              <div class="team-slot">
+                <span class="slot-icon">🏎️</span>
+                <span class="slot-role">Driver 4</span>
+              </div>
+              <div class="team-slot">
+                <span class="slot-icon">🏎️</span>
+                <span class="slot-role">Driver 5</span>
+              </div>
+            </div>
+
+            <div class="budget-bar">
+              <span class="budget-label">Budget Remaining</span>
+              <span class="budget-value">$100M</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leaderboard -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Rankings</span>
+            <h2>Global Leaderboard</h2>
+            <p>See who's leading the fantasy competition</p>
+          </div>
+
+          <div class="leaderboard-section">
+            <div class="leaderboard-header">
+              <h3>WEC Fantasy 2025</h3>
+              <div class="leaderboard-tabs">
+                <button class="leaderboard-tab active">Overall</button>
+                <button class="leaderboard-tab">This Round</button>
+              </div>
+            </div>
+            <div class="leaderboard-list">
+              <div class="leaderboard-item">
+                <span class="leaderboard-rank gold">1</span>
+                <div class="leaderboard-user">
+                  <div class="user-avatar">👑</div>
+                  <div class="user-info">
+                    <h4>SpeedDemon_42</h4>
+                    <p>Member since 2023</p>
+                  </div>
+                </div>
+                <span class="leaderboard-points">2,847</span>
+                <span class="leaderboard-change up">↑ 2</span>
+              </div>
+
+              <div class="leaderboard-item">
+                <span class="leaderboard-rank silver">2</span>
+                <div class="leaderboard-user">
+                  <div class="user-avatar">🏆</div>
+                  <div class="user-info">
+                    <h4>LeMansLegend</h4>
+                    <p>Member since 2022</p>
+                  </div>
+                </div>
+                <span class="leaderboard-points">2,695</span>
+                <span class="leaderboard-change down">↓ 1</span>
+              </div>
+
+              <div class="leaderboard-item">
+                <span class="leaderboard-rank bronze">3</span>
+                <div class="leaderboard-user">
+                  <div class="user-avatar">⭐</div>
+                  <div class="user-info">
+                    <h4>PrototypePro</h4>
+                    <p>Member since 2024</p>
+                  </div>
+                </div>
+                <span class="leaderboard-points">2,541</span>
+                <span class="leaderboard-change up">↑ 5</span>
+              </div>
+
+              <div class="leaderboard-item">
+                <span class="leaderboard-rank" style="color: #888">4</span>
+                <div class="leaderboard-user">
+                  <div class="user-avatar">🔥</div>
+                  <div class="user-info">
+                    <h4>GT3Master</h4>
+                    <p>Member since 2023</p>
+                  </div>
+                </div>
+                <span class="leaderboard-points">2,489</span>
+                <span class="leaderboard-change same">—</span>
+              </div>
+
+              <div class="leaderboard-item">
+                <span class="leaderboard-rank" style="color: #888">5</span>
+                <div class="leaderboard-user">
+                  <div class="user-avatar">💨</div>
+                  <div class="user-info">
+                    <h4>EnduranceKing</h4>
+                    <p>Member since 2024</p>
+                  </div>
+                </div>
+                <span class="leaderboard-points">2,412</span>
+                <span class="leaderboard-change down">↓ 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <h2>Ready to Compete?</h2>
+            <p>
+              Join a league today and prove your motorsport knowledge against
+              other fans.
+            </p>
+            <div class="cta-buttons">
+              <a href="#" class="btn btn-primary">Create Account</a>
+              <a href="predictions.html" class="btn btn-secondary"
+                >View Predictions</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">🏎️</div>
+              io<span>motorsport</span>
+            </a>
+            <p>
+              Your complete motorsport experience. Racing coverage, esports,
+              fantasy, and community.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">𝕏</a>
+              <a href="#" class="social-link">📸</a>
+              <a href="#" class="social-link">💬</a>
+              <a href="#" class="social-link">▶️</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Racing</h4>
+            <a href="endurance.html">Endurance</a>
+            <a href="endurance.html#calendar">Calendar</a>
+            <a href="endurance.html#entries">Entry Lists</a>
+            <a href="predictions.html">Predictions</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Community</h4>
+            <a href="esports.html">Esports Team</a>
+            <a href="fantasy.html">Fantasy League</a>
+            <a href="hub.html">Hub</a>
+            <a href="hub.html#discord">Discord</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>More</h4>
+            <a href="store.html">Store</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("mobileNav").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
