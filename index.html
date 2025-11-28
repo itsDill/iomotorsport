@@ -22,17 +22,27 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <div class="loader-content">
+        <div class="loader-logo">🏎️</div>
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+
     <!-- Navigation -->
     <header>
       <div class="container">
         <div class="header-content">
-          <a href="index.html" class="logo">
-            <div class="logo-icon">🏎️</div>
+          <a href="index.html" class="logo" aria-label="iomotorsport Home">
+            <div class="logo-icon" aria-hidden="true">🏎️</div>
             io<span>motorsport</span>
           </a>
-          <nav>
+          <nav aria-label="Main navigation">
             <ul class="nav-links">
-              <li><a href="index.html" class="active">Home</a></li>
+              <li>
+                <a href="index.html" class="active" aria-current="page">Home</a>
+              </li>
               <li><a href="endurance.html">Endurance</a></li>
               <li><a href="esports.html">Esports</a></li>
               <li><a href="fantasy.html">Fantasy</a></li>
@@ -40,12 +50,22 @@
               <li><a href="hub.html">Hub</a></li>
               <li><a href="store.html" class="nav-cta">Store</a></li>
             </ul>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <button
+              class="mobile-menu-btn"
+              onclick="toggleMobileMenu()"
+              aria-label="Toggle mobile menu"
+              aria-expanded="false"
+            >
               ☰
             </button>
           </nav>
         </div>
-        <div class="mobile-nav" id="mobileNav">
+        <div
+          class="mobile-nav"
+          id="mobileNav"
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
           <a href="index.html" class="active">Home</a>
           <a href="endurance.html">Endurance</a>
           <a href="esports.html">Esports</a>
@@ -60,15 +80,24 @@
     <main>
       <!-- Hero Section -->
       <section class="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-particles" aria-hidden="true">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
         <div class="container">
           <div class="hero-content">
             <div class="hero-badge">
-              <span class="live-dot"></span>
+              <span class="live-dot" aria-hidden="true"></span>
               Racing Community Hub
             </div>
             <h1>
-              Your Complete<br /><span class="gradient-text">Motorsport</span>
+              Your Complete<br /><span class="gradient-text glow-text"
+                >Motorsport</span
+              >
               Experience
             </h1>
             <p class="hero-subtitle">
@@ -77,29 +106,29 @@
             </p>
             <div class="hero-buttons">
               <a href="endurance.html" class="btn btn-primary">
-                <span>🏁</span> Explore Racing
+                <span aria-hidden="true">🏁</span> Explore Racing
               </a>
               <a href="hub.html" class="btn btn-secondary">
-                <span>👥</span> Join Community
+                <span aria-hidden="true">👥</span> Join Community
               </a>
             </div>
 
             <!-- Quick Stats -->
             <div class="hero-stats">
               <div class="stat-item">
-                <span class="stat-number">5</span>
+                <span class="stat-number" data-value="5">5</span>
                 <span class="stat-label">Racing Series</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">12</span>
+                <span class="stat-number" data-value="12">12</span>
                 <span class="stat-label">Esports Drivers</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">2.5K+</span>
+                <span class="stat-number" data-value="2.5">2.5K+</span>
                 <span class="stat-label">Community Members</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number">85%</span>
+                <span class="stat-number" data-value="85">85%</span>
                 <span class="stat-label">Prediction Accuracy</span>
               </div>
             </div>
@@ -426,13 +455,44 @@
     </footer>
 
     <script>
+      // Hide page loader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("pageLoader").classList.add("hidden");
+        }, 500);
+      });
+
       // Mobile Menu Toggle
       function toggleMobileMenu() {
         const mobileNav = document.getElementById("mobileNav");
+        const menuBtn = document.querySelector(".mobile-menu-btn");
         mobileNav.classList.toggle("active");
+        menuBtn.textContent = mobileNav.classList.contains("active")
+          ? "✕"
+          : "☰";
+        menuBtn.setAttribute(
+          "aria-expanded",
+          mobileNav.classList.contains("active")
+        );
       }
 
-      // Countdown Timer
+      // Header scroll effect
+      const header = document.querySelector("header");
+      let lastScroll = 0;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // Countdown Timer with animation
       function updateCountdown() {
         const raceDate = new Date("2025-06-14T14:00:00").getTime();
         const now = new Date().getTime();
@@ -446,23 +506,92 @@
           const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-          document.getElementById("days").textContent = days
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("hours").textContent = hours
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("mins").textContent = mins
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("secs").textContent = secs
-            .toString()
-            .padStart(2, "0");
+          updateNumber("days", days);
+          updateNumber("hours", hours);
+          updateNumber("mins", mins);
+          updateNumber("secs", secs);
+        }
+      }
+
+      function updateNumber(id, value) {
+        const el = document.getElementById(id);
+        const newValue = value.toString().padStart(2, "0");
+        if (el.textContent !== newValue) {
+          el.style.transform = "scale(1.1)";
+          el.textContent = newValue;
+          setTimeout(() => {
+            el.style.transform = "scale(1)";
+          }, 100);
         }
       }
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
+
+      // Scroll-triggered animations using Intersection Observer
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const animateOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+            animateOnScroll.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Add animation classes to elements
+      document
+        .querySelectorAll(
+          ".feature-card, .series-card, .update-card, .stat-item, .cta-card"
+        )
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition =
+            "opacity 0.6s ease-out, transform 0.6s ease-out";
+          animateOnScroll.observe(el);
+        });
+
+      // Add staggered animation delays
+      document
+        .querySelectorAll(".features-grid .feature-card")
+        .forEach((el, i) => {
+          el.style.transitionDelay = `${i * 0.1}s`;
+        });
+
+      document
+        .querySelectorAll(".series-grid .series-card")
+        .forEach((el, i) => {
+          el.style.transitionDelay = `${i * 0.1}s`;
+        });
+
+      // CSS class for animated elements
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `
+        <style>
+          .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+        </style>
+      `
+      );
+
+      // Mouse tracking for feature cards glow effect
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty("--mouse-x", `${x}%`);
+          card.style.setProperty("--mouse-y", `${y}%`);
+        });
+      });
 
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -473,6 +602,69 @@
             target.scrollIntoView({ behavior: "smooth" });
           }
         });
+      });
+
+      // Animate stats numbers on scroll
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateValue(entry.target);
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      function animateValue(el) {
+        const text = el.textContent;
+        const hasPlus = text.includes("+");
+        const hasPercent = text.includes("%");
+        const hasK = text.includes("K");
+
+        let num = parseFloat(text.replace(/[^0-9.]/g, ""));
+        if (hasK) num = num;
+
+        const duration = 1500;
+        const start = performance.now();
+        const startVal = 0;
+
+        const animate = (now) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = startVal + (num - startVal) * eased;
+
+          let display = hasK
+            ? current.toFixed(1) + "K"
+            : Math.round(current).toString();
+          if (hasPlus) display += "+";
+          if (hasPercent) display += "%";
+
+          el.textContent = display;
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+
+        requestAnimationFrame(animate);
+      }
+
+      document.querySelectorAll(".stat-number").forEach((el) => {
+        statsObserver.observe(el);
+      });
+
+      // Parallax effect for hero background
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const heroBg = document.querySelector(".hero-bg");
+        if (heroBg && scrolled < 800) {
+          heroBg.style.transform = `translate(-50%, calc(-50% + ${
+            scrolled * 0.3
+          }px))`;
+        }
       });
     </script>
   </body>
