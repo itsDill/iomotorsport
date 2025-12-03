@@ -1,0 +1,88 @@
+{
+  "lastUpdated": "2025-12-03T00:00:00Z",
+  "bopRules": {
+    "description": "Balance of Performance adjustments aim to equalize performance across different manufacturers",
+    "parameters": ["weight", "power", "energy"]
+  },
+  "adjustments": [
+    {
+      "id": "bop-wec-2025-lemans",
+      "race": "wec-2025-04",
+      "effectiveDate": "2025-06-14",
+      "cars": [
+        {
+          "manufacturer": "toyota",
+          "car": "Toyota GR010 Hybrid",
+          "class": "hypercar",
+          "weight": { "value": 1066, "unit": "kg", "delta": 5 },
+          "power": { "value": 500, "unit": "kW", "delta": 0 },
+          "energy": { "value": 911, "unit": "MJ", "delta": -3 },
+          "hasChanges": true
+        },
+        {
+          "manufacturer": "ferrari",
+          "car": "Ferrari 499P",
+          "class": "hypercar",
+          "weight": { "value": 1063, "unit": "kg", "delta": 0 },
+          "power": { "value": 500, "unit": "kW", "delta": 0 },
+          "energy": { "value": 908, "unit": "MJ", "delta": 0 },
+          "hasChanges": false
+        },
+        {
+          "manufacturer": "porsche",
+          "car": "Porsche 963",
+          "class": "hypercar",
+          "weight": { "value": 1055, "unit": "kg", "delta": -5 },
+          "power": { "value": 520, "unit": "kW", "delta": 10 },
+          "energy": { "value": 913, "unit": "MJ", "delta": 0 },
+          "hasChanges": true
+        },
+        {
+          "manufacturer": "cadillac",
+          "car": "Cadillac V-Series.R",
+          "class": "hypercar",
+          "weight": { "value": 1047, "unit": "kg", "delta": 0 },
+          "power": { "value": 520, "unit": "kW", "delta": 0 },
+          "energy": { "value": 910, "unit": "MJ", "delta": 0 },
+          "hasChanges": false
+        },
+        {
+          "manufacturer": "peugeot",
+          "car": "Peugeot 9X8",
+          "class": "hypercar",
+          "weight": { "value": 1048, "unit": "kg", "delta": -10 },
+          "power": { "value": 516, "unit": "kW", "delta": 5 },
+          "energy": { "value": 909, "unit": "MJ", "delta": 2 },
+          "hasChanges": true
+        },
+        {
+          "manufacturer": "bmw",
+          "car": "BMW M Hybrid V8",
+          "class": "hypercar",
+          "weight": { "value": 1040, "unit": "kg", "delta": 0 },
+          "power": { "value": 520, "unit": "kW", "delta": 0 },
+          "energy": { "value": 908, "unit": "MJ", "delta": 0 },
+          "hasChanges": false
+        },
+        {
+          "manufacturer": "alpine",
+          "car": "Alpine A424",
+          "class": "hypercar",
+          "weight": { "value": 1052, "unit": "kg", "delta": 3 },
+          "power": { "value": 520, "unit": "kW", "delta": 0 },
+          "energy": { "value": 912, "unit": "MJ", "delta": -2 },
+          "hasChanges": true
+        },
+        {
+          "manufacturer": "lamborghini",
+          "car": "Lamborghini SC63",
+          "class": "hypercar",
+          "weight": { "value": 1038, "unit": "kg", "delta": -5 },
+          "power": { "value": 520, "unit": "kW", "delta": 0 },
+          "energy": { "value": 905, "unit": "MJ", "delta": 0 },
+          "hasChanges": true
+        }
+      ]
+    }
+  ]
+}

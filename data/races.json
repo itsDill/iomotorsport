@@ -1,0 +1,207 @@
+{
+  "lastUpdated": "2025-12-03T00:00:00Z",
+  "series": {
+    "wec": {
+      "name": "FIA World Endurance Championship",
+      "shortName": "WEC",
+      "color": "#e63946",
+      "year": 2025,
+      "totalRounds": 8
+    },
+    "imsa": {
+      "name": "IMSA SportsCar Championship",
+      "shortName": "IMSA",
+      "color": "#007bff",
+      "year": 2025,
+      "totalRounds": 12
+    },
+    "elms": {
+      "name": "European Le Mans Series",
+      "shortName": "ELMS",
+      "color": "#28a745",
+      "year": 2025,
+      "totalRounds": 6
+    },
+    "gtwc": {
+      "name": "GT World Challenge",
+      "shortName": "GTWC",
+      "color": "#9c27b0",
+      "year": 2025,
+      "totalRounds": 10
+    }
+  },
+  "calendar": [
+    {
+      "id": "wec-2025-01",
+      "series": "wec",
+      "round": 1,
+      "name": "1812 km of Qatar",
+      "shortName": "Qatar",
+      "circuit": "Lusail International Circuit",
+      "location": "Lusail, Qatar",
+      "country": "QA",
+      "date": "2025-02-28",
+      "endDate": "2025-03-01",
+      "duration": "10 Hours",
+      "status": "completed",
+      "winner": {
+        "class": "Hypercar",
+        "number": 50,
+        "team": "Ferrari AF Corse",
+        "car": "Ferrari 499P"
+      }
+    },
+    {
+      "id": "imsa-2025-01",
+      "series": "imsa",
+      "round": 1,
+      "name": "Rolex 24 at Daytona",
+      "shortName": "Daytona 24",
+      "circuit": "Daytona International Speedway",
+      "location": "Daytona Beach, FL, USA",
+      "country": "US",
+      "date": "2025-01-25",
+      "endDate": "2025-01-26",
+      "duration": "24 Hours",
+      "status": "completed",
+      "winner": {
+        "class": "GTP",
+        "number": 10,
+        "team": "Wayne Taylor Racing",
+        "car": "Cadillac V-Series.R"
+      }
+    },
+    {
+      "id": "wec-2025-02",
+      "series": "wec",
+      "round": 2,
+      "name": "6 Hours of Imola",
+      "shortName": "Imola",
+      "circuit": "Autodromo Enzo e Dino Ferrari",
+      "location": "Imola, Italy",
+      "country": "IT",
+      "date": "2025-04-20",
+      "duration": "6 Hours",
+      "status": "completed",
+      "winner": {
+        "class": "Hypercar",
+        "number": 7,
+        "team": "Toyota Gazoo Racing",
+        "car": "Toyota GR010 Hybrid"
+      }
+    },
+    {
+      "id": "wec-2025-03",
+      "series": "wec",
+      "round": 3,
+      "name": "6 Hours of Spa",
+      "shortName": "Spa",
+      "circuit": "Circuit de Spa-Francorchamps",
+      "location": "Stavelot, Belgium",
+      "country": "BE",
+      "date": "2025-05-10",
+      "duration": "6 Hours",
+      "status": "completed",
+      "winner": {
+        "class": "Hypercar",
+        "number": 6,
+        "team": "Porsche Penske Motorsport",
+        "car": "Porsche 963"
+      }
+    },
+    {
+      "id": "wec-2025-04",
+      "series": "wec",
+      "round": 4,
+      "name": "24 Hours of Le Mans",
+      "shortName": "Le Mans",
+      "circuit": "Circuit de la Sarthe",
+      "location": "Le Mans, France",
+      "country": "FR",
+      "date": "2025-06-14",
+      "endDate": "2025-06-15",
+      "duration": "24 Hours",
+      "status": "upcoming",
+      "isNextRace": true,
+      "featured": true
+    },
+    {
+      "id": "imsa-2025-07",
+      "series": "imsa",
+      "round": 7,
+      "name": "Sahlen's Six Hours",
+      "shortName": "Watkins Glen",
+      "circuit": "Watkins Glen International",
+      "location": "Watkins Glen, NY, USA",
+      "country": "US",
+      "date": "2025-07-20",
+      "duration": "6 Hours",
+      "status": "upcoming"
+    },
+    {
+      "id": "wec-2025-05",
+      "series": "wec",
+      "round": 5,
+      "name": "6 Hours of São Paulo",
+      "shortName": "São Paulo",
+      "circuit": "Autódromo José Carlos Pace",
+      "location": "São Paulo, Brazil",
+      "country": "BR",
+      "date": "2025-07-12",
+      "duration": "6 Hours",
+      "status": "upcoming"
+    },
+    {
+      "id": "wec-2025-06",
+      "series": "wec",
+      "round": 6,
+      "name": "6 Hours of Fuji",
+      "shortName": "Fuji",
+      "circuit": "Fuji Speedway",
+      "location": "Oyama, Japan",
+      "country": "JP",
+      "date": "2025-08-31",
+      "duration": "6 Hours",
+      "status": "upcoming"
+    },
+    {
+      "id": "elms-2025-05",
+      "series": "elms",
+      "round": 5,
+      "name": "4 Hours of Spa",
+      "shortName": "Spa",
+      "circuit": "Circuit de Spa-Francorchamps",
+      "location": "Stavelot, Belgium",
+      "country": "BE",
+      "date": "2025-09-14",
+      "duration": "4 Hours",
+      "status": "upcoming"
+    },
+    {
+      "id": "wec-2025-07",
+      "series": "wec",
+      "round": 7,
+      "name": "6 Hours of Austin",
+      "shortName": "Austin",
+      "circuit": "Circuit of the Americas",
+      "location": "Austin, TX, USA",
+      "country": "US",
+      "date": "2025-09-28",
+      "duration": "6 Hours",
+      "status": "upcoming"
+    },
+    {
+      "id": "wec-2025-08",
+      "series": "wec",
+      "round": 8,
+      "name": "8 Hours of Bahrain",
+      "shortName": "Bahrain",
+      "circuit": "Bahrain International Circuit",
+      "location": "Sakhir, Bahrain",
+      "country": "BH",
+      "date": "2025-11-08",
+      "duration": "8 Hours",
+      "status": "upcoming"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "lastUpdated": "2025-12-03T00:00:00Z",
+  "overallAccuracy": 85,
+  "totalPredictions": 127,
+  "correctPredictions": 108,
+  "predictions": [
+    {
+      "id": "pred-wec-2025-04",
+      "race": "wec-2025-04",
+      "series": "wec",
+      "raceName": "24 Hours of Le Mans",
+      "date": "2025-06-14",
+      "status": "active",
+      "publishedDate": "2025-12-01",
+      "confidence": 78,
+      "analysis": {
+        "summary": "Toyota and Ferrari enter Le Mans as co-favorites, but the grueling 24-hour format could see Porsche's reliability shine through.",
+        "keyFactors": [
+          "Toyota's dominant qualifying pace at recent rounds",
+          "Ferrari's strong race pace and tire management",
+          "Porsche's excellent reliability record",
+          "Weather forecast showing potential rain overnight"
+        ]
+      },
+      "podiumPrediction": [
+        {
+          "position": 1,
+          "number": 7,
+          "team": "Toyota Gazoo Racing",
+          "car": "Toyota GR010 Hybrid",
+          "confidence": 32
+        },
+        {
+          "position": 2,
+          "number": 50,
+          "team": "Ferrari AF Corse",
+          "car": "Ferrari 499P",
+          "confidence": 28
+        },
+        {
+          "position": 3,
+          "number": 6,
+          "team": "Porsche Penske Motorsport",
+          "car": "Porsche 963",
+          "confidence": 22
+        }
+      ],
+      "classPredictions": {
+        "hypercar": {
+          "winner": { "number": 7, "team": "Toyota Gazoo Racing" }
+        },
+        "lmgt3": {
+          "winner": { "number": 27, "team": "Heart of Racing" }
+        }
+      },
+      "darkHorse": {
+        "number": 51,
+        "team": "Ferrari AF Corse",
+        "reason": "Strong night pace and fresh driver lineup could see them challenge their sister car"
+      }
+    },
+    {
+      "id": "pred-wec-2025-03",
+      "race": "wec-2025-03",
+      "series": "wec",
+      "raceName": "6 Hours of Spa",
+      "date": "2025-05-10",
+      "status": "completed",
+      "result": "correct",
+      "publishedDate": "2025-05-05",
+      "confidence": 72,
+      "podiumPrediction": [
+        {
+          "position": 1,
+          "number": 6,
+          "team": "Porsche Penske Motorsport",
+          "car": "Porsche 963",
+          "confidence": 35,
+          "actualPosition": 1
+        },
+        {
+          "position": 2,
+          "number": 7,
+          "team": "Toyota Gazoo Racing",
+          "car": "Toyota GR010 Hybrid",
+          "confidence": 30,
+          "actualPosition": 3
+        },
+        {
+          "position": 3,
+          "number": 50,
+          "team": "Ferrari AF Corse",
+          "car": "Ferrari 499P",
+          "confidence": 20,
+          "actualPosition": 2
+        }
+      ]
+    },
+    {
+      "id": "pred-wec-2025-02",
+      "race": "wec-2025-02",
+      "series": "wec",
+      "raceName": "6 Hours of Imola",
+      "date": "2025-04-20",
+      "status": "completed",
+      "result": "correct",
+      "publishedDate": "2025-04-15",
+      "confidence": 68,
+      "podiumPrediction": [
+        {
+          "position": 1,
+          "number": 7,
+          "team": "Toyota Gazoo Racing",
+          "car": "Toyota GR010 Hybrid",
+          "confidence": 40,
+          "actualPosition": 1
+        },
+        {
+          "position": 2,
+          "number": 8,
+          "team": "Toyota Gazoo Racing",
+          "car": "Toyota GR010 Hybrid",
+          "confidence": 25,
+          "actualPosition": 4
+        },
+        {
+          "position": 3,
+          "number": 51,
+          "team": "Ferrari AF Corse",
+          "car": "Ferrari 499P",
+          "confidence": 18,
+          "actualPosition": 2
+        }
+      ]
+    }
+  ]
+}

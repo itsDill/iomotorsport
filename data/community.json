@@ -1,0 +1,161 @@
+{
+  "lastUpdated": "2025-12-03T00:00:00Z",
+  "stats": {
+    "discordMembers": 2500,
+    "twitterFollowers": 15200,
+    "instagramFollowers": 8700,
+    "youtubeSubscribers": 12400,
+    "twitchFollowers": 3200
+  },
+  "socials": [
+    {
+      "platform": "twitter",
+      "name": "Twitter / X",
+      "handle": "@iomotorsport",
+      "url": "https://twitter.com/iomotorsport",
+      "followers": 15200,
+      "icon": "𝕏",
+      "description": "Breaking news, race updates, and hot takes"
+    },
+    {
+      "platform": "instagram",
+      "name": "Instagram",
+      "handle": "@iomotorsport",
+      "url": "https://instagram.com/iomotorsport",
+      "followers": 8700,
+      "icon": "📸",
+      "description": "Race photography and behind-the-scenes content"
+    },
+    {
+      "platform": "youtube",
+      "name": "YouTube",
+      "handle": "@iomotorsport",
+      "url": "https://youtube.com/iomotorsport",
+      "subscribers": 12400,
+      "icon": "▶️",
+      "description": "Race highlights, analysis videos, and esports streams"
+    },
+    {
+      "platform": "twitch",
+      "name": "Twitch",
+      "handle": "iomotorsport",
+      "url": "https://twitch.tv/iomotorsport",
+      "followers": 3200,
+      "icon": "📺",
+      "description": "Live sim racing streams and race watch parties"
+    },
+    {
+      "platform": "discord",
+      "name": "Discord",
+      "url": "https://discord.gg/iomotorsport",
+      "members": 2500,
+      "icon": "💬",
+      "description": "Join our community of racing enthusiasts"
+    }
+  ],
+  "discordChannels": [
+    {
+      "category": "📢 Announcements",
+      "channels": [
+        { "name": "news-updates", "icon": "#" },
+        { "name": "race-alerts", "icon": "#", "live": true }
+      ]
+    },
+    {
+      "category": "💬 General",
+      "channels": [
+        { "name": "general-chat", "icon": "#" },
+        { "name": "introductions", "icon": "#" }
+      ]
+    },
+    {
+      "category": "🏎️ Racing",
+      "channels": [
+        { "name": "wec-discussion", "icon": "#" },
+        { "name": "imsa-discussion", "icon": "#" },
+        { "name": "le-mans-hype", "icon": "#", "active": true }
+      ]
+    },
+    {
+      "category": "🎮 Esports",
+      "channels": [
+        { "name": "sim-racing-lobbies", "icon": "#" },
+        { "name": "Race Room", "icon": "🔊" }
+      ]
+    }
+  ],
+  "topContributors": [
+    {
+      "username": "PredictionPro",
+      "role": "Analysis Expert",
+      "avatar": "🎯",
+      "stats": { "accuracy": "89%", "posts": 45 }
+    },
+    {
+      "username": "RaceChatter",
+      "role": "Community Leader",
+      "avatar": "💬",
+      "stats": { "messages": "1.2K", "likes": "500+" }
+    },
+    {
+      "username": "SimRacer_Mike",
+      "role": "Event Organizer",
+      "avatar": "🎮",
+      "stats": { "events": 25, "racers": 150 }
+    },
+    {
+      "username": "RacingLens",
+      "role": "Content Creator",
+      "avatar": "📸",
+      "stats": { "photos": "200+", "likes": "5K" }
+    },
+    {
+      "username": "TechAnalyst",
+      "role": "Technical Expert",
+      "avatar": "🔧",
+      "stats": { "articles": 30, "views": "25K" }
+    }
+  ],
+  "recentActivity": [
+    {
+      "type": "achievement",
+      "user": "SpeedDemon_42",
+      "action": "reached a new milestone",
+      "content": "Achieved 100+ accurate predictions this season!",
+      "timestamp": "2025-12-03T10:55:00Z",
+      "category": "prediction"
+    },
+    {
+      "type": "prediction",
+      "user": "iomotorsport",
+      "action": "posted a new prediction",
+      "content": "24 Hours of Le Mans prediction is now live! Check out our full analysis.",
+      "timestamp": "2025-12-03T09:00:00Z",
+      "category": "prediction"
+    },
+    {
+      "type": "discussion",
+      "user": "EnduranceKing",
+      "action": "started a discussion",
+      "content": "Toyota vs Ferrari: Who has the better long-run pace for Le Mans?",
+      "timestamp": "2025-12-03T08:00:00Z",
+      "category": "discussion"
+    },
+    {
+      "type": "esports",
+      "user": "Alex Velocity",
+      "action": "won a race",
+      "content": "iomotorsport Esports takes P1 at the ACC Intercontinental GT Challenge!",
+      "timestamp": "2025-12-03T07:00:00Z",
+      "category": "esports"
+    },
+    {
+      "type": "new_member",
+      "user": "GT3Master",
+      "action": "joined the community",
+      "content": "Welcome to iomotorsport! Check out our predictions and join the community.",
+      "timestamp": "2025-12-03T06:00:00Z",
+      "category": "discussion"
+    }
+  ]
+}

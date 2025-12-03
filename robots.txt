@@ -1,0 +1,9 @@
+# robots.txt for iomotorsport.com
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://iomotorsport.com/sitemap.xml
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
