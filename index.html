@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="iomotorsport - Your complete endurance racing hub. Esports, predictions, and motorsport community."
-    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#e63946" />
     <meta name="author" content="iomotorsport" />
     <meta
@@ -23,7 +20,15 @@
       content="Your complete endurance racing hub. Esports, predictions, and motorsport community."
     />
     <meta property="og:image" content="https://iomotorsport.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="iomotorsport | Racing Hub & Esports" />
+    <meta name="twitter:description" content="Your complete endurance racing hub. Esports, predictions, and motorsport community." />
+    <meta name="twitter:image" content="https://iomotorsport.com/og-image.jpg" />
+    <meta name="twitter:site" content="@iomotorsport" />
+    <meta name="twitter:creator" content="@iomotorsport" />
 
     <link rel="canonical" href="https://iomotorsport.com/" />
     <link
@@ -48,6 +53,41 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "iomotorsport",
+        "description": "Your complete endurance racing hub. Esports, predictions, and motorsport community.",
+        "url": "https://iomotorsport.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://iomotorsport.com/predictions.html",
+          "query-input": "required name=search_term_string"
+        },
+        "sameAs": [
+          "https://twitter.com/iomotorsport",
+          "https://instagram.com/iomotorsport",
+          "https://youtube.com/iomotorsport"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "iomotorsport",
+        "description": "Motorsport racing coverage and esports community",
+        "url": "https://iomotorsport.com",
+        "logo": "https://iomotorsport.com/logo.png",
+        "sameAs": [
+          "https://twitter.com/iomotorsport",
+          "https://instagram.com/iomotorsport",
+          "https://youtube.com/iomotorsport"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        }
+      }
+    </script>
         "@type": "Organization",
         "name": "iomotorsport",
         "url": "https://iomotorsport.com",
@@ -93,8 +133,7 @@
               <li><a href="endurance.html">Endurance</a></li>
               <li><a href="esports.html">Esports</a></li>
               <li><a href="predictions.html">Predictions</a></li>
-              <li><a href="hub.html">Hub</a></li>
-              <li><a href="store.html" class="nav-cta">Store</a></li>
+              <li><a href="hub.html" class="nav-cta">Hub</a></li>
             </ul>
             <button
               class="mobile-menu-btn"
@@ -117,7 +156,6 @@
           <a href="esports.html">Esports</a>
           <a href="predictions.html">Predictions</a>
           <a href="hub.html">Hub</a>
-          <a href="store.html">Store</a>
         </div>
       </div>
     </header>
@@ -200,7 +238,7 @@
               <div class="feature-content">
                 <h3>Endurance Racing</h3>
                 <p>
-                  Complete coverage of WEC, IMSA, ELMS & more. Calendars, entry
+                  Complete coverage of WEC, IMSA, and GT World Challenge. Calendars, entry
                   lists, BoP updates, and race summaries.
                 </p>
                 <span class="feature-link">Explore Coverage →</span>
@@ -208,7 +246,7 @@
               <div class="feature-tags">
                 <span class="tag">WEC</span>
                 <span class="tag">IMSA</span>
-                <span class="tag">ELMS</span>
+                <span class="tag">GTWC</span>
               </div>
             </a>
 
@@ -245,7 +283,7 @@
               </div>
             </a>
 
-            <a href="store.html" class="feature-card">
+            <a href="hub.html" class="feature-card">
               <div class="feature-icon">🛒</div>
               <div class="feature-content">
                 <h3>Merch Store</h3>
@@ -386,7 +424,7 @@
               </div>
             </div>
             <div class="series-card">
-              <div class="series-logo">ELMS</div>
+              <div class="series-logo">GTWC</div>
               <h3>European Le Mans Series</h3>
               <p>Europe's top Le Mans prototype series</p>
               <div class="series-stats">
@@ -465,7 +503,7 @@
 
           <div class="footer-links">
             <h4>More</h4>
-            <a href="store.html">Store</a>
+            <a href="hub.html">Hub</a>
             <a href="#">About Us</a>
             <a href="#">Contact</a>
             <a href="#">Privacy Policy</a>
