@@ -35,7 +35,12 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
     sans-serif;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
   background-attachment: fixed;
@@ -52,7 +57,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at 20% 20%,
       rgba(230, 57, 70, 0.08) 0%,
       transparent 50%
@@ -258,7 +264,8 @@ header.scrolled {
   justify-content: center;
   font-size: 1.1rem;
   box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
-  transition: transform var(--transition-normal),
+  transition:
+    transform var(--transition-normal),
     box-shadow var(--transition-normal);
 }
 
@@ -411,13 +418,15 @@ nav {
   background: linear-gradient(135deg, #e63946, #ff6b6b);
   color: #fff;
   border-color: #e63946;
-  box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3),
+  box-shadow:
+    0 4px 15px rgba(230, 57, 70, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(230, 57, 70, 0.5),
+  box-shadow:
+    0 8px 30px rgba(230, 57, 70, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -815,7 +824,8 @@ nav {
 .feature-card:hover {
   transform: translateY(-10px) scale(1.02);
   border-color: rgba(230, 57, 70, 0.4);
-  box-shadow: 0 25px 50px rgba(230, 57, 70, 0.2),
+  box-shadow:
+    0 25px 50px rgba(230, 57, 70, 0.2),
     0 0 0 1px rgba(230, 57, 70, 0.1);
 }
 
@@ -1504,7 +1514,9 @@ footer::before {
 .card:hover {
   border-color: rgba(230, 57, 70, 0.4);
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(230, 57, 70, 0.1);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(230, 57, 70, 0.1);
 }
 
 /* Glass Card Variant */
@@ -1868,7 +1880,9 @@ footer::before {
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  transition: opacity 0.5s, visibility 0.5s;
+  transition:
+    opacity 0.5s,
+    visibility 0.5s;
 }
 
 .page-loader.hidden {
@@ -1959,7 +1973,9 @@ button,
 
 /* Glow text effect */
 .glow-text {
-  text-shadow: 0 0 20px rgba(230, 57, 70, 0.5), 0 0 40px rgba(230, 57, 70, 0.3),
+  text-shadow:
+    0 0 20px rgba(230, 57, 70, 0.5),
+    0 0 40px rgba(230, 57, 70, 0.3),
     0 0 60px rgba(230, 57, 70, 0.1);
 }
 
@@ -1978,7 +1994,9 @@ button,
 /* Smooth image loading */
 img {
   opacity: 1;
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 img:not([src]) {
@@ -2080,7 +2098,10 @@ img:hover {
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s,
+    transform 0.2s;
   z-index: 1000;
   pointer-events: none;
 }
@@ -2095,7 +2116,9 @@ img:hover {
   border-top-color: rgba(0, 0, 0, 0.9);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
   z-index: 1000;
 }
 
@@ -2357,7 +2380,9 @@ img[loading="lazy"]:not([src=""]) {
   object-fit: contain;
   padding: 20px;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
 }
 
 .car-image:hover img {
@@ -2649,7 +2674,9 @@ img[loading="lazy"]:not([src=""]) {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
 }
 
 .lightbox.active {
@@ -2682,4 +2709,137 @@ img[loading="lazy"]:not([src=""]) {
 
 .lightbox-close:hover {
   background: var(--primary);
+}
+
+/* ==========================================
+   Legal Content Pages (Privacy, Terms)
+   ========================================== */
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.legal-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--primary);
+}
+
+.legal-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 32px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.legal-content h3:first-of-type {
+  margin-top: 24px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.legal-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 20px 0 12px;
+}
+
+.legal-content p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.legal-content p strong {
+  color: var(--text-primary);
+}
+
+.legal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.legal-content ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.legal-content ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.legal-content ul li strong {
+  color: var(--text-primary);
+}
+
+.legal-content a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.legal-content a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+/* Nested lists in legal content */
+.legal-content ul ul {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.legal-content ul ul li::before {
+  width: 6px;
+  height: 6px;
+  background: var(--text-muted);
+}
+
+/* Uppercase legal text (disclaimers) */
+.legal-content p:has(+ ul) {
+  margin-bottom: 12px;
+}
+
+/* Mobile responsiveness for legal content */
+@media (max-width: 768px) {
+  .legal-content {
+    padding: 24px;
+    margin: 0 16px;
+    border-radius: 16px;
+  }
+
+  .legal-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .legal-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .legal-content h4 {
+    font-size: 1rem;
+  }
 }

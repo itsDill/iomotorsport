@@ -549,6 +549,141 @@
         color: #28a745;
       }
 
+      /* Driver Cards */
+      .drivers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 25px;
+      }
+
+      .driver-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .driver-card:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .driver-avatar {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 57, 70, 0.2),
+          rgba(230, 57, 70, 0.05)
+        );
+        padding: 30px;
+        text-align: center;
+        font-size: 3rem;
+        position: relative;
+      }
+
+      .driver-role {
+        display: block;
+        font-size: 0.7rem;
+        color: #e63946;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        margin-top: 10px;
+        font-family: "Orbitron", monospace;
+      }
+
+      .driver-info {
+        padding: 25px;
+      }
+
+      .driver-name {
+        font-family: "Orbitron", monospace;
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      .driver-handle {
+        display: block;
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 15px;
+      }
+
+      .driver-platforms {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .platform-tag {
+        padding: 5px 12px;
+        background: rgba(230, 57, 70, 0.15);
+        border: 1px solid rgba(230, 57, 70, 0.3);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        color: #e63946;
+        font-weight: 600;
+      }
+
+      .driver-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 15px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 15px;
+      }
+
+      .driver-stat {
+        text-align: center;
+      }
+
+      .driver-stat-value {
+        display: block;
+        font-family: "Orbitron", monospace;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .driver-stat-label {
+        display: block;
+        font-size: 0.7rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 4px;
+      }
+
+      .driver-socials {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .social-btn {
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: #888;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-btn:hover {
+        background: rgba(230, 57, 70, 0.2);
+        border-color: #e63946;
+        color: #e63946;
+      }
+
       .record-details {
         display: flex;
         justify-content: center;
@@ -718,6 +853,19 @@
 
         .records-grid {
           grid-template-columns: 1fr;
+        }
+
+        .drivers-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .driver-stats {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+        }
+
+        .driver-stat-value {
+          font-size: 1rem;
         }
       }
     </style>
