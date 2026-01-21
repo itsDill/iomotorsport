@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="iomotorsport Predictions - Data-driven race predictions and analysis for WEC, IMSA, and more."
+      content="iomotorsport Predictions - Data-driven race predictions and analysis for WEC, IMSA, GT World Challenge, and Offroad Endurance. Track our 85% winner accuracy."
     />
     <meta
       name="robots"
@@ -14,12 +14,17 @@
     <meta name="author" content="iomotorsport" />
     <meta
       name="keywords"
-      content="race predictions, motorsport predictions, WEC predictions, IMSA predictions, fantasy racing, race analysis"
+      content="race predictions, motorsport predictions, WEC predictions, IMSA predictions, GT World Challenge, Dakar Rally, Le Mans predictions, Daytona 24 predictions, Spa 24 Hours, Baja 1000, endurance racing analysis"
     />
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="Race Predictions | iomotorsport" />
+    <meta
+      property="og:description"
+      content="Data-driven race predictions and analytics for WEC, IMSA, GT World Challenge, and Offroad Endurance. 85% winner accuracy."
+    />
     <meta
       property="og:image"
-      content="https://iomotorsport.com/og-image-predictions.jpg"
+      content="https://iomotorsport.com/images/og-predictions.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -35,12 +40,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://iomotorsport.com/og-image-predictions.jpg"
-    />
-    <meta property="og:title" content="Race Predictions | iomotorsport" />
-    <meta
-      property="og:description"
-      content="Data-driven race predictions and analytics for WEC, IMSA, and endurance racing."
+      content="https://iomotorsport.com/images/og-predictions.jpg"
     />
     <link rel="canonical" href="https://iomotorsport.com/predictions.html" />
     <link
@@ -57,7 +57,39 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <style>
-      /* Predictions Page Specific Styles */
+      /* Predictions Page Styles */
+      .predictions-nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .predictions-nav button {
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        color: #888;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .predictions-nav button:hover {
+        background: rgba(230, 57, 70, 0.1);
+        border-color: rgba(230, 57, 70, 0.3);
+        color: #fff;
+      }
+
+      .predictions-nav button.active {
+        background: linear-gradient(135deg, #e63946 0%, #c62828 100%);
+        border-color: #e63946;
+        color: #fff;
+        font-weight: 600;
+      }
+
       .accuracy-banner {
         background: linear-gradient(
           135deg,
@@ -70,7 +102,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
         flex-wrap: wrap;
         gap: 20px;
       }
@@ -109,7 +141,7 @@
         letter-spacing: 1px;
       }
 
-      /* Prediction Card */
+      /* Prediction Cards */
       .prediction-card {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -121,6 +153,25 @@
 
       .prediction-card:hover {
         border-color: rgba(230, 57, 70, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .prediction-card.featured {
+        border-color: rgba(230, 57, 70, 0.4);
+        box-shadow: 0 0 30px rgba(230, 57, 70, 0.1);
+      }
+
+      .featured-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #e63946 0%, #c62828 100%);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       .prediction-header {
@@ -130,11 +181,7 @@
           rgba(230, 57, 70, 0.05) 100%
         );
         padding: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 20px;
+        position: relative;
       }
 
       .prediction-race h3 {
@@ -152,8 +199,99 @@
         flex-wrap: wrap;
       }
 
+      .prediction-meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .series-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-left: 10px;
+      }
+
+      .series-badge.wec {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+      }
+
+      .series-badge.imsa {
+        background: rgba(0, 123, 255, 0.2);
+        color: #007bff;
+      }
+
+      .series-badge.gtwc {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+
+      .series-badge.offroad {
+        background: rgba(255, 152, 0, 0.2);
+        color: #ff9800;
+      }
+
+      /* Series Filter Buttons */
+      .series-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 25px;
+        justify-content: center;
+      }
+
+      .series-filter button {
+        padding: 10px 20px;
+        border: 2px solid #333;
+        background: transparent;
+        color: #888;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .series-filter button:hover {
+        border-color: #666;
+        color: #fff;
+      }
+
+      .series-filter button.active {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border-color: #007bff;
+        color: #fff;
+      }
+
+      .series-filter button[data-series="wec"].active {
+        background: linear-gradient(135deg, #e63946, #c1121f);
+        border-color: #e63946;
+      }
+
+      .series-filter button[data-series="imsa"].active {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border-color: #007bff;
+      }
+
+      .series-filter button[data-series="gtwc"].active {
+        background: linear-gradient(135deg, #28a745, #1e7e34);
+        border-color: #28a745;
+      }
+
+      .series-filter button[data-series="offroad"].active {
+        background: linear-gradient(135deg, #ff9800, #e68900);
+        border-color: #ff9800;
+      }
+
       .prediction-confidence {
-        text-align: right;
+        margin-top: 20px;
       }
 
       .confidence-label {
@@ -165,17 +303,17 @@
       }
 
       .confidence-bar {
-        width: 150px;
-        height: 10px;
+        width: 200px;
+        height: 8px;
         background: rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
+        border-radius: 4px;
         overflow: hidden;
       }
 
       .confidence-fill {
         height: 100%;
-        background: linear-gradient(90deg, #e63946, #28a745);
-        border-radius: 5px;
+        background: linear-gradient(90deg, #ffc107, #28a745);
+        border-radius: 4px;
         transition: width 0.5s ease;
       }
 
@@ -190,7 +328,29 @@
         padding: 30px;
       }
 
-      /* Podium Prediction */
+      .prediction-summary {
+        color: #ccc;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        border-left: 3px solid #e63946;
+      }
+
+      /* Podium Grid */
+      .podium-section-title {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
       .podium-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -243,41 +403,48 @@
         margin-bottom: 15px;
       }
 
+      .podium-car-number {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #e63946;
+        font-family: "Orbitron", monospace;
+        margin-bottom: 10px;
+      }
+
       .podium-team {
         color: #fff;
-        font-size: 1.1rem;
-        font-weight: 700;
+        font-size: 1rem;
+        font-weight: 600;
         margin-bottom: 5px;
       }
 
       .podium-car {
         color: #888;
         font-size: 0.85rem;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .podium-drivers {
+        font-size: 0.75rem;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.4;
       }
 
       .podium-odds {
         background: rgba(230, 57, 70, 0.2);
         color: #e63946;
-        padding: 5px 12px;
+        padding: 6px 14px;
         border-radius: 20px;
         font-size: 0.8rem;
         font-weight: 700;
       }
 
-      /* Factors Grid */
+      /* Key Factors */
       .factors-section {
         margin-top: 30px;
         padding-top: 30px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .factors-title {
-        color: #fff;
-        font-size: 1rem;
-        margin-bottom: 20px;
-        font-family: "Inter", sans-serif;
-        font-weight: 600;
       }
 
       .factors-grid {
@@ -318,89 +485,261 @@
         font-size: 0.8rem;
       }
 
-      /* Class Predictions */
-      .class-predictions {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+      /* Dark Horse */
+      .dark-horse-section {
         margin-top: 30px;
+        padding: 25px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 193, 7, 0.1) 0%,
+          rgba(255, 193, 7, 0.03) 100%
+        );
+        border: 1px solid rgba(255, 193, 7, 0.2);
+        border-radius: 12px;
       }
 
-      .class-card {
+      .dark-horse-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+
+      .dark-horse-header h4 {
+        color: #ffc107;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .dark-horse-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .dark-horse-team {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .dark-horse-number {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #ffc107;
+        font-family: "Orbitron", monospace;
+      }
+
+      .dark-horse-info h5 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 3px;
+      }
+
+      .dark-horse-info p {
+        color: #888;
+        font-size: 0.85rem;
+      }
+
+      .dark-horse-reason {
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        max-width: 400px;
+      }
+
+      /* Championship Predictions */
+      .championship-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+      }
+
+      .championship-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .championship-header {
+        background: linear-gradient(
+          135deg,
+          rgba(230, 57, 70, 0.15) 0%,
+          rgba(230, 57, 70, 0.05) 100%
+        );
+        padding: 25px;
+      }
+
+      .championship-header h3 {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "Orbitron", monospace;
+      }
+
+      .championship-body {
+        padding: 25px;
+      }
+
+      .championship-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s;
+      }
+
+      .championship-item:hover {
+        background: rgba(230, 57, 70, 0.08);
+      }
+
+      .championship-position {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #e63946;
+        font-family: "Orbitron", monospace;
+        width: 50px;
+      }
+
+      .championship-team-info {
+        flex: 1;
+      }
+
+      .championship-team-info h4 {
+        color: #fff;
+        font-size: 0.95rem;
+        margin-bottom: 3px;
+      }
+
+      .championship-team-info p {
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      .championship-probability {
+        text-align: right;
+      }
+
+      .probability-bar {
+        width: 100px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 5px;
+      }
+
+      .probability-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #e63946, #ffc107);
+        border-radius: 3px;
+      }
+
+      .probability-value {
+        font-size: 0.85rem;
+        color: #e63946;
+        font-weight: 700;
+      }
+
+      /* Head to Head */
+      .h2h-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+      }
+
+      .h2h-card {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 12px;
         padding: 25px;
       }
 
-      .class-header {
+      .h2h-teams {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 20px;
       }
 
-      .class-name {
+      .h2h-team {
+        text-align: center;
+      }
+
+      .h2h-team-name {
         color: #fff;
         font-size: 1.1rem;
         font-weight: 700;
+        margin-bottom: 5px;
       }
 
-      .class-badge {
-        padding: 5px 12px;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
-      .class-badge.hypercar {
-        background: rgba(230, 57, 70, 0.2);
+      .h2h-wins {
+        font-size: 2rem;
+        font-weight: 900;
         color: #e63946;
-      }
-      .class-badge.lmgt3 {
-        background: rgba(0, 123, 255, 0.2);
-        color: #007bff;
-      }
-      .class-badge.lmp2 {
-        background: rgba(255, 193, 7, 0.2);
-        color: #ffc107;
+        font-family: "Orbitron", monospace;
       }
 
-      .class-prediction-list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+      .h2h-vs {
+        color: #666;
+        font-size: 1.2rem;
+        font-weight: 700;
       }
 
-      .class-prediction-item {
+      .h2h-bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 15px;
+        margin-bottom: 15px;
+      }
+
+      .h2h-bar-fill {
+        height: 100%;
+        transition: width 0.5s ease;
+      }
+
+      .h2h-bar-fill.team1 {
+        background: #e63946;
+      }
+
+      .h2h-bar-fill.team2 {
+        background: #007bff;
+      }
+
+      .h2h-advantage {
+        text-align: center;
+        padding: 12px;
         background: rgba(0, 0, 0, 0.3);
         border-radius: 8px;
       }
 
-      .prediction-position {
-        font-weight: 900;
-        font-family: "Orbitron", monospace;
-        margin-right: 15px;
+      .h2h-advantage-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
       }
 
-      .prediction-team-name {
-        color: #fff;
-        font-weight: 500;
-        flex: 1;
-      }
-
-      .prediction-prob {
-        color: #e63946;
+      .h2h-advantage-team {
+        color: #28a745;
         font-weight: 700;
         font-size: 0.9rem;
       }
 
-      /* Historical Accuracy */
+      .h2h-reason {
+        color: #666;
+        font-size: 0.8rem;
+        margin-top: 5px;
+      }
+
+      /* History Grid */
       .history-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -412,6 +751,11 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 12px;
         overflow: hidden;
+        transition: all 0.3s;
+      }
+
+      .history-card:hover {
+        border-color: rgba(255, 255, 255, 0.2);
       }
 
       .history-header {
@@ -478,10 +822,121 @@
         font-size: 0.9rem;
       }
 
+      /* Methodology */
+      .methodology-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 40px;
+      }
+
+      .methodology-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .methodology-header h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .methodology-header p {
+        color: #888;
+        font-size: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .methodology-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .methodology-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+      }
+
+      .methodology-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+
+      .methodology-content h4 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .methodology-weight {
+        background: rgba(230, 57, 70, 0.2);
+        color: #e63946;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .methodology-content p {
+        color: #888;
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      /* Loading State */
+      .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+      }
+
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top-color: #e63946;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-text {
+        color: #888;
+        margin-top: 20px;
+        font-size: 0.9rem;
+      }
+
+      /* Tab Content */
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Responsive */
       @media (max-width: 768px) {
         .accuracy-banner {
           flex-direction: column;
           text-align: center;
+          padding: 25px 20px;
         }
 
         .accuracy-stats {
@@ -494,11 +949,24 @@
         }
 
         .prediction-header {
-          flex-direction: column;
+          padding: 20px;
         }
 
-        .prediction-confidence {
-          text-align: left;
+        .prediction-body {
+          padding: 20px;
+        }
+
+        .championship-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .dark-horse-content {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .dark-horse-reason {
+          max-width: 100%;
         }
       }
     </style>
@@ -591,365 +1059,133 @@
           <span class="section-tag">📊 Analytics</span>
           <h1>Race <span class="gradient-text">Predictions</span></h1>
           <p>
-            Data-driven predictions powered by historical performance, track
-            analysis, and current form.
+            Data-driven predictions for WEC, IMSA, GT World Challenge & Offroad
+            Endurance. All races in chronological order with 85% winner
+            accuracy.
           </p>
         </div>
       </section>
 
-      <!-- Accuracy Banner -->
+      <!-- Main Content -->
       <section class="section" style="padding-top: 40px">
         <div class="container">
-          <div class="accuracy-banner">
+          <!-- Accuracy Banner -->
+          <div class="accuracy-banner" id="accuracyBanner">
             <div class="accuracy-info">
               <h3>Our Prediction Track Record</h3>
-              <p>Based on podium predictions from the 2024-2025 seasons</p>
+              <p>Based on predictions from the 2024-2026 seasons</p>
             </div>
             <div class="accuracy-stats">
               <div class="accuracy-stat">
-                <span class="accuracy-value">85%</span>
+                <span class="accuracy-value" id="winnerAccuracy">85%</span>
                 <span class="accuracy-label">Winner Accuracy</span>
               </div>
               <div class="accuracy-stat">
-                <span class="accuracy-value">72%</span>
+                <span class="accuracy-value" id="podiumAccuracy">72%</span>
                 <span class="accuracy-label">Full Podium</span>
               </div>
               <div class="accuracy-stat">
-                <span class="accuracy-value">24</span>
+                <span class="accuracy-value" id="totalRaces">32</span>
                 <span class="accuracy-label">Races Predicted</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Upcoming Race Prediction -->
-      <section class="section">
-        <div class="container">
-          <div
-            class="section-header"
-            style="text-align: left; margin-bottom: 30px"
-          >
-            <span class="section-tag">Next Race</span>
-            <h2>24 Hours of Le Mans Prediction</h2>
-            <p>Our analysis for the greatest endurance race in the world</p>
+          <!-- Navigation Tabs -->
+          <div class="predictions-nav">
+            <button class="active" onclick="showTab('upcoming')">
+              🎯 Upcoming Predictions
+            </button>
+            <button onclick="showTab('championship')">🏆 Championship</button>
+            <button onclick="showTab('h2h')">⚔️ Head to Head</button>
+            <button onclick="showTab('history')">📜 Past Results</button>
+            <button onclick="showTab('methodology')">🔬 Methodology</button>
           </div>
 
-          <div class="prediction-card">
-            <div class="prediction-header">
-              <div class="prediction-race">
-                <h3>24 Hours of Le Mans</h3>
-                <div class="prediction-meta">
-                  <span>📅 June 14-15, 2025</span>
-                  <span>📍 Circuit de la Sarthe</span>
-                  <span>🏁 WEC Round 4</span>
-                </div>
-              </div>
-              <div class="prediction-confidence">
-                <span class="confidence-label">Model Confidence</span>
-                <div class="confidence-bar">
-                  <div class="confidence-fill" style="width: 78%"></div>
-                </div>
-                <span class="confidence-value">78% Confidence</span>
-              </div>
-            </div>
-            <div class="prediction-body">
-              <h4
-                class="factors-title"
-                style="margin-bottom: 20px; margin-top: 0"
+          <!-- Tab Contents -->
+
+          <!-- Upcoming Predictions -->
+          <div id="upcoming" class="tab-content active">
+            <!-- Series Filter -->
+            <div class="series-filter" id="seriesFilter">
+              <button
+                class="active"
+                data-series="all"
+                onclick="filterBySeries('all')"
               >
-                Overall Podium Prediction
-              </h4>
-              <div class="podium-grid">
-                <div class="podium-card p1">
-                  <span class="podium-position">🥇</span>
-                  <div class="podium-team">#7 Toyota GR010</div>
-                  <div class="podium-car">Toyota Gazoo Racing</div>
-                  <span class="podium-odds">32% Win Probability</span>
-                </div>
-                <div class="podium-card p2">
-                  <span class="podium-position">🥈</span>
-                  <div class="podium-team">#50 Ferrari 499P</div>
-                  <div class="podium-car">Ferrari AF Corse</div>
-                  <span class="podium-odds">28% Win Probability</span>
-                </div>
-                <div class="podium-card p3">
-                  <span class="podium-position">🥉</span>
-                  <div class="podium-team">#6 Porsche 963</div>
-                  <div class="podium-car">Porsche Penske Motorsport</div>
-                  <span class="podium-odds">18% Win Probability</span>
-                </div>
-              </div>
-
-              <div class="factors-section">
-                <h4 class="factors-title">Key Prediction Factors</h4>
-                <div class="factors-grid">
-                  <div class="factor-card">
-                    <span class="factor-icon">📈</span>
-                    <div class="factor-info">
-                      <h5>Recent Form</h5>
-                      <p>Toyota won 2 of last 3 races</p>
-                    </div>
-                  </div>
-                  <div class="factor-card">
-                    <span class="factor-icon">🏁</span>
-                    <div class="factor-info">
-                      <h5>Track History</h5>
-                      <p>Ferrari won here in 2023</p>
-                    </div>
-                  </div>
-                  <div class="factor-card">
-                    <span class="factor-icon">⚖️</span>
-                    <div class="factor-info">
-                      <h5>BoP Changes</h5>
-                      <p>Porsche received favorable adjustments</p>
-                    </div>
-                  </div>
-                  <div class="factor-card">
-                    <span class="factor-icon">🌧️</span>
-                    <div class="factor-info">
-                      <h5>Weather Forecast</h5>
-                      <p>30% chance of rain overnight</p>
-                    </div>
-                  </div>
-                  <div class="factor-card">
-                    <span class="factor-icon">👨‍🔧</span>
-                    <div class="factor-info">
-                      <h5>Driver Lineup</h5>
-                      <p>Strong platinum lineups across top teams</p>
-                    </div>
-                  </div>
-                  <div class="factor-card">
-                    <span class="factor-icon">⛽</span>
-                    <div class="factor-info">
-                      <h5>Stint Efficiency</h5>
-                      <p>Toyota leads in fuel economy</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="class-predictions">
-                <div class="class-card">
-                  <div class="class-header">
-                    <span class="class-name">Hypercar Class</span>
-                    <span class="class-badge hypercar">Hypercar</span>
-                  </div>
-                  <div class="class-prediction-list">
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">1.</span>
-                      <span class="prediction-team-name">#7 Toyota GR010</span>
-                      <span class="prediction-prob">32%</span>
-                    </div>
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">2.</span>
-                      <span class="prediction-team-name">#50 Ferrari 499P</span>
-                      <span class="prediction-prob">28%</span>
-                    </div>
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">3.</span>
-                      <span class="prediction-team-name">#6 Porsche 963</span>
-                      <span class="prediction-prob">18%</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="class-card">
-                  <div class="class-header">
-                    <span class="class-name">LMGT3 Class</span>
-                    <span class="class-badge lmgt3">LMGT3</span>
-                  </div>
-                  <div class="class-prediction-list">
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">1.</span>
-                      <span class="prediction-team-name"
-                        >#92 Manthey Porsche</span
-                      >
-                      <span class="prediction-prob">25%</span>
-                    </div>
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">2.</span>
-                      <span class="prediction-team-name">#46 BMW M4</span>
-                      <span class="prediction-prob">22%</span>
-                    </div>
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">3.</span>
-                      <span class="prediction-team-name">#87 Corvette Z06</span>
-                      <span class="prediction-prob">18%</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="class-card">
-                  <div class="class-header">
-                    <span class="class-name">LMP2 Class</span>
-                    <span class="class-badge lmp2">LMP2</span>
-                  </div>
-                  <div class="class-prediction-list">
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">1.</span>
-                      <span class="prediction-team-name"
-                        >#22 United Autosports</span
-                      >
-                      <span class="prediction-prob">30%</span>
-                    </div>
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">2.</span>
-                      <span class="prediction-team-name">#38 JOTA</span>
-                      <span class="prediction-prob">24%</span>
-                    </div>
-                    <div class="class-prediction-item">
-                      <span class="prediction-position">3.</span>
-                      <span class="prediction-team-name">#9 Prema</span>
-                      <span class="prediction-prob">18%</span>
-                    </div>
-                  </div>
-                </div>
+                🏁 All Series
+              </button>
+              <button data-series="wec" onclick="filterBySeries('wec')">
+                🌍 WEC
+              </button>
+              <button data-series="imsa" onclick="filterBySeries('imsa')">
+                🇺🇸 IMSA
+              </button>
+              <button data-series="gtwc" onclick="filterBySeries('gtwc')">
+                🏆 GTWC
+              </button>
+              <button data-series="offroad" onclick="filterBySeries('offroad')">
+                🏜️ Offroad
+              </button>
+            </div>
+            <div id="upcomingPredictions">
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading predictions...</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Historical Accuracy -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Track Record</span>
-            <h2>Recent Prediction Results</h2>
-            <p>How our predictions performed in recent races</p>
+          <!-- Championship Predictions -->
+          <div id="championship" class="tab-content">
+            <div class="section-header" style="margin-bottom: 30px">
+              <h2>Championship Predictions</h2>
+              <p>Our projections for the 2026 season championships</p>
+            </div>
+            <div class="championship-grid" id="championshipPredictions">
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading championship data...</p>
+              </div>
+            </div>
           </div>
 
-          <div class="history-grid">
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-race">
-                  <h4>1000 Miles of Sebring</h4>
-                  <p>WEC • March 2025</p>
-                </div>
-                <span class="history-result correct">✓ Correct</span>
-              </div>
-              <div class="history-body">
-                <div class="history-comparison">
-                  <div class="comparison-col">
-                    <span class="comparison-label">Predicted Winner</span>
-                    <span class="comparison-value">#7 Toyota</span>
-                  </div>
-                  <div class="comparison-col">
-                    <span class="comparison-label">Actual Winner</span>
-                    <span class="comparison-value">#7 Toyota ✓</span>
-                  </div>
-                </div>
+          <!-- Head to Head -->
+          <div id="h2h" class="tab-content">
+            <div class="section-header" style="margin-bottom: 30px">
+              <h2>Head to Head Records</h2>
+              <p>
+                How the top manufacturers compare when they go wheel-to-wheel
+              </p>
+            </div>
+            <div class="h2h-grid" id="h2hGrid">
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading head-to-head data...</p>
               </div>
             </div>
+          </div>
 
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-race">
-                  <h4>12 Hours of Sebring</h4>
-                  <p>IMSA • March 2025</p>
-                </div>
-                <span class="history-result correct">✓ Correct</span>
-              </div>
-              <div class="history-body">
-                <div class="history-comparison">
-                  <div class="comparison-col">
-                    <span class="comparison-label">Predicted Winner</span>
-                    <span class="comparison-value">#10 Cadillac</span>
-                  </div>
-                  <div class="comparison-col">
-                    <span class="comparison-label">Actual Winner</span>
-                    <span class="comparison-value">#10 Cadillac ✓</span>
-                  </div>
-                </div>
+          <!-- History -->
+          <div id="history" class="tab-content">
+            <div class="section-header" style="margin-bottom: 30px">
+              <h2>Recent Prediction Results</h2>
+              <p>How our predictions performed in recent races</p>
+            </div>
+            <div class="history-grid" id="historyGrid">
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading history...</p>
               </div>
             </div>
+          </div>
 
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-race">
-                  <h4>6 Hours of Qatar</h4>
-                  <p>WEC • February 2025</p>
-                </div>
-                <span class="history-result partial">~ Partial</span>
-              </div>
-              <div class="history-body">
-                <div class="history-comparison">
-                  <div class="comparison-col">
-                    <span class="comparison-label">Predicted Winner</span>
-                    <span class="comparison-value">#50 Ferrari</span>
-                  </div>
-                  <div class="comparison-col">
-                    <span class="comparison-label">Actual Winner</span>
-                    <span class="comparison-value">#51 Ferrari</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-race">
-                  <h4>Rolex 24 at Daytona</h4>
-                  <p>IMSA • January 2025</p>
-                </div>
-                <span class="history-result correct">✓ Correct</span>
-              </div>
-              <div class="history-body">
-                <div class="history-comparison">
-                  <div class="comparison-col">
-                    <span class="comparison-label">Predicted Winner</span>
-                    <span class="comparison-value">#01 Cadillac</span>
-                  </div>
-                  <div class="comparison-col">
-                    <span class="comparison-label">Actual Winner</span>
-                    <span class="comparison-value">#01 Cadillac ✓</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-race">
-                  <h4>8 Hours of Bahrain</h4>
-                  <p>WEC • November 2024</p>
-                </div>
-                <span class="history-result correct">✓ Correct</span>
-              </div>
-              <div class="history-body">
-                <div class="history-comparison">
-                  <div class="comparison-col">
-                    <span class="comparison-label">Predicted Winner</span>
-                    <span class="comparison-value">#8 Toyota</span>
-                  </div>
-                  <div class="comparison-col">
-                    <span class="comparison-label">Actual Winner</span>
-                    <span class="comparison-value">#8 Toyota ✓</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="history-card">
-              <div class="history-header">
-                <div class="history-race">
-                  <h4>6 Hours of Fuji</h4>
-                  <p>WEC • September 2024</p>
-                </div>
-                <span class="history-result correct">✓ Correct</span>
-              </div>
-              <div class="history-body">
-                <div class="history-comparison">
-                  <div class="comparison-col">
-                    <span class="comparison-label">Predicted Winner</span>
-                    <span class="comparison-value">#7 Toyota</span>
-                  </div>
-                  <div class="comparison-col">
-                    <span class="comparison-label">Actual Winner</span>
-                    <span class="comparison-value">#7 Toyota ✓</span>
-                  </div>
-                </div>
+          <!-- Methodology -->
+          <div id="methodology" class="tab-content">
+            <div class="methodology-card" id="methodologyCard">
+              <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading methodology...</p>
               </div>
             </div>
           </div>
@@ -1025,9 +1261,391 @@
     </footer>
 
     <script>
+      // Global data store
+      let predictionsData = null;
+
+      // Tab navigation
+      function showTab(tabId) {
+        // Hide all tabs
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        // Remove active class from buttons
+        document.querySelectorAll(".predictions-nav button").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        // Show selected tab
+        document.getElementById(tabId).classList.add("active");
+        // Add active class to clicked button
+        event.target.classList.add("active");
+      }
+
+      // Mobile menu toggle
       function toggleMobileMenu() {
         document.getElementById("mobileNav").classList.toggle("active");
       }
+
+      // Current filter state
+      let currentSeriesFilter = "all";
+
+      // Filter by series
+      function filterBySeries(seriesId) {
+        currentSeriesFilter = seriesId;
+
+        // Update button states
+        document.querySelectorAll(".series-filter button").forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.dataset.series === seriesId) {
+            btn.classList.add("active");
+          }
+        });
+
+        // Re-render with filter
+        if (predictionsData && predictionsData.upcomingPredictions) {
+          renderUpcomingPredictions(predictionsData.upcomingPredictions);
+        }
+      }
+
+      // Format date
+      function formatDate(dateString) {
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        return new Date(dateString).toLocaleDateString("en-US", options);
+      }
+
+      // Format short date
+      function formatShortDate(dateString) {
+        const options = { month: "short", year: "numeric" };
+        return new Date(dateString).toLocaleDateString("en-US", options);
+      }
+
+      // Render upcoming predictions
+      function renderUpcomingPredictions(predictions) {
+        const container = document.getElementById("upcomingPredictions");
+
+        if (!predictions || predictions.length === 0) {
+          container.innerHTML =
+            '<p style="color: #888; text-align: center;">No upcoming predictions available.</p>';
+          return;
+        }
+
+        // Filter by series if needed
+        let filtered = predictions;
+        if (currentSeriesFilter !== "all") {
+          filtered = predictions.filter(
+            (p) => p.seriesId === currentSeriesFilter,
+          );
+        }
+
+        if (filtered.length === 0) {
+          container.innerHTML =
+            '<p style="color: #888; text-align: center;">No predictions for this series yet.</p>';
+          return;
+        }
+
+        // Sort chronologically by date (featured races first within each month)
+        const sorted = [...filtered].sort((a, b) => {
+          return new Date(a.date) - new Date(b.date);
+        });
+
+        container.innerHTML = sorted
+          .map(
+            (pred) => `
+          <div class="prediction-card ${pred.isFeatured ? "featured" : ""}" data-series="${pred.seriesId}">
+            <div class="prediction-header">
+              ${pred.isFeatured ? '<span class="featured-badge">Featured Race</span>' : ""}
+              <div class="prediction-race">
+                <h3>${pred.raceName} <span class="series-badge ${pred.seriesId}">${pred.series}</span></h3>
+                <div class="prediction-meta">
+                  <span>📅 ${formatDate(pred.date)}${pred.endDate ? " - " + formatDate(pred.endDate).split(",")[0] : ""}</span>
+                  <span>📍 ${pred.location}</span>
+                  <span>🏁 Round ${pred.round}</span>
+                </div>
+              </div>
+              <div class="prediction-confidence">
+                <span class="confidence-label">Model Confidence</span>
+                <div class="confidence-bar">
+                  <div class="confidence-fill" style="width: ${pred.confidence}%"></div>
+                </div>
+                <span class="confidence-value">${pred.confidence}% Confidence</span>
+              </div>
+            </div>
+            <div class="prediction-body">
+              ${pred.analysis?.summary ? `<div class="prediction-summary">${pred.analysis.summary}</div>` : ""}
+              
+              <h4 class="podium-section-title">🏆 Podium Prediction</h4>
+              <div class="podium-grid">
+                ${pred.podiumPrediction
+                  .map(
+                    (p, i) => `
+                  <div class="podium-card p${i + 1}">
+                    <span class="podium-position">${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</span>
+                    <div class="podium-car-number">${p.carNumber}</div>
+                    <div class="podium-team">${p.team}</div>
+                    <div class="podium-car">${p.car}</div>
+                    ${p.drivers ? `<div class="podium-drivers">${p.drivers.join(" • ")}</div>` : ""}
+                    <span class="podium-odds">${p.winProbability}% Win Probability</span>
+                  </div>
+                `,
+                  )
+                  .join("")}
+              </div>
+
+              ${
+                pred.analysis?.keyFactors
+                  ? `
+                <div class="factors-section">
+                  <h4 class="podium-section-title">🔍 Key Prediction Factors</h4>
+                  <div class="factors-grid">
+                    ${pred.analysis.keyFactors
+                      .map(
+                        (f) => `
+                      <div class="factor-card">
+                        <span class="factor-icon">${f.icon}</span>
+                        <div class="factor-info">
+                          <h5>${f.title}</h5>
+                          <p>${f.description}</p>
+                        </div>
+                      </div>
+                    `,
+                      )
+                      .join("")}
+                  </div>
+                </div>
+              `
+                  : ""
+              }
+
+              ${
+                pred.darkHorse
+                  ? `
+                <div class="dark-horse-section">
+                  <div class="dark-horse-header">
+                    <span style="font-size: 1.5rem;">🐴</span>
+                    <h4>Dark Horse Pick</h4>
+                  </div>
+                  <div class="dark-horse-content">
+                    <div class="dark-horse-team">
+                      <span class="dark-horse-number">${pred.darkHorse.carNumber}</span>
+                      <div class="dark-horse-info">
+                        <h5>${pred.darkHorse.team}</h5>
+                        <p>${pred.darkHorse.car}</p>
+                      </div>
+                    </div>
+                    <p class="dark-horse-reason">${pred.darkHorse.reason}</p>
+                  </div>
+                </div>
+              `
+                  : ""
+              }
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      // Render championship predictions
+      function renderChampionshipPredictions(championships) {
+        const container = document.getElementById("championshipPredictions");
+
+        if (!championships) {
+          container.innerHTML =
+            '<p style="color: #888; text-align: center;">No championship data available.</p>';
+          return;
+        }
+
+        const champs = Object.values(championships);
+
+        container.innerHTML = champs
+          .map(
+            (champ) => `
+          <div class="championship-card">
+            <div class="championship-header">
+              <h3>${champ.title}</h3>
+            </div>
+            <div class="championship-body">
+              ${champ.predictions
+                .map(
+                  (p) => `
+                <div class="championship-item">
+                  <span class="championship-position">${p.position}</span>
+                  <div class="championship-team-info">
+                    <h4>${p.team}</h4>
+                    <p>${p.car}</p>
+                  </div>
+                  <div class="championship-probability">
+                    <div class="probability-bar">
+                      <div class="probability-fill" style="width: ${p.probability}%"></div>
+                    </div>
+                    <span class="probability-value">${p.probability}%</span>
+                  </div>
+                </div>
+              `,
+                )
+                .join("")}
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      // Render head to head
+      function renderH2H(h2hData) {
+        const container = document.getElementById("h2hGrid");
+
+        if (!h2hData || h2hData.length === 0) {
+          container.innerHTML =
+            '<p style="color: #888; text-align: center;">No head-to-head data available.</p>';
+          return;
+        }
+
+        container.innerHTML = h2hData
+          .map((h2h) => {
+            const team1Pct = (h2h.team1Wins / h2h.totalRaces) * 100;
+            const team2Pct = (h2h.team2Wins / h2h.totalRaces) * 100;
+
+            return `
+              <div class="h2h-card">
+                <div class="h2h-teams">
+                  <div class="h2h-team">
+                    <div class="h2h-team-name">${h2h.team1}</div>
+                    <div class="h2h-wins">${h2h.team1Wins}</div>
+                  </div>
+                  <div class="h2h-vs">VS</div>
+                  <div class="h2h-team">
+                    <div class="h2h-team-name">${h2h.team2}</div>
+                    <div class="h2h-wins">${h2h.team2Wins}</div>
+                  </div>
+                </div>
+                <div class="h2h-bar">
+                  <div class="h2h-bar-fill team1" style="width: ${team1Pct}%"></div>
+                  <div class="h2h-bar-fill team2" style="width: ${team2Pct}%"></div>
+                </div>
+                <div class="h2h-advantage">
+                  <div class="h2h-advantage-label">Current Advantage</div>
+                  <div class="h2h-advantage-team">${h2h.currentAdvantage}</div>
+                  <div class="h2h-reason">${h2h.reason}</div>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      // Render history
+      function renderHistory(pastPredictions) {
+        const container = document.getElementById("historyGrid");
+
+        if (!pastPredictions || pastPredictions.length === 0) {
+          container.innerHTML =
+            '<p style="color: #888; text-align: center;">No past predictions available.</p>';
+          return;
+        }
+
+        container.innerHTML = pastPredictions
+          .map(
+            (pred) => `
+          <div class="history-card">
+            <div class="history-header">
+              <div class="history-race">
+                <h4>${pred.raceName}</h4>
+                <p>${pred.series} • ${formatShortDate(pred.date)}</p>
+              </div>
+              <span class="history-result ${pred.result}">${pred.result === "correct" ? "✓ Correct" : "~ Partial"}</span>
+            </div>
+            <div class="history-body">
+              <div class="history-comparison">
+                <div class="comparison-col">
+                  <span class="comparison-label">Predicted Winner</span>
+                  <span class="comparison-value">${pred.predictedWinner.carNumber} ${pred.predictedWinner.team}</span>
+                </div>
+                <div class="comparison-col">
+                  <span class="comparison-label">Actual Winner</span>
+                  <span class="comparison-value">${pred.actualWinner.carNumber} ${pred.actualWinner.team} ${pred.result === "correct" ? "✓" : ""}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      // Render methodology
+      function renderMethodology(methodology) {
+        const container = document.getElementById("methodologyCard");
+
+        if (!methodology) {
+          container.innerHTML =
+            '<p style="color: #888; text-align: center;">No methodology data available.</p>';
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="methodology-header">
+            <h3>${methodology.title}</h3>
+            <p>${methodology.description}</p>
+          </div>
+          <div class="methodology-grid">
+            ${methodology.factors
+              .map(
+                (f) => `
+              <div class="methodology-item">
+                <span class="methodology-icon">${f.icon}</span>
+                <div class="methodology-content">
+                  <h4>${f.name} <span class="methodology-weight">${f.weight}%</span></h4>
+                  <p>${f.description}</p>
+                </div>
+              </div>
+            `,
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      // Update stats banner
+      function updateStats(stats) {
+        if (stats) {
+          document.getElementById("winnerAccuracy").textContent =
+            stats.winnerAccuracy + "%";
+          document.getElementById("podiumAccuracy").textContent =
+            stats.podiumAccuracy + "%";
+          document.getElementById("totalRaces").textContent =
+            stats.totalRacesPredicted;
+        }
+      }
+
+      // Load data
+      async function loadPredictionsData() {
+        try {
+          const response = await fetch("data/predictions.json");
+          if (!response.ok) throw new Error("Failed to load predictions data");
+
+          predictionsData = await response.json();
+
+          // Update all sections
+          updateStats(predictionsData.stats);
+          renderUpcomingPredictions(predictionsData.upcomingPredictions);
+          renderChampionshipPredictions(
+            predictionsData.championshipPredictions,
+          );
+          renderH2H(predictionsData.headToHead);
+          renderHistory(predictionsData.pastPredictions);
+          renderMethodology(predictionsData.methodology);
+        } catch (error) {
+          console.error("Error loading predictions:", error);
+          document.getElementById("upcomingPredictions").innerHTML = `
+            <p style="color: #e63946; text-align: center;">
+              Failed to load predictions. Please try refreshing the page.
+            </p>
+          `;
+        }
+      }
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", loadPredictionsData);
     </script>
   </body>
 </html>
