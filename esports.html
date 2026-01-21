@@ -752,6 +752,19 @@
         }
       }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SLERGKLNWP");
+    </script>
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
@@ -1120,8 +1133,8 @@
             </p>
             <div class="cta-buttons">
               <a href="hub.html" class="btn btn-primary">Apply Now</a>
-              <a href="hub.html#discord" class="btn btn-secondary"
-                >Join Discord</a
+              <a href="esports.html#records" class="btn btn-secondary"
+                >Beat the Records</a
               >
             </div>
           </div>
@@ -1140,12 +1153,11 @@
             </a>
             <p>
               Your complete motorsport experience. Racing coverage, esports,
-              predictions, and community.
+              predictions, and analysis.
             </p>
             <div class="social-links">
               <a href="#" class="social-link">𝕏</a>
               <a href="#" class="social-link">📸</a>
-              <a href="#" class="social-link">💬</a>
               <a href="#" class="social-link">▶️</a>
             </div>
           </div>
@@ -1159,23 +1171,21 @@
           </div>
 
           <div class="footer-links">
-            <h4>Community</h4>
+            <h4>Content</h4>
+            <a href="hub.html">Blog</a>
             <a href="esports.html">Esports Team</a>
-            <a href="hub.html">Hub</a>
-            <a href="hub.html#discord">Discord</a>
           </div>
 
           <div class="footer-links">
             <h4>More</h4>
-            <a href="hub.html">Hub</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
+          <p>&copy; 2026 iomotorsport. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -1516,7 +1526,7 @@
         const record = esportsData.lapRecords?.find((r) => r.id === recordId);
         if (record) {
           alert(
-            `🏁 Challenge Accepted!\n\nTrack: ${record.track}\nCar: ${record.car}\nPlatform: ${record.platform}\nTarget: Beat ${record.time}\n\nGood luck! Share your best time in our Discord.`,
+            `🏁 Challenge Accepted!\n\nTrack: ${record.track}\nCar: ${record.car}\nPlatform: ${record.platform}\nTarget: Beat ${record.time}\n\nGood luck! Submit your time on our blog.`,
           );
         }
       }

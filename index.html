@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -97,6 +97,19 @@
         }
       }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SLERGKLNWP");
+    </script>
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
@@ -173,7 +186,7 @@
           <div class="hero-content">
             <div class="hero-badge">
               <span class="live-dot" aria-hidden="true"></span>
-              Racing Community Hub
+              Racing Hub
             </div>
             <h1 class="hero-title">
               Your Complete<br /><span class="gradient-text glow-text"
@@ -182,8 +195,8 @@
               Experience
             </h1>
             <p class="hero-subtitle">
-              Endurance racing coverage, esports team, race predictions, and a
-              passionate community of racing enthusiasts.
+              Endurance racing coverage, esports team, race predictions, and
+              in-depth motorsport analysis.
             </p>
             <div class="hero-scroll-indicator" aria-hidden="true">
               <span class="scroll-arrow">↓</span>
@@ -194,7 +207,7 @@
                 <span aria-hidden="true">🏁</span> Explore Racing
               </a>
               <a href="hub.html" class="btn btn-secondary">
-                <span aria-hidden="true">👥</span> Join Community
+                <span aria-hidden="true">📰</span> Read Blog
               </a>
             </div>
 
@@ -210,7 +223,7 @@
               </div>
               <div class="stat-item">
                 <span class="stat-number" data-value="2.5">2.5K+</span>
-                <span class="stat-label">Community Members</span>
+                <span class="stat-label">Monthly Readers</span>
               </div>
               <div class="stat-item">
                 <span class="stat-number" data-value="85">85%</span>
@@ -270,14 +283,11 @@
             </a>
 
             <a href="hub.html" class="feature-card">
-              <div class="feature-icon">💬</div>
+              <div class="feature-icon">�</div>
               <div class="feature-content">
-                <h3>Community Hub</h3>
-                <p>
-                  Connect with fellow enthusiasts, share insights, and stay
-                  updated.
-                </p>
-                <span class="feature-link">Join Discussion →</span>
+                <h3>Blog</h3>
+                <p>In-depth articles, race analysis, and driver profiles.</p>
+                <span class="feature-link">Read Articles →</span>
               </div>
             </a>
 
@@ -378,12 +388,12 @@
 
             <div class="update-card">
               <div class="update-image small">
-                <span class="update-category">Community</span>
-                💬
+                <span class="update-category">Blog</span>
+                📰
               </div>
               <div class="update-content">
-                <span class="update-meta">November 20, 2025</span>
-                <h3>New Discord Features: Live Race Threads</h3>
+                <span class="update-meta">January 15, 2026</span>
+                <h3>Le Mans 2026: The Ultimate Preview Guide</h3>
                 <a href="hub.html" class="update-link">Read More →</a>
               </div>
             </div>
@@ -447,13 +457,13 @@
       <section class="section cta-section">
         <div class="container">
           <div class="cta-card">
-            <h2>Ready to Join the Community?</h2>
+            <h2>Explore More Racing Content</h2>
             <p>
-              Connect with thousands of motorsport enthusiasts, get exclusive
-              predictions, and never miss a race.
+              Dive into our race predictions, in-depth analysis, and never miss
+              the latest from endurance racing.
             </p>
             <div class="cta-buttons">
-              <a href="hub.html" class="btn btn-primary">Join Discord</a>
+              <a href="hub.html" class="btn btn-primary">Read Blog</a>
               <a href="predictions.html" class="btn btn-secondary"
                 >View Predictions</a
               >
@@ -474,12 +484,11 @@
             </a>
             <p>
               Your complete motorsport experience. Racing coverage, esports,
-              predictions, and community.
+              predictions, and analysis.
             </p>
             <div class="social-links">
               <a href="#" class="social-link">𝕏</a>
               <a href="#" class="social-link">📸</a>
-              <a href="#" class="social-link">💬</a>
               <a href="#" class="social-link">▶️</a>
             </div>
           </div>
@@ -493,23 +502,21 @@
           </div>
 
           <div class="footer-links">
-            <h4>Community</h4>
+            <h4>Content</h4>
+            <a href="hub.html">Blog</a>
             <a href="esports.html">Esports Team</a>
-            <a href="hub.html">Hub</a>
-            <a href="hub.html#discord">Discord</a>
           </div>
 
           <div class="footer-links">
             <h4>More</h4>
-            <a href="hub.html">Hub</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2025 iomotorsport. All rights reserved.</p>
+          <p>&copy; 2026 iomotorsport. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -609,7 +616,7 @@
         if (distance > 0) {
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
           const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
           );
           const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           const secs = Math.floor((distance % (1000 * 60)) / 1000);
@@ -659,7 +666,7 @@
 
       // Setup animations with staggered delays
       const animatedElements = document.querySelectorAll(
-        ".feature-card, .series-card, .update-card, .stat-item, .cta-card"
+        ".feature-card, .series-card, .update-card, .stat-item, .cta-card",
       );
 
       animatedElements.forEach((el, index) => {
@@ -753,7 +760,7 @@
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
       );
 
       function animateValue(el) {
@@ -833,7 +840,7 @@
               scrollIndicator.style.opacity = "";
               scrollIndicator.style.pointerEvents = "";
             }
-          }, 50)
+          }, 50),
         );
       }
 
