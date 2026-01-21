@@ -400,6 +400,281 @@
         font-size: 0.85rem;
       }
 
+      /* Lap Records Challenge */
+      .records-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .record-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .record-card:hover {
+        border-color: rgba(230, 57, 70, 0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 40px rgba(230, 57, 70, 0.15);
+      }
+
+      .record-card.legendary {
+        border-color: rgba(255, 215, 0, 0.4);
+      }
+
+      .record-card.legendary:hover {
+        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+      }
+
+      .record-header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .record-track {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .track-flag {
+        font-size: 1.5rem;
+      }
+
+      .track-info h4 {
+        color: #fff;
+        font-size: 1rem;
+        font-family: "Orbitron", monospace;
+        margin-bottom: 3px;
+      }
+
+      .track-info span {
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      .difficulty-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .difficulty-beginner {
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+      }
+      .difficulty-intermediate {
+        background: rgba(255, 193, 7, 0.2);
+        color: #ffc107;
+      }
+      .difficulty-hard {
+        background: rgba(255, 87, 34, 0.2);
+        color: #ff5722;
+      }
+      .difficulty-legendary {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.3),
+          rgba(230, 57, 70, 0.3)
+        );
+        color: #ffd700;
+      }
+
+      .record-body {
+        padding: 25px 20px;
+      }
+
+      .record-time-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 20px;
+      }
+
+      .current-record {
+        text-align: center;
+      }
+
+      .record-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+
+      .record-time {
+        font-family: "Orbitron", monospace;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #e63946;
+        text-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+      }
+
+      .record-holder {
+        margin-top: 5px;
+        font-size: 0.85rem;
+        color: #aaa;
+      }
+
+      .record-holder strong {
+        color: #fff;
+      }
+
+      .vs-divider {
+        font-family: "Orbitron", monospace;
+        color: #444;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .your-target {
+        text-align: center;
+      }
+
+      .target-time {
+        font-family: "Orbitron", monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #28a745;
+      }
+
+      .record-details {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .record-detail {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: #888;
+      }
+
+      .record-detail span {
+        color: #fff;
+      }
+
+      .record-footer {
+        padding: 15px 20px;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .attempts-count {
+        font-size: 0.85rem;
+        color: #888;
+      }
+
+      .attempts-count strong {
+        color: #e63946;
+        font-family: "Orbitron", monospace;
+      }
+
+      .challenge-btn {
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #e63946, #c62834);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Orbitron", monospace;
+        text-transform: uppercase;
+      }
+
+      .challenge-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
+      }
+
+      .challenge-tips {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 25px 30px;
+        margin-top: 30px;
+      }
+
+      .challenge-tips h3 {
+        color: #fff;
+        font-family: "Orbitron", monospace;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+      }
+
+      .tip-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .tip-icon {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .tip-text {
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+
+      .leaderboard-preview {
+        margin-top: 20px;
+      }
+
+      .leaderboard-row {
+        display: grid;
+        grid-template-columns: 40px 1fr auto;
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        align-items: center;
+      }
+
+      .leaderboard-row:last-child {
+        border-bottom: none;
+      }
+
+      .lb-position {
+        font-family: "Orbitron", monospace;
+        font-weight: 700;
+        color: #e63946;
+      }
+
+      .lb-driver {
+        color: #fff;
+        font-weight: 500;
+      }
+
+      .lb-time {
+        font-family: "Orbitron", monospace;
+        color: #888;
+      }
+
       @media (max-width: 768px) {
         .event-card {
           grid-template-columns: 1fr;
@@ -430,6 +705,19 @@
 
         .summary-finish {
           text-align: center;
+        }
+
+        .record-time-display {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .vs-divider {
+          display: none;
+        }
+
+        .records-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -530,6 +818,9 @@
             </button>
             <button class="tab-btn" onclick="showSection('results')">
               🏁 Results
+            </button>
+            <button class="tab-btn" onclick="showSection('records')">
+              ⚡ Lap Challenges
             </button>
           </div>
         </div>
@@ -739,6 +1030,80 @@
           <div id="results-container">
             <div style="text-align: center; padding: 40px; color: #888">
               <p>Loading results...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lap Records Challenge Section -->
+      <section class="section" id="records-section" style="display: none">
+        <div class="container">
+          <div
+            class="section-header"
+            style="text-align: left; margin-bottom: 30px"
+          >
+            <h2>🔥 Beat the <span class="gradient-text">Legends</span></h2>
+            <p>
+              Challenge yourself against famous esports lap records. Can you
+              match the pace of the pros?
+            </p>
+          </div>
+
+          <div class="platform-filters">
+            <button
+              class="platform-filter iracing active"
+              data-record-platform="all"
+            >
+              All Tracks
+            </button>
+            <button class="platform-filter acc" data-record-platform="iracing">
+              iRacing
+            </button>
+            <button class="platform-filter gt" data-record-platform="acc">
+              ACC
+            </button>
+            <button class="platform-filter f1" data-record-platform="gt">
+              Gran Turismo
+            </button>
+          </div>
+
+          <div class="records-grid" id="records-grid">
+            <div style="text-align: center; padding: 40px; color: #888">
+              <p>Loading lap challenges...</p>
+            </div>
+          </div>
+
+          <div class="challenge-tips">
+            <h3>💡 Pro Tips for Beating Records</h3>
+            <div class="tips-grid">
+              <div class="tip-item">
+                <span class="tip-icon">🎯</span>
+                <p class="tip-text">
+                  Focus on consistency first, then push for speed. Build up to
+                  the record pace gradually.
+                </p>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">🎮</span>
+                <p class="tip-text">
+                  Study the track layout and braking points. Watch onboard
+                  videos from record holders.
+                </p>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">⚙️</span>
+                <p class="tip-text">
+                  Use similar car setups to the record holders when available
+                  for fair comparison.
+                </p>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">📊</span>
+                <p class="tip-text">
+                  Use telemetry tools to analyze your laps and find areas for
+                  improvement.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1059,6 +1424,103 @@
           .join("");
       }
 
+      function createRecordCardHTML(record) {
+        const difficultyClass = `difficulty-${record.difficulty}`;
+        const legendaryClass =
+          record.difficulty === "legendary" ? "legendary" : "";
+        const targetTime = calculateTargetTime(record.time);
+
+        return `
+          <div class="record-card ${legendaryClass}">
+            <div class="record-header">
+              <div class="record-track">
+                <span class="track-flag">${record.flag}</span>
+                <div class="track-info">
+                  <h4>${record.track}</h4>
+                  <span>${record.platform} • ${record.car}</span>
+                </div>
+              </div>
+              <span class="difficulty-badge ${difficultyClass}">${record.difficulty}</span>
+            </div>
+            <div class="record-body">
+              <div class="record-time-display">
+                <div class="current-record">
+                  <div class="record-label">Record to Beat</div>
+                  <div class="record-time">${record.time}</div>
+                  <div class="record-holder">Set by <strong>${record.holder}</strong></div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="your-target">
+                  <div class="record-label">Bronze Target</div>
+                  <div class="target-time">${targetTime}</div>
+                </div>
+              </div>
+              <div class="record-details">
+                <div class="record-detail">📅 <span>${record.dateSet}</span></div>
+                <div class="record-detail">🏆 <span>${record.event}</span></div>
+              </div>
+            </div>
+            <div class="record-footer">
+              <span class="attempts-count"><strong>${record.attempts.toLocaleString()}</strong> community attempts</span>
+              <button class="challenge-btn" onclick="startChallenge('${record.id}')">Accept Challenge</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function calculateTargetTime(recordTime) {
+        // Add roughly 2-3% to record time for bronze target
+        const parts = recordTime.split(/[:.]/);
+        let totalMs = 0;
+        if (parts.length === 3) {
+          totalMs =
+            parseInt(parts[0]) * 60000 +
+            parseInt(parts[1]) * 1000 +
+            parseInt(parts[2]) * 10;
+        } else if (parts.length === 4) {
+          totalMs =
+            parseInt(parts[0]) * 60000 +
+            parseInt(parts[1]) * 1000 +
+            parseInt(parts[2]) * 10;
+        }
+        totalMs = Math.floor(totalMs * 1.025);
+        const mins = Math.floor(totalMs / 60000);
+        const secs = Math.floor((totalMs % 60000) / 1000);
+        const ms = Math.floor((totalMs % 1000) / 10);
+        return `${mins}:${secs.toString().padStart(2, "0")}.${ms.toString().padStart(3, "0")}`;
+      }
+
+      function renderRecords(platform = "all") {
+        const container = document.getElementById("records-grid");
+        if (!container) return;
+
+        let records = esportsData.lapRecords || [];
+        if (platform !== "all") {
+          records = records.filter((r) =>
+            r.platform.toLowerCase().includes(platform),
+          );
+        }
+
+        if (records.length === 0) {
+          container.innerHTML =
+            '<div style="text-align: center; padding: 40px; color: #888;"><p>No lap challenges found</p></div>';
+          return;
+        }
+
+        container.innerHTML = records
+          .map((r) => createRecordCardHTML(r))
+          .join("");
+      }
+
+      function startChallenge(recordId) {
+        const record = esportsData.lapRecords?.find((r) => r.id === recordId);
+        if (record) {
+          alert(
+            `🏁 Challenge Accepted!\n\nTrack: ${record.track}\nCar: ${record.car}\nPlatform: ${record.platform}\nTarget: Beat ${record.time}\n\nGood luck! Share your best time in our Discord.`,
+          );
+        }
+      }
+
       async function loadData() {
         try {
           const response = await fetch("./data/esports.json");
@@ -1067,6 +1529,7 @@
           renderDrivers();
           renderEvents("all");
           renderResults();
+          renderRecords("all");
 
           // Setup event filters
           const eventTabs = document.querySelector("#events-section .tabs");
@@ -1081,6 +1544,20 @@
               });
             });
           }
+
+          // Setup records filters
+          const recordFilters = document.querySelectorAll(
+            "#records-section .platform-filter",
+          );
+          recordFilters.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              recordFilters.forEach((b) => b.classList.remove("active"));
+              e.target.classList.add("active");
+              renderRecords(
+                e.target.getAttribute("data-record-platform") || "all",
+              );
+            });
+          });
         } catch (error) {
           console.error("Error loading esports data:", error);
           const errorMsg =
