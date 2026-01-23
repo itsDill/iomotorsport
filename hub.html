@@ -1168,15 +1168,90 @@
       }
 
       function viewPost(postId) {
-        alert(
-          `📖 Opening article: ${postId}\n\nIn a full implementation, this would navigate to the article page.`,
-        );
+        // Find the post by ID
+        let post = blogData.posts?.find((p) => p.id === postId);
+
+        // Check if it's the featured post
+        if (!post && blogData.featuredPost?.id === postId) {
+          post = blogData.featuredPost;
+        }
+
+        if (post && post.url) {
+          window.location.href = post.url;
+        } else {
+          console.error("Post not found:", postId);
+        }
       }
 
       function searchTag(tag) {
-        alert(
-          `🔍 Searching for: ${tag}\n\nIn a full implementation, this would filter posts by this tag.`,
+        // Filter posts by the selected tag
+        const tagLower = tag.toLowerCase();
+        const filteredPosts = blogData.posts?.filter((p) =>
+          p.tags?.some((t) => t.toLowerCase() === tagLower),
         );
+
+        if (filteredPosts && filteredPosts.length > 0) {
+          // Reset category filter and show only tagged posts
+          currentCategory = "all";
+          document.querySelectorAll(".category-card").forEach((card) => {
+            card.classList.toggle("active", card.dataset.category === "all");
+          });
+
+          // Temporarily replace posts display with filtered results
+          const container = document.getElementById("posts-grid");
+          if (container) {
+            container.innerHTML = filteredPosts
+              .map((post) => createPostCard(post))
+              .join("");
+          }
+
+          // Update section title
+          const sectionTitle = document.querySelector(
+            "#latest-posts .section-title h2",
+          );
+          if (sectionTitle) {
+            sectionTitle.innerHTML = `Posts tagged: <span class="gradient-text">${tag}</span>`;
+          }
+
+          // Hide load more button
+          const loadMoreBtn = document.querySelector(".load-more-btn");
+          if (loadMoreBtn) {
+            loadMoreBtn.style.display = "none";
+          }
+        }
+      }
+
+      function createPostCard(post) {
+        const catInfo = blogData.categories?.find(
+          (c) => c.id === post.category,
+        ) || {
+          icon: "📝",
+          name: "Article",
+          color: "#888",
+        };
+        return `
+          <article class="post-card" onclick="viewPost('${post.id}')">
+            <div class="post-image" style="--cat-color: ${catInfo.color}">
+              <span class="post-image-placeholder">${catInfo.icon}</span>
+              ${post.featured ? '<span class="post-badge">Featured</span>' : ""}
+            </div>
+            <div class="post-content">
+              <span class="post-category" style="color: ${catInfo.color}">${catInfo.icon} ${catInfo.name}</span>
+              <h3 class="post-title">${post.title}</h3>
+              <p class="post-excerpt">${post.excerpt}</p>
+              <div class="post-meta">
+                <div class="post-author">
+                  <div class="author-avatar">${post.author.avatar}</div>
+                  <div class="author-info">
+                    <span class="author-name">${post.author.name}</span>
+                    <span class="post-date">${formatDate(post.date)}</span>
+                  </div>
+                </div>
+                <span class="post-read-time">⏱️ ${post.readTime}</span>
+              </div>
+            </div>
+          </article>
+        `;
       }
 
       async function loadData() {
