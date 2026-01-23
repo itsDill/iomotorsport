@@ -37,8 +37,8 @@
     <link rel="canonical" href="https://iomotorsport.com/esports.html" />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+      type="image/png"
+      href="images/logos/iomotorsport-logo.png"
     />
     <title>Esports Racing | iomotorsport</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -660,30 +660,6 @@
         margin-top: 4px;
       }
 
-      .driver-socials {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-
-      .social-btn {
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        color: #888;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s;
-      }
-
-      .social-btn:hover {
-        background: rgba(230, 57, 70, 0.2);
-        border-color: #e63946;
-        color: #e63946;
-      }
-
       .record-details {
         display: flex;
         justify-content: center;
@@ -900,24 +876,38 @@
         }
       }
     </script>
+    <!-- Google Consent Mode v2 - Must be before gtag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      // Set default consent to denied (required for GDPR)
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+    </script>
     <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
     ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
       gtag("js", new Date());
       gtag("config", "G-SLERGKLNWP");
     </script>
+    <!-- Google AdSense - Auto Ads enabled in AdSense dashboard -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
       crossorigin="anonymous"
     ></script>
+    <!-- Cookie Consent Manager -->
+    <script src="js/cookie-consent.js" defer></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -925,7 +915,12 @@
       <div class="container">
         <div class="header-content">
           <a href="index.html" class="logo">
-            <div class="logo-icon">🏎️</div>
+            <div class="logo-icon">
+              <img
+                src="images/logos/iomotorsport-logo.png"
+                alt="iomotorsport logo"
+              />
+            </div>
             io<span>motorsport</span>
           </a>
           <nav>
@@ -1296,18 +1291,18 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="index.html" class="logo">
-              <div class="logo-icon">🏎️</div>
+              <div class="logo-icon">
+                <img
+                  src="images/logos/iomotorsport-logo.png"
+                  alt="iomotorsport logo"
+                />
+              </div>
               io<span>motorsport</span>
             </a>
             <p>
               Your complete motorsport experience. Racing coverage, esports,
               predictions, and analysis.
             </p>
-            <div class="social-links">
-              <a href="#" class="social-link">𝕏</a>
-              <a href="#" class="social-link">📸</a>
-              <a href="#" class="social-link">▶️</a>
-            </div>
           </div>
 
           <div class="footer-links">
@@ -1399,22 +1394,6 @@
         const platformTags = driver.platforms
           .map((p) => `<span class="platform-tag">${p}</span>`)
           .join("");
-        const socialLinks = [];
-        if (driver.social.twitter) {
-          socialLinks.push(
-            `<a href="https://twitter.com/${driver.social.twitter.replace("@", "")}" target="_blank" class="social-btn">𝕏</a>`,
-          );
-        }
-        if (driver.social.twitch) {
-          socialLinks.push(
-            `<a href="https://twitch.tv/${driver.social.twitch}" target="_blank" class="social-btn">Twitch</a>`,
-          );
-        }
-        if (driver.social.youtube) {
-          socialLinks.push(
-            `<a href="https://youtube.com/@${driver.social.youtube}" target="_blank" class="social-btn">YouTube</a>`,
-          );
-        }
         const roleEmojis = {
           "Lead Driver": "🏎️",
           "Pro Driver": "⚡",
@@ -1446,7 +1425,6 @@
                   <span class="driver-stat-label">Podiums</span>
                 </div>
               </div>
-              <div class="driver-socials">${socialLinks.join("")}</div>
             </div>
           </div>
         `;

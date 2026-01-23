@@ -34,8 +34,8 @@
     <link rel="canonical" href="https://iomotorsport.com/about.html" />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+      type="image/png"
+      href="images/logos/iomotorsport-logo.png"
     />
     <title>About Us | iomotorsport</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,24 +45,38 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Google Consent Mode v2 - Must be before gtag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      // Set default consent to denied (required for GDPR)
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+    </script>
     <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
     ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
       gtag("js", new Date());
       gtag("config", "G-SLERGKLNWP");
     </script>
+    <!-- Google AdSense - Auto Ads enabled in AdSense dashboard -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
       crossorigin="anonymous"
     ></script>
+    <!-- Cookie Consent Manager -->
+    <script src="js/cookie-consent.js" defer></script>
     <style>
       .about-content {
         max-width: 900px;
@@ -205,7 +219,12 @@
       <div class="container">
         <div class="header-content">
           <a href="index.html" class="logo" aria-label="iomotorsport Home">
-            <div class="logo-icon" aria-hidden="true">🏎️</div>
+            <div class="logo-icon" aria-hidden="true">
+              <img
+                src="images/logos/iomotorsport-logo.png"
+                alt="iomotorsport logo"
+              />
+            </div>
             io<span>motorsport</span>
           </a>
           <nav aria-label="Main navigation">
@@ -400,18 +419,18 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="index.html" class="logo">
-              <div class="logo-icon">🏎️</div>
+              <div class="logo-icon">
+                <img
+                  src="images/logos/iomotorsport-logo.png"
+                  alt="iomotorsport logo"
+                />
+              </div>
               io<span>motorsport</span>
             </a>
             <p>
               Your complete motorsport experience. Racing coverage, esports,
               predictions, and analysis.
             </p>
-            <div class="social-links">
-              <a href="#" class="social-link">𝕏</a>
-              <a href="#" class="social-link">📸</a>
-              <a href="#" class="social-link">▶️</a>
-            </div>
           </div>
 
           <div class="footer-links">

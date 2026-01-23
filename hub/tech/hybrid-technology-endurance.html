@@ -9,8 +9,8 @@
     />
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>"
+      type="image/png"
+      href="../../images/logos/iomotorsport-logo.png"
     />
     <title>Hybrid Technology in Endurance Racing | iomotorsport Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,31 +21,50 @@
     />
     <link rel="stylesheet" href="../../styles.css" />
     <link rel="stylesheet" href="../_post-styles.css" />
+    <!-- Google Consent Mode v2 - Must be before gtag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      // Set default consent to denied (required for GDPR)
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+    </script>
     <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
     ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
       gtag("js", new Date());
       gtag("config", "G-SLERGKLNWP");
     </script>
+    <!-- Google AdSense - Auto Ads enabled in AdSense dashboard -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
       crossorigin="anonymous"
     ></script>
+    <!-- Cookie Consent Manager -->
+    <script src="../../js/cookie-consent.js" defer></script>
   </head>
   <body>
     <header>
       <div class="container">
         <div class="header-content">
           <a href="../../index.html" class="logo">
-            <div class="logo-icon">🏎️</div>
+            <div class="logo-icon">
+              <img
+                src="../../images/logos/iomotorsport-logo.png"
+                alt="iomotorsport logo"
+              />
+            </div>
             io<span>motorsport</span>
           </a>
           <nav>
@@ -247,9 +266,6 @@
             <div class="share-section">
               <h3>Share this article</h3>
               <div class="share-buttons">
-                <button onclick="shareTwitter()" class="share-btn twitter">
-                  𝕏 Twitter
-                </button>
                 <button onclick="copyLink()" class="share-btn copy">
                   📋 Copy Link
                 </button>
@@ -265,7 +281,12 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="../../index.html" class="logo">
-              <div class="logo-icon">🏎️</div>
+              <div class="logo-icon">
+                <img
+                  src="../../images/logos/iomotorsport-logo.png"
+                  alt="iomotorsport logo"
+                />
+              </div>
               io<span>motorsport</span>
             </a>
             <p>Your complete motorsport experience.</p>
@@ -293,17 +314,6 @@
     <script>
       function toggleMobileMenu() {
         document.getElementById("mobileNav").classList.toggle("active");
-      }
-
-      function shareTwitter() {
-        const url = encodeURIComponent(window.location.href);
-        const text = encodeURIComponent(
-          "Hybrid Technology in Endurance Racing via @iomotorsport",
-        );
-        window.open(
-          `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
-          "_blank",
-        );
       }
 
       function copyLink() {

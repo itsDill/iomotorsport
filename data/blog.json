@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-21T00:00:00Z",
+  "lastUpdated": "2026-01-23T00:00:00Z",
   "categories": [
     {
       "id": "endurance",
@@ -7,7 +7,7 @@
       "icon": "🏁",
       "color": "#e63946",
       "description": "Deep dives into WEC, IMSA, and 24-hour races",
-      "count": 4
+      "count": 6
     },
     {
       "id": "tech",
@@ -15,15 +15,7 @@
       "icon": "⚙️",
       "color": "#007bff",
       "description": "Technical analysis, car development, and innovations",
-      "count": 4
-    },
-    {
-      "id": "drivers",
-      "name": "Driver Stories",
-      "icon": "🏆",
-      "color": "#28a745",
-      "description": "Profiles, interviews, and career spotlights",
-      "count": 1
+      "count": 5
     },
     {
       "id": "history",
@@ -31,7 +23,7 @@
       "icon": "📚",
       "color": "#9c27b0",
       "description": "Legendary races, iconic moments, and heritage",
-      "count": 2
+      "count": 3
     },
     {
       "id": "analysis",
@@ -39,7 +31,7 @@
       "icon": "📊",
       "color": "#ff9800",
       "description": "Post-race breakdowns and strategic insights",
-      "count": 1
+      "count": 2
     },
     {
       "id": "esports",
@@ -47,7 +39,7 @@
       "icon": "🎮",
       "color": "#00bcd4",
       "description": "Virtual racing news and sim racing guides",
-      "count": 1
+      "count": 2
     }
   ],
   "featuredPost": {
@@ -97,22 +89,6 @@
       "tags": ["Porsche", "LMDh", "WEC", "IMSA"],
       "featured": true,
       "url": "hub/endurance/porsche-963-lmdh-story.html"
-    },
-    {
-      "id": "kamui-kobayashi-profile",
-      "title": "Kamui Kobayashi: From F1 Dreams to Le Mans Legend",
-      "excerpt": "The remarkable journey of the Japanese ace who found his home in endurance racing and became a fan favorite.",
-      "category": "drivers",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-17",
-      "readTime": "8 min read",
-      "image": "kobayashi.jpg",
-      "tags": ["Kobayashi", "Toyota", "Driver Profile"],
-      "featured": false,
-      "url": "hub/drivers/kamui-kobayashi-profile.html"
     },
     {
       "id": "1967-ford-vs-ferrari",
@@ -257,6 +233,102 @@
       "tags": ["Hybrid", "Technology", "LMP1", "Hypercar"],
       "featured": false,
       "url": "hub/tech/hybrid-technology-endurance.html"
+    },
+    {
+      "id": "imsa-vs-wec-differences",
+      "title": "IMSA vs WEC: Understanding the Key Differences",
+      "excerpt": "A comprehensive breakdown of what separates America's premier sportscar series from the World Endurance Championship.",
+      "category": "endurance",
+      "author": {
+        "name": "iomotorsport",
+        "avatar": "🏎️"
+      },
+      "date": "2026-01-07",
+      "readTime": "9 min read",
+      "image": "imsa-wec.jpg",
+      "tags": ["IMSA", "WEC", "Comparison", "Regulations"],
+      "featured": false,
+      "url": "hub/endurance/imsa-vs-wec-differences.html"
+    },
+    {
+      "id": "spa-24-hours-guide",
+      "title": "Spa 24 Hours: The Ultimate GT Racing Challenge",
+      "excerpt": "Everything you need to know about the crown jewel of GT racing and why Spa-Francorchamps creates legendary battles.",
+      "category": "endurance",
+      "author": {
+        "name": "iomotorsport",
+        "avatar": "🏎️"
+      },
+      "date": "2026-01-06",
+      "readTime": "10 min read",
+      "image": "spa-24.jpg",
+      "tags": ["Spa", "GT3", "24 Hours", "Belgium"],
+      "featured": false,
+      "url": "hub/endurance/spa-24-hours-guide.html"
+    },
+    {
+      "id": "audi-lemans-legacy",
+      "title": "Audi at Le Mans: 13 Wins and a Diesel Revolution",
+      "excerpt": "How Audi dominated the 2000s and 2010s with innovative diesel technology and relentless engineering.",
+      "category": "history",
+      "author": {
+        "name": "HistoryBuff",
+        "avatar": "📚"
+      },
+      "date": "2026-01-05",
+      "readTime": "12 min read",
+      "image": "audi-lemans.jpg",
+      "tags": ["Audi", "Le Mans", "History", "Diesel"],
+      "featured": true,
+      "url": "hub/history/audi-lemans-legacy.html"
+    },
+    {
+      "id": "sebring-2026-analysis",
+      "title": "12 Hours of Sebring 2026: Complete Race Breakdown",
+      "excerpt": "Analyzing the strategies, battles, and key moments from America's oldest sports car race.",
+      "category": "analysis",
+      "author": {
+        "name": "iomotorsport",
+        "avatar": "🏎️"
+      },
+      "date": "2026-01-04",
+      "readTime": "10 min read",
+      "image": "sebring-2026.jpg",
+      "tags": ["Sebring", "IMSA", "Race Analysis", "2026"],
+      "featured": false,
+      "url": "hub/analysis/sebring-2026-analysis.html"
+    },
+    {
+      "id": "iracing-endurance-guide",
+      "title": "iRacing Endurance: Building Your Team for 24-Hour Events",
+      "excerpt": "A complete guide to organizing and competing in iRacing's special endurance events with your team.",
+      "category": "esports",
+      "author": {
+        "name": "Alex Velocity",
+        "avatar": "🎮"
+      },
+      "date": "2026-01-03",
+      "readTime": "11 min read",
+      "image": "iracing-endurance.jpg",
+      "tags": ["iRacing", "Endurance", "Team Racing", "Guide"],
+      "featured": false,
+      "url": "hub/esports/iracing-endurance-guide.html"
+    },
+    {
+      "id": "bmw-m-hybrid-v8-analysis",
+      "title": "BMW M Hybrid V8: German Engineering Meets American Racing",
+      "excerpt": "Technical breakdown of BMW's LMDh contender and its journey through IMSA and WEC competition.",
+      "category": "tech",
+      "author": {
+        "name": "TechAnalyst",
+        "avatar": "🔧"
+      },
+      "date": "2026-01-02",
+      "readTime": "10 min read",
+      "image": "bmw-hybrid.jpg",
+      "tags": ["BMW", "LMDh", "Technical", "IMSA"],
+      "featured": false,
+      "url": "hub/tech/bmw-m-hybrid-v8-analysis.html"
     }
   ],
   "popularTags": [
@@ -269,12 +341,12 @@
     "Porsche",
     "Technical",
     "Race Analysis",
-    "Driver Profile"
+    "GT3"
   ],
   "stats": {
-    "totalPosts": 13,
+    "totalPosts": 18,
     "totalReaders": "15K+",
     "avgReadTime": "10 min",
-    "categories": 6
+    "categories": 5
   }
 }
