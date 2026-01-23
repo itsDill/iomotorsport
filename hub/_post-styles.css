@@ -507,3 +507,129 @@
     padding: 20px;
   }
 }
+
+/* Region Page Styles */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+  color: #e63946;
+}
+
+.breadcrumb span {
+  color: #fff;
+}
+
+.region-intro {
+  margin-bottom: 40px;
+}
+
+.region-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  border-color: rgba(230, 57, 70, 0.4);
+  transform: translateY(-3px);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #e63946;
+  font-family: "Orbitron", monospace;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  color: #888;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.content-placeholder {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.content-placeholder h2 {
+  font-family: "Orbitron", monospace;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.content-placeholder p {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.content-placeholder ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 40px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.content-placeholder li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.content-placeholder li:last-child {
+  border-bottom: none;
+}
+
+.content-placeholder li strong {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .region-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .content-placeholder {
+    padding: 40px 20px;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+}

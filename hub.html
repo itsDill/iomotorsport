@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="iomotorsport Blog - In-depth motorsport articles, race analysis, driver profiles, and endurance racing coverage. Your source for WEC, IMSA, and Le Mans content."
+      content="iomotorsport Motorsport Hub - In-depth motorsport articles, race analysis, driver profiles, and endurance racing coverage. Your source for WEC, IMSA, and Le Mans content."
     />
     <meta
       name="robots"
@@ -25,7 +25,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://iomotorsport.com/hub.html" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blog | iomotorsport" />
+    <meta name="twitter:title" content="Motorsport Hub | iomotorsport" />
     <meta
       name="twitter:description"
       content="In-depth motorsport articles, race analysis, driver profiles, and endurance racing coverage."
@@ -34,7 +34,7 @@
       name="twitter:image"
       content="https://iomotorsport.com/og-image-blog.jpg"
     />
-    <meta property="og:title" content="Blog | iomotorsport" />
+    <meta property="og:title" content="Motorsport Hub | iomotorsport" />
     <meta
       property="og:description"
       content="In-depth motorsport articles, race analysis, driver profiles, and endurance racing coverage."
@@ -45,7 +45,7 @@
       type="image/png"
       href="images/logos/iomotorsport-logo.png"
     />
-    <title>Blog | iomotorsport</title>
+    <title>Motorsport Hub | iomotorsport</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -659,6 +659,131 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+
+      /* World Map & Regions Styles */
+      .world-map-container {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 40px;
+        margin-bottom: 40px;
+        overflow: hidden;
+      }
+
+      .world-map {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+      }
+
+      .continent {
+        fill: rgba(255, 255, 255, 0.08);
+        stroke: rgba(255, 255, 255, 0.2);
+        stroke-width: 1.5;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .continent-link:hover .continent {
+        fill: rgba(230, 57, 70, 0.3);
+        stroke: #e63946;
+        stroke-width: 2;
+      }
+
+      .track-marker {
+        fill: #e63946;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+
+      .continent-link:hover .track-marker {
+        opacity: 1;
+        r: 7;
+      }
+
+      .continent-label {
+        fill: #fff;
+        font-size: 14px;
+        font-family: "Orbitron", monospace;
+        font-weight: 600;
+        text-anchor: middle;
+        pointer-events: none;
+        opacity: 0.9;
+      }
+
+      .regions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .region-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .region-card:hover {
+        border-color: rgba(230, 57, 70, 0.5);
+        background: rgba(230, 57, 70, 0.08);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(230, 57, 70, 0.15);
+      }
+
+      .region-icon {
+        font-size: 2.5rem;
+      }
+
+      .region-card h3 {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "Orbitron", monospace;
+        margin: 0;
+      }
+
+      .region-card p {
+        color: #888;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .region-tracks {
+        background: rgba(230, 57, 70, 0.15);
+        color: #e63946;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      @media (max-width: 1024px) {
+        .regions-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .world-map-container {
+          padding: 20px;
+        }
+
+        .continent-label {
+          font-size: 10px;
+        }
+
+        .regions-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -767,7 +892,7 @@
       <section class="page-hero">
         <div class="container">
           <span class="section-tag">📝 Articles & Insights</span>
-          <h1>Motorsport <span class="gradient-text">Blog</span></h1>
+          <h1>Motorsport <span class="gradient-text">Hub</span></h1>
           <p>
             Deep dives into endurance racing, technical analysis, driver
             stories, and everything that makes motorsport the ultimate sport.
@@ -916,6 +1041,162 @@
                 >Make Predictions</a
               >
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Motorsport by Region -->
+      <section class="section" id="regions">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">🌍 Global Racing</span>
+            <h2>Motorsport by <span class="gradient-text">Region</span></h2>
+            <p>
+              Explore race tracks and motorsport culture across every continent
+            </p>
+          </div>
+
+          <div class="world-map-container">
+            <svg
+              class="world-map"
+              viewBox="0 0 1000 500"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- North America -->
+              <a href="hub/regions/north-america.html" class="continent-link">
+                <path
+                  class="continent"
+                  id="north-america"
+                  d="M 50 50 L 280 50 L 300 80 L 290 120 L 260 150 L 280 180 L 260 220 L 220 250 L 180 240 L 140 260 L 100 220 L 80 180 L 60 140 L 40 100 Z"
+                />
+                <circle class="track-marker" cx="120" cy="140" r="5" />
+                <circle class="track-marker" cx="180" cy="180" r="5" />
+                <circle class="track-marker" cx="230" cy="160" r="5" />
+                <circle class="track-marker" cx="200" cy="120" r="5" />
+                <text class="continent-label" x="160" y="145">
+                  North America
+                </text>
+              </a>
+
+              <!-- South America -->
+              <a href="hub/regions/south-america.html" class="continent-link">
+                <path
+                  class="continent"
+                  id="south-america"
+                  d="M 180 280 L 220 270 L 250 290 L 260 340 L 250 400 L 220 450 L 180 460 L 160 420 L 170 360 L 160 300 Z"
+                />
+                <circle class="track-marker" cx="200" cy="320" r="5" />
+                <circle class="track-marker" cx="210" cy="380" r="5" />
+                <text class="continent-label" x="195" y="345">
+                  South America
+                </text>
+              </a>
+
+              <!-- Europe -->
+              <a href="hub/regions/europe.html" class="continent-link">
+                <path
+                  class="continent"
+                  id="europe"
+                  d="M 420 60 L 520 50 L 560 70 L 550 100 L 520 130 L 540 150 L 510 180 L 460 170 L 430 150 L 400 160 L 390 130 L 410 90 Z"
+                />
+                <circle class="track-marker" cx="450" cy="100" r="5" />
+                <circle class="track-marker" cx="490" cy="90" r="5" />
+                <circle class="track-marker" cx="510" cy="120" r="5" />
+                <circle class="track-marker" cx="470" cy="140" r="5" />
+                <circle class="track-marker" cx="430" cy="130" r="5" />
+                <circle class="track-marker" cx="520" cy="80" r="5" />
+                <text class="continent-label" x="465" y="115">Europe</text>
+              </a>
+
+              <!-- Africa -->
+              <a href="hub/regions/africa.html" class="continent-link">
+                <path
+                  class="continent"
+                  id="africa"
+                  d="M 420 190 L 480 180 L 530 200 L 550 260 L 540 340 L 500 400 L 450 420 L 400 380 L 390 300 L 400 240 Z"
+                />
+                <circle class="track-marker" cx="460" cy="280" r="5" />
+                <circle class="track-marker" cx="480" cy="350" r="5" />
+                <text class="continent-label" x="455" y="300">Africa</text>
+              </a>
+
+              <!-- Asia -->
+              <a href="hub/regions/asia.html" class="continent-link">
+                <path
+                  class="continent"
+                  id="asia"
+                  d="M 560 50 L 700 40 L 800 60 L 850 100 L 860 160 L 820 200 L 780 220 L 720 210 L 680 240 L 620 220 L 580 180 L 560 140 L 570 90 Z"
+                />
+                <circle class="track-marker" cx="620" cy="120" r="5" />
+                <circle class="track-marker" cx="700" cy="100" r="5" />
+                <circle class="track-marker" cx="760" cy="130" r="5" />
+                <circle class="track-marker" cx="800" cy="160" r="5" />
+                <circle class="track-marker" cx="680" cy="180" r="5" />
+                <text class="continent-label" x="700" y="130">Asia</text>
+              </a>
+
+              <!-- Oceania -->
+              <a href="hub/regions/oceania.html" class="continent-link">
+                <path
+                  class="continent"
+                  id="oceania"
+                  d="M 780 300 L 860 290 L 920 320 L 940 380 L 900 430 L 840 440 L 780 410 L 760 360 Z"
+                />
+                <circle class="track-marker" cx="840" cy="360" r="5" />
+                <circle class="track-marker" cx="880" cy="380" r="5" />
+                <circle class="track-marker" cx="800" cy="390" r="5" />
+                <text class="continent-label" x="845" y="365">Oceania</text>
+              </a>
+            </svg>
+          </div>
+
+          <div class="regions-grid">
+            <a href="hub/regions/north-america.html" class="region-card">
+              <span class="region-icon">🇺🇸</span>
+              <h3>North America</h3>
+              <p>
+                IMSA, IndyCar, NASCAR & legendary circuits like Daytona,
+                Sebring, and Road America
+              </p>
+              <span class="region-tracks">25+ Tracks</span>
+            </a>
+            <a href="hub/regions/south-america.html" class="region-card">
+              <span class="region-icon">🇧🇷</span>
+              <h3>South America</h3>
+              <p>
+                Interlagos, Buenos Aires & the passionate racing culture of
+                Latin America
+              </p>
+              <span class="region-tracks">10+ Tracks</span>
+            </a>
+            <a href="hub/regions/europe.html" class="region-card">
+              <span class="region-icon">🇪🇺</span>
+              <h3>Europe</h3>
+              <p>
+                Le Mans, Spa, Nürburgring & the birthplace of endurance racing
+              </p>
+              <span class="region-tracks">40+ Tracks</span>
+            </a>
+            <a href="hub/regions/africa.html" class="region-card">
+              <span class="region-icon">🇿🇦</span>
+              <h3>Africa</h3>
+              <p>Kyalami & emerging motorsport venues across the continent</p>
+              <span class="region-tracks">5+ Tracks</span>
+            </a>
+            <a href="hub/regions/asia.html" class="region-card">
+              <span class="region-icon">🇯🇵</span>
+              <h3>Asia</h3>
+              <p>Fuji, Suzuka, Bahrain & the growing Asian motorsport scene</p>
+              <span class="region-tracks">20+ Tracks</span>
+            </a>
+            <a href="hub/regions/oceania.html" class="region-card">
+              <span class="region-icon">🇦🇺</span>
+              <h3>Oceania</h3>
+              <p>
+                Bathurst, Mount Panorama & Australia's legendary racing heritage
+              </p>
+              <span class="region-tracks">15+ Tracks</span>
+            </a>
           </div>
         </div>
       </section>
