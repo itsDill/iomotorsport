@@ -89,3 +89,5 @@ tracking/
 # Local configuration files
 local-config.json
 config.local.js
+# SEO tracking (local only)
+seo/

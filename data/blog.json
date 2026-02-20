@@ -1,352 +1,136 @@
 {
-  "lastUpdated": "2026-01-23T00:00:00Z",
+  "lastUpdated": "2026-02-20T00:00:00Z",
   "categories": [
     {
-      "id": "endurance",
-      "name": "Endurance Racing",
-      "icon": "🏁",
+      "id": "valuations",
+      "name": "Team Valuations",
+      "icon": "💰",
       "color": "#e63946",
-      "description": "Deep dives into WEC, IMSA, and 24-hour races",
-      "count": 6
+      "description": "Enterprise values, ownership changes, and investment trends",
+      "count": 1
     },
     {
-      "id": "tech",
-      "name": "Tech & Engineering",
-      "icon": "⚙️",
+      "id": "deals",
+      "name": "Major Deals",
+      "icon": "🤝",
       "color": "#007bff",
-      "description": "Technical analysis, car development, and innovations",
-      "count": 5
+      "description": "M&A activity, investments, and partnership announcements",
+      "count": 1
     },
     {
-      "id": "history",
-      "name": "Racing History",
-      "icon": "📚",
+      "id": "economics",
+      "name": "Racing Economics",
+      "icon": "📈",
+      "color": "#00c853",
+      "description": "Revenue structures, cost analysis, and financial trends",
+      "count": 1
+    },
+    {
+      "id": "manufacturers",
+      "name": "Manufacturer Strategy",
+      "icon": "🏭",
       "color": "#9c27b0",
-      "description": "Legendary races, iconic moments, and heritage",
-      "count": 3
+      "description": "OEM investments, technology partnerships, and factory programs",
+      "count": 0
     },
     {
-      "id": "analysis",
-      "name": "Race Analysis",
-      "icon": "📊",
+      "id": "sponsorship",
+      "name": "Sponsorship Deals",
+      "icon": "📋",
       "color": "#ff9800",
-      "description": "Post-race breakdowns and strategic insights",
-      "count": 2
-    },
-    {
-      "id": "esports",
-      "name": "Esports & Sim Racing",
-      "icon": "🎮",
-      "color": "#00bcd4",
-      "description": "Virtual racing news and sim racing guides",
-      "count": 2
+      "description": "Title sponsors, ROI analysis, and marketing partnerships",
+      "count": 0
     }
   ],
   "featuredPost": {
-    "id": "le-mans-2026-preview",
-    "title": "24 Hours of Le Mans 2026: The Ultimate Preview Guide",
-    "excerpt": "Everything you need to know about the centenary-era Le Mans. From Hypercar battles to the GT3 revolution, we break down what promises to be one of the most competitive editions in history.",
-    "url": "hub/endurance/le-mans-2026-preview.html",
-    "category": "endurance",
+    "id": "f1-team-valuations-2026",
+    "title": "F1's $22.7 Billion Grid: How Team Valuations Have Transformed Under Liberty Media",
+    "excerpt": "An exhaustive analysis of how Formula 1 team valuations have exploded since Liberty Media's 2017 acquisition. We break down Ferrari's $6.5B valuation, McLaren's remarkable rise, and why even backmarker teams are now worth nine figures.",
+    "url": "hub/business/f1-team-valuations-2026.html",
+    "category": "valuations",
     "author": {
-      "name": "iomotorsport",
-      "avatar": "🏎️"
+      "name": "iomotorsport Research",
+      "avatar": "📈"
     },
-    "date": "2026-01-20",
-    "readTime": "15 min read",
-    "image": "le-mans-hero.jpg",
-    "tags": ["Le Mans", "WEC", "Hypercar", "Preview"]
+    "date": "2026-02-18",
+    "readTime": "18 min read",
+    "image": "f1-valuations.jpg",
+    "tags": ["Formula 1", "Team Valuations", "Liberty Media", "Investment"]
   },
   "posts": [
     {
-      "id": "toyota-gr010-evolution",
-      "title": "How Toyota's GR010 Evolved: A Technical Deep Dive",
-      "excerpt": "Tracing the development of Toyota's Le Mans-winning Hypercar from 2021 to 2026, examining the key upgrades that have kept it competitive.",
-      "category": "tech",
+      "id": "f1-team-valuations-2026",
+      "title": "F1's $22.7 Billion Grid: How Team Valuations Have Transformed Under Liberty Media",
+      "excerpt": "An exhaustive analysis of how Formula 1 team valuations have exploded since Liberty Media's 2017 acquisition.",
+      "category": "valuations",
       "author": {
-        "name": "TechAnalyst",
-        "avatar": "🔧"
+        "name": "iomotorsport Research",
+        "avatar": "📈"
       },
-      "date": "2026-01-19",
+      "date": "2026-02-18",
+      "readTime": "18 min read",
+      "image": "f1-valuations.jpg",
+      "tags": ["Formula 1", "Valuations", "Investment"],
+      "featured": true,
+      "url": "hub/business/f1-team-valuations-2026.html"
+    },
+    {
+      "id": "andretti-cadillac-f1-entry",
+      "title": "Andretti-Cadillac F1 Entry: The $600M Investment Reshaping Formula 1",
+      "excerpt": "General Motors' return to Formula 1 through the Cadillac brand represents one of the most significant investments in F1 history.",
+      "category": "deals",
+      "author": {
+        "name": "iomotorsport Research",
+        "avatar": "🤝"
+      },
+      "date": "2026-02-15",
       "readTime": "12 min read",
-      "image": "toyota-gr010.jpg",
-      "tags": ["Toyota", "Hypercar", "Technical"],
+      "image": "andretti-cadillac.jpg",
+      "tags": ["Formula 1", "Andretti", "General Motors", "Cadillac"],
       "featured": false,
-      "url": "hub/tech/toyota-gr010-evolution.html"
+      "url": "hub/business/andretti-cadillac-f1-entry.html"
     },
     {
-      "id": "porsche-963-lmdh-story",
-      "title": "Porsche 963: The LMDh That Brought Porsche Back to the Top",
-      "excerpt": "From its debut struggles to championship glory, the complete story of Porsche's return to prototype racing.",
-      "category": "endurance",
+      "id": "nascar-charter-values",
+      "title": "NASCAR Charter Economics: Why They're Now Worth $40M+ Each",
+      "excerpt": "The NASCAR charter system transformed team ownership from a gamble into a bankable asset. Here's how they work and why values have exploded.",
+      "category": "economics",
       "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
+        "name": "iomotorsport Research",
+        "avatar": "📊"
       },
-      "date": "2026-01-18",
+      "date": "2026-02-12",
       "readTime": "10 min read",
-      "image": "porsche-963.jpg",
-      "tags": ["Porsche", "LMDh", "WEC", "IMSA"],
-      "featured": true,
-      "url": "hub/endurance/porsche-963-lmdh-story.html"
-    },
-    {
-      "id": "1967-ford-vs-ferrari",
-      "title": "1967 Le Mans: When Ford Achieved the Impossible Photo Finish",
-      "excerpt": "Revisiting the legendary 1-2-3 finish that cemented Ford's dominance and ended Ferrari's streak at La Sarthe.",
-      "category": "history",
-      "author": {
-        "name": "HistoryBuff",
-        "avatar": "📚"
-      },
-      "date": "2026-01-16",
-      "readTime": "14 min read",
-      "image": "ford-1967.jpg",
-      "tags": ["Le Mans", "Ford", "Ferrari", "History"],
-      "featured": true,
-      "url": "hub/history/1967-ford-vs-ferrari.html"
-    },
-    {
-      "id": "daytona-24-2026-analysis",
-      "title": "Rolex 24 at Daytona 2026: Race Analysis & Key Takeaways",
-      "excerpt": "Breaking down the strategic battles, tire strategies, and pivotal moments that decided the first major race of 2026.",
-      "category": "analysis",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-15",
-      "readTime": "11 min read",
-      "image": "daytona-24.jpg",
-      "tags": ["Daytona", "IMSA", "Race Analysis"],
+      "image": "nascar-charter.jpg",
+      "tags": ["NASCAR", "Charter System", "Team Economics"],
       "featured": false,
-      "url": "hub/analysis/daytona-24-2026-analysis.html"
-    },
-    {
-      "id": "cadillac-v-series-r",
-      "title": "Cadillac V-Series.R: America's Answer to the Hypercar Era",
-      "excerpt": "How Cadillac built a prototype capable of challenging the best from Europe and Japan on the world stage.",
-      "category": "tech",
-      "author": {
-        "name": "TechAnalyst",
-        "avatar": "🔧"
-      },
-      "date": "2026-01-14",
-      "readTime": "9 min read",
-      "image": "cadillac-vsr.jpg",
-      "tags": ["Cadillac", "LMDh", "Technical"],
-      "featured": false,
-      "url": "hub/tech/cadillac-v-series-r.html"
-    },
-    {
-      "id": "night-racing-strategies",
-      "title": "Racing in the Dark: Night Strategy in 24-Hour Races",
-      "excerpt": "The unique challenges and tactical considerations that teams face during the night stints at endurance events.",
-      "category": "endurance",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-13",
-      "readTime": "7 min read",
-      "image": "night-racing.jpg",
-      "tags": ["Strategy", "Night Racing", "Endurance"],
-      "featured": false,
-      "url": "hub/endurance/night-racing-strategies.html"
-    },
-    {
-      "id": "gt3-revolution-wec",
-      "title": "The GT3 Revolution: How Production-Based Cars Transformed WEC",
-      "excerpt": "From the decline of GTE to the rise of GT3 in world championship racing—a complete transformation.",
-      "category": "endurance",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-12",
-      "readTime": "10 min read",
-      "image": "gt3-wec.jpg",
-      "tags": ["GT3", "WEC", "GTE", "Regulations"],
-      "featured": true,
-      "url": "hub/endurance/gt3-revolution-wec.html"
-    },
-    {
-      "id": "acc-beginner-guide",
-      "title": "Getting Started with ACC: A Complete Beginner's Guide",
-      "excerpt": "Everything you need to know to begin your sim racing journey in Assetto Corsa Competizione.",
-      "category": "esports",
-      "author": {
-        "name": "Alex Velocity",
-        "avatar": "🎮"
-      },
-      "date": "2026-01-11",
-      "readTime": "13 min read",
-      "image": "acc-guide.jpg",
-      "tags": ["ACC", "Sim Racing", "Guide", "Beginners"],
-      "featured": false,
-      "url": "hub/esports/acc-beginner-guide.html"
-    },
-    {
-      "id": "ferrari-499p-dominance",
-      "title": "Ferrari 499P: Anatomy of a Le Mans Winner",
-      "excerpt": "Deep technical analysis of how Ferrari's Hypercar conquered La Sarthe and what makes it so special.",
-      "category": "tech",
-      "author": {
-        "name": "TechAnalyst",
-        "avatar": "🔧"
-      },
-      "date": "2026-01-10",
-      "readTime": "15 min read",
-      "image": "ferrari-499p.jpg",
-      "tags": ["Ferrari", "Hypercar", "Le Mans", "Technical"],
-      "featured": true,
-      "url": "hub/tech/ferrari-499p-dominance.html"
-    },
-    {
-      "id": "sebring-history",
-      "title": "12 Hours of Sebring: America's Toughest Endurance Race",
-      "excerpt": "The history, challenges, and legacy of the legendary Florida classic that tests man and machine to the limit.",
-      "category": "history",
-      "author": {
-        "name": "HistoryBuff",
-        "avatar": "📚"
-      },
-      "date": "2026-01-09",
-      "readTime": "11 min read",
-      "image": "sebring.jpg",
-      "tags": ["Sebring", "IMSA", "History", "Endurance"],
-      "featured": false,
-      "url": "hub/history/sebring-history.html"
-    },
-    {
-      "id": "hybrid-technology-endurance",
-      "title": "Hybrid Power in Endurance Racing: Past, Present, and Future",
-      "excerpt": "How hybrid technology has evolved from Audi's diesel-electric experiments to today's sophisticated Hypercar systems.",
-      "category": "tech",
-      "author": {
-        "name": "TechAnalyst",
-        "avatar": "🔧"
-      },
-      "date": "2026-01-08",
-      "readTime": "12 min read",
-      "image": "hybrid-tech.jpg",
-      "tags": ["Hybrid", "Technology", "LMP1", "Hypercar"],
-      "featured": false,
-      "url": "hub/tech/hybrid-technology-endurance.html"
-    },
-    {
-      "id": "imsa-vs-wec-differences",
-      "title": "IMSA vs WEC: Understanding the Key Differences",
-      "excerpt": "A comprehensive breakdown of what separates America's premier sportscar series from the World Endurance Championship.",
-      "category": "endurance",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-07",
-      "readTime": "9 min read",
-      "image": "imsa-wec.jpg",
-      "tags": ["IMSA", "WEC", "Comparison", "Regulations"],
-      "featured": false,
-      "url": "hub/endurance/imsa-vs-wec-differences.html"
-    },
-    {
-      "id": "spa-24-hours-guide",
-      "title": "Spa 24 Hours: The Ultimate GT Racing Challenge",
-      "excerpt": "Everything you need to know about the crown jewel of GT racing and why Spa-Francorchamps creates legendary battles.",
-      "category": "endurance",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-06",
-      "readTime": "10 min read",
-      "image": "spa-24.jpg",
-      "tags": ["Spa", "GT3", "24 Hours", "Belgium"],
-      "featured": false,
-      "url": "hub/endurance/spa-24-hours-guide.html"
-    },
-    {
-      "id": "audi-lemans-legacy",
-      "title": "Audi at Le Mans: 13 Wins and a Diesel Revolution",
-      "excerpt": "How Audi dominated the 2000s and 2010s with innovative diesel technology and relentless engineering.",
-      "category": "history",
-      "author": {
-        "name": "HistoryBuff",
-        "avatar": "📚"
-      },
-      "date": "2026-01-05",
-      "readTime": "12 min read",
-      "image": "audi-lemans.jpg",
-      "tags": ["Audi", "Le Mans", "History", "Diesel"],
-      "featured": true,
-      "url": "hub/history/audi-lemans-legacy.html"
-    },
-    {
-      "id": "sebring-2026-analysis",
-      "title": "12 Hours of Sebring 2026: Complete Race Breakdown",
-      "excerpt": "Analyzing the strategies, battles, and key moments from America's oldest sports car race.",
-      "category": "analysis",
-      "author": {
-        "name": "iomotorsport",
-        "avatar": "🏎️"
-      },
-      "date": "2026-01-04",
-      "readTime": "10 min read",
-      "image": "sebring-2026.jpg",
-      "tags": ["Sebring", "IMSA", "Race Analysis", "2026"],
-      "featured": false,
-      "url": "hub/analysis/sebring-2026-analysis.html"
-    },
-    {
-      "id": "iracing-endurance-guide",
-      "title": "iRacing Endurance: Building Your Team for 24-Hour Events",
-      "excerpt": "A complete guide to organizing and competing in iRacing's special endurance events with your team.",
-      "category": "esports",
-      "author": {
-        "name": "Alex Velocity",
-        "avatar": "🎮"
-      },
-      "date": "2026-01-03",
-      "readTime": "11 min read",
-      "image": "iracing-endurance.jpg",
-      "tags": ["iRacing", "Endurance", "Team Racing", "Guide"],
-      "featured": false,
-      "url": "hub/esports/iracing-endurance-guide.html"
-    },
-    {
-      "id": "bmw-m-hybrid-v8-analysis",
-      "title": "BMW M Hybrid V8: German Engineering Meets American Racing",
-      "excerpt": "Technical breakdown of BMW's LMDh contender and its journey through IMSA and WEC competition.",
-      "category": "tech",
-      "author": {
-        "name": "TechAnalyst",
-        "avatar": "🔧"
-      },
-      "date": "2026-01-02",
-      "readTime": "10 min read",
-      "image": "bmw-hybrid.jpg",
-      "tags": ["BMW", "LMDh", "Technical", "IMSA"],
-      "featured": false,
-      "url": "hub/tech/bmw-m-hybrid-v8-analysis.html"
+      "url": "hub/business/nascar-charter-values.html"
     }
   ],
-  "popularTags": [
-    "Le Mans",
-    "WEC",
-    "Hypercar",
-    "IMSA",
-    "Toyota",
-    "Ferrari",
-    "Porsche",
-    "Technical",
-    "Race Analysis",
-    "GT3"
-  ],
-  "stats": {
-    "totalPosts": 18,
-    "totalReaders": "15K+",
-    "avgReadTime": "10 min",
-    "categories": 5
-  }
+  "series": [
+    {
+      "id": "f1",
+      "name": "Formula 1",
+      "icon": "🏎️",
+      "postCount": 2
+    },
+    {
+      "id": "nascar",
+      "name": "NASCAR",
+      "icon": "🏁",
+      "postCount": 1
+    },
+    {
+      "id": "wec",
+      "name": "WEC & IMSA",
+      "icon": "🌍",
+      "postCount": 0
+    },
+    {
+      "id": "indycar",
+      "name": "IndyCar",
+      "icon": "🇺🇸",
+      "postCount": 0
+    }
+  ]
 }

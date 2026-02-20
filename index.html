@@ -3,1876 +3,681 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
-    <meta name="theme-color" content="#e63946" />
-    <meta name="author" content="iomotorsport" />
-    <meta
-      name="keywords"
-      content="motorsport, endurance racing, WEC, IMSA, Le Mans, esports, sim racing, race predictions"
-    />
+
+    <!-- Primary Meta Tags -->
+    <title>iomotorsport | The Business of Racing</title>
+    <meta name="title" content="iomotorsport | The Business of Racing" />
     <meta
       name="description"
-      content="Your complete endurance racing hub. WEC, IMSA coverage, race predictions, esports team, and motorsport analysis."
+      content="In-depth analysis of motorsport business, team valuations, sponsorship deals, and the financial forces shaping F1, NASCAR, IndyCar, and endurance racing."
     />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="iomotorsport" />
+    <link rel="canonical" href="https://iomotorsport.com/" />
 
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://iomotorsport.com/" />
-    <meta property="og:title" content="iomotorsport | Endurance Racing Hub" />
+    <meta property="og:title" content="iomotorsport | The Business of Racing" />
     <meta
       property="og:description"
-      content="Your complete endurance racing hub. WEC, IMSA coverage, race predictions, esports team, and motorsport analysis."
+      content="In-depth analysis of motorsport business, team valuations, sponsorship deals, and the financial forces shaping F1, NASCAR, IndyCar, and endurance racing."
     />
-    <meta property="og:image" content="https://iomotorsport.com/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+      property="og:image"
+      content="https://iomotorsport.com/images/og-image.jpg"
+    />
+    <meta property="og:site_name" content="iomotorsport" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="iomotorsport | Endurance Racing Hub" />
+    <meta name="twitter:url" content="https://iomotorsport.com/" />
+    <meta
+      name="twitter:title"
+      content="iomotorsport | The Business of Racing"
+    />
     <meta
       name="twitter:description"
-      content="Your complete endurance racing hub. WEC, IMSA coverage, race predictions, esports team, and motorsport analysis."
+      content="In-depth analysis of motorsport business, team valuations, sponsorship deals, and the financial forces shaping F1, NASCAR, IndyCar, and endurance racing."
     />
     <meta
       name="twitter:image"
-      content="https://iomotorsport.com/og-image.jpg"
+      content="https://iomotorsport.com/images/og-image.jpg"
     />
-    <meta name="twitter:site" content="@iomotorsport" />
-    <meta name="twitter:creator" content="@iomotorsport" />
 
-    <link rel="canonical" href="https://iomotorsport.com/" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="images/logos/iomotorsport-logo.png"
-    />
-    <link rel="apple-touch-icon" href="images/logos/iomotorsport-logo.png" />
-    <title>iomotorsport | Endurance Racing Hub</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#e63946" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://iomotorsport.com/#organization",
+            "name": "iomotorsport",
+            "url": "https://iomotorsport.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://iomotorsport.com/images/logo.png"
+            },
+            "sameAs": []
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://iomotorsport.com/#website",
+            "url": "https://iomotorsport.com",
+            "name": "iomotorsport",
+            "description": "In-depth analysis of motorsport business, team valuations, sponsorship deals, and the financial forces shaping racing.",
+            "publisher": {
+              "@id": "https://iomotorsport.com/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://iomotorsport.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://iomotorsport.com/#webpage",
+            "url": "https://iomotorsport.com/",
+            "name": "iomotorsport | The Business of Racing",
+            "isPartOf": {
+              "@id": "https://iomotorsport.com/#website"
+            },
+            "about": {
+              "@id": "https://iomotorsport.com/#organization"
+            },
+            "description": "In-depth analysis of motorsport business, team valuations, sponsorship deals, and the financial forces shaping F1, NASCAR, IndyCar, and endurance racing."
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
-
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "iomotorsport",
-        "description": "Your complete endurance racing hub. WEC, IMSA coverage, race predictions, esports team, and motorsport analysis.",
-        "url": "https://iomotorsport.com",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://iomotorsport.com/predictions.html",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "iomotorsport",
-        "description": "Endurance motorsport racing coverage and esports community",
-        "url": "https://iomotorsport.com",
-        "logo": "https://iomotorsport.com/images/logos/iomotorsport-logo.png",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "US"
-        }
-      }
-    </script>
-    <!-- Google Consent Mode v2 - Must be before gtag -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      // Set default consent to denied (required for GDPR)
-      gtag("consent", "default", {
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        analytics_storage: "denied",
-        wait_for_update: 500,
-      });
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
-    ></script>
-    <script>
-      gtag("js", new Date());
-      gtag("config", "G-SLERGKLNWP");
-    </script>
-    <!-- Google AdSense - Auto Ads enabled in AdSense dashboard -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Cookie Consent Manager -->
-    <script src="js/cookie-consent.js" defer></script>
 
     <style>
-      /* Homepage-specific styles */
-      .hero-home {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        padding: 120px 0 80px;
+      :root {
+        --primary: #e63946;
+        --primary-dark: #c1121f;
+        --bg-dark: #0a0a0b;
+        --bg-card: #141416;
+        --bg-card-hover: #1a1a1d;
+        --text-primary: #ffffff;
+        --text-secondary: #a1a1aa;
+        --text-muted: #71717a;
+        --border: #27272a;
+        --gradient: linear-gradient(135deg, #e63946 0%, #f77f00 100%);
       }
 
-      .hero-home::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-          linear-gradient(
-            135deg,
-            rgba(10, 10, 10, 0.95) 0%,
-            rgba(10, 10, 10, 0.7) 50%,
-            rgba(10, 10, 10, 0.9) 100%
-          ),
-          radial-gradient(
-            ellipse at 30% 20%,
-            rgba(230, 57, 70, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 70% 80%,
-            rgba(0, 123, 255, 0.1) 0%,
-            transparent 50%
-          );
-        z-index: 1;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      .hero-home .container {
-        position: relative;
-        z-index: 2;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 60px;
-        align-items: center;
-      }
-
-      .hero-text .hero-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(230, 57, 70, 0.15);
-        border: 1px solid rgba(230, 57, 70, 0.3);
-        padding: 8px 16px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--primary);
-        margin-bottom: 24px;
-        animation: fadeInUp 0.6s ease-out;
-      }
-
-      .hero-label .pulse-dot {
-        width: 8px;
-        height: 8px;
-        background: var(--primary);
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.5;
-          transform: scale(1.2);
-        }
-      }
-
-      .hero-text h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        animation: fadeInUp 0.6s ease-out 0.1s both;
-      }
-
-      .hero-text h1 .highlight {
-        background: linear-gradient(
-          135deg,
-          #e63946 0%,
-          #ff6b6b 50%,
-          #e63946 100%
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: shimmer 3s linear infinite;
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: 0% center;
-        }
-        100% {
-          background-position: 200% center;
-        }
-      }
-
-      .hero-text .hero-description {
-        font-size: 1.15rem;
-        color: var(--text-secondary);
-        line-height: 1.7;
-        margin-bottom: 32px;
-        max-width: 520px;
-        animation: fadeInUp 0.6s ease-out 0.2s both;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 48px;
-        animation: fadeInUp 0.6s ease-out 0.3s both;
-      }
-
-      .hero-stats-bar {
-        display: flex;
-        gap: 40px;
-        padding-top: 32px;
-        border-top: 1px solid var(--border-subtle);
-        animation: fadeInUp 0.6s ease-out 0.4s both;
-      }
-
-      .hero-stat {
-        text-align: left;
-      }
-
-      .hero-stat .stat-value {
-        font-family: "Orbitron", monospace;
-        font-size: 1.8rem;
-        font-weight: 700;
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: var(--bg-dark);
         color: var(--text-primary);
-        display: block;
+        line-height: 1.6;
       }
 
-      .hero-stat .stat-label {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
 
-      /* Next Race Card */
-      .next-race-card {
-        background: var(--bg-glass);
-        border: 1px solid var(--border-subtle);
-        border-radius: 20px;
-        padding: 32px;
-        backdrop-filter: blur(20px);
-        animation: fadeInUp 0.6s ease-out 0.2s both;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .next-race-card::before {
-        content: "";
-        position: absolute;
+      /* Header */
+      header {
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), #007bff);
+        background: rgba(10, 10, 11, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        z-index: 100;
       }
 
-      .race-card-header {
+      .header-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
+        height: 72px;
       }
 
-      .race-series-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(0, 123, 255, 0.15);
-        border: 1px solid rgba(0, 123, 255, 0.3);
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #007bff;
-      }
-
-      .race-round {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-      }
-
-      .race-card-title {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-        color: var(--text-primary);
-      }
-
-      .race-card-circuit {
-        font-size: 0.95rem;
-        color: var(--text-secondary);
-        margin-bottom: 24px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .countdown-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-
-      .countdown-box {
-        background: rgba(0, 0, 0, 0.3);
-        border: 1px solid var(--border-subtle);
-        border-radius: 12px;
-        padding: 16px 8px;
-        text-align: center;
-      }
-
-      .countdown-box .value {
-        font-family: "Orbitron", monospace;
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        display: block;
-        line-height: 1;
-      }
-
-      .countdown-box .label {
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-top: 6px;
-      }
-
-      .race-card-details {
-        display: flex;
-        gap: 20px;
-        padding-top: 20px;
-        border-top: 1px solid var(--border-subtle);
-      }
-
-      .race-detail {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-      }
-
-      .race-detail .icon {
-        font-size: 1.1rem;
-      }
-
-      /* Featured Section */
-      .featured-section {
-        padding: 100px 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(230, 57, 70, 0.03) 50%,
-          transparent 100%
-        );
-      }
-
-      .featured-grid {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 32px;
-      }
-
-      .featured-article {
-        background: var(--bg-glass);
-        border: 1px solid var(--border-subtle);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all var(--transition-normal);
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .featured-article:hover {
-        border-color: var(--border-hover);
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-glow);
-      }
-
-      .featured-article-image {
-        height: 280px;
-        background: linear-gradient(
-          135deg,
-          rgba(230, 57, 70, 0.2),
-          rgba(0, 123, 255, 0.2)
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 6rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .featured-article-image::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-        background: linear-gradient(to top, var(--bg-card), transparent);
-      }
-
-      .featured-article-content {
-        padding: 28px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .article-category {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(230, 57, 70, 0.15);
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--primary);
-        width: fit-content;
-        margin-bottom: 16px;
-      }
-
-      .featured-article h3 {
+      .logo {
+        font-family: "Space Grotesk", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
         color: var(--text-primary);
-        margin-bottom: 12px;
-        line-height: 1.3;
+        text-decoration: none;
       }
 
-      .featured-article p {
+      .logo span {
+        color: var(--primary);
+      }
+
+      nav {
+        display: flex;
+        gap: 32px;
+      }
+
+      nav a {
         color: var(--text-secondary);
+        text-decoration: none;
         font-size: 0.95rem;
-        line-height: 1.6;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      nav a:hover {
+        color: var(--text-primary);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 160px 0 100px;
+        text-align: center;
+      }
+
+      .hero-tag {
+        display: inline-block;
+        background: var(--gradient);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        line-height: 1.1;
         margin-bottom: 20px;
-        flex: 1;
+      }
+
+      .hero h1 span {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 40px;
+      }
+
+      /* Stats Bar */
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        padding: 40px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 80px;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-value {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      /* Featured Article */
+      .featured {
+        margin-bottom: 80px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+
+      .section-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .view-all {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+
+      .featured-card {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 48px;
+        background: var(--bg-card);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+
+      .featured-image {
+        aspect-ratio: 16/10;
+        background: linear-gradient(135deg, #1a1a1d 0%, #2d2d30 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .featured-content {
+        padding: 48px 48px 48px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .article-category {
+        color: var(--primary);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 16px;
+      }
+
+      .featured-content h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.75rem;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+
+      .featured-content p {
+        color: var(--text-secondary);
+        margin-bottom: 24px;
       }
 
       .article-meta {
         display: flex;
-        align-items: center;
         gap: 16px;
-        font-size: 0.85rem;
         color: var(--text-muted);
+        font-size: 0.9rem;
       }
 
-      .article-meta span {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      /* Quick Links Stack */
-      .quick-links-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .quick-link-card {
-        background: var(--bg-glass);
-        border: 1px solid var(--border-subtle);
-        border-radius: 16px;
-        padding: 24px;
-        text-decoration: none;
-        transition: all var(--transition-normal);
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .quick-link-card:hover {
-        border-color: var(--border-hover);
-        transform: translateX(8px);
-        background: rgba(230, 57, 70, 0.05);
-      }
-
-      .quick-link-icon {
-        width: 56px;
-        height: 56px;
-        background: linear-gradient(
-          135deg,
-          var(--primary),
-          var(--primary-light)
-        );
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        flex-shrink: 0;
-      }
-
-      .quick-link-card.esports .quick-link-icon {
-        background: linear-gradient(135deg, #9c27b0, #e040fb);
-      }
-
-      .quick-link-card.predictions .quick-link-icon {
-        background: linear-gradient(135deg, #007bff, #00bcd4);
-      }
-
-      .quick-link-content h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 4px;
-      }
-
-      .quick-link-content p {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        margin: 0;
-      }
-
-      .quick-link-arrow {
-        margin-left: auto;
-        font-size: 1.2rem;
-        color: var(--text-muted);
-        transition: transform var(--transition-fast);
-      }
-
-      .quick-link-card:hover .quick-link-arrow {
-        transform: translateX(4px);
-        color: var(--primary);
-      }
-
-      /* Race Calendar Preview */
-      .calendar-section {
-        padding: 100px 0;
-      }
-
-      .calendar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 40px;
-      }
-
-      .calendar-header h2 {
-        font-size: 2rem;
-        font-weight: 700;
-      }
-
-      .calendar-header .view-all {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: gap var(--transition-fast);
-      }
-
-      .calendar-header .view-all:hover {
-        gap: 10px;
-      }
-
-      .races-timeline {
+      /* Article Grid */
+      .articles-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 24px;
+        margin-bottom: 80px;
       }
 
-      .race-timeline-card {
-        background: var(--bg-glass);
-        border: 1px solid var(--border-subtle);
-        border-radius: 16px;
-        padding: 24px;
-        position: relative;
-        transition: all var(--transition-normal);
-      }
-
-      .race-timeline-card:hover {
-        border-color: var(--border-hover);
-        transform: translateY(-4px);
-      }
-
-      .race-timeline-card.next {
-        border-color: var(--primary);
-        background: rgba(230, 57, 70, 0.05);
-      }
-
-      .race-timeline-card.next::before {
-        content: "NEXT";
-        position: absolute;
-        top: -10px;
-        right: 20px;
-        background: var(--primary);
-        color: white;
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: 10px;
-      }
-
-      .race-date-badge {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.3);
+      .article-card {
+        background: var(--bg-card);
         border-radius: 12px;
-        padding: 12px 16px;
-        width: fit-content;
-        margin-bottom: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition:
+          transform 0.2s,
+          border-color 0.2s;
       }
 
-      .race-date-badge .month {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--primary);
-        font-weight: 600;
+      .article-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary);
       }
 
-      .race-date-badge .day {
-        font-family: "Orbitron", monospace;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        line-height: 1;
-      }
-
-      .race-timeline-card h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .race-timeline-info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        font-size: 0.85rem;
-        color: var(--text-muted);
-      }
-
-      .race-timeline-info span {
+      .article-image {
+        aspect-ratio: 16/9;
+        background: linear-gradient(135deg, #1a1a1d 0%, #2d2d30 100%);
         display: flex;
         align-items: center;
-        gap: 4px;
-      }
-
-      .series-tag {
-        display: inline-block;
-        font-size: 0.7rem;
-        font-weight: 600;
-        padding: 4px 8px;
-        border-radius: 6px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 12px;
-      }
-
-      .series-tag.imsa {
-        background: rgba(0, 123, 255, 0.15);
-        color: #007bff;
-      }
-
-      .series-tag.wec {
-        background: rgba(230, 57, 70, 0.15);
-        color: #e63946;
-      }
-
-      /* Esports Preview Section */
-      .esports-section {
-        padding: 100px 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(156, 39, 176, 0.05) 50%,
-          transparent 100%
-        );
-      }
-
-      .esports-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr;
-        gap: 48px;
-        align-items: center;
-      }
-
-      .esports-info h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-      }
-
-      .esports-info p {
-        color: var(--text-secondary);
-        font-size: 1.05rem;
-        line-height: 1.7;
-        margin-bottom: 24px;
-      }
-
-      .esports-stats {
-        display: flex;
-        gap: 32px;
-        margin-bottom: 28px;
-      }
-
-      .esports-stat {
-        text-align: left;
-      }
-
-      .esports-stat .value {
-        font-family: "Orbitron", monospace;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #9c27b0;
-        display: block;
-      }
-
-      .esports-stat .label {
-        font-size: 0.85rem;
+        justify-content: center;
         color: var(--text-muted);
+        font-size: 0.85rem;
       }
 
-      .drivers-showcase {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-      }
-
-      .driver-card {
-        background: var(--bg-glass);
-        border: 1px solid var(--border-subtle);
-        border-radius: 16px;
+      .article-content {
         padding: 24px;
-        text-align: center;
-        transition: all var(--transition-normal);
       }
 
-      .driver-card:hover {
-        border-color: rgba(156, 39, 176, 0.4);
-        transform: translateY(-4px);
-      }
-
-      .driver-avatar {
-        width: 72px;
-        height: 72px;
-        background: linear-gradient(135deg, #9c27b0, #e040fb);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        margin: 0 auto 16px;
-      }
-
-      .driver-card h4 {
-        font-size: 1rem;
+      .article-content h3 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.15rem;
         font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 4px;
-      }
-
-      .driver-card .role {
-        font-size: 0.8rem;
-        color: var(--text-muted);
         margin-bottom: 12px;
+        line-height: 1.4;
       }
 
-      .driver-card .platforms {
-        display: flex;
-        gap: 6px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .platform-badge {
-        font-size: 0.7rem;
-        padding: 4px 8px;
-        background: rgba(156, 39, 176, 0.15);
-        color: #e040fb;
-        border-radius: 6px;
-        font-weight: 500;
-      }
-
-      /* Predictions CTA */
-      .predictions-cta {
-        padding: 80px 0;
-      }
-
-      .predictions-banner {
-        background: linear-gradient(
-          135deg,
-          rgba(0, 123, 255, 0.1),
-          rgba(230, 57, 70, 0.1)
-        );
-        border: 1px solid var(--border-subtle);
-        border-radius: 24px;
-        padding: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 40px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .predictions-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 400px;
-        height: 100%;
-        background: radial-gradient(
-          circle at 100% 50%,
-          rgba(0, 123, 255, 0.1),
-          transparent 70%
-        );
-      }
-
-      .predictions-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      .predictions-content h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 12px;
-      }
-
-      .predictions-content p {
+      .article-content p {
         color: var(--text-secondary);
-        font-size: 1.05rem;
-        max-width: 500px;
+        font-size: 0.95rem;
+        margin-bottom: 16px;
       }
 
-      .predictions-stats {
-        display: flex;
-        gap: 48px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .prediction-stat {
-        text-align: center;
-      }
-
-      .prediction-stat .value {
-        font-family: "Orbitron", monospace;
-        font-size: 2.5rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #007bff, #00bcd4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: block;
-      }
-
-      .prediction-stat .label {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-      }
-
-      /* Series Overview */
-      .series-section {
-        padding: 100px 0;
-      }
-
-      .series-cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
-
-      .series-card-new {
-        background: var(--bg-glass);
-        border: 1px solid var(--border-subtle);
+      /* Newsletter */
+      .newsletter {
+        background: var(--bg-card);
         border-radius: 16px;
-        padding: 28px;
+        padding: 64px;
         text-align: center;
-        transition: all var(--transition-normal);
-        text-decoration: none;
-        position: relative;
-        overflow: hidden;
+        border: 1px solid var(--border);
+        margin-bottom: 80px;
       }
 
-      .series-card-new::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: var(--series-color, var(--primary));
-      }
-
-      .series-card-new:hover {
-        border-color: var(--border-hover);
-        transform: translateY(-4px);
-      }
-
-      .series-logo-new {
-        font-family: "Orbitron", monospace;
+      .newsletter h2 {
+        font-family: "Space Grotesk", sans-serif;
         font-size: 2rem;
-        font-weight: 800;
-        color: var(--series-color, var(--primary));
         margin-bottom: 16px;
       }
 
-      .series-card-new h4 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-      }
-
-      .series-card-new p {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-bottom: 16px;
-      }
-
-      .series-meta {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        font-size: 0.8rem;
+      .newsletter p {
         color: var(--text-secondary);
-      }
-
-      /* Footer CTA */
-      .footer-cta {
-        padding: 80px 0;
-        text-align: center;
-        background: linear-gradient(
-          180deg,
-          transparent,
-          rgba(230, 57, 70, 0.05)
-        );
-      }
-
-      .footer-cta h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-      }
-
-      .footer-cta p {
-        color: var(--text-secondary);
-        font-size: 1.1rem;
+        margin-bottom: 32px;
         max-width: 500px;
-        margin: 0 auto 32px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .footer-cta-buttons {
+      .newsletter-form {
         display: flex;
-        gap: 16px;
-        justify-content: center;
+        gap: 12px;
+        max-width: 450px;
+        margin: 0 auto;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 14px 20px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--bg-dark);
+        color: var(--text-primary);
+        font-size: 1rem;
+      }
+
+      .newsletter-form input:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .newsletter-form button {
+        padding: 14px 28px;
+        background: var(--gradient);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+
+      .newsletter-form button:hover {
+        opacity: 0.9;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 48px 0;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+
+      .footer-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--text-secondary);
+      }
+
+      .copyright {
+        color: var(--text-muted);
+        font-size: 0.9rem;
       }
 
       /* Responsive */
-      @media (max-width: 1024px) {
-        .hero-grid {
-          grid-template-columns: 1fr;
-          gap: 48px;
-        }
-
-        .featured-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .esports-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .series-cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .predictions-banner {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .predictions-content {
-          text-align: center;
-        }
-
-        .predictions-content p {
-          margin: 0 auto;
-        }
-      }
-
       @media (max-width: 768px) {
-        .hero-home {
-          padding: 100px 0 60px;
-        }
-
-        .hero-stats-bar {
-          flex-wrap: wrap;
-          gap: 24px;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-        }
-
-        .countdown-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-
-        .countdown-box .value {
-          font-size: 1.5rem;
-        }
-
-        .drivers-showcase {
+        .featured-card {
           grid-template-columns: 1fr;
         }
 
-        .series-cards {
-          grid-template-columns: 1fr;
+        .featured-content {
+          padding: 32px;
         }
 
-        .predictions-stats {
+        .newsletter {
+          padding: 40px 24px;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .footer-content {
           flex-direction: column;
           gap: 24px;
+          text-align: center;
         }
 
-        .footer-cta-buttons {
-          flex-direction: column;
-          align-items: center;
+        nav {
+          display: none;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Skip to Content Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Page Loader -->
-    <div class="page-loader" id="pageLoader">
-      <div class="loader-content">
-        <div class="loader-logo">🏎️</div>
-        <div class="loader-bar"></div>
-      </div>
-    </div>
-
-    <!-- Navigation -->
     <header>
       <div class="container">
         <div class="header-content">
-          <a href="index.html" class="logo" aria-label="iomotorsport Home">
-            <div class="logo-icon" aria-hidden="true">
-              <img
-                src="images/logos/iomotorsport-logo.png"
-                alt="iomotorsport logo"
-              />
-            </div>
-            io<span>motorsport</span>
-          </a>
-          <nav aria-label="Main navigation">
-            <ul class="nav-links">
-              <li>
-                <a href="index.html" class="active" aria-current="page">Home</a>
-              </li>
-              <li><a href="endurance.html">Endurance</a></li>
-              <li><a href="esports.html">Esports</a></li>
-              <li><a href="predictions.html">Predictions</a></li>
-              <li><a href="hub.html" class="nav-cta">Hub</a></li>
-            </ul>
-            <button
-              class="mobile-menu-btn"
-              onclick="toggleMobileMenu()"
-              aria-label="Toggle mobile menu"
-              aria-expanded="false"
-            >
-              ☰
-            </button>
+          <a href="index.html" class="logo">io<span>motorsport</span></a>
+          <nav>
+            <a href="index.html">Home</a>
+            <a href="articles.html">Articles</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
           </nav>
-        </div>
-        <div
-          class="mobile-nav"
-          id="mobileNav"
-          role="navigation"
-          aria-label="Mobile navigation"
-        >
-          <a href="index.html" class="active">Home</a>
-          <a href="endurance.html">Endurance</a>
-          <a href="esports.html">Esports</a>
-          <a href="predictions.html">Predictions</a>
-          <a href="hub.html">Hub</a>
         </div>
       </div>
     </header>
 
-    <main id="main-content">
-      <!-- Hero Section -->
-      <section class="hero-home">
+    <main>
+      <section class="hero">
         <div class="container">
-          <div class="hero-grid">
-            <div class="hero-text">
-              <div class="hero-label">
-                <span class="pulse-dot"></span>
-                Endurance Racing Hub
-              </div>
-              <h1>
-                The Heart of<br />
-                <span class="highlight">Endurance Racing</span>
-              </h1>
-              <p class="hero-description">
-                Your complete destination for WEC, IMSA, and sportscar racing.
-                Expert analysis, race predictions, esports coverage, and a
-                passionate community of motorsport enthusiasts.
-              </p>
-              <div class="hero-buttons">
-                <a href="endurance.html" class="btn btn-primary">
-                  <span>🏁</span> Explore Racing
-                </a>
-                <a href="predictions.html" class="btn btn-secondary">
-                  <span>📊</span> View Predictions
-                </a>
-              </div>
-              <div class="hero-stats-bar">
-                <div class="hero-stat">
-                  <span class="stat-value" data-value="4">4</span>
-                  <span class="stat-label">Racing Series</span>
-                </div>
-                <div class="hero-stat">
-                  <span class="stat-value" data-value="85">85%</span>
-                  <span class="stat-label">Prediction Accuracy</span>
-                </div>
-                <div class="hero-stat">
-                  <span class="stat-value" data-value="12">12</span>
-                  <span class="stat-label">Esports Drivers</span>
-                </div>
-                <div class="hero-stat">
-                  <span class="stat-value" data-value="50">50+</span>
-                  <span class="stat-label">Races Covered</span>
-                </div>
-              </div>
-            </div>
+          <span class="hero-tag">Motorsport Business Intelligence</span>
+          <h1>The <span>Business</span> Behind<br />World-Class Racing</h1>
+          <p>
+            Deep analysis of team valuations, sponsorship economics,
+            manufacturer investments, and the financial forces driving modern
+            motorsport.
+          </p>
+        </div>
+      </section>
 
-            <!-- Next Race Countdown Card -->
-            <div class="next-race-card">
-              <div class="race-card-header">
-                <span class="race-series-badge"> <span>🇺🇸</span> IMSA </span>
-                <span class="race-round">Round 1 of 12</span>
-              </div>
-              <h3 class="race-card-title">Rolex 24 at Daytona</h3>
-              <div class="race-card-circuit">
-                <span>📍</span> Daytona International Speedway
-              </div>
-
-              <div class="countdown-grid">
-                <div class="countdown-box">
-                  <span class="value" id="days">--</span>
-                  <span class="label">Days</span>
-                </div>
-                <div class="countdown-box">
-                  <span class="value" id="hours">--</span>
-                  <span class="label">Hours</span>
-                </div>
-                <div class="countdown-box">
-                  <span class="value" id="mins">--</span>
-                  <span class="label">Mins</span>
-                </div>
-                <div class="countdown-box">
-                  <span class="value" id="secs">--</span>
-                  <span class="label">Secs</span>
-                </div>
-              </div>
-
-              <div class="race-card-details">
-                <div class="race-detail">
-                  <span class="icon">📅</span>
-                  <span>Jan 24-25, 2026</span>
-                </div>
-                <div class="race-detail">
-                  <span class="icon">⏱️</span>
-                  <span>24 Hours</span>
-                </div>
-              </div>
-            </div>
+      <section class="stats-bar">
+        <div class="container" style="display: contents">
+          <div class="stat">
+            <div class="stat-value">$22.7B</div>
+            <div class="stat-label">Combined F1 Grid Value</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">$75M</div>
+            <div class="stat-label">Average Team Sponsorship</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">$3.2B</div>
+            <div class="stat-label">Annual F1 Revenue</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">12</div>
+            <div class="stat-label">Active Manufacturer Programs</div>
           </div>
         </div>
       </section>
 
-      <!-- Featured Content Section -->
-      <section class="featured-section">
+      <section class="featured">
         <div class="container">
           <div class="section-header">
-            <span class="section-tag">Latest Content</span>
-            <h2>Featured Stories</h2>
-            <p>
-              In-depth analysis and coverage from the world of endurance racing
-            </p>
+            <h2 class="section-title">Featured Analysis</h2>
+            <a href="articles.html" class="view-all">View all articles →</a>
           </div>
+          <article class="featured-card">
+            <div class="featured-image">[Featured Image]</div>
+            <div class="featured-content">
+              <span class="article-category">Valuations</span>
+              <h2>
+                F1 Team Valuations 2026: Who's Worth What and Why It Matters
+              </h2>
+              <p>
+                A comprehensive breakdown of every Formula 1 team's current
+                market value, from Ferrari's $6.5 billion empire to the
+                mid-field's surprising growth stories.
+              </p>
+              <div class="article-meta">
+                <span>February 18, 2026</span>
+                <span>18 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-          <div class="featured-grid">
-            <!-- Featured Article -->
-            <a
-              href="hub/endurance/le-mans-2026-preview.html"
-              class="featured-article"
-            >
-              <div class="featured-article-image">🏁</div>
-              <div class="featured-article-content">
-                <span class="article-category">
-                  <span>🏆</span> Endurance Racing
-                </span>
-                <h3>24 Hours of Le Mans 2026: The Ultimate Preview Guide</h3>
+      <section class="latest">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Latest Articles</h2>
+          </div>
+          <div class="articles-grid">
+            <article class="article-card">
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Deals & M&A</span>
+                <h3>
+                  Inside the Andretti-Cadillac F1 Deal: A $600M Bet on American
+                  Racing
+                </h3>
                 <p>
-                  Everything you need to know about the centenary-era Le Mans.
-                  From Hypercar battles to the GT3 revolution, we break down
-                  what promises to be one of the most competitive editions in
-                  history.
+                  Breaking down the financial structure and strategic
+                  implications of F1's newest team.
                 </p>
                 <div class="article-meta">
-                  <span>📅 Jan 20, 2026</span>
-                  <span>⏱️ 15 min read</span>
+                  <span>Feb 15, 2026</span>
+                  <span>12 min read</span>
                 </div>
               </div>
-            </a>
-
-            <!-- Quick Links -->
-            <div class="quick-links-stack">
-              <a
-                href="hub/tech/toyota-gr010-evolution.html"
-                class="quick-link-card"
-              >
-                <div class="quick-link-icon">⚙️</div>
-                <div class="quick-link-content">
-                  <h4>Toyota GR010 Evolution</h4>
-                  <p>A technical deep dive into Toyota's Le Mans winner</p>
+            </article>
+            <article class="article-card">
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Economics</span>
+                <h3>
+                  NASCAR Charter Economics: Why Teams Are Worth $40M+ in 2026
+                </h3>
+                <p>
+                  The business model behind NASCAR's franchise system and its
+                  impact on team valuations.
+                </p>
+                <div class="article-meta">
+                  <span>Feb 12, 2026</span>
+                  <span>10 min read</span>
                 </div>
-                <span class="quick-link-arrow">→</span>
-              </a>
-
-              <a href="esports.html" class="quick-link-card esports">
-                <div class="quick-link-icon">🎮</div>
-                <div class="quick-link-content">
-                  <h4>Meet Our Esports Team</h4>
-                  <p>12 drivers competing across iRacing, ACC & more</p>
+              </div>
+            </article>
+            <article class="article-card">
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Sponsorship</span>
+                <h3>The $500M Question: Decoding F1's Title Sponsor Market</h3>
+                <p>
+                  Why brands are paying record sums and what they're actually
+                  getting in return.
+                </p>
+                <div class="article-meta">
+                  <span>Feb 10, 2026</span>
+                  <span>14 min read</span>
                 </div>
-                <span class="quick-link-arrow">→</span>
-              </a>
-
-              <a href="predictions.html" class="quick-link-card predictions">
-                <div class="quick-link-icon">📊</div>
-                <div class="quick-link-content">
-                  <h4>Daytona 24 Predictions</h4>
-                  <p>Our data-driven picks for the season opener</p>
-                </div>
-                <span class="quick-link-arrow">→</span>
-              </a>
-
-              <a href="hub.html" class="quick-link-card">
-                <div class="quick-link-icon">📰</div>
-                <div class="quick-link-content">
-                  <h4>Browse All Articles</h4>
-                  <p>Tech analysis, history, driver profiles & more</p>
-                </div>
-                <span class="quick-link-arrow">→</span>
-              </a>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Race Calendar Preview -->
-      <section class="calendar-section">
+      <section class="newsletter">
         <div class="container">
-          <div class="calendar-header">
-            <div>
-              <span class="section-tag">2026 Season</span>
-              <h2>Upcoming Races</h2>
-            </div>
-            <a href="endurance.html" class="view-all"
-              >View Full Calendar <span>→</span></a
-            >
-          </div>
-
-          <div class="races-timeline">
-            <div class="race-timeline-card next">
-              <div class="race-date-badge">
-                <span class="month">Jan</span>
-                <span class="day">24</span>
-              </div>
-              <span class="series-tag imsa">IMSA</span>
-              <h4>Rolex 24 at Daytona</h4>
-              <div class="race-timeline-info">
-                <span>📍 Daytona Beach, FL</span>
-                <span>⏱️ 24 Hours</span>
-              </div>
-            </div>
-
-            <div class="race-timeline-card">
-              <div class="race-date-badge">
-                <span class="month">Feb</span>
-                <span class="day">07</span>
-              </div>
-              <span class="series-tag wec">WEC</span>
-              <h4>1812 km of Qatar</h4>
-              <div class="race-timeline-info">
-                <span>📍 Lusail, Qatar</span>
-                <span>⏱️ 10 Hours</span>
-              </div>
-            </div>
-
-            <div class="race-timeline-card">
-              <div class="race-date-badge">
-                <span class="month">Mar</span>
-                <span class="day">21</span>
-              </div>
-              <span class="series-tag imsa">IMSA</span>
-              <h4>Sebring 12 Hours</h4>
-              <div class="race-timeline-info">
-                <span>📍 Sebring, FL</span>
-                <span>⏱️ 12 Hours</span>
-              </div>
-            </div>
-
-            <div class="race-timeline-card">
-              <div class="race-date-badge">
-                <span class="month">Mar</span>
-                <span class="day">28</span>
-              </div>
-              <span class="series-tag imsa">IMSA</span>
-              <h4>12 Hours of Savannah</h4>
-              <div class="race-timeline-info">
-                <span>📍 Savannah, GA</span>
-                <span>⏱️ 12 Hours</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Esports Section -->
-      <section class="esports-section">
-        <div class="container">
-          <div class="esports-grid">
-            <div class="esports-info">
-              <span class="section-tag">Sim Racing</span>
-              <h2>iomotorsport Esports</h2>
-              <p>
-                Our competitive sim racing team competes at the highest level
-                across iRacing, ACC, Gran Turismo, and more. Meet our talented
-                roster of drivers pushing the limits of virtual motorsport.
-              </p>
-              <div class="esports-stats">
-                <div class="esports-stat">
-                  <span class="value">47</span>
-                  <span class="label">Total Wins</span>
-                </div>
-                <div class="esports-stat">
-                  <span class="value">128</span>
-                  <span class="label">Podiums</span>
-                </div>
-                <div class="esports-stat">
-                  <span class="value">3</span>
-                  <span class="label">Championships</span>
-                </div>
-              </div>
-              <a href="esports.html" class="btn btn-primary">
-                <span>🎮</span> Meet the Team
-              </a>
-            </div>
-
-            <div class="drivers-showcase">
-              <div class="driver-card">
-                <div class="driver-avatar">🏎️</div>
-                <h4>Alex Velocity</h4>
-                <p class="role">Lead Driver</p>
-                <div class="platforms">
-                  <span class="platform-badge">iRacing</span>
-                  <span class="platform-badge">ACC</span>
-                </div>
-              </div>
-
-              <div class="driver-card">
-                <div class="driver-avatar">🏁</div>
-                <h4>Maria Santos</h4>
-                <p class="role">Pro Driver</p>
-                <div class="platforms">
-                  <span class="platform-badge">GT</span>
-                  <span class="platform-badge">ACC</span>
-                </div>
-              </div>
-
-              <div class="driver-card">
-                <div class="driver-avatar">⚡</div>
-                <h4>Mike Chen</h4>
-                <p class="role">Pro Driver</p>
-                <div class="platforms">
-                  <span class="platform-badge">iRacing</span>
-                  <span class="platform-badge">F1</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Predictions CTA -->
-      <section class="predictions-cta">
-        <div class="container">
-          <div class="predictions-banner">
-            <div class="predictions-content">
-              <span class="section-tag">Data-Driven Analysis</span>
-              <h2>Race Predictions</h2>
-              <p>
-                Our expert predictions combine historical data, current form,
-                and technical analysis to forecast race outcomes across WEC,
-                IMSA, and more.
-              </p>
-              <a
-                href="predictions.html"
-                class="btn btn-primary"
-                style="margin-top: 20px"
-              >
-                <span>📊</span> View All Predictions
-              </a>
-            </div>
-            <div class="predictions-stats">
-              <div class="prediction-stat">
-                <span class="value">85%</span>
-                <span class="label">Winner Accuracy</span>
-              </div>
-              <div class="prediction-stat">
-                <span class="value">72%</span>
-                <span class="label">Podium Accuracy</span>
-              </div>
-              <div class="prediction-stat">
-                <span class="value">52</span>
-                <span class="label">Races Predicted</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Series Coverage -->
-      <section class="series-section">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-tag">Coverage</span>
-            <h2>Racing Series We Follow</h2>
-            <p>
-              Comprehensive coverage across the world's premier endurance
-              championships
-            </p>
-          </div>
-
-          <div class="series-cards">
-            <a
-              href="endurance.html"
-              class="series-card-new"
-              style="--series-color: #e63946"
-            >
-              <div class="series-logo-new">WEC</div>
-              <h4>FIA World Endurance Championship</h4>
-              <p>The pinnacle of global endurance racing</p>
-              <div class="series-meta">
-                <span>8 Rounds</span>
-                <span>5 Classes</span>
-              </div>
-            </a>
-
-            <a
-              href="endurance.html"
-              class="series-card-new"
-              style="--series-color: #007bff"
-            >
-              <div class="series-logo-new">IMSA</div>
-              <h4>IMSA SportsCar Championship</h4>
-              <p>North America's premier sportscar series</p>
-              <div class="series-meta">
-                <span>12 Rounds</span>
-                <span>4 Classes</span>
-              </div>
-            </a>
-
-            <a
-              href="endurance.html"
-              class="series-card-new"
-              style="--series-color: #28a745"
-            >
-              <div class="series-logo-new">ELMS</div>
-              <h4>European Le Mans Series</h4>
-              <p>Europe's top Le Mans prototype series</p>
-              <div class="series-meta">
-                <span>6 Rounds</span>
-                <span>3 Classes</span>
-              </div>
-            </a>
-
-            <a
-              href="endurance.html"
-              class="series-card-new"
-              style="--series-color: #9c27b0"
-            >
-              <div class="series-logo-new">GTWC</div>
-              <h4>GT World Challenge</h4>
-              <p>Global GT3 racing excellence</p>
-              <div class="series-meta">
-                <span>Multiple Regions</span>
-                <span>GT3</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer CTA -->
-      <section class="footer-cta">
-        <div class="container">
-          <h2>Ready to Dive In?</h2>
+          <h2>Get the Business Edge</h2>
           <p>
-            Explore our complete coverage of endurance racing, from technical
-            analysis to race predictions and esports.
+            Weekly analysis of motorsport business moves, delivered every
+            Monday. No fluff, just insights.
           </p>
-          <div class="footer-cta-buttons">
-            <a href="hub.html" class="btn btn-primary">
-              <span>📰</span> Read the Blog
-            </a>
-            <a href="about.html" class="btn btn-secondary">
-              <span>ℹ️</span> About Us
-            </a>
-          </div>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer>
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <a href="index.html" class="logo">
-              <div class="logo-icon">
-                <img
-                  src="images/logos/iomotorsport-logo.png"
-                  alt="iomotorsport logo"
-                />
-              </div>
-              io<span>motorsport</span>
-            </a>
-            <p>
-              Your complete endurance racing hub. WEC, IMSA, and sportscar
-              coverage, predictions, esports, and analysis.
-            </p>
-          </div>
-
+        <div class="footer-content">
           <div class="footer-links">
-            <h4>Racing</h4>
-            <a href="endurance.html">Endurance</a>
-            <a href="endurance.html#calendar">Calendar</a>
-            <a href="endurance.html#entries">Entry Lists</a>
-            <a href="predictions.html">Predictions</a>
-          </div>
-
-          <div class="footer-links">
-            <h4>Content</h4>
-            <a href="hub.html">Blog Hub</a>
-            <a href="esports.html">Esports Team</a>
-            <a href="hub.html#tech">Tech Analysis</a>
-            <a href="hub.html#history">Racing History</a>
-          </div>
-
-          <div class="footer-links">
-            <h4>More</h4>
-            <a href="about.html">About Us</a>
+            <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
           </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>&copy; 2026 iomotorsport. All rights reserved.</p>
+          <p class="copyright">© 2026 iomotorsport. All rights reserved.</p>
         </div>
       </div>
     </footer>
-
-    <script>
-      // ==========================================
-      // Performance-optimized JavaScript
-      // ==========================================
-
-      // Debounce utility
-      function debounce(func, wait = 10) {
-        let timeout;
-        return function executedFunction(...args) {
-          const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-          };
-          clearTimeout(timeout);
-          timeout = setTimeout(later, wait);
-        };
-      }
-
-      // Hide page loader
-      window.addEventListener("load", () => {
-        const loader = document.getElementById("pageLoader");
-        setTimeout(() => {
-          loader.classList.add("hidden");
-          setTimeout(() => loader.remove(), 500);
-        }, 400);
-      });
-
-      // Mobile Menu Toggle
-      function toggleMobileMenu() {
-        const mobileNav = document.getElementById("mobileNav");
-        const menuBtn = document.querySelector(".mobile-menu-btn");
-        const isOpen = mobileNav.classList.toggle("active");
-        menuBtn.textContent = isOpen ? "✕" : "☰";
-        menuBtn.setAttribute("aria-expanded", isOpen);
-        if (isOpen) {
-          mobileNav.querySelector("a")?.focus();
-        }
-      }
-
-      // Close mobile menu on escape
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          const mobileNav = document.getElementById("mobileNav");
-          if (mobileNav.classList.contains("active")) {
-            toggleMobileMenu();
-          }
-        }
-      });
-
-      // Header scroll effect
-      const header = document.querySelector("header");
-      let lastScroll = 0;
-      let ticking = false;
-
-      function updateHeader() {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-        if (currentScroll > lastScroll && currentScroll > 200) {
-          header.style.transform = "translateY(-100%)";
-        } else {
-          header.style.transform = "translateY(0)";
-        }
-        lastScroll = currentScroll;
-        ticking = false;
-      }
-
-      window.addEventListener("scroll", () => {
-        if (!ticking) {
-          requestAnimationFrame(updateHeader);
-          ticking = true;
-        }
-      });
-
-      // Countdown Timer - Rolex 24 at Daytona 2026
-      const raceDate = new Date("2026-01-24T14:30:00-05:00").getTime();
-
-      function updateCountdown() {
-        const now = Date.now();
-        const distance = raceDate - now;
-
-        if (distance > 0) {
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-          );
-          const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const secs = Math.floor((distance % (1000 * 60)) / 1000);
-
-          updateNumber("days", days);
-          updateNumber("hours", hours);
-          updateNumber("mins", mins);
-          updateNumber("secs", secs);
-        } else {
-          // Race in progress or completed
-          const countdownGrid = document.querySelector(".countdown-grid");
-          if (countdownGrid) {
-            countdownGrid.innerHTML =
-              '<div class="race-live-badge" style="grid-column: 1/-1; text-align: center; padding: 20px;"><span style="color: var(--primary); font-family: Orbitron; font-weight: 700; font-size: 1.5rem; animation: pulse 1s infinite;">🔴 RACE WEEKEND</span></div>';
-          }
-        }
-      }
-
-      function updateNumber(id, value) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const newValue = value.toString().padStart(2, "0");
-        if (el.textContent !== newValue) {
-          el.style.transform = "scale(1.1)";
-          el.textContent = newValue;
-          requestAnimationFrame(() => {
-            el.style.transform = "scale(1)";
-          });
-        }
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const animateOnScroll = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-            animateOnScroll.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      // Setup animations
-      const animatedElements = document.querySelectorAll(
-        ".featured-article, .quick-link-card, .race-timeline-card, .driver-card, .series-card-new, .next-race-card",
-      );
-
-      animatedElements.forEach((el, index) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
-
-        const parent = el.closest(
-          ".featured-grid, .races-timeline, .drivers-showcase, .series-cards, .quick-links-stack",
-        );
-        if (parent) {
-          const siblings = Array.from(parent.children);
-          const siblingIndex = siblings.indexOf(el);
-          el.style.transitionDelay = `${siblingIndex * 0.1}s`;
-        }
-
-        animateOnScroll.observe(el);
-      });
-
-      // Animate stats on scroll
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateValue(entry.target);
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 },
-      );
-
-      function animateValue(el) {
-        const text = el.textContent;
-        const hasPlus = text.includes("+");
-        const hasPercent = text.includes("%");
-        let num = parseFloat(text.replace(/[^0-9.]/g, ""));
-        const duration = 1500;
-        const start = performance.now();
-
-        const animate = (now) => {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = num * eased;
-
-          let display = Math.round(current).toString();
-          if (hasPlus) display += "+";
-          if (hasPercent) display += "%";
-
-          el.textContent = display;
-
-          if (progress < 1) {
-            requestAnimationFrame(animate);
-          }
-        };
-
-        requestAnimationFrame(animate);
-      }
-
-      document
-        .querySelectorAll(".stat-value, .hero-stat .stat-value")
-        .forEach((el) => {
-          statsObserver.observe(el);
-        });
-
-      // CSS for animated elements
-      const style = document.createElement("style");
-      style.textContent = `
-        .animate-in {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-        
-        header {
-          transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-        }
-      `;
-      document.head.appendChild(style);
-
-      // Prefetch pages when idle
-      const preloadAssets = () => {
-        const links = [
-          { href: "endurance.html", as: "document" },
-          { href: "esports.html", as: "document" },
-          { href: "predictions.html", as: "document" },
-        ];
-        links.forEach(({ href, as }) => {
-          const link = document.createElement("link");
-          link.rel = "prefetch";
-          link.href = href;
-          link.as = as;
-          document.head.appendChild(link);
-        });
-      };
-
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(preloadAssets);
-      } else {
-        setTimeout(preloadAssets, 2000);
-      }
-    </script>
   </body>
 </html>
