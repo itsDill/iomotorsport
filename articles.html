@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Articles and analysis on motorsport business - team valuations, sponsorship deals, M&A, economics, and manufacturer strategies across F1, NASCAR, IMSA, and WRC."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="author" content="iomotorsport" />
+    <meta property="og:title" content="Articles | iomotorsport" />
+    <meta
+      property="og:description"
+      content="In-depth articles on motorsport business - team valuations, sponsorship deals, M&A, economics, and manufacturer strategies."
+    />
+    <meta property="og:image" content="https://iomotorsport.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://iomotorsport.com/articles.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Articles | iomotorsport" />
+    <meta
+      name="twitter:description"
+      content="In-depth articles on motorsport business, valuations, sponsorships, and financial analysis."
+    />
+    <meta
+      name="twitter:image"
+      content="https://iomotorsport.com/og-image.jpg"
+    />
+    <link rel="canonical" href="https://iomotorsport.com/articles.html" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/logos/iomotorsport-logo.png"
+    />
+    <title>Articles | iomotorsport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      gtag("config", "G-SLERGKLNWP");
+    </script>
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Cookie Consent Manager -->
+    <script src="js/cookie-consent.js" defer></script>
+  </head>
+  <body>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo" aria-label="iomotorsport Home">
+            <div class="logo-icon" aria-hidden="true">
+              <img
+                src="images/logos/iomotorsport-logo.png"
+                alt="iomotorsport logo"
+              />
+            </div>
+            io<span>motorsport</span>
+          </a>
+          <nav aria-label="Main navigation">
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="articles.html">Articles</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+            <button
+              class="mobile-menu-btn"
+              onclick="toggleMobileMenu()"
+              aria-label="Toggle mobile menu"
+              aria-expanded="false"
+            >
+              ☰
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div
+        class="mobile-nav"
+        id="mobileNav"
+        role="navigation"
+        aria-label="Mobile navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="articles.html">Articles</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Page Hero -->
+      <section class="articles-hero">
+        <div class="container">
+          <h1>Racing <span>Business</span> Analysis</h1>
+          <p>
+            Deep dives into team valuations, sponsorships, M&A activity, and
+            what the world's biggest companies are investing in motorsport
+          </p>
+        </div>
+      </section>
+
+      <!-- Articles Content -->
+      <section class="articles-container">
+        <div class="container">
+          <!-- Filter Section -->
+          <div class="filter-section">
+            <span style="color: #888">Filter by:</span>
+            <button class="filter-btn active" onclick="filterArticles('all')">
+              All Topics
+            </button>
+            <button class="filter-btn" onclick="filterArticles('valuations')">
+              Valuations
+            </button>
+            <button class="filter-btn" onclick="filterArticles('deals')">
+              Deals & M&A
+            </button>
+            <button class="filter-btn" onclick="filterArticles('economics')">
+              Economics
+            </button>
+            <button class="filter-btn" onclick="filterArticles('sponsorship')">
+              Sponsorship
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterArticles('manufacturers')"
+            >
+              Manufacturers
+            </button>
+          </div>
+
+          <!-- Featured Articles Section -->
+          <div id="valuations" class="section-divider">
+            <h2 class="section-title">Team Valuations & Finance</h2>
+            <div class="articles-grid">
+              <a
+                href="blog/f1-team-valuations-2026.html"
+                class="article-card"
+                data-category="valuations"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Valuations</span>
+                  <h3 class="article-title">
+                    F1 Team Valuations 2026: Who's Worth What and Why
+                  </h3>
+                  <p class="article-excerpt">
+                    A comprehensive breakdown of every Formula 1 team's current
+                    market value, from Ferrari's $6.5 billion empire to the
+                    mid-field's surprising growth stories. What drives these
+                    valuations and how they've shifted in the hybrid era.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 18, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>18 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/nascar-charters-2026.html"
+                class="article-card"
+                data-category="valuations"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Valuations</span>
+                  <h3 class="article-title">
+                    NASCAR Charters: Why Teams Are Worth $40M+ in 2026
+                  </h3>
+                  <p class="article-excerpt">
+                    The business model behind NASCAR's charter system and how it
+                    fundamentally changed team valuations. Comparing charter
+                    economics to F1 and discovering where the real franchise
+                    value sits in American motorsport.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 12, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>15 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/hypercar-oem-investment.html"
+                class="article-card"
+                data-category="valuations"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Valuations</span>
+                  <h3 class="article-title">
+                    The Hypercar Bubble: Are OEM Programs Worth the Investment?
+                  </h3>
+                  <p class="article-excerpt">
+                    With manufacturers spending hundreds of millions on
+                    hypercars, we analyze the business case for Porsche,
+                    Ferrari, and Toyota's endurance racing programs and their
+                    true financial impact.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 5, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>16 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Deals & M&A Section -->
+          <div id="deals" class="section-divider">
+            <h2 class="section-title">Deals, M&A & Ownership</h2>
+            <div class="articles-grid">
+              <a
+                href="blog/andretti-cadillac-f1.html"
+                class="article-card"
+                data-category="deals"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Deals & M&A</span>
+                  <h3 class="article-title">
+                    Inside the Andretti-Cadillac F1 Deal: A $600M Bet on
+                    American Racing
+                  </h3>
+                  <p class="article-excerpt">
+                    Breaking down the financial structure, equity stakes, and
+                    strategic implications of F1's newest official team entry.
+                    What does Cadillac actually get for its investment?
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 15, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>12 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/private-equity-motorsport.html"
+                class="article-card"
+                data-category="deals"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Deals & M&A</span>
+                  <h3 class="article-title">
+                    Private Equity in Motorsport: When Teams Become Assets
+                  </h3>
+                  <p class="article-excerpt">
+                    Exploring how private equity firms are reshaping team
+                    ownership, from financial engineering to operational
+                    consolidation. Winners and losers in the PE-backed
+                    motorsport era.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 28, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>14 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/red-bull-empire.html"
+                class="article-card"
+                data-category="deals"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Deals & M&A</span>
+                  <h3 class="article-title">
+                    Red Bull's Motorsport Empire: How Energy Drinks Built a
+                    Racing Dynasty
+                  </h3>
+                  <p class="article-excerpt">
+                    From a single F1 team to motorcycle racing dominance, Red
+                    Bull's unique approach to sports franchise acquisition and
+                    vertical integration in motorsport.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 20, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>17 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Economics & Budgets Section -->
+          <div id="economics" class="section-divider">
+            <h2 class="section-title">Racing Economics & Business Models</h2>
+            <div class="articles-grid">
+              <a
+                href="blog/f1-cost-cap-2026.html"
+                class="article-card"
+                data-category="economics"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Economics</span>
+                  <h3 class="article-title">
+                    F1 Cost Cap 2026: Is It Actually Working?
+                  </h3>
+                  <p class="article-excerpt">
+                    Two years into the strict cost caps, we analyze whether
+                    regulations are achieving their goals or if teams are
+                    finding creative loopholes to spend more competitive money.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 10, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>19 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/nascar-charter-economics.html"
+                class="article-card"
+                data-category="economics"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Economics</span>
+                  <h3 class="article-title">
+                    Why NASCAR Teams Are More Valuable Than Ever (Economics 101)
+                  </h3>
+                  <p class="article-excerpt">
+                    Charter values hit record highs in 2026. We break down the
+                    revenue share model, why manufacturer support drives value,
+                    and when the bubble might burst.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 30, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>13 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/wrc-financial-model.html"
+                class="article-card"
+                data-category="economics"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Economics</span>
+                  <h3 class="article-title">
+                    WRC's Financial Model: Why Independent Drivers Can't Win
+                    Anymore
+                  </h3>
+                  <p class="article-excerpt">
+                    An analysis of how manufacturer backing and sponsor power
+                    have consolidated World Rally Championship competition, and
+                    what the economics mean for future competitiveness.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 15, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>11 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Sponsorship Section -->
+          <div id="sponsorship" class="section-divider">
+            <h2 class="section-title">Sponsorship & Brand Investments</h2>
+            <div class="articles-grid">
+              <a
+                href="blog/f1-title-sponsor-market.html"
+                class="article-card"
+                data-category="sponsorship"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Sponsorship</span>
+                  <h3 class="article-title">
+                    The $500M Question: Decoding F1's Title Sponsor Market
+                  </h3>
+                  <p class="article-excerpt">
+                    Why brands are paying record sums for F1 naming rights, what
+                    they're actually getting in return, and how the title
+                    sponsor market has evolved since Liberty's takeover.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 10, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>14 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/emerging-market-motorsport.html"
+                class="article-card"
+                data-category="sponsorship"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Sponsorship</span>
+                  <h3 class="article-title">
+                    Emerging Market Money in Racing: Saudi Aramco's Gamble
+                  </h3>
+                  <p class="article-excerpt">
+                    National oil companies and regional investors are reshaping
+                    motorsport sponsorship. We analyze the ROI calculations and
+                    geopolitical complexities of their involvement.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 25, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>15 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/tech-companies-f1.html"
+                class="article-card"
+                data-category="sponsorship"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Sponsorship</span>
+                  <h3 class="article-title">
+                    Tech Companies in F1: Why AWS, Google, and Microsoft Are
+                    Betting Billions
+                  </h3>
+                  <p class="article-excerpt">
+                    Big Tech's massive sponsorship commitments to F1 teams and
+                    series. What's the actual business case and return on
+                    investment for these partnerships?
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 12, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>16 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Manufacturers Section -->
+          <div id="manufacturers" class="section-divider">
+            <h2 class="section-title">Manufacturer Strategies & Investments</h2>
+            <div class="articles-grid">
+              <a
+                href="blog/audi-f1.html"
+                class="article-card"
+                data-category="manufacturers"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Manufacturers</span>
+                  <h3 class="article-title">
+                    Audi's F1 Bet: A $5B Strategic Investment in Racing
+                  </h3>
+                  <p class="article-excerpt">
+                    Analyzing why Audi is entering Formula 1, what the
+                    investment means for powertrain development, and the
+                    long-term strategic calculus behind their commitment.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Feb 8, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>17 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/ford-vs-chevy-nascar.html"
+                class="article-card"
+                data-category="manufacturers"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Manufacturers</span>
+                  <h3 class="article-title">
+                    Ford vs. Chevy in NASCAR: Budget Battle at 200 MPH
+                  </h3>
+                  <p class="article-excerpt">
+                    A deep dive into how Ford and Chevrolet's motorsport budgets
+                    influence NASCAR competition, team alliances, and their
+                    broader automotive strategies.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 22, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>13 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="blog/toyota-lmh.html"
+                class="article-card"
+                data-category="manufacturers"
+                style="text-decoration: none; color: inherit"
+              >
+                <div class="article-image">[Feature Image]</div>
+                <div class="article-body">
+                  <span class="article-category">Manufacturers</span>
+                  <h3 class="article-title">
+                    Toyota's LMH Program: $2B in Endurance Racing Investment
+                  </h3>
+                  <p class="article-excerpt">
+                    Why Toyota committed enormous resources to hypercars, how Le
+                    Mans success drives brand prestige, and what the ROI
+                    actually looks like for a Japanese corporation.
+                  </p>
+                  <div class="article-meta">
+                    <div class="article-meta-item">
+                      <span>Jan 10, 2026</span>
+                    </div>
+                    <div class="article-meta-item">
+                      <span>18 min read</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div class="cta-section">
+            <h2>Stay Updated on Motorsport Business</h2>
+            <p>
+              Get weekly analysis and breaking news on team valuations, deals,
+              and manufacturer strategies delivered to your inbox.
+            </p>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">
+                <img
+                  src="images/logos/iomotorsport-logo.png"
+                  alt="iomotorsport logo"
+                />
+              </div>
+              io<span>motorsport</span>
+            </a>
+            <p>
+              In-depth analysis of motorsport business, team valuations,
+              sponsorship deals, and the financial forces shaping racing
+              worldwide.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Coverage</h4>
+            <a href="articles.html">All Articles</a>
+            <a href="articles.html#valuations">Valuations</a>
+            <a href="articles.html#deals">Deals & M&A</a>
+            <a href="articles.html#economics">Economics</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Company</h4>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+          </div>
+
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 iomotorsport. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        const menuBtn = document.querySelector(".mobile-menu-btn");
+        const isOpen = mobileNav.classList.toggle("active");
+        menuBtn.textContent = isOpen ? "✕" : "☰";
+        menuBtn.setAttribute("aria-expanded", isOpen);
+      }
+
+      function filterArticles(category) {
+        // Update active filter button
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+
+        // Show/hide articles based on category
+        document.querySelectorAll(".article-card").forEach((card) => {
+          if (category === "all" || card.dataset.category === category) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

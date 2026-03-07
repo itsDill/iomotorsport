@@ -103,10 +103,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="styles.css" />
     <style>
       :root {
         --primary: #e63946;
@@ -144,13 +144,13 @@
         padding: 0 24px;
       }
 
-      /* Header */
+      /* Override header for index page - use styles.css defaults */
       header {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        background: rgba(10, 10, 11, 0.9);
+        background: rgba(10, 10, 11, 0.95);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
         z-index: 100;
@@ -514,23 +514,82 @@
         }
       }
     </style>
+    <!-- Google Consent Mode v2 - Must be before gtag -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SLERGKLNWP"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      gtag("config", "G-SLERGKLNWP");
+    </script>
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2456627863532019"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Cookie Consent Manager -->
+    <script src="js/cookie-consent.js" defer></script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
       <div class="container">
         <div class="header-content">
-          <a href="index.html" class="logo">io<span>motorsport</span></a>
-          <nav>
-            <a href="index.html">Home</a>
-            <a href="articles.html">Articles</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+          <a href="index.html" class="logo"
+            ><div class="logo-icon">
+              <img
+                src="images/logos/iomotorsport-logo.png"
+                alt="iomotorsport logo"
+              />
+            </div>
+            io<span>motorsport</span></a
+          >
+          <nav aria-label="Main navigation">
+            <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="articles.html">Articles</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html" class="nav-cta">Contact</a></li>
+            </ul>
+            <button
+              class="mobile-menu-btn"
+              onclick="toggleMobileMenu()"
+              aria-label="Toggle mobile menu"
+              aria-expanded="false"
+            >
+              ☰
+            </button>
           </nav>
         </div>
       </div>
+      <div
+        class="mobile-nav"
+        id="mobileNav"
+        role="navigation"
+        aria-label="Mobile navigation"
+      >
+        <a href="index.html">Home</a><a href="articles.html">Articles</a
+        ><a href="about.html">About</a><a href="contact.html">Contact</a>
+      </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <section class="hero">
         <div class="container">
           <span class="hero-tag">Motorsport Business Intelligence</span>
@@ -570,24 +629,29 @@
             <h2 class="section-title">Featured Analysis</h2>
             <a href="articles.html" class="view-all">View all articles →</a>
           </div>
-          <article class="featured-card">
-            <div class="featured-image">[Featured Image]</div>
-            <div class="featured-content">
-              <span class="article-category">Valuations</span>
-              <h2>
-                F1 Team Valuations 2026: Who's Worth What and Why It Matters
-              </h2>
-              <p>
-                A comprehensive breakdown of every Formula 1 team's current
-                market value, from Ferrari's $6.5 billion empire to the
-                mid-field's surprising growth stories.
-              </p>
-              <div class="article-meta">
-                <span>February 18, 2026</span>
-                <span>18 min read</span>
+          <a
+            href="blog/f1-team-valuations-2026.html"
+            style="text-decoration: none; color: inherit"
+          >
+            <article class="featured-card">
+              <div class="featured-image">[Featured Image]</div>
+              <div class="featured-content">
+                <span class="article-category">Valuations</span>
+                <h2>
+                  F1 Team Valuations 2026: Who's Worth What and Why It Matters
+                </h2>
+                <p>
+                  A comprehensive breakdown of every Formula 1 team's current
+                  market value, from Ferrari's $6.5 billion empire to the
+                  mid-field's surprising growth stories.
+                </p>
+                <div class="article-meta">
+                  <span>February 18, 2026</span>
+                  <span>18 min read</span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </a>
         </div>
       </section>
 
@@ -597,7 +661,11 @@
             <h2 class="section-title">Latest Articles</h2>
           </div>
           <div class="articles-grid">
-            <article class="article-card">
+            <a
+              href="blog/andretti-cadillac-f1.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
               <div class="article-image">[Article Image]</div>
               <div class="article-content">
                 <span class="article-category">Deals & M&A</span>
@@ -614,8 +682,97 @@
                   <span>12 min read</span>
                 </div>
               </div>
-            </article>
-            <article class="article-card">
+            </a>
+            <a
+              href="blog/audi-f1.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Manufacturers</span>
+                <h3>
+                  Audi's F1 Bet: How a German Giant is Betting Billions on
+                  Racing
+                </h3>
+                <p>
+                  An inside look at Audi's $600M+ Formula 1 power unit
+                  investment and competitive strategy.
+                </p>
+                <div class="article-meta">
+                  <span>Feb 12, 2026</span>
+                  <span>14 min read</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="blog/red-bull-empire.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Teams</span>
+                <h3>
+                  The Red Bull Motorsport Empire: How One Team Dominates Racing
+                </h3>
+                <p>
+                  Deep dive into the organizational structure that makes Red
+                  Bull racing's most feared competitor.
+                </p>
+                <div class="article-meta">
+                  <span>Feb 10, 2026</span>
+                  <span>16 min read</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="blog/f1-cost-cap-2026.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Regulations</span>
+                <h3>
+                  F1's Cost Cap Problem: How Teams Circumvent the $375M Limit
+                </h3>
+                <p>
+                  Exploring the loopholes and workarounds that undermine F1's
+                  competitive fairness initiative.
+                </p>
+                <div class="article-meta">
+                  <span>Feb 8, 2026</span>
+                  <span>13 min read</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="blog/f1-team-valuations-2026.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
+              <div class="article-image">[Article Image]</div>
+              <div class="article-content">
+                <span class="article-category">Valuations</span>
+                <h3>
+                  F1 Team Valuations 2026: Who's Worth What and Why It Matters
+                </h3>
+                <p>
+                  A comprehensive breakdown of every Formula 1 team's current
+                  market value from Ferrari to emerging new entrants.
+                </p>
+                <div class="article-meta">
+                  <span>Feb 5, 2026</span>
+                  <span>18 min read</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="blog/nascar-charters-2026.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
               <div class="article-image">[Article Image]</div>
               <div class="article-content">
                 <span class="article-category">Economics</span>
@@ -631,8 +788,12 @@
                   <span>10 min read</span>
                 </div>
               </div>
-            </article>
-            <article class="article-card">
+            </a>
+            <a
+              href="blog/f1-title-sponsor-market.html"
+              class="article-card"
+              style="text-decoration: none; color: inherit"
+            >
               <div class="article-image">[Article Image]</div>
               <div class="article-content">
                 <span class="article-category">Sponsorship</span>
@@ -646,7 +807,7 @@
                   <span>14 min read</span>
                 </div>
               </div>
-            </article>
+            </a>
           </div>
         </div>
       </section>
@@ -679,5 +840,16 @@
         </div>
       </div>
     </footer>
+    <script>
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        const btn = document.querySelector(".mobile-menu-btn");
+        mobileNav.classList.toggle("active");
+        btn.setAttribute(
+          "aria-expanded",
+          mobileNav.classList.contains("active"),
+        );
+      }
+    </script>
   </body>
 </html>
