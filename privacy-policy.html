@@ -101,7 +101,7 @@
           <nav aria-label="Main navigation">
             <ul class="nav-links">
               <li><a href="index.html">Home</a></li>
-              <li><a href="hub.html">Articles</a></li>
+              <li><a href="articles.html">Articles</a></li>
               <li><a href="about.html">About</a></li>
               <li><a href="contact.html" class="nav-cta">Contact</a></li>
             </ul>
@@ -396,10 +396,10 @@
 
           <div class="footer-links">
             <h4>Coverage</h4>
-            <a href="hub.html">All Articles</a>
-            <a href="hub.html#valuations">Valuations</a>
-            <a href="hub.html#deals">Deals & M&A</a>
-            <a href="hub.html#economics">Economics</a>
+            <a href="articles.html">All Articles</a>
+            <a href="articles.html#valuations">Valuations</a>
+            <a href="articles.html#deals">Deals & M&A</a>
+            <a href="articles.html#economics">Economics</a>
           </div>
 
           <div class="footer-links">
@@ -425,6 +425,14 @@
       </div>
     </footer>
 
-    <script src="js/ui-components.js"></script>
+    <script>
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        const menuBtn = document.querySelector(".mobile-menu-btn");
+        const isOpen = mobileNav.classList.toggle("active");
+        menuBtn.textContent = isOpen ? "✕" : "☰";
+        menuBtn.setAttribute("aria-expanded", isOpen);
+      }
+    </script>
   </body>
 </html>

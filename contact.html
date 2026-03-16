@@ -77,6 +77,11 @@
     ></script>
     <!-- Cookie Consent Manager -->
     <script src="js/cookie-consent.js" defer></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      emailjs.init("iHVP35KAX2ZZ-Wwlj");
+    </script>
   </head>
   <body>
     <!-- Skip to Content Link for Accessibility -->
@@ -312,13 +317,27 @@
         menuBtn.setAttribute("aria-expanded", isOpen);
       }
 
-      // Simple form handling (replace with actual backend integration)
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
-          alert("Thank you for your message! We'll get back to you soon.");
-          this.reset();
+          const btn = this.querySelector(".submit-btn");
+          btn.textContent = "Sending...";
+          btn.disabled = true;
+
+          emailjs
+            .sendForm("service_s64itdh", "template_bvcioub", this)
+            .then(() => {
+              btn.textContent = "Message Sent!";
+              this.reset();
+            })
+            .catch(() => {
+              btn.textContent = "Send Message";
+              btn.disabled = false;
+              alert(
+                "Something went wrong. Please email us directly at hello@iomotorsport.com",
+              );
+            });
         });
     </script>
   </body>
