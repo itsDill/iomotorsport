@@ -57,11 +57,12 @@
       function gtag() {
         dataLayer.push(arguments);
       }
+      var _imo_c = localStorage.getItem("imo_cookie_consent") === "granted" ? "granted" : "denied";
       gtag("consent", "default", {
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        analytics_storage: "denied",
+        ad_storage: _imo_c,
+        ad_user_data: _imo_c,
+        ad_personalization: _imo_c,
+        analytics_storage: _imo_c,
         wait_for_update: 500,
       });
     </script>
